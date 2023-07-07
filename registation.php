@@ -26,20 +26,4 @@ if (isset($_POST['register'])) {
     mysqli_close($conn);
 }
 ?>
-<!--<html>
-<head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-</head>
-<body>
-    <script type="text/javascript">
-        $(function() {
-            Swal.fire({
-                'title': 'Register',
-                'text': 'Successfully!',
-                'type': 'success'
-            });
-        });
-    </script>
-</body>
-</html> -->
+
