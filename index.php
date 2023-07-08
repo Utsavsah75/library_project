@@ -42,7 +42,6 @@
                     <a href="#">
                         <li class="fa fa-user">Login</li>
                     </a>
-
                 </ul>
             </div>
         </div>
@@ -56,7 +55,6 @@
                     <?php
                     session_start();
                     ?>
-
                     <div class="container">
 
                         <div class="msg_holder" colspan="2" align="center" height:="200px">
@@ -69,7 +67,6 @@
                             }
                             ?>
                         </div>
-
                         <div class="form_holder">
                             <form action="login.php" method="post">
                                 <table align="center">
@@ -79,27 +76,23 @@
                                                                                         echo $_COOKIE['rem_user'];
                                                                                     } ?>" required autocomplete="off"></td>
                                     </tr>
-
                                     <tr>
                                         <td>Password</td>
                                         <td><input type="password" name="pwd" value="<?php if (isset($_COOKIE['rem_user'])) {
                                                                                             echo $_COOKIE['rem_pass'];
                                                                                         } ?>" required autocomplete="off"></td>
                                     </tr>
-
                                     <tr>
                                         <td align="right"><input type="checkbox" name="rem" <?php if (isset($_COOKIE['rem_user'])) {
                                                                                                 echo "checked";
                                                                                             } ?>></td>
                                         <td>Remember Me</td>
                                     </tr>
-
                                     <tr>
                                         <td colspan="2" align="center">
                                             <input type="submit" value="Login" name="login">
                                         </td>
                                     </tr>
-
                                     <tr>
                                         <td colspan="2" align="center">
                                             New Member ? <a href="reg_form.php">Register Here</a>
@@ -111,23 +104,71 @@
                     </div>
                 </div>
             </div>
-
+            <div id="z">
+                <div id="r">
+                    <h1 style=" text-align: center; color: #2c7ad6;"> ADMIN</h1>
+                    <div class="container1">
+                        <?php
+                        if (isset($_SESSION['msg'])) {
+                            echo $_SESSION['msg'];
+                            session_unset();
+                        } else {
+                            echo "";
+                        }
+                        ?>
+                    </div>
+                    <div class="form_holder">
+                        <form action="login.php" method="post">
+                            <table align="center">
+                                <tr>
+                                    <td>Admin Name</td>
+                                    <td><input type="text" name="name" value="<?php if (isset($_COOKIE['rem_user'])) {
+                                                                                    echo $_COOKIE['rem_user'];
+                                                                                } ?>" required autocomplete="off"></td>
+                                </tr>
+                                <tr>
+                                    <td>Password</td>
+                                    <td><input type="password" name="pwd" value="<?php if (isset($_COOKIE['rem_user'])) {
+                                                                                        echo $_COOKIE['rem_pass'];
+                                                                                    } ?>" required autocomplete="off"></td>
+                                </tr>
+                                <tr>
+                                    <td align="right"><input type="checkbox" name="rem" <?php if (isset($_COOKIE['rem_user'])) {
+                                                                                            echo "checked";
+                                                                                        } ?>></td>
+                                    <td>Remember Me</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" align="center">
+                                        <input type="submit" value="Login" name="login">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" align="center">
+                                        New Member ? <a href="reg_form.php">Register Here</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="down">
-            <h3>Stay Connected</h3>
-            <a href="#" class="fa fa-facebook" style="text-decoration: none; padding: 10px 12px;color: white; "></a>
-            <a href="#" class="fa fa-instagram" style="text-decoration: none; padding: 10px 12px;color: white;"></a>
-            <a href="#" class="fa fa-twitter" style="text-decoration: none; padding: 10px 12px;color: white;"></a>
-            <h2>Contant Address</h2>
-            
-            <a href="#" class="fa fa-phone" style="text-decoration: none; padding: 10px 12px;color: white;">
-                +977-9801219843
-            </a> <br>
-            <a href="#" class="fa fa-envelope" style="text-decoration: none; padding: 10px 12px; color:white;">
-                utsavsah75@gmail.com
-            </a>
-        </div>
-        <div class="footer">Developed By : utsav </div>
+    </div>
+    <div id="down">
+        <h3>Stay Connected</h3>
+        <a href="#" class="fa fa-facebook" style="text-decoration: none; padding: 10px 12px;color: white; "></a>
+        <a href="#" class="fa fa-instagram" style="text-decoration: none; padding: 10px 12px;color: white;"></a>
+        <a href="#" class="fa fa-twitter" style="text-decoration: none; padding: 10px 12px;color: white;"></a>
+        <h2>Contant Address</h2>
+        <a href="#" class="fa fa-phone" style="text-decoration: none; padding: 10px 12px;color: white;">
+            +977-9801219843
+        </a> <br>
+        <a href="#" class="fa fa-envelope" style="text-decoration: none; padding: 10px 12px; color:white;">
+            utsavsah75@gmail.com
+        </a>
+    </div>
+    <div class="footer">Developed By : utsav </div>
     </div>
 </body>
 
