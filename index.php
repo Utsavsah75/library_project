@@ -119,10 +119,7 @@
             <a href="#" class="fa fa-instagram" style="text-decoration: none; padding: 10px 12px;color: white;"></a>
             <a href="#" class="fa fa-twitter" style="text-decoration: none; padding: 10px 12px;color: white;"></a>
             <h2>Contant Address</h2>
-            <!-- 
-                <a href="#" class="fa fa-home" style="text-decoration: none; padding: 10px 12px;color: white; ">
-                vill : Mishra.., post : Balahi
-                Police Station :  </a> <br> -->
+            
             <a href="#" class="fa fa-phone" style="text-decoration: none; padding: 10px 12px;color: white;">
                 +977-9801219843
             </a> <br>
