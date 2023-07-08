@@ -150,6 +150,18 @@
     background:linear-gradient(45deg,rgba(50,177,40, .6),rgba(255,255,255, .6));
    
 }
+
+
+#msg_holder {
+  height: 20px;
+  background: black;
+  color: white;
+  margin: 120px 120px 0 120px; 
+  text-align: center;
+
+  margin:50px 50px;
+}
+
 /*
 #r{
     height:450px;
@@ -162,18 +174,7 @@
 }
 #r:hover{
     background:linear-gradient(45deg,rgba(50,177,40, .6),rgba(255,255,255, .6));
-}*/
-
-#msg_holder {
-  height: 20px;
-  background: black;
-  color: white;
-  margin: 120px 120px 0 120px; 
-  text-align: center;
-
-  margin:50px 50px;
 }
-/*
 #student{
     margin:50px 50px;
     color:blue;
