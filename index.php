@@ -39,9 +39,9 @@
                     <a href="reg_form.php">
                         <li class="fa fa-registered">Register</li>
                     </a>
-                    <a href="#">
+                    <!-- <a href="#">
                         <li class="fa fa-user">Login</li>
-                    </a>
+                    </a> -->
                 </ul>
             </div>
         </div>

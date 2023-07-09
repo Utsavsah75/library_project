@@ -16,7 +16,8 @@ if (isset($_POST['login'])) {
         $stmt_result = $stmt->get_result();
 
         if ($stmt_result->num_rows > 0) {
-            echo "Login successfully!";
+            // echo "Login successfully!";
+            echo "<script>window.open('book_page.php','_self')</script>";
         } else {
             echo "<h2>Invalid Admin Name and password</h2>";
         }
