@@ -68,7 +68,7 @@
                             ?>
                         </div>
                         <div class="form_holder">
-                            <form action="login.php" method="post">
+                            <form action="user_login.php" method="post">
                                 <table align="center">
                                     <tr>
                                         <td>Username</td>
@@ -95,7 +95,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2" align="center">
-                                            New Member ? <a href="reg_form.php">Register Here</a>
+                                            New Member ? <a href="user_form.php">Register Here</a>
                                         </td>
                                     </tr>
                                 </table>
@@ -118,7 +118,7 @@
                         ?>
                     </div>
                     <div class="form_holder">
-                        <form action="login.php" method="post">
+                        <form action="admin_page.php" method="post">
                             <table align="center">
                                 <tr>
                                     <td>Admin Name</td>
@@ -145,7 +145,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" align="center">
-                                        New Member ? <a href="reg_form.php">Register Here</a>
+                                        New Member ? <a href="admin_reg.php">Register Here</a>
                                     </td>
                                 </tr>
                             </table>

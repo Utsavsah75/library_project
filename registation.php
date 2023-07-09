@@ -10,11 +10,8 @@ if (isset($_POST['register'])) {
     $password   = $_POST['password'];
     $phone          = $_POST['phone'];
     $faculty        = $_POST['faculty'];
-    $photo          = $_POST['photo']; // Assuming 'photo' is the name of the checkbox field
-    $chk = "";
-    foreach ($photo as $chk1) {
-        $chk .= $chk1 . ",";
-    }
+    $photo          = $_POST['photo']; 
+    
     $sql = "INSERT INTO register (name, email, gender, password, phone, faculty, photo) 
             VALUES ('$name', '$email', '$gender', '$password', '$phone', '$faculty', '$chk')";
 

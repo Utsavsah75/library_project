@@ -61,7 +61,7 @@
                         <div class="msg_holder1"></div>
 
                         <div class="form_holder1">
-                            <form action="register.php" method="post" enctype="multipart/form-data">
+                            <form action="registation.php" method="post" enctype="multipart/form-data">
                                 <table align="center">
                                     <tr>
                                         <td>Name:</td>
