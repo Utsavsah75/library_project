@@ -1,18 +1,6 @@
 body {
     background-attachment: fixed;
-    /* background: rgb(0 0 180px lightseagreen,0 0 280px lightseagreen, 0 0 480px lightseagreen, 0 0 580px lightseagreen); */
-    /* background: linear-gradient(0deg, rgba(255, 255, 255, 0.703), rgba(96, 100, 96, 0.6)); */
-    /* filter: drop-shadow(0 0 2px red); */
-    /* background-color: rgb(32, 178, 170); */
     background: linear-gradient(to left, rgb(124, 152, 132), rgb(109, 201, 130));
-    /* background:
-  linear-gradient(to right, red, rgb(238, 255, 0)) left top,
-  linear-gradient(to right, rgb(0, 255, 191), rgb(255, 0, 174)) left top,
-  linear-gradient(to right, rgb(174, 0, 255), rgb(23, 0, 128)) left top;
-background-blend-mode: normal; */
-
-
-
 
 }
 
@@ -91,12 +79,11 @@ background-blend-mode: normal; */
     background: linear-gradient(180deg, rgb(0, 255, 4), rgb(145, 235, 146));
 }
 .top1 li a {
-    display: block;
     padding: 0px;
+    display: block;
     color: #333333;
     text-decoration: none;
 }
-
 .library-container2 {
     margin: 5px;
     width: 200px;
@@ -152,41 +139,39 @@ button {
     width: 135px;
     height: 46px;
     padding: 10px;
+    display: flex;
     margin-top: 7px;
+    border: 2px solid;
     margin-left: 10px;
     border-radius: 8px;
-    box-sizing: border-box;
-    border: 2px solid;
     text-align: center;
-    display: flex;
-    justify-content: center;
     align-items: center;
+    box-sizing: border-box;
+    justify-content: center;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.885), rgba(96, 100, 96, 0.993));
 }
 
 button:hover {
     background-color: #1403ff;
 }
-
-
 .datetime {
     width: 175px;
-    font-size: 10px;
     padding: 10px;
     color: #ffffff;
+    font-size: 10px;
     font-weight: 500;
     margin-top: 20px;
     margin-left: 15px;
     border-radius: 20px;
     background: #444444;
-    filter: drop-shadow(0 0 2px red);
     border-right: 5px #009578 solid;
+    filter: drop-shadow(0 0 2px red);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
 .time {
-    font-size: 2em;
     color: #00ffcc;
+    font-size: 2em;
     align-items: center;
 }
 
@@ -199,15 +184,15 @@ button:hover {
 }
 
 .library-container2 button {
-    display: inline-block;
+    border: none;
     width: 120px;
     padding: 10px;
     cursor: pointer;
     margin-top: 13px;
     margin-left: 15px;
     font-weight: bold;
-    border: none;
     border-radius: 10px;
+    display: inline-block;
     background-color: #e5ff00;
 
 }
@@ -221,14 +206,14 @@ button:hover {
 }
 
 .tabcontent {
+    width: 950px;
+    height: 420px;
     display: block;
-    margin-left: 340px;
-    margin-top: -430px;
     font-weight: bold;
     border: 1px solid;
-    width: 950px;
+    margin-left: 340px;
+    margin-top: -430px;
     border-radius: 10px;
     background-color: #ddcece;
-    height: 420px;
 
 }
