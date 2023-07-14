@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book_Management</title>
@@ -51,6 +50,9 @@
 
     <div class="container3">
     <div id="Add_Books" class="tabcontent">
+
+ <fieldset>
+  <legend>This Field is required:</legend>
         <table>
             <tr>
                 <th style="text-align: left;">Book ID</th>
@@ -85,9 +87,13 @@
                 </td>
             </tr>
         </table>
+</fieldset>
     </div>
 
     <div id="Borrow_Books" class="tabcontent">
+
+ <fieldset>
+  <legend>This Field Is Required:</legend>
         <table>
             <tr>
                 <th style="text-align: left;">Borrow ID</th>
@@ -123,9 +129,13 @@
             </tr>
 
         </table>
+</fieldset>
     </div>
 
     <div id="Return_Books" class="tabcontent">
+
+ <fieldset>
+  <legend>This Field Is Required:</legend>
         <table>
             <tr>
                 <th style="text-align: left;">Return ID</th>
@@ -163,11 +173,13 @@
                 </td>
             </tr>
         </table>
+</fieldset>
     </div>
 
     <div id="Add_Users" class="tabcontent">
-
-        <table>
+      <fieldset>
+  <legend>This Field Is Required:</legend>   
+<table>
             <tr>
                 <th style="text-align: left;">ID</th>
                 <td><input type="text" name="u_id" placeholder="Enter User Id" style="padding: 5px;"></td>
@@ -223,9 +235,13 @@
                 </td>
             </tr>
         </table>
+</fieldset>
     </div>
 
     <div id="Manage_Users" class="tabcontent">
+
+ <fieldset>
+  <legend>This Field Is Required:</legend>
     <table>
             <tr>
                 <th style="text-align: left;">ID</th>
@@ -282,6 +298,7 @@
                 </td>
             </tr>
         </table>
+<fieldset>
     </div>
 </div>
     <script>
