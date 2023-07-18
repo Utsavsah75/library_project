@@ -46,166 +46,171 @@
         </div>
     </div>
 
-    <input type="text" placeholder="Search" style=" float: left;margin-left: 930px;  border-radius: 8px;  border: 2px solid;   transform: translateY(-503px); width: 240px; height: 25px;">
+    <input type="text" placeholder="Search" style=" float: left;margin-left: 975px;  border-radius: 8px;  border: 2px solid;   transform: translateY(-503px); width: 240px; height: 25px;">
     <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-495px);"></i>
 
     <div class="container3">
 
-<!---*****************ADD BOOKS**********************-->
+        <!---*****************ADD BOOKS**********************-->
         <div id="Add_Books" class="tabcontent">
-            <fieldset style="width:800px; height: 397px;">
+            <fieldset style="width: 0px; height: 397px;">
                 <legend>This Field is required:</legend>
-                <table>
-                    <tr>
-                        <th style="text-align: left;">Book ID</th>
-                        <td><input type="text" name="book_id" placeholder="Enter Book ID" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">Book Name</th>
-                        <td><input type="text" name="bname" placeholder="Enter Author Name" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">Author Name</th>
-                        <td><input type="text" name="Aname" placeholder="Enter Author Name" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">Quantity</th>
-                        <td><input type="text" name="num" placeholder="Total Books" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="text-align: right;">
-                            <div style="display: flex; justify-content: flex-end; gap: 15px;">
-                                <input type="Button" name="submit" value="Save" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-                                <input type="Button" name="submit" value="Update" style="padding: 10px 20px; font-weight:bold; background-color: #ffa200; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="text-align: right;">
-                            <div style="display: flex; justify-content: flex-end; gap: 15px;">
-                                <input type="Button" name="submit" value="Delete" style="padding: 10px 22px; font-weight:bold; background-color: #d9534f; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-                                <input type="Button" name="submit" value=" Clear " style="padding: 10px 21px; font-weight:bold; background-color: #337ab7; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-                            </div>
-                        </td>
-                    </tr>
+                <form id="bookForm" autocomplete="off">
+                    <div class="form-row">
+                        <label>Book ID*</label>
+                        <input type="text" id="book_id" placeholder="Enter Book ID" style="padding: 5px;">
+                    </div>
+                    <div class="form-row">
+                        <label>Book Name</label>
+                        <input type="text" id="bname" placeholder="Enter Book Name" style="padding: 5px;">
+                    </div>
+                    <div class="form-row">
+                        <label>Author Name</label>
+                        <input type="text" id="Aname" placeholder="Enter Author Name" style="padding: 5px;">
+                    </div>
+                    <div class="form-row">
+                        <label>Quantity</label>
+                        <input type="text" id="quantity" placeholder="Enter Quantity" style="padding: 5px;">
+                    </div>
 
-
-                </table>
-            <!-- </fieldset> -->
-
-            <fieldset style="width:695px; height: 388px;   margin-top:-227px; margin-left: 290px;">
+                    <div colspan="2" style="text-align: right;">
+                        <div style="display: flex; justify-content: flex-end; gap: 15px;">
+                            <input type="submit" value="Save" onclick="onFormSubmit(event)" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+                            <input type="button" value="Update" onclick="updateRecord(event)" style="padding: 10px 20px; font-weight:bold; background-color: #ffa200; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+                        </div>
+                        <div style="display: flex; justify-content: flex-end; gap: 15px; margin-top: 20px;">
+                            <input type="button" value="Delete" onclick="onDelete(event)" style="padding: 10px 22px; font-weight:bold; background-color: #d9534f; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+                            <input type="button" value="Clear" onclick="resetForm(event)" style="padding: 10px 21px; font-weight:bold; background-color: #337ab7; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+                        </div>
+                    </div>
+                </form>
+            </fieldset>
+            <fieldset style="width: 700px; height: 388px; margin-top: -408px; margin-left: 321px;">
                 <legend></legend>
-                <table style="border-collapse: collapse; width: 101%;">
-                    <tr style="background-color: #f2f2f2;">
-                        <th style="padding: 5px; border: 2px solid black;">Book ID</th>
-                        <th style="padding: 5px; border: 2px solid black;">Book Name</th>
-                        <th style="padding: 5px; border: 2px solid black;">Author Name</th>
-                        <th style="padding: 5px; border: 2px solid black;">Quantity</th>
-                    </tr>
+                <table id="booklist" style="border-collapse: collapse; width: 100%;">
+                    <thead>
+                        <tr style="background-color: #f2f2f2;">
+                            <th style="padding: 5px; border: 2px solid black;">Book ID</th>
+                            <th style="padding: 5px; border: 2px solid black;">Book Name</th>
+                            <th style="padding: 5px; border: 2px solid black;">Book Author</th>
+                            <th style="padding: 5px; border: 2px solid black;">Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ListBody" onclick="selectRow(event)" style="background-color: #4CAF50; color: #fff; padding: 5px; border: 1px solid black;">
+                    <table>
+                        <th>gffvnvm</th>
+                        <th>gdfgh</th>
+                        <th>ggdgdf</th>
+                        <th>zdfxdgxb</th>
+                    </table>
+                    </tbody>
                 </table>
             </fieldset>
+            <script src="connect.js"></script>
         </div>
-<!---*****************BORROW BOOK**********************-->
 
+        <!---*****************BORROW BOOK**********************-->
         <div id="Borrow_Books" class="tabcontent">
-
-        <fieldset style="width:800px; height: 397px;">
+            <fieldset style="width:0px; height: 397px;">
                 <legend>This Field is required:</legend>
-                <table>
-                    <tr>
-                        <th style="text-align: left;">Borrow ID</th>
-                        <td><input type="text" name="Borrow_id" placeholder="Enter Borrow ID" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">Book ID</th>
-                        <td><input type="text" Name="bID" placeholder="Enter Book ID" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">Book Name</th>
-                        <td><input type="text" name="Bname" placeholder="Enter Book Name" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">User ID</th>
-                        <td><input type="text" name="u_id" placeholder="Enter User ID" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">Issue Date</th>
-                        <td><input type="text" name="iss_D" placeholder="Enter Issue Date" style="padding: 5px;"></td>
-                    </tr>
-                    <th style="text-align: left;">Due Date</th>
-                    <td><input type="date" name="due_D" placeholder="Enter Due Date" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                    <tr>
-                        <td colspan="2" style="text-align: right;">
-                            <div style="display: flex; justify-content: flex-end; gap: 15px;">
-                                <input type="Button" name="submit" value="Borrow" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-                                <input type="Button" name="submit" value="Clear" style="padding: 10px 20px; font-weight:bold; background-color: #337ab7; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-                            </div>
-                        </td>
-                    </tr>
+                <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
 
-                </table>
-                <fieldset style="width:695px; height: 388px;   margin-top:-258px;margin-left: 290px;">
+                    <div class="form-row">
+                        <label>Borrow ID*</label>
+                        <input type="text" name="Borrow_id" placeholder="Enter Borrow ID" style="padding: 5px;">
+                    </div>
+                    <div class="form-row">
+                        <label>Book ID</label>
+                        <input type="text" name="bID" placeholder="Enter Book ID" style="padding: 5px;">
+                    </div>
+                    <div class="form-row">
+                        <label>Book Name</label>
+                        <input type="text" name="Bname" placeholder="Enter Book Name" style="padding: 5px;">
+                    </div>
+                    <div class="form-row">
+                        <label>User ID</label>
+                        <input type="text" name="u_id" placeholder="Enter User ID" style="padding: 5px;">
+                    </div>
+                    <div class="form-row">
+                        <label>Issue Date</label>
+                        <input type="text" name="iss_D" placeholder="Enter Issue Date" style="padding: 5px;">
+                    </div>
+                    <div class="form-row">
+                        <label>Due Date</label>
+                        <input type="date" name="due_D" placeholder="Enter Due Date" style="padding: 5px;">
+                    </div>
+                    <div style="display: flex; justify-content: flex-end; gap: 15px;">
+                        <input type="button" name="submit" value="Borrow" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+                        <input type="button" name="clear" value="Clear" style="padding: 10px 20px; font-weight:bold; background-color: #337ab7; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+                    </div>
+                </form>
+            </fieldset>
+            <fieldset style=" width:-395px; height: 388px;   margin-top:-408px;margin-left: 321px;">
                 <legend></legend>
-                <table style="border-collapse: collapse; width: 101%;">
-                    <tr style="background-color: #f2f2f2;">
-                        <th style="padding: 5px; border: 2px solid black;">Borrow ID</th>
-                        <th style="padding: 5px; border: 2px solid black;">Book ID</th>
-                        <th style="padding: 5px; border: 2px solid black;">Book Name</th>
-                        <th style="padding: 5px; border: 2px solid black;">User ID</th>
-                        <th style="padding: 5px; border: 2px solid black;">Issue Date</th>
-                        <th style="padding: 5px; border: 2px solid black;">Due Date</th>
-                    </tr>
+                <table id="booklist3" style="border-collapse: collapse; width:705px; height: 0px;   margin: top 0px; margin-left: -11px;">
+                    <thead>
+                        <tr style="background-color: #f2f2f2;">
+                            <th style="padding: 5px; border: 2px solid black;">Borrow ID</th>
+                            <th style="padding: 5px; border: 2px solid black;">Book ID</th>
+                            <th style="padding: 5px; border: 2px solid black;">Book Name</th>
+                            <th style="padding: 5px; border: 2px solid black;">User ID</th>
+                            <th style="padding: 5px; border: 2px solid black;">Issue Date</th>
+                            <th style="padding: 5px; border: 2px solid black;">Due Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ListBody" onclick="selectRow(event)" style="background-color: #4CAF50; color: #fff; padding: 5px; border: 1px solid black;">
+                    </tbody>
                 </table>
             </fieldset>
+            <script src="connect.js"></script>
+
         </div>
-<!---*****************RETURN BOOKS**********************-->
 
+        <!---*****************RETURN BOOKS**********************-->
         <div id="Return_Books" class="tabcontent">
-
-        <fieldset style="width:800px; height: 397px;">
+            <fieldset style="width: 0px; height: 397px;">
                 <legend>This Field is required:</legend>
-                <table>
-                    <tr>
-                        <th style="text-align: left;">Return ID</th>
-                        <td><input type="text" name="Return_id" placeholder="Enter Return ID" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">Book ID</th>
-                        <td><input type="text" Name="bID" placeholder="Enter Book ID" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">Book Name</th>
-                        <td><input type="text" name="Bname" placeholder="Enter Book Name" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">User ID</th>
-                        <td><input type="text" name="u_id" placeholder="Enter User Name" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">Issue Date</th>
-                        <td><input type="text" name="iss_D" placeholder="Issue Date" style="padding: 5px;"></td>
-                    </tr>
-                    <th style="text-align: left;">Due Date</th>
-                    <td><input type="text" name="due_D" placeholder="Enter Due Date" style="padding: 5px;"></td>
-                    </tr>
-                    </tr>
-                    <th style="text-align: left;">Return Date</th>
-                    <td><input type="text" name="Return_D" placeholder="Enter Return Date" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="text-align: right;">
-                            <div style="display: flex; justify-content: flex-end; gap: 15px;">
-                                <input type="Button" name="submit" value="Return" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-                                <input type="Button" name="submit" value="Clear" style="padding: 10px 20px; font-weight:bold; background-color: #337ab7; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-                <fieldset style="width:695px; height: 388px;   margin-top:-287px;margin-left: 290px;">
+                <form onsubmit="event.preventDefault();onReturnFormSubmit();" autocomplete="off">
+                    <div class="form-row">
+                        <label style="text-align: left;">Return ID</label>
+                        <input type="text" name="Return_id" placeholder="Enter Return ID" style="padding: 5px;">
+                    </div>
+                    <div class="form-row">
+                        <label style="text-align: left;">Book ID</label>
+                        <input type="text" Name="bID" placeholder="Enter Book ID" style="padding: 5px;">
+                    </div>
+                    <div class="form-row">
+                        <label style="text-align: left;">Book Name</label>
+                        <input type="text" name="Bname" placeholder="Enter Book Name" style="padding: 5px;">
+                    </div>
+                    <div class="form-row">
+                        <label style="text-align: left;">User ID</label>
+                        <input type="text" name="u_id" placeholder="Enter User Name" style="padding: 5px;">
+                    </div>
+                    <div class="form-row">
+                        <label style="text-align: left;">Issue Date</label>
+                        <input type="text" name="iss_D" placeholder="Issue Date" style="padding: 5px;">
+                    </div>
+                    <div class="form-row">
+                        <label style="text-align: left;">Due Date</label>
+                        <input type="text" name="due_D" placeholder="Enter Due Date" style="padding: 5px;">
+                    </div>
+                    <div class="form-row">
+                        <label style="text-align: left;">Return Date</label>
+                        <input type="text" name="Return_D" placeholder="Enter Return Date" style="padding: 5px;">
+                    </div>
+                    <div class="form-row">
+                        <div style="display: flex; justify-content: flex-end; gap: 15px;">
+                            <input type="Button" name="submit" value="Return" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+                            <input type="Button" name="submit" value="Clear" style="padding: 10px 20px; font-weight:bold; background-color: #337ab7; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+                        </div>
+                    </div>
+                </form>
+                </form>
+            </fieldset>
+            <fieldset style="width: 695px; height: 388px; margin-top: -408px; margin-left: 321px;">
                 <legend></legend>
-                <table style="border-collapse: collapse; width: 101%;">
+                <table id="returnBookList" style="border-collapse: collapse; width: 101%;">
                     <tr style="background-color: #f2f2f2;">
                         <th style="padding: 5px; border: 2px solid black;">Return ID</th>
                         <th style="padding: 5px; border: 2px solid black;">Book ID</th>
@@ -218,68 +223,69 @@
                     </tr>
                 </table>
             </fieldset>
+            <script src="connect.js"></script>
         </div>
-<!---*****************ADD USERS**********************-->
+
+        <!---*****************ADD USERS**********************-->
         <div id="Add_Users" class="tabcontent">
-        <fieldset style="width:800px; height: 397px;">
+            <fieldset style="width: 0px; height: 397px;">
                 <legend>This Field is required:</legend>
-                <table>
-                    <tr>
-                        <th style="text-align: left;">User ID</th>
-                        <td><input type="text" name="u_id" placeholder="Enter User Id" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">Name</th>
-                        <td><input type="text" name="uname" placeholder="Enter User Name" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;"> Email</th>
-                        <td><input type="text" name="Aname" placeholder="Enter User Email" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">Password</th>
-                        <td><input type="text" name="password" placeholder="Enter User IPassword" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <td>Gender</td>
-                        <td> <select id="gender" name="gender">
+                <form id="userForm" onsubmit="event.preventDefault(); onFormSubmit();" autocomplete="off">
+                    <div class="form-row">
+                        <label style="text-align: left;">User ID</label>
+                        <input type="text" name="u_id" placeholder="Enter User Id" style="padding: 5px;">
+                    </div>
+                    <div class="form-row">
+                        <label style="text-align: left;">Name</label>
+                        <input type="text" name="uname" placeholder="Enter User Name" style="padding: 5px;">
+                    </div>
+                    <div class="form-row">
+                        <label style="text-align: left;"> Email</label>
+                        <input type="text" name="Aname" placeholder="Enter User Email" style="padding: 5px;">
+                    </div>
+                    <div class="form-row">
+                        <label style="text-align: left;">Password</label>
+                        <input type="text" name="password" placeholder="Enter User IPassword" style="padding: 5px;">
+                    </div>
+                    <label>Gender</label>
+                        <label> <select id="gender" name="gender" style="margin-left: 55px;margin-bottom: 8px">
                                 <option value="Enter User Iale">Male</option>
                                 <option value="Enter User Iemale">Female</option>
                             </select>
-                        </td>
+                        </label>
                     </tr>
+                    <div class="form-row">
+                        <label style="text-align: left;">Contact_No</label>
+                        <input type="text" name="phone" placeholder="Enter User Phone Number" style="padding: 5px;">
+                    </div>
 
-                    <tr>
-                        <th style="text-align: left;">Contact_No</th>
-                        <td><input type="text" name="phone" placeholder="Enter User Phone Number" style="padding: 5px;"></td>
-                    </tr>
-
-                    <tr>
-                        <th style="text-align: left;">Faculty</th>
-                        <td><input type="text" name="faculty" placeholder="Enter User Faculty/Class" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">Address</th>
-                        <td><input type="textarea" name="faculty" placeholder="Enter User Address" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
+                    <div class="form-row">
+                        <label style="text-align: left;">Faculty</label>
+                        <input type="text" name="faculty" placeholder="Enter User Faculty/Class" style="padding: 5px;">
+                    </div>
+                    <div class="form-row">
+                        <label style="text-align: left;">Address</label>
+                        <input type="textarea" name="faculty" placeholder="Enter User Address" style="padding: 5px;">
+                    </div>
+                    <div class="form-row">
                         <td colspan="2" style="text-align: right;">
                             <div style="display: flex; justify-content: flex-end; gap: 15px;">
                                 <input type="Button" name="submit" value="Save" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
                                 <input type="Button" name="submit" value="Update" style="padding: 10px 20px; font-weight:bold; background-color: #ffa200; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
                             </div>
                         </td>
-                    </tr>
-                    <tr>
+                    </div>
+                    <div class="form-row">
                         <td colspan="2" style="text-align: right;">
                             <div style="display: flex; justify-content: flex-end; gap: 15px;">
                                 <input type="Button" name="submit" value="Delete" style="padding: 10px 22px; font-weight:bold; background-color: #d9534f; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
                                 <input type="Button" name="submit" value=" Clear " style="padding: 10px 21px; font-weight:bold; background-color: #337ab7; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
                             </div>
                         </td>
-                    </tr>
-                </table>
-                <fieldset style="width:695px; height: 388px;   margin-top:-349px;margin-left: 290px;">
+                    </div>
+                </form>
+            </fieldset>
+            <fieldset style="width: 695px; height: 388px; margin-top: -408px; margin-left: 321px;">
                 <legend></legend>
                 <table style="border-collapse: collapse; width: 101%;">
                     <tr style="background-color: #f2f2f2;">
@@ -294,12 +300,14 @@
                     </tr>
                 </table>
             </fieldset>
+            <script src="connect.js"></script>
         </div>
-<!---*****************MANAGE USERS**********************-->
+
+        <!---*****************MANAGE USERS**********************-->
 
         <div id="Manage_Users" class="tabcontent">
 
-        <fieldset style="width:800px; height: 397px;">
+            <fieldset style="width:800px; height: 397px;">
                 <legend>This Field is required:</legend>
                 <table>
                     <tr>
@@ -358,16 +366,17 @@
                     </tr>
                 </table>
                 <fieldset style="width:695px; height: 388px;   margin-top:-349px;margin-left: 290px;">
-                <legend></legend>
-                <table style="border-collapse: collapse; width: 101%;">
-                    <tr style="background-color: #f2f2f2;">
-                        <th style="padding: 5px; border: 2px solid black;">Book ID</th>
-                        <th style="padding: 5px; border: 2px solid black;">Book Name</th>
-                        <th style="padding: 5px; border: 2px solid black;">Author Name</th>
-                        <th style="padding: 5px; border: 2px solid black;">Quantity</th>
-                    </tr>
-                </table>
-</fieldset>
+                    <legend></legend>
+                    <table style="border-collapse: collapse; width: 101%;">
+                        <tr style="background-color: #f2f2f2;">
+                            <th style="padding: 5px; border: 2px solid black;">Book ID</th>
+                            <th style="padding: 5px; border: 2px solid black;">Book Name</th>
+                            <th style="padding: 5px; border: 2px solid black;">Author Name</th>
+                            <th style="padding: 5px; border: 2px solid black;">Quantity</th>
+                        </tr>
+                    </table>
+                </fieldset>
+                <script src="connect.js"></script>
         </div>
     </div>
     <script>

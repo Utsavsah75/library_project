@@ -1,4 +1,4 @@
-<?php
+l<?php
 session_start();
 
 if (isset($_POST['login'])) {
@@ -16,9 +16,10 @@ if (isset($_POST['login'])) {
         $stmt_result = $stmt->get_result();
 
         if ($stmt_result->num_rows > 0) {
-            echo "Login successfully!";
-        } else {
-            echo "<h2>Invalid username and password</h2>";
+  // echo "Login successfully!";
+  echo "<script>window.open('userbook_page.php','_self')</script>";
+} else {
+    echo "<h2>Invalid Admin Name and password</h2>";
         }
     }
 }
