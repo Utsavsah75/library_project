@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<form action="Admin_login.php" method="post">
+<form action="Admin_loginserver.php" method="post">
     <div id="background">
         <div id="top">
             <a href="#" class="fa fa-envelope" style="text-decoration:none;  color: white;">
