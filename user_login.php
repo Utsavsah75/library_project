@@ -1,44 +1,38 @@
 l<?php
 session_start();
 
+include('./conn.php');
+
 if (isset($_POST['login'])) {
     $username = $_POST['name'];
     $password = $_POST['pwd'];
 
-    // Database connection variables
-    $conn = new mysqli("localhost", "root", "", "library");
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    } else {
-        $stmt = $conn->prepare('SELECT * FROM register WHERE name = ?');
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $stmt_result = $stmt->get_result();
+    $slq = "SELECT * FROM register WHERE `name` = '{$username}' AND `password` = '{$password}'";
+    $res = mysqli_query($conn, $slq);
 
-        if ($stmt_result->num_rows > 0) {
-  // echo "Login successfully!";
-  echo "<script>window.open('userbook_page.php','_self')</script>";
-} else {
-    echo "<h2>Invalid Admin Name and password</h2>";
-        }
+    // if we found data with the given username and password in the database
+    if (mysqli_num_rows($res) > 0) {
+        $data = mysqli_fetch_assoc($res);
+        $_SESSION['login_successful'] = $data['id'];        // session is set only if we found match
+        header("location: userbook_page.php");
+    } else {
+        $_SESSION['msg'] = "Invalid Username / Password";
+        header("location: index.php");
     }
 }
 ?>
 
 <html>
+
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </head>
+
 <body>
-    <script type="text/javascript">
-        $(function() {
-            Swal.fire({
-                'title': 'Login',
-                'text': 'Successfully!',
-                'type': 'success'
-            });
-        });
-    </script>
+
+
+
 </body>
+
 </html>
