@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,9 +51,6 @@
             <div id="y">
                 <div id="l">
                     <h1 style=" text-align: center; color: #2c7ad6;"> LOGIN</h1>
-                    <?php
-                    session_start();
-                    ?>
                     <div class="container">
 
                         <div class="msg_holder" colspan="2" align="center" height:="200px">
@@ -60,13 +58,12 @@
                             if (isset($_SESSION['msg'])) {
                                 echo $_SESSION['msg'];
                                 session_unset();
-                            } else {
-                                echo "";
                             }
                             ?>
                         </div>
                         <div class="form_holder">
                             <form action="user_login.php" method="post">
+
                                 <table align="center">
                                     <tr>
                                         <td>Username</td>
@@ -103,7 +100,7 @@
                 </div>
             </div>
             <div id="z">
-                <div id="r">
+                <!-- <div id="r">
                     <h1 style=" text-align: center; color: #2c7ad6;"> ADMIN</h1>
                     <div class="container1">
                         <?php
@@ -149,7 +146,7 @@
                             </table>
                         </form>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
