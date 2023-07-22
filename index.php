@@ -51,6 +51,7 @@
             <div id="y">
                 <div id="l">
                     <h1 style=" text-align: center; color: #2c7ad6;"> LOGIN</h1>
+                    <h3 style=" text-align: center; color: red;"> STUDENT</h3>
                     <div class="container">
 
                         <div class="msg_holder" colspan="2" align="center" height:="200px">
@@ -69,7 +70,8 @@
                                         <td>Username</td>
                                         <td><input type="text" name="name" value="<?php if (isset($_COOKIE['rem_user'])) {
                                                                                         echo $_COOKIE['rem_user'];
-                                                                                    } ?>" required autocomplete="off"></td>
+                                                                                    } ?>" required autocomplete="off">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Password</td>
@@ -77,6 +79,17 @@
                                                                                             echo $_COOKIE['rem_pass'];
                                                                                         } ?>" required autocomplete="off"></td>
                                     </tr>
+
+                                    <td></td>
+                                    <td>
+                                        <input type="radio" name="choose" value="Student" id="studentRadio">
+                                        <label for="studentRadio">Student</label>
+
+                                        <input type="radio" name="choose" value="Admin" id="adminRadio">
+                                        <label for="adminRadio"><a href="Admin.php">Admin</a></label>
+                                    </td>
+                                    </tr>
+
                                     <tr>
                                         <td align="right"><input type="checkbox" name="rem" <?php if (isset($_COOKIE['rem_user'])) {
                                                                                                 echo "checked";
@@ -98,55 +111,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="z">
-                <!-- <div id="r">
-                    <h1 style=" text-align: center; color: #2c7ad6;"> ADMIN</h1>
-                    <div class="container1">
-                        <?php
-                        if (isset($_SESSION['msg'])) {
-                            echo $_SESSION['msg'];
-                            session_unset();
-                        } else {
-                            echo "";
-                        }
-                        ?>
-                    </div>
-                    <div class="form_holder">
-                        <form action="admin_page.php" method="post">
-                            <table align="center">
-                                <tr>
-                                    <td>Admin Name</td>
-                                    <td><input type="text" name="name" value="<?php if (isset($_COOKIE['rem_user'])) {
-                                                                                    echo $_COOKIE['rem_user'];
-                                                                                } ?>" required autocomplete="off"></td>
-                                </tr>
-                                <tr>
-                                    <td>Password</td>
-                                    <td><input type="password" name="pwd" value="<?php if (isset($_COOKIE['rem_user'])) {
-                                                                                        echo $_COOKIE['rem_pass'];
-                                                                                    } ?>" required autocomplete="off"></td>
-                                </tr>
-                                <tr>
-                                    <td align="right"><input type="checkbox" name="rem" <?php if (isset($_COOKIE['rem_user'])) {
-                                                                                            echo "checked";
-                                                                                        } ?>></td>
-                                    <td>Remember Me</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" align="center">
-                                        <input type="submit" value="Login" name="login">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" align="center">
-                                        New Member ? <a href="admin_reg.php">Register Here</a>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>

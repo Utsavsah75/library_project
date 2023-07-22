@@ -97,12 +97,12 @@
                         </tr>
                     </thead>
                     <tbody id="ListBody" onclick="selectRow(event)" style="background-color: #4CAF50; color: #fff; padding: 5px; border: 1px solid black;">
-                    <table>
-                        <th>gffvnvm</th>
-                        <th>gdfgh</th>
-                        <th>ggdgdf</th>
-                        <th>zdfxdgxb</th>
-                    </table>
+                        <table>
+                            <th>gffvnvm</th>
+                            <th>gdfgh</th>
+                            <th>ggdgdf</th>
+                            <th>zdfxdgxb</th>
+                        </table>
                     </tbody>
                 </table>
             </fieldset>
@@ -248,11 +248,11 @@
                         <input type="text" name="password" placeholder="Enter User IPassword" style="padding: 5px;">
                     </div>
                     <label>Gender</label>
-                        <label> <select id="gender" name="gender" style="margin-left: 55px;margin-bottom: 8px">
-                                <option value="Enter User Iale">Male</option>
-                                <option value="Enter User Iemale">Female</option>
-                            </select>
-                        </label>
+                    <label> <select id="gender" name="gender" style="margin-left: 55px;margin-bottom: 8px">
+                            <option value="Enter User Iale">Male</option>
+                            <option value="Enter User Iemale">Female</option>
+                        </select>
+                    </label>
                     </tr>
                     <div class="form-row">
                         <label style="text-align: left;">Contact_No</label>

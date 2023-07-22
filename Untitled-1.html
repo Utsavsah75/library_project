@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+ <style>body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.login-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  max-width: 300px;
+}
+
+h2 {
+  text-align: center;
+}
+
+input, select, button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 8px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <label for="userType">Select user type:</label>
+    <select id="userType">
+      <option value="admin">Admin</option>
+      <option value="student">Student</option>
+    </select>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+  </div>
+  <script>function login() {
+    const userType = document.getElementById("userType").value;
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+  
+    // Perform login verification here (e.g., check against a user database)
+    // For this example, we're using simple hardcoded credentials for demonstration purposes.
+    if (userType === "admin" && username === "admin" && password === "admin") {
+      alert("Welcome Admin!");
+      // Redirect to the admin page
+      window.location.href = "admin.html";
+    } else if (userType === "student" && username === "student" && password === "student") {
+      alert("Welcome Student!");
+      // Redirect to the student page
+      window.location.href = "student.html";
+    } else {
+      alert("Invalid credentials. Please try again.");
+    }
+  }
+  </script>
+</body>
+</html>
