@@ -65,6 +65,7 @@
           const index = selectedRow.rowIndex - 1;
           data[index] = formData;
       }
+
   }
 
   // Delete a record from the table
