@@ -58,7 +58,7 @@
                 <form id="bookForm" autocomplete="off" target="self">
                     <div class="form-row">
                         <label>Book ID*</label>
-                        <input type="text" id="book_id" placeholder="Enter Book ID" style="padding: 5px;">
+                        <input type="text" id="book_id" placeholder="Enter Book ID" style="padding: 5px;">jjjj
                     </div>
                     <div class="form-row">
                         <label>Book Name</label>
@@ -314,81 +314,81 @@
         <script src="connect.js"></script>
     </div>
 
-    <!---*****************MANAGE USERS**********************-->
+        <!---*****************MANAGE USERS**********************-->
 
-    <div id="Manage_Users" class="tabcontent">
+        <div id="Manage_Users" class="tabcontent">
 
-        <fieldset style="width:800px; height: 397px;">
-            <legend>This Field is required:</legend>
-            <table>
-                <tr>
-                    <th style="text-align: left;">ID</th>
-                    <td><input type="text" name="u_id" placeholder="Enter User Id" style="padding: 5px;"></td>
-                </tr>
-                <tr>
-                    <th style="text-align: left;">Name</th>
-                    <td><input type="text" name="uname" placeholder="Enter User Name" style="padding: 5px;"></td>
-                </tr>
-                <tr>
-                    <th style="text-align: left;"> Email</th>
-                    <td><input type="text" name="Aname" placeholder="Enter User Email" style="padding: 5px;"></td>
-                </tr>
-                <tr>
-                    <th style="text-align: left;">Password</th>
-                    <td><input type="text" name="password" placeholder="Enter User IPassword" style="padding: 5px;"></td>
-                </tr>
-                <tr>
-                    <td>Gender</td>
-                    <td> <select id="gender" name="gender">
-                            <option value="Enter User Iale">Male</option>
-                            <option value="Enter User Iemale">Female</option>
-                        </select>
-                    </td>
-                </tr>
+            <fieldset style="width:800px; height: 397px;">
+                <legend>This Field is required:</legend>
+                <table>
+                    <tr>
+                        <th style="text-align: left;">ID</th>
+                        <td><input type="text" name="u_id" placeholder="Enter User Id" style="padding: 5px;"></td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: left;">Name</th>
+                        <td><input type="text" name="uname" placeholder="Enter User Name" style="padding: 5px;"></td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: left;"> Email</th>
+                        <td><input type="text" name="Aname" placeholder="Enter User Email" style="padding: 5px;"></td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: left;">Password</th>
+                        <td><input type="text" name="password" placeholder="Enter User IPassword" style="padding: 5px;"></td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td> <select id="gender" name="gender">
+                                <option value="Enter User Iale">Male</option>
+                                <option value="Enter User Iemale">Female</option>
+                            </select>
+                        </td>
+                    </tr>
 
-                <tr>
-                    <th style="text-align: left;">Contact_No</th>
-                    <td><input type="text" name="phone" placeholder="Enter User Phone Number" style="padding: 5px;"></td>
-                </tr>
+                    <tr>
+                        <th style="text-align: left;">Contact_No</th>
+                        <td><input type="text" name="phone" placeholder="Enter User Phone Number" style="padding: 5px;"></td>
+                    </tr>
 
-                <tr>
-                    <th style="text-align: left;">Faculty</th>
-                    <td><input type="text" name="faculty" placeholder="Enter User Faculty/Class" style="padding: 5px;"></td>
-                </tr>
-                <tr>
-                    <th style="text-align: left;">Address</th>
-                    <td><input type="textarea" name="faculty" placeholder="Enter User Address" style="padding: 5px;"></td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="text-align: right;">
-                        <div style="display: flex; justify-content: flex-end; gap: 15px;">
-                            <input type="Button" name="submit" value="Save" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-                            <input type="Button" name="submit" value="Update" style="padding: 10px 20px; font-weight:bold; background-color: #ffa200; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="text-align: right;">
-                        <div style="display: flex; justify-content: flex-end; gap: 15px;">
-                            <input type="Button" name="submit" value="Delete" style="padding: 10px 22px; font-weight:bold; background-color: #d9534f; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-                            <input type="Button" name="submit" value=" Clear " style="padding: 10px 21px; font-weight:bold; background-color: #337ab7; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-                        </div>
-                    </td>
-                </tr>
-            </table>
-            <fieldset style="width:695px; height: 388px;   margin-top:-349px;margin-left: 290px;">
-                <legend></legend>
-                <table style="border-collapse: collapse; width: 101%;">
-                    <tr style="background-color: #f2f2f2;">
-                        <th style="padding: 5px; border: 2px solid black;">Book ID</th>
-                        <th style="padding: 5px; border: 2px solid black;">Book Name</th>
-                        <th style="padding: 5px; border: 2px solid black;">Author Name</th>
-                        <th style="padding: 5px; border: 2px solid black;">Quantity</th>
+                    <tr>
+                        <th style="text-align: left;">Faculty</th>
+                        <td><input type="text" name="faculty" placeholder="Enter User Faculty/Class" style="padding: 5px;"></td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: left;">Address</th>
+                        <td><input type="textarea" name="faculty" placeholder="Enter User Address" style="padding: 5px;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: right;">
+                            <div style="display: flex; justify-content: flex-end; gap: 15px;">
+                                <input type="Button" name="submit" value="Save" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+                                <input type="Button" name="submit" value="Update" style="padding: 10px 20px; font-weight:bold; background-color: #ffa200; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: right;">
+                            <div style="display: flex; justify-content: flex-end; gap: 15px;">
+                                <input type="Button" name="submit" value="Delete" style="padding: 10px 22px; font-weight:bold; background-color: #d9534f; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+                                <input type="Button" name="submit" value=" Clear " style="padding: 10px 21px; font-weight:bold; background-color: #337ab7; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+                            </div>
+                        </td>
                     </tr>
                 </table>
-            </fieldset>
-            <script src="connect.js"></script>
-    </div>
+                <fieldset style="width:695px; height: 388px;   margin-top:-349px;margin-left: 290px;">
+                    <legend></legend>
+                    <table style="border-collapse: collapse; width: 101%;">
+                        <tr style="background-color: #f2f2f2;">
+                            <th style="padding: 5px; border: 2px solid black;">Book ID</th>
+                            <th style="padding: 5px; border: 2px solid black;">Book Name</th>
+                            <th style="padding: 5px; border: 2px solid black;">Author Name</th>
+                            <th style="padding: 5px; border: 2px solid black;">Quantity</th>
+                        </tr>
+                    </table>
+                </fieldset>
+                <script src="connect.js"></script>
+        </div>
     </div>
     <script>
         function openTab(evt, tabName) {
