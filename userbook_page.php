@@ -31,7 +31,7 @@ include('./header.php');
                     <!-- <li><a href="#"><i class="fas fa-shopping-cart"></i>Borrow Books</a></li> -->
                     <li><a href="#"><i class="fa fa-hourglass-half"></i>Pending Books</a></li>
                     <!-- <li><a href="#"><i class="fa fa-sign-out-alt"></i>Manage Users</a></li> -->
-                    <li><a href="#"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
+                    <li><a href="index.php"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
                 </ul>
             </div>
         </div>

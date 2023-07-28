@@ -15,6 +15,7 @@ if (isset($_POST['register'])) {
             VALUES ('$Name', '$Email', '$Gender', '$Contact_no', '$Address', '$Password')";
 
     if (mysqli_query($conn, $sql)) {
+        echo "register sucessfully";
         echo "<script>alert('New Record Inserted')</script>";
     } else {
         echo "Error: " . mysqli_error($conn);
