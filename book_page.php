@@ -16,44 +16,46 @@
         <p class="time"></p>
         <p class="date"></p>
     </div>
-    <div class="library-contain">
-        <div class="library-container">
-            <div class="top">
-                <marquee class="marquee" direction="alternate" scrollamount="12" onmouseover="this.stop()" onmouseout="this.start()"><b>Welcome To Library</b></marquee>
-            </div>
-            <div class="top1">
-                <ul>
-                    <li><a href="#"><i class="fa fa-book"></i>All Books</a></li>
-                    <li><a href="#"><i class="fa fa-users"></i>All Members</a></li>
-                    <!-- <li><a href="#"><i class="fas fa-shopping-cart"></i>Borrow Books</a></li> -->
-                    <li><a href="#"><i class="fa fa-hourglass-half"></i>Pending Books</a></li>
-                    <!-- <li><a href="#"><i class="fa fa-sign-out-alt"></i>Manage Users</a></li> -->
-                    <li><a href="#"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
-                </ul>
-            </div>
+    <!-- <div class="library-contain"> -->
+    <div class="library-container">
+        <div class="top">
+            <marquee class="marquee" direction="alternate" scrollamount="12" onmouseover="this.stop()" onmouseout="this.start()"><b>Welcome To Library</b></marquee>
         </div>
-    </div>
-
-    <div class="container1">
-        <div class="library-container2">
+        <div class="top1">
             <ul>
-                <button class="tablinks" onclick="openTab(event, 'Add_Books')"> Add Books</button>
-                <button class="tablinks" onclick="openTab(event, 'Borrow_Books')"> Borrow Books</button>
-                <button class="tablinks" onclick="openTab(event, 'Return_Books')"> Return Books</button>
-                <button class="tablinks" onclick="openTab(event, 'Add_Users')"> Add Users</button>
-                <button class="tablinks" onclick="openTab(event, 'Manage_Users')"> Manage Users</button>
+                <li><a href="#"><i class="fa fa-book"></i>All Books</a></li>
+                <li><a href="#"><i class="fa fa-users"></i>All Members</a></li>
+                <!-- <li><a href="#"><i class="fas fa-shopping-cart"></i>Borrow Books</a></li> -->
+                <li><a href="#"><i class="fa fa-hourglass-half"></i>Pending Books</a></li>
+                <!-- <li><a href="#"><i class="fa fa-sign-out-alt"></i>Manage Users</a></li> -->
+                <li><a href="index.php"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
             </ul>
         </div>
     </div>
+    <!-- </div> -->
 
-    <input type="text" placeholder="Search" style=" float: left;margin-left: 975px;  border-radius: 8px;  border: 2px solid;   transform: translateY(-503px); width: 240px; height: 25px;">
-    <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-495px);"></i>
+    <div class="container1">
+        <!-- <div class="library-container2"> -->
+        <ul>
+            <button class="tablinks" onclick="openTab(event, 'Add_Books')"> Add Books</button>
+            <button class="tablinks" onclick="openTab(event, 'Borrow_Books')"> Borrow Books</button>
+            <button class="tablinks" onclick="openTab(event, 'Return_Books')"> Return Books</button>
+            <button class="tablinks" onclick="openTab(event, 'Add_Users')"> Add Users</button>
+            <button class="tablinks" onclick="openTab(event, 'Add_Users')"> Add Users</button>
+            <button class="tablinks" onclick="openTab(event, 'Add_Users')"> Add Users</button>
+            <button class="tablinks" onclick="openTab(event, 'Manage_Users')"> Manage Users</button>
+        </ul>
+    </div>
+    <!-- </div> -->
+
+    <input type="text" placeholder="Search" style=" float: left;margin-left: 975px;  border-radius: 8px;  border: 2px solid;   transform: translateY(-463px); width: 240px; height: 25px;">
+    <!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i> -->
 
     <div class="container3">
 
         <!---*****************ADD BOOKS**********************-->
         <div id="Add_Books" class="tabcontent">
-            <fieldset style="width: 0px; height: 397px;">
+            <fieldset style="width: 0px; height: 364px; margin-top:5px">
                 <legend>This Field is required:</legend>
                 <form id="bookForm" method="POST" action="add_book_data.php" autocomplete="off">
                     <div class="form-row">
@@ -79,45 +81,47 @@
                     </div>
                 </form>
             </fieldset>
-            <fieldset style="width: 700px; height: 388px; margin-top: -408px; margin-left: 321px;">
-                <legend></legend>
-
-
-                <table border="2" style="width: 100%; border-collapse: collapse;">
-                    <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
-                        <th>Book Id</th>
-                        <th>Book Name</th>
-                        <th>Book Author</th>
-                        <th>Quantity</th>
-                    </tr>
-
-
-
-                    <?php
-                    include("admin_bookserver.php");
-                    error_reporting(0);
-                    $query = "SELECT * FROM add_book";
-                    $data = mysqli_query($conn, $query);
-                    $total = mysqli_num_rows($data);
-                    if ($total != 0) {
-                        while ($result = mysqli_fetch_assoc($data)) {
-                            echo "<tr style='background-color: #f5f5f5;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
-                            <td style='padding: 10px; border: 2px solid black;'>" . $result['Id'] . "</td>
-                            <td style='padding: 10px; border: 2px solid black;'>" . $result['Book Name'] . "</td>
-                            <td style='padding: 10px; border: 2px solid black;'>" . $result['Author Name'] . "</td>
-                            <td style='padding: 10px; border: 2px solid black;'>" . $result['Quantity'] . "</td>
-                          </tr>";
-                        }
-                    } else {
-                        echo "<tr><td colspan='4' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
-                    }
-                    ?>
-
-                </table>
-            </fieldset>
         </div>
+        <!-- <fieldset style="width: 700px; height: 388px; margin-top: -408px; margin-left: 321px;"> -->
+        <!-- <legend></legend> -->
+
+
+        <table border="2" style="width: 57.5%; border-collapse: collapse; margin-left: 525px;margin-top: -408px;">
+            <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
+                <th style='width:70px' ;>Book Id</th>
+                <th>Book Name</th>
+                <th>Book Author</th>
+                <th style='width:70px' ;>Quantity</th>
+                <th style='width:108px' ;>Action</th>
+
+            </tr>
+            <?php
+            include("admin_bookserver.php");
+            error_reporting(0);
+            $query = "SELECT * FROM add_book";
+            $data = mysqli_query($conn, $query);
+            $total = mysqli_num_rows($data);
+
+            if ($total != 0) {
+                while ($result = mysqli_fetch_assoc($data)) {
+                    echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
+                    <td style=' border: 2px solid black; text-align: center;'>" . $result['Id'] . "</td>
+                    <td style=' border: 2px solid black; text-align: center;'>" . $result['Book Name'] . "</td>
+                    <td style=' border: 2px solid black; text-align: center;'>" . $result['Author Name'] . "</td>
+                    <td style=' border: 2px solid black; text-align: center;'>" . $result['Quantity'] . "</td>
+                    <td style=' border: 2px solid black; text-align: center;'>
+              <a href='update_book.php'>  <button style='height: 25px; width:40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color:#347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
+              <a href='#'>  <button style='height: 25px; width:45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color:red' type='button' onClick='onDelete(this)'>Delete</button></a>
+            </td>
+        
+        </tr>";
+                }
+            } else {
+                echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
+            }
+            ?>
+        </table>
     </div>
-    <!-- <script src="connect"> </script> -->
 
 
     <!---*****************BORROW BOOK**********************-->
@@ -314,81 +318,81 @@
         <script src="connect.js"></script>
     </div>
 
-        <!---*****************MANAGE USERS**********************-->
+    <!---*****************MANAGE USERS**********************-->
 
-        <div id="Manage_Users" class="tabcontent">
+    <div id="Manage_Users" class="tabcontent">
 
-            <fieldset style="width:800px; height: 397px;">
-                <legend>This Field is required:</legend>
-                <table>
-                    <tr>
-                        <th style="text-align: left;">ID</th>
-                        <td><input type="text" name="u_id" placeholder="Enter User Id" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">Name</th>
-                        <td><input type="text" name="uname" placeholder="Enter User Name" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;"> Email</th>
-                        <td><input type="text" name="Aname" placeholder="Enter User Email" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">Password</th>
-                        <td><input type="text" name="password" placeholder="Enter User IPassword" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <td>Gender</td>
-                        <td> <select id="gender" name="gender">
-                                <option value="Enter User Iale">Male</option>
-                                <option value="Enter User Iemale">Female</option>
-                            </select>
-                        </td>
-                    </tr>
+        <fieldset style="width:800px; height: 397px;">
+            <legend>This Field is required:</legend>
+            <table>
+                <tr>
+                    <th style="text-align: left;">ID</th>
+                    <td><input type="text" name="u_id" placeholder="Enter User Id" style="padding: 5px;"></td>
+                </tr>
+                <tr>
+                    <th style="text-align: left;">Name</th>
+                    <td><input type="text" name="uname" placeholder="Enter User Name" style="padding: 5px;"></td>
+                </tr>
+                <tr>
+                    <th style="text-align: left;"> Email</th>
+                    <td><input type="text" name="Aname" placeholder="Enter User Email" style="padding: 5px;"></td>
+                </tr>
+                <tr>
+                    <th style="text-align: left;">Password</th>
+                    <td><input type="text" name="password" placeholder="Enter User IPassword" style="padding: 5px;"></td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td> <select id="gender" name="gender">
+                            <option value="Enter User Iale">Male</option>
+                            <option value="Enter User Iemale">Female</option>
+                        </select>
+                    </td>
+                </tr>
 
-                    <tr>
-                        <th style="text-align: left;">Contact_No</th>
-                        <td><input type="text" name="phone" placeholder="Enter User Phone Number" style="padding: 5px;"></td>
-                    </tr>
+                <tr>
+                    <th style="text-align: left;">Contact_No</th>
+                    <td><input type="text" name="phone" placeholder="Enter User Phone Number" style="padding: 5px;"></td>
+                </tr>
 
-                    <tr>
-                        <th style="text-align: left;">Faculty</th>
-                        <td><input type="text" name="faculty" placeholder="Enter User Faculty/Class" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <th style="text-align: left;">Address</th>
-                        <td><input type="textarea" name="faculty" placeholder="Enter User Address" style="padding: 5px;"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="text-align: right;">
-                            <div style="display: flex; justify-content: flex-end; gap: 15px;">
-                                <input type="Button" name="submit" value="Save" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-                                <input type="Button" name="submit" value="Update" style="padding: 10px 20px; font-weight:bold; background-color: #ffa200; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="text-align: right;">
-                            <div style="display: flex; justify-content: flex-end; gap: 15px;">
-                                <input type="Button" name="submit" value="Delete" style="padding: 10px 22px; font-weight:bold; background-color: #d9534f; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-                                <input type="Button" name="submit" value=" Clear " style="padding: 10px 21px; font-weight:bold; background-color: #337ab7; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-                            </div>
-                        </td>
+                <tr>
+                    <th style="text-align: left;">Faculty</th>
+                    <td><input type="text" name="faculty" placeholder="Enter User Faculty/Class" style="padding: 5px;"></td>
+                </tr>
+                <tr>
+                    <th style="text-align: left;">Address</th>
+                    <td><input type="textarea" name="faculty" placeholder="Enter User Address" style="padding: 5px;"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: right;">
+                        <div style="display: flex; justify-content: flex-end; gap: 15px;">
+                            <input type="Button" name="submit" value="Save" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+                            <input type="Button" name="submit" value="Update" style="padding: 10px 20px; font-weight:bold; background-color: #ffa200; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: right;">
+                        <div style="display: flex; justify-content: flex-end; gap: 15px;">
+                            <input type="Button" name="submit" value="Delete" style="padding: 10px 22px; font-weight:bold; background-color: #d9534f; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+                            <input type="Button" name="submit" value=" Clear " style="padding: 10px 21px; font-weight:bold; background-color: #337ab7; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <fieldset style="width:695px; height: 388px;   margin-top:-349px;margin-left: 290px;">
+                <legend></legend>
+                <table style="border-collapse: collapse; width: 101%;">
+                    <tr style="background-color: #f2f2f2;">
+                        <th style="padding: 5px; border: 2px solid black;">Book ID</th>
+                        <th style="padding: 5px; border: 2px solid black;">Book Name</th>
+                        <th style="padding: 5px; border: 2px solid black;">Author Name</th>
+                        <th style="padding: 5px; border: 2px solid black;">Quantity</th>
                     </tr>
                 </table>
-                <fieldset style="width:695px; height: 388px;   margin-top:-349px;margin-left: 290px;">
-                    <legend></legend>
-                    <table style="border-collapse: collapse; width: 101%;">
-                        <tr style="background-color: #f2f2f2;">
-                            <th style="padding: 5px; border: 2px solid black;">Book ID</th>
-                            <th style="padding: 5px; border: 2px solid black;">Book Name</th>
-                            <th style="padding: 5px; border: 2px solid black;">Author Name</th>
-                            <th style="padding: 5px; border: 2px solid black;">Quantity</th>
-                        </tr>
-                    </table>
-                </fieldset>
-                <script src="connect.js"></script>
-        </div>
+            </fieldset>
+            <script src="connect.js"></script>
+    </div>
     </div>
     <script>
         function openTab(evt, tabName) {
