@@ -1,3 +1,7 @@
+<?php
+    require 'conn.php';
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -12,6 +16,7 @@
 </head>
 
 <body>
+   
     <div class="datetime">
         <p class="time"></p>
         <p class="date"></p>
@@ -41,8 +46,6 @@
             <button class="tablinks" onclick="openTab(event, 'Borrow_Books')"> Borrow Books</button>
             <button class="tablinks" onclick="openTab(event, 'Return_Books')"> Return Books</button>
             <button class="tablinks" onclick="openTab(event, 'Add_Users')"> Add Users</button>
-            <button class="tablinks" onclick="openTab(event, 'Add_Users')"> Add Users</button>
-            <button class="tablinks" onclick="openTab(event, 'Add_Users')"> Add Users</button>
             <button class="tablinks" onclick="openTab(event, 'Manage_Users')"> Manage Users</button>
         </ul>
     </div>
@@ -60,7 +63,7 @@
                 <form id="bookForm" method="POST" action="add_book_data.php" autocomplete="off">
                     <div class="form-row">
                         <label>Book ID*</label>
-                        <input type="text" id="book_id" placeholder="Enter Book ID" style="padding: 5px;" name="book_id" required>
+                        <input type="number" id="book_id" placeholder="Enter Book ID" style="padding: 5px;" name="book_id" required>
                     </div>
                     <div class="form-row">
                         <label>Book Name</label>
@@ -72,7 +75,7 @@
                     </div>
                     <div class="form-row">
                         <label>Quantity</label>
-                        <input type="text" id="quantity" placeholder="Enter Quantity" style="padding: 5px;" name="book_quantity" required>
+                        <input type="number" id="quantity" placeholder="Enter Quantity" style="padding: 5px;" name="book_quantity" required>
                     </div>
 
                     <div style="display: flex; justify-content: flex-end; gap: 15px;">
@@ -97,6 +100,7 @@
             </tr>
             <?php
             include("admin_bookserver.php");
+            include('message.php');
             error_reporting(0);
             $query = "SELECT * FROM add_book";
             $data = mysqli_query($conn, $query);
@@ -105,16 +109,21 @@
             if ($total != 0) {
                 while ($result = mysqli_fetch_assoc($data)) {
                     echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
-                    <td style=' border: 2px solid black; text-align: center;'>" . $result['Id'] . "</td>
-                    <td style=' border: 2px solid black; text-align: center;'>" . $result['Book Name'] . "</td>
-                    <td style=' border: 2px solid black; text-align: center;'>" . $result['Author Name'] . "</td>
-                    <td style=' border: 2px solid black; text-align: center;'>" . $result['Quantity'] . "</td>
-                    <td style=' border: 2px solid black; text-align: center;'>
-              <a href='update_book.php'>  <button style='height: 25px; width:40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color:#347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
-              <a href='#'>  <button style='height: 25px; width:45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color:red' type='button' onClick='onDelete(this)'>Delete</button></a>
-            </td>
+    <td style='border: 2px solid black; text-align: center;'>" . $result['Id'] . "</td>
+    <td style='border: 2px solid black; text-align: center;'>" . $result['Book Name'] . "</td>
+    <td style='border: 2px solid black; text-align: center;'>" . $result['Author Name'] . "</td>
+    <td style='border: 2px solid black; text-align: center;'>" . $result['Quantity'] . "</td>
+    <td style='border: 2px solid black; text-align: center;'>
+        <a href='update_book.php?Id=" . $result['Id'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
+     
+        <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button>
         
-        </tr>";
+    </td>
+</tr>";
+
+                
+                
+                
                 }
             } else {
                 echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";

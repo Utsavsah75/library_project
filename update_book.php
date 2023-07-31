@@ -1,5 +1,10 @@
+<?php
+    session_start();
+    require 'conn.php';
+    ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,10 +55,26 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            display: flex;
+            justify-content: center;
+            margin-left: 15px;
         }
 
         input[type="submit"] {
             background-color: #4CAF50;
+        }
+
+        a input[type="Back"] {
+            background-color: #4CAF50;
+            padding: 10px 25px;
+            font-weight: bold;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            margin-left: 15px;
         }
 
         input[type="button"] {
@@ -61,42 +82,65 @@
         }
     </style>
 </head>
-<body>    <div id="message" style="display: none; color: green; font-weight: bold; text-align: center; margin-top:50px ;">
-                 Update Book Successfully!
-    </div>
-    <form id="bookForm" method="POST" action="add_book_data.php" autocomplete="off">
+
+<body>
+   
+<form id="bookForm" method="POST" action="admin_bookserver.php" autocomplete="off">
+<?php
+if(isset($_GET['Id'])) {
+    $book_id = mysqli_real_escape_string($conn, $_GET['Id']);
+    $query = "SELECT * FROM add_book WHERE Id='$book_id'";
+    $query_run = mysqli_query($conn, $query);
+    
+    if(mysqli_num_rows($query_run) > 0) {
+        $book = mysqli_fetch_array($query_run);
+        //print_r($book);
+    } 
+}
+?>
+
+<?php if (isset($book)) { ?>
+        <input type="hidden" name="book_id" value="<?= $book['Id']; ?>">
         <div class="form-row">
+            <div id="message" style="display: none; color: green; font-weight: bold; text-align: center; margin-top: 50px;">
+                Update Book Successfully!!..
+            </div>
             <label>Book ID*</label>
-            <input type="text" id="book_id" placeholder="Enter Book ID" name="book_id" required>
+            <input type="text" id="book_id" placeholder="Enter Book ID" name="book_id" value="<?= $book['Id']; ?>" required>
         </div>
         <div class="form-row">
             <label>Book Name</label>
-            <input type="text" id="bname" placeholder="Enter Book Name" name="book_name" required>
+            <input type="text" id="bname" placeholder="Enter Book Name" name="book_name" value="<?= $book['Book Name']; ?>" required>
         </div>
         <div class="form-row">
             <label>Author Name</label>
-            <input type="text" id="Aname" placeholder="Enter Author Name" name="book_author" required>
+            <input type="text" id="Aname" placeholder="Enter Author Name" name="book_author" value="<?= $book['Author Name']; ?>" required>
         </div>
         <div class="form-row">
             <label>Quantity</label>
-            <input type="text" id="quantity" placeholder="Enter Quantity" name="book_quantity" required>
+            <input type="text" id="quantity" placeholder="Enter Quantity" name="book_quantity" value="<?= $book['Quantity']; ?>" required>
         </div>
 
-        <div style="display: flex; justify-content:center;">
+        <div>
             <input type="submit" name="submit" value="Update">
-          
+        </div>
+        <div>
+            <a href="book_page.php" style="text-decoration: none;">
+                <input type="button" name="Back" value="Back" style="color: white; font-weight: bold; margin-left: 30%; margin-top: -35px;">
+            </a>
         </div>
     </form>
+<?php } else {
+    echo '<h4 style="color:red;">No Such Id Found</h4>';
+} ?>
 
-    <a href="book_page.php" style=" color: green; font-weight: bold; margin-left: 50%; margin-bottom:400px ;"> 
-    <input type="submit" name="submit" value="Back"></a>
 
     <script>
         // Get the form element
         const bookForm = document.getElementById('bookForm');
 
         // Add an event listener to the form submission
-        bookForm.addEventListener('submit', function (event) {
+        bookForm.addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the default form submission
             // Your code to handle form submission to the server
             // For this example, we'll just show the success message
@@ -105,10 +149,11 @@
             message.style.display = 'block';
 
             // Hide the message after a few seconds (optional)
-            setTimeout(function () {
+            setTimeout(function() {
                 message.style.display = 'none';
             }, 3000); // 3 seconds (adjust this as needed)
         });
     </script>
 </body>
+
 </html>
