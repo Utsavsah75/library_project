@@ -14,13 +14,26 @@ if (isset($_POST['register'])) {
     $sql = "INSERT INTO admin_login (Name, Email, Gender, Contact_no, Address, Password) 
             VALUES ('$Name', '$Email', '$Gender', '$Contact_no', '$Address', '$Password')";
 
-    if (mysqli_query($conn, $sql)) {
-        echo "register sucessfully";
-        echo "<script>alert('New Record Inserted')</script>";
-    } else {
-        echo "Error: " . mysqli_error($conn);
-    }
-    mysqli_close($conn);
+  
+$data = mysqli_query($conn, $sql);
+
+if ($data) {
+    echo '<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>';
+    echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.css">';
+    echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.all.min.js"></script>';
+    
+    echo '<script type="text/javascript">
+            $(function() {
+                Swal.fire({
+                    title: "Register",
+                    text: "Successfully!",
+                    icon: "success"
+                });
+            });
+        </script>';
+} else {
+    echo "Failed";
+}
 }
 ?>
 

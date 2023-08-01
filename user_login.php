@@ -7,8 +7,8 @@ if (isset($_POST['login'])) {
     $username = $_POST['name'];
     $password = $_POST['pwd'];
 
-    $slq = "SELECT * FROM register WHERE `name` = '{$username}' AND `password` = '{$password}'";
-    $res = mysqli_query($conn, $slq);
+    $sql = "SELECT * FROM register WHERE `name` = '{$username}' AND `password` = '{$password}'";
+    $res = mysqli_query($conn, $sql);
 
     // if we found data with the given username and password in the database
     if (mysqli_num_rows($res) > 0) {
@@ -30,9 +30,6 @@ if (isset($_POST['login'])) {
 </head>
 
 <body>
-
-
-
 </body>
 
 </html>

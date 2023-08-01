@@ -1,4 +1,3 @@
-<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +10,7 @@
 </head>
 
 <body>
+    <form action="book_page.php" method="post">
     <div id="background">
         <div id="top">
             <a href="#" class="fa fa-envelope" style="text-decoration:none;  color: white;">
@@ -19,12 +19,9 @@
             <a href="#" class="fa fa-phone" style="text-decoration:none; color: white;">
                 +977-9801219843
             </a>
-            <a href="#" class="fa fa-facebook"
-                style="text-decoration:none; padding:7px; float:right; color: white;"></a>
-            <a href="#" class="fa fa-instagram"
-                style="text-decoration:none; padding:7px; float:right; color: white;"></a>
-            <a href="#" class="fa fa-twitter"
-                style="text-decoration:none;  padding: 7px ; float:right; color: white;"></a>
+            <a href="#" class="fa fa-facebook" style="text-decoration:none; padding:7px; float:right; color: white;"></a>
+            <a href="#" class="fa fa-instagram" style="text-decoration:none; padding:7px; float:right; color: white;"></a>
+            <a href="#" class="fa fa-twitter" style="text-decoration:none;  padding: 7px ; float:right; color: white;"></a>
         </div>
         <div id="menu">
             <div id="logo">LIBRARY<b style="color:#2c7ad6 ;">ZONE</b>
@@ -44,6 +41,7 @@
                         <li class="fa fa-registered">Register</li>
                     </a>
 
+                    
                 </ul>
             </div>
         </div>
@@ -80,8 +78,7 @@
                                         <td>Password</td>
                                         <td><input type="password" name="pwd" value="<?php if (isset($_COOKIE['rem_user'])) {
                                                                                             echo $_COOKIE['rem_pass'];
-                                                                                        } ?>" required
-                                                autocomplete="off"></td>
+                                                                                        } ?>" required autocomplete="off"></td>
                                     </tr>
 
                                     <td></td>
@@ -103,7 +100,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2" align="center">
-                                            <input type="submit" value="Login" name="login">
+                                            <input type="submit" value="login" name="login">
                                         </td>
                                     </tr>
                                     <tr>
