@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +11,7 @@
 </head>
 
 <body>
-    <form action="book_page.php" method="post">
+    <!-- <form action="book_page.php" method="post"> -->
     <div id="background">
         <div id="top">
             <a href="#" class="fa fa-envelope" style="text-decoration:none;  color: white;">
@@ -34,9 +35,9 @@
                     <a href="gall.php">
                         <li class="fa fa-image">Gallery</li>
                     </a>
-                    <a href="admin.html">
+                    <!-- <a href="admin.html">
                         <li class="fa fa-user">Admin Login</li>
-                    </a>
+                    </a> -->
                     <a href="reg_form.php">
                         <li class="fa fa-registered">Register</li>
                     </a>
@@ -57,8 +58,8 @@
 
                         <div class="msg_holder" colspan="2" align="center" height:="200px">
                             <?php
-                            if (isset($_SESSION['msg'])) {
-                                echo $_SESSION['msg'];
+                            if (isset($_SESSION['AdminLoginError'])) {
+                                echo $_SESSION['AdminLoginError'];
                                 session_unset();
                             }
                             ?>
@@ -81,14 +82,13 @@
                                                                                         } ?>" required autocomplete="off"></td>
                                     </tr>
 
-                                    <td></td>
-                                    <td>
+                                    <!-- <td>
                                         <input type="radio" name="choose" value="Student" id="studentRadio">
                                         <label for="stdRadio"><a href="index.php">Students</a></label>
 
                                         <input type="radio" name="choose" value="Admin" id="adminRadio">
                                         <label for="adminRadio">Admin</label>
-                                    </td>
+                                    </td> -->
 
                                     </tr>
 

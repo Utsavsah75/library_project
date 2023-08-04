@@ -105,10 +105,10 @@ if(isset($_GET['Id'])) {
                     </div>
                 </td>
             </tr>
-            <tr>
+            <!-- <tr>
                 <th>Book ID*</th>
                 <td><input type="text" id="book_id" placeholder="Enter Book ID" name="book_id" value="<?= $book['Id']; ?>" required></td>
-            </tr>
+            </tr> -->
             <tr>
                 <th>Book Name</th>
                 <td><input type="text" id="bname" placeholder="Enter Book Name" name="book_name" value="<?= $book['Book Name']; ?>" required></td>
@@ -142,7 +142,7 @@ if(isset($_GET['Id'])) {
 
 
 
-    <script>
+    <!-- <script>
         // Get the form element
         const bookForm = document.getElementById('bookForm');
 
@@ -160,7 +160,7 @@ if(isset($_GET['Id'])) {
                 message.style.display = 'none';
             }, 3000); // 3 seconds (adjust this as needed)
         });
-    </script>
+    </script> -->
 </body>
 
 </html>

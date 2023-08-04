@@ -1,5 +1,6 @@
 <?php
 require 'conn.php';
+require 'check_admin.php';
 ?>
 
 <!DOCTYPE html>
@@ -89,26 +90,26 @@ require 'conn.php';
             </form>
         </div>
 
-                <table border="2" style="width: 57.5%; border-collapse: collapse; margin-left: 525px;margin-top: -408px;">
-                    <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
-                        <th style='width:70px' ;>Book Id</th>
-                        <th>Book Name</th>
-                        <th>Book Author</th>
-                        <th style='width:70px' ;>Quantity</th>
-                        <th style='width:108px' ;>Action</th>
+        <table border="2" style="width: 57.5%; border-collapse: collapse; margin-left: 525px;margin-top: -408px;">
+            <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
+                <th style='width:70px' ;>Book Id</th>
+                <th>Book Name</th>
+                <th>Book Author</th>
+                <th style='width:70px' ;>Quantity</th>
+                <th style='width:108px' ;>Action</th>
 
-                    </tr>
-                    <?php
-                    include("admin_bookserver.php");
-                    include('message.php');
-                    error_reporting(0);
-                    $query = "SELECT * FROM add_book";
-                    $data = mysqli_query($conn, $query);
-                    $total = mysqli_num_rows($data);
+            </tr>
+            <?php
+            include("admin_bookserver.php");
+            include('message.php');
+            error_reporting(0);
+            $query = "SELECT * FROM add_book";
+            $data = mysqli_query($conn, $query);
+            $total = mysqli_num_rows($data);
 
-                    if ($total != 0) {
-                        while ($result = mysqli_fetch_assoc($data)) {
-                            echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
+            if ($total != 0) {
+                while ($result = mysqli_fetch_assoc($data)) {
+                    echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
     <td style='border: 2px solid black; text-align: center;'>" . $result['Id'] . "</td>
     <td style='border: 2px solid black; text-align: center;'>" . $result['Book Name'] . "</td>
     <td style='border: 2px solid black; text-align: center;'>" . $result['Author Name'] . "</td>
@@ -120,12 +121,12 @@ require 'conn.php';
         
     </td>
 </tr>";
-                        }
-                    } else {
-                        echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
-                    }
-                    ?>
-                </table>
+                }
+            } else {
+                echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
+            }
+            ?>
+        </table>
     </div>
     <script>
         const timeElement = document.querySelector(".time");

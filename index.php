@@ -34,7 +34,7 @@
                     <a href="gall.php">
                         <li class="fa fa-image">Gallery</li>
                     </a>
-                    <a href="admin.html">
+                    <a href="admin.php">
                         <li class="fa fa-user">Admin Login</li>
                     </a>
                     <a href="reg_form.php">
@@ -81,13 +81,13 @@
                                     </tr>
 
                                     <td></td>
-                                    <td>
+                                    <!-- <td>
                                         <input type="radio" name="choose" value="Student" id="studentRadio">
                                         <label for="studentRadio">Student</label>
 
                                         <input type="radio" name="choose" value="Admin" id="adminRadio">
                                         <label for="adminRadio"><a href="Admin.php">Admin</a></label>
-                                    </td>
+                                    </td> -->
                                     </tr>
 
                                     <tr>

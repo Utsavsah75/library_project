@@ -1,28 +1,28 @@
 <?php
 require 'conn.php';
+require 'check_admin.php';
 
-// Establish database connection
-$conn = new mysqli("localhost", "root", "", "library");
 // Check if the form is saved
-if (isset($_POST['Save'])) {
-    $Id       = $_POST['book_id'];
-    $Name     = $_POST['book_name'];
-    $Author   = $_POST['book_author'];
-    $Quantity = $_POST['book_quantity'];
-    // Escape variables to prevent SQL injection
-    $Id       = mysqli_real_escape_string($conn, $Id);
-    $Name     = mysqli_real_escape_string($conn, $Name);
-    $Author   = mysqli_real_escape_string($conn, $Author);
-    $Quantity = mysqli_real_escape_string($conn, $Quantity);
+if (isset($_POST['submit'])) {
+    $Id       = mysqli_real_escape_string($conn, $_POST['book_id']);
+    $Name     = mysqli_real_escape_string($conn, $_POST['book_name']);
+    $Author   = mysqli_real_escape_string($conn, $_POST['book_author']);
+    $Quantity = mysqli_real_escape_string($conn, $_POST['book_quantity']);
 
     $sql = "INSERT INTO add_book (`Book Id`, `Book Name`, `Author Name`, `Quantity`) 
             VALUES ('$Id', '$Name', '$Author', '$Quantity')";
+
+
+    $sql = "UPDATE `add_book` set `Book Name` = '{$Name}',`Author Name` = '{$Author}',`Quantity` = '{$Quantity}'Where `Id` = $Id";
+
     $data = mysqli_query($conn, $sql);
     if ($data) {
         // Book added successfully, display alert message
-        echo "Book added successfully!";
+        $_SESSION['msg'] = "Book Updated successfully!";
+        header('location: book_page.php');
     } else {
         // Failed to add the book, display alert message
-        echo "Failed to add the book.";
+        $_SESSION['msg'] = "Failed to add the book.";
+        header('location: book_page.php');
     }
 }
