@@ -69,9 +69,9 @@
 
                                 <table align="center">
                                     <tr>
-                                        <td>Admin Name</td>
-                                        <td><input type="text" name="name" value="<?php if (isset($_COOKIE['rem_user'])) {
-                                                                                        echo $_COOKIE['rem_user'];
+                                        <td>Email </td>
+                                        <td><input type="text" name="email" value="<?php if (isset($_COOKIE['rem_email'])) {
+                                                                                        echo $_COOKIE['rem_email'];
                                                                                     } ?>" required autocomplete="off">
                                         </td>
                                     </tr>

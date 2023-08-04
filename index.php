@@ -67,9 +67,9 @@
 
                                 <table align="center">
                                     <tr>
-                                        <td>Username</td>
-                                        <td><input type="text" name="name" value="<?php if (isset($_COOKIE['rem_user'])) {
-                                                                                        echo $_COOKIE['rem_user'];
+                                        <td>Email</td>
+                                        <td><input type="text" name="email" value="<?php if (isset($_COOKIE['rem_email'])) {
+                                                                                        echo $_COOKIE['rem_email'];
                                                                                     } ?>" required autocomplete="off">
                                         </td>
                                     </tr>
@@ -89,13 +89,13 @@
                                         <label for="adminRadio"><a href="Admin.php">Admin</a></label>
                                     </td> -->
                                     </tr>
-
+<!-- 
                                     <tr>
                                         <td align="right"><input type="checkbox" name="rem" <?php if (isset($_COOKIE['rem_user'])) {
                                                                                                 echo "checked";
                                                                                             } ?>></td>
                                         <td>Remember Me</td>
-                                    </tr>
+                                    </tr> -->
                                     <tr>
                                         <td colspan="2" align="center">
                                             <input type="submit" value="Login" name="login">

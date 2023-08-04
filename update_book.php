@@ -87,6 +87,7 @@
 if(isset($_GET['Id'])) {
     $book_id = mysqli_real_escape_string($conn, $_GET['Id']);
     $query = "SELECT * FROM add_book WHERE Id='$book_id'";
+    
     $query_run = mysqli_query($conn, $query);
     
     if(mysqli_num_rows($query_run) > 0) {
@@ -122,7 +123,7 @@ if(isset($_GET['Id'])) {
                 <td><input type="text" id="quantity" placeholder="Enter Quantity" name="book_quantity" value="<?= $book['Quantity']; ?>" required></td>
             </tr>
             <tr>
-                <td colspan="2">
+                <td>
                     <input type="submit" name="submit" value="Update">
                 </td>
             </tr>

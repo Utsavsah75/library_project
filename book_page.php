@@ -62,7 +62,7 @@ require 'check_admin.php';
 
             <p style="display:none; margin-left: 10px;">This Field is required:</p>
             <form id="bookForm" method="POST" action="add_book_data.php" autocomplete="off">
-                <table>
+                <table style="margin-top: 10px;";>
                     <tr>
                         <th><label for="book_id">Book ID*</label></th>
                         <td><input type="number" id="book_id" placeholder="Enter Book ID" style="padding: 5px;" name="book_id" required></td>
@@ -90,7 +90,7 @@ require 'check_admin.php';
             </form>
         </div>
 
-        <table border="2" style="width: 57.5%; border-collapse: collapse; margin-left: 525px;margin-top: -408px;">
+        <table border="2" style="width: 57.5%; border-collapse: collapse; margin-left: 500px;margin-top: -450px;">
             <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
                 <th style='width:70px' ;>Book Id</th>
                 <th>Book Name</th>

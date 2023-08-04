@@ -15,10 +15,14 @@ if (isset($_POST['submit'])) {
 
     $sql = "UPDATE `add_book` set `Book Name` = '{$Name}',`Author Name` = '{$Author}',`Quantity` = '{$Quantity}'Where `Id` = $Id";
 
+
+//    $sql = "DELETE FROM `add_book` WHERE `Book Id` = '$Id' AND `Book Name` = '$Name' AND `Author Name` = '$Author' AND `Quantity` = '$Quantity'";
+
+
     $data = mysqli_query($conn, $sql);
     if ($data) {
         // Book added successfully, display alert message
-        $_SESSION['msg'] = "Book Updated successfully!";
+        $_SESSION['msg'];
         header('location: book_page.php');
     } else {
         // Failed to add the book, display alert message

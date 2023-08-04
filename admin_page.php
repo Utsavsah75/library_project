@@ -7,10 +7,10 @@ include('./conn.php');
 // die();
 
 if (isset($_POST['login'])) {
-    $AdminName = $_POST['name'];
+    $Email = $_POST['email'];
     $password = $_POST['pwd'];
 
-    $sql = "SELECT * FROM admin_login WHERE `Email` = '{$AdminName}' AND `Password` = '{$password}'";
+    $sql = "SELECT * FROM admin_login WHERE `Email` = '{$Email}' AND `Password` = '{$password}'";
     $res = mysqli_query($conn, $sql);
 
     // if we found data with the given AdminName and password in the database
@@ -19,7 +19,7 @@ if (isset($_POST['login'])) {
         $_SESSION['AdminLogin_successful'] = $data['Id'];        // session is set only if we found match
         header("location: book_page.php");
     } else {
-        $_SESSION['AdminLoginError'] = "Invalid AdminName / Password";
+        $_SESSION['AdminLoginError'] = "Invalid Email / Password";
         header("location: Admin.php");
     }
 }

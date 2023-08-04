@@ -138,7 +138,7 @@ if(isset($_GET['Id'])) {
     } ?>
 </form>
 
-
+<!-- 
 <script>
         // Get the form element
         const bookForm = document.getElementById('bookForm');
@@ -158,6 +158,7 @@ if(isset($_GET['Id'])) {
             }, 3000); // 3 seconds (adjust this as needed)
         });
     </script>
+ -->
 
    
 </body>
