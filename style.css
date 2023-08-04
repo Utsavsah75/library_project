@@ -1,10 +1,12 @@
-
-
 body {
+    background-size: cover;
+    background-repeat: no-repeat;
     background-attachment: fixed;
-    background: linear-gradient(to left, rgb(124, 152, 132), rgb(109, 201, 130));
+    background-image: url(LB.jpg);
+    filter: brightness(80%);
+    background-position: center center;
+    /* background: linear-gradient(to left, rgb(124, 152, 132), rgb(109, 201, 130)); */
 }
-
 .form-row {
     display: flex;
     align-items: center;

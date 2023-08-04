@@ -144,6 +144,9 @@ body {
     background: linear-gradient(180deg, rgba(179, 61, 61, 0.6), rgb(250, 3, 3));
 }
 
+.container1 ul a  button.active {
+    background: linear-gradient(80deg, rgb(0, 255, 4), rgb(145, 235, 146));
+}
 .container1 button {
     margin: 15px;
     width: 135px;

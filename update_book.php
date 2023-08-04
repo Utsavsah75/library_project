@@ -58,6 +58,7 @@
             display: flex;
             justify-content: center;
             margin-left: 15px;
+            margin-top: 15px;
         }
 
         input[type="submit"] {
@@ -66,7 +67,6 @@
 
         a input[type="Back"] {
             background-color: #4CAF50;
-            padding: 10px 25px;
             font-weight: bold;
             color: #fff;
             border: none;
@@ -74,19 +74,16 @@
             cursor: pointer;
             display: flex;
             justify-content: center;
-            margin-left: 15px;
+            margin-left: 0px;
         }
 
         input[type="button"] {
-            background-color: #337ab7;
+            background-color: #337ab7; 
         }
     </style>
-</head>
-
-<body>
    
-<form id="bookForm" method="POST" action="admin_bookserver.php" autocomplete="off">
-<?php
+   <form id="bookForm" method="POST" action="admin_bookserver.php" autocomplete="off">
+   <?php
 if(isset($_GET['Id'])) {
     $book_id = mysqli_real_escape_string($conn, $_GET['Id']);
     $query = "SELECT * FROM add_book WHERE Id='$book_id'";
@@ -98,41 +95,51 @@ if(isset($_GET['Id'])) {
     } 
 }
 ?>
-
-<?php if (isset($book)) { ?>
+    <?php if (isset($book)) { ?>
         <input type="hidden" name="book_id" value="<?= $book['Id']; ?>">
-        <div class="form-row">
-            <div id="message" style="display: none; color: green; font-weight: bold; text-align: center; margin-top: 50px;">
-                Update Book Successfully!!..
-            </div>
-            <label>Book ID*</label>
-            <input type="text" id="book_id" placeholder="Enter Book ID" name="book_id" value="<?= $book['Id']; ?>" required>
-        </div>
-        <div class="form-row">
-            <label>Book Name</label>
-            <input type="text" id="bname" placeholder="Enter Book Name" name="book_name" value="<?= $book['Book Name']; ?>" required>
-        </div>
-        <div class="form-row">
-            <label>Author Name</label>
-            <input type="text" id="Aname" placeholder="Enter Author Name" name="book_author" value="<?= $book['Author Name']; ?>" required>
-        </div>
-        <div class="form-row">
-            <label>Quantity</label>
-            <input type="text" id="quantity" placeholder="Enter Quantity" name="book_quantity" value="<?= $book['Quantity']; ?>" required>
-        </div>
+        <table>
+            <tr>
+                <td colspan="2">
+                    <div id="message" style="display: none; color: green; font-weight: bold; text-align: center; margin-top: 50px;">
+                        Update Book Successfully!!..
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Book ID*</th>
+                <td><input type="text" id="book_id" placeholder="Enter Book ID" name="book_id" value="<?= $book['Id']; ?>" required></td>
+            </tr>
+            <tr>
+                <th>Book Name</th>
+                <td><input type="text" id="bname" placeholder="Enter Book Name" name="book_name" value="<?= $book['Book Name']; ?>" required></td>
+            </tr>
+            <tr>
+                <th>Author Name</th>
+                <td><input type="text" id="Aname" placeholder="Enter Author Name" name="book_author" value="<?= $book['Author Name']; ?>" required></td>
+            </tr>
+            <tr>
+                <th>Quantity</th>
+                <td><input type="text" id="quantity" placeholder="Enter Quantity" name="book_quantity" value="<?= $book['Quantity']; ?>" required></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" name="submit" value="Update">
+                </td>
+            </tr>
+           
+        </table>
+        <tr>
+                <td>
+                    <a href="book_page.php" style="text-decoration: none;">
+                        <input type="button" name="Back" value="Back" style="color: white; font-weight: bold; margin-left: 120px; margin-top: -40px;">
+                    </a>
+                </td>
+            </tr>
+    <?php } else {
+        echo '<h4 style="color:red;">No Such Id Found</h4>';
+    } ?>
+</form>
 
-        <div>
-            <input type="submit" name="submit" value="Update">
-        </div>
-        <div>
-            <a href="book_page.php" style="text-decoration: none;">
-                <input type="button" name="Back" value="Back" style="color: white; font-weight: bold; margin-left: 30%; margin-top: -35px;">
-            </a>
-        </div>
-    </form>
-<?php } else {
-    echo '<h4 style="color:red;">No Such Id Found</h4>';
-} ?>
 
 
     <script>

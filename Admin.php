@@ -24,7 +24,7 @@
             <a href="#" class="fa fa-twitter" style="text-decoration:none;  padding: 7px ; float:right; color: white;"></a>
         </div>
         <div id="menu">
-            <div id="logo">LIBRARY<b style="color:#2c7ad6 ;">ZONE</b>
+        <div id="logo"><b style="color:#2c7ad6 ;">HISTORY</b>LIBRARY
             </div>
             <div id="menu1">
                 <ul>
@@ -46,8 +46,8 @@
             </div>
         </div>
         <div id="slider">
-            <div id="x">WELCOME TO LIBRARY<b style="color: #2c7ad6;">ZONE</b>
-                <p style="font-size: 15PX;">YOU CAN WRITE SOME TEXT</p>
+            <div id="x">WELCOME TO <b style="color: #2c7ad6;">HISTORY</b>LIBRARY
+                <p style="font-size: 15PX;">YOU CAN READ SOME TEXT</p>
             </div>
             <div id="y">
                 <div id="l">

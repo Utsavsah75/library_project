@@ -30,7 +30,7 @@
             <ul>
                 <li><a href="#"><i class="fa fa-book"></i>All Books</a></li>
                 <li><a href="#"><i class="fa fa-users"></i>All Members</a></li>
-                <!-- <li><a href="#"><i class="fas fa-shopping-cart"></i>Borrow Books</a></li> -->
+                <!-- <li><a href="#"><i class="fas fa-shopping-cart"></i>Issue Books</a></li> -->
                 <li><a href="#"><i class="fa fa-hourglass-half"></i>Pending Books</a></li>
                 <!-- <li><a href="#"><i class="fa fa-sign-out-alt"></i>Manage Users</a></li> -->
                 <li><a href="index.php"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
@@ -43,7 +43,7 @@
         <!-- <div class="library-container2"> -->
         <ul>
         <a style="text-decoration: none;" href="book_page.php"> <button> Add Books</button></a>
-        <a style="text-decoration: none;" href="borrow.php"><button> Borrow Books</button></a>
+        <a style="text-decoration: none;" href="Issue.php"><button> Issue Books</button></a>
         <a style="text-decoration: none;" href="return.php">  <button> Return Books</button></a>
         <a style="text-decoration: none;" href="add.php">  <button> Add Users</button></a>
         <a style="text-decoration: none;" href="manage.php"> <button> Manage Users</button></a>

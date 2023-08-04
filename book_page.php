@@ -1,5 +1,5 @@
 <?php
-    require 'conn.php';
+require 'conn.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
 </head>
 
 <body>
-   
+
     <div class="datetime">
         <p class="time"></p>
         <p class="date"></p>
@@ -30,7 +30,7 @@
             <ul>
                 <li><a href="#"><i class="fa fa-book"></i>All Books</a></li>
                 <li><a href="#"><i class="fa fa-users"></i>All Members</a></li>
-                <!-- <li><a href="#"><i class="fas fa-shopping-cart"></i>Borrow Books</a></li> -->
+                <!-- <li><a href="#"><i class="fas fa-shopping-cart"></i>Issue Books</a></li> -->
                 <li><a href="#"><i class="fa fa-hourglass-half"></i>Pending Books</a></li>
                 <!-- <li><a href="#"><i class="fa fa-sign-out-alt"></i>Manage Users</a></li> -->
                 <li><a href="index.php"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
@@ -42,11 +42,11 @@
     <div class="container1">
         <!-- <div class="library-container2"> -->
         <ul>
-        <a style="text-decoration: none;" href="book_page.php"> <button> Add Books</button></a>
-        <a style="text-decoration: none;" href="borrow.php"><button> Borrow Books</button></a>
-        <a style="text-decoration: none;" href="return.php">  <button> Return Books</button></a>
-        <a style="text-decoration: none;" href="add.php">  <button> Add Users</button></a>
-        <a style="text-decoration: none;" href="manage.php"> <button> Manage Users</button></a>
+            <a style="text-decoration: none;" href="book_page.php"> <button> Add Books</button></a>
+            <a style="text-decoration: none;" href="Issue.php"><button> Issue Books</button></a>
+            <a style="text-decoration: none;" href="return.php"> <button> Return Books</button></a>
+            <a style="text-decoration: none;" href="add.php"> <button> Add Users</button></a>
+            <a style="text-decoration: none;" href="manage.php"> <button> Manage Users</button></a>
         </ul>
     </div>
     <!-- </div> -->
@@ -58,57 +58,57 @@
 
         <!---*****************ADD BOOKS**********************-->
         <div id="Add_Books" class="tabcontent1">
-          
-        <p style="display:none; margin-left: 10px;">This Field is required:</p>
-                <form id="bookForm" method="POST" action="add_book_data.php" autocomplete="off">
-                <table>
-    <tr>
-        <th><label for="book_id">Book ID*</label></th>
-        <td><input type="number" id="book_id" placeholder="Enter Book ID" style="padding: 5px;" name="book_id" required></td>
-    </tr>
-    <tr>
-        <th><label for="bname">Book Name</label></th>
-        <td><input type="text" id="bname" placeholder="Enter Book Name" style="padding: 5px;" name="book_name" required></td>
-    </tr>
-    <tr>
-        <th><label for="Aname">Author Name</label></th>
-        <td><input type="text" id="Aname" placeholder="Enter Author Name" style="padding: 5px;" name="book_author" required></td>
-    </tr>
-    <tr>
-        <th><label for="quantity">Quantity</label></th>
-        <td><input type="number" id="quantity" placeholder="Enter Quantity" style="padding: 5px;" name="book_quantity" required></td>
-    </tr>
-    <tr>
-        <td colspan="2" style="text-align: right;">
-            <input type="submit" name="submit" value="Save" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-            <input type="button" name="clear" value="Clear" style="padding: 10px 20px; font-weight:bold; background-color: #337ab7; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-        </td>
-    </tr>
-</table>
 
-                </form>
+            <p style="display:none; margin-left: 10px;">This Field is required:</p>
+            <form id="bookForm" method="POST" action="add_book_data.php" autocomplete="off">
+                <table>
+                    <tr>
+                        <th><label for="book_id">Book ID*</label></th>
+                        <td><input type="number" id="book_id" placeholder="Enter Book ID" style="padding: 5px;" name="book_id" required></td>
+                    </tr>
+                    <tr>
+                        <th><label for="bname">Book Name</label></th>
+                        <td><input type="text" id="bname" placeholder="Enter Book Name" style="padding: 5px;" name="book_name" required></td>
+                    </tr>
+                    <tr>
+                        <th><label for="Aname">Author Name</label></th>
+                        <td><input type="text" id="Aname" placeholder="Enter Author Name" style="padding: 5px;" name="book_author" required></td>
+                    </tr>
+                    <tr>
+                        <th><label for="quantity">Quantity</label></th>
+                        <td><input type="number" id="quantity" placeholder="Enter Quantity" style="padding: 5px;" name="book_quantity" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: right;">
+                            <input type="submit" name="submit" value="Save" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+                            <input type="button" name="clear" value="Clear" style="padding: 10px 20px; font-weight:bold; background-color: #337ab7; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
+                        </td>
+                    </tr>
+                </table>
+
+            </form>
         </div>
 
-        <table border="2" style="width: 57.5%; border-collapse: collapse; margin-left: 525px;margin-top: -408px;">
-            <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
-                <th style='width:70px' ;>Book Id</th>
-                <th>Book Name</th>
-                <th>Book Author</th>
-                <th style='width:70px' ;>Quantity</th>
-                <th style='width:108px' ;>Action</th>
+                <table border="2" style="width: 57.5%; border-collapse: collapse; margin-left: 525px;margin-top: -408px;">
+                    <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
+                        <th style='width:70px' ;>Book Id</th>
+                        <th>Book Name</th>
+                        <th>Book Author</th>
+                        <th style='width:70px' ;>Quantity</th>
+                        <th style='width:108px' ;>Action</th>
 
-            </tr>
-            <?php
-            include("admin_bookserver.php");
-            include('message.php');
-            error_reporting(0);
-            $query = "SELECT * FROM add_book";
-            $data = mysqli_query($conn, $query);
-            $total = mysqli_num_rows($data);
+                    </tr>
+                    <?php
+                    include("admin_bookserver.php");
+                    include('message.php');
+                    error_reporting(0);
+                    $query = "SELECT * FROM add_book";
+                    $data = mysqli_query($conn, $query);
+                    $total = mysqli_num_rows($data);
 
-            if ($total != 0) {
-                while ($result = mysqli_fetch_assoc($data)) {
-                    echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
+                    if ($total != 0) {
+                        while ($result = mysqli_fetch_assoc($data)) {
+                            echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
     <td style='border: 2px solid black; text-align: center;'>" . $result['Id'] . "</td>
     <td style='border: 2px solid black; text-align: center;'>" . $result['Book Name'] . "</td>
     <td style='border: 2px solid black; text-align: center;'>" . $result['Author Name'] . "</td>
@@ -120,29 +120,13 @@
         
     </td>
 </tr>";
-                }
-            } else {
-                echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
-            }
-?>
-        </table>
+                        }
+                    } else {
+                        echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
+                    }
+                    ?>
+                </table>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-   
     <script>
         const timeElement = document.querySelector(".time");
         const dateElement = document.querySelector(".date");
