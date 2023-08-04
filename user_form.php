@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,6 +55,15 @@
                 <div id="y">
                     <div id="l">
                         <h2 style=" text-align: center; color: #2c7ad6;">New Member Registration</h2>
+
+                        <div class="msg_holder" colspan="2" align="center" height:="200px">
+                            <?php
+                            if (isset($_SESSION['msg'])) {
+                                echo $_SESSION['msg'];
+                                session_unset();
+                            }
+                            ?>
+                        </div>
 
                         <div class="container1">
                             <div class="msg_holder1"></div>

@@ -1,9 +1,11 @@
 <?php
 session_start();
-// Establish database connection
-$conn = new mysqli("localhost", "root", "", "library");
+require 'conn.php';
 
 if (isset($_POST['register'])) {
+
+    
+    
     $name = $_POST['name'];
     $email = $_POST['email'];
     $gender = $_POST['gender'];
@@ -11,8 +13,16 @@ if (isset($_POST['register'])) {
     $phone = $_POST['phone'];
     $faculty = $_POST['faculty'];
     $photo = $_POST['photo'];
+    
+    $AlreadyExist = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM students WHERE email = '{$email}'"));
+    
+    if ($AlreadyExist) {
+        $_SESSION['msg'] = "Account is already exist for email: <b>$email</b>";
+        header("location: user_form.php");
+    }
 
-    $sql = "INSERT INTO register (name, email, gender, password, phone, faculty, photo) 
+
+    $sql = "INSERT INTO students (name, email, gender, password, phone, faculty, photo) 
             VALUES ('$name', '$email', '$gender', '$password', '$phone', '$faculty', '$photo')";
 
     $data = mysqli_query($conn, $sql);
