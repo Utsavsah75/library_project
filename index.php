@@ -37,7 +37,7 @@
                     <a href="admin.php">
                         <li class="fa fa-user">Admin Login</li>
                     </a>
-                    <a href="reg_form.php">
+                    <a href="user_form.php">
                         <li class="fa fa-registered">Register</li>
                     </a>
 

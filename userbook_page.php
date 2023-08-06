@@ -27,7 +27,7 @@ include('./header.php');
         <div class="top1">
             <ul>
                 <li><a href="#"><i class="fa fa-book"></i>All Books</a></li>
-                <li><a href="#"><i class="fa fa-users"></i>All Members</a></li>
+                <!-- <li><a href="#"><i class="fa fa-users"></i>All Members</a></li> -->
                 <li><a href="#"><i class="fa fa-hourglass-half"></i>Pending Books</a></li>
                 <li><a href="index.php"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
             </ul>

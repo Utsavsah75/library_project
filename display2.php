@@ -35,7 +35,13 @@
 </head>
 
 <body>
+<input type="text" placeholder="Search" style=" float: left;margin-left: 975px;  border-radius: 8px;  border: 2px solid;   transform: translateY(-463px); width: 240px; height: 25px;">
+    <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i>
+
     <table border="2">
+    <input type="search" placeholder="Search" style=" float: left;margin-left: 975px;  border-radius: 8px;  border: 2px solid;   transform: translateY(-463px); width: 240px; height: 25px;">
+    <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i>
+
         <tr>
             <th>Book Id</th>
             <th>Book Name</th>

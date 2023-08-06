@@ -29,7 +29,7 @@ require 'check_admin.php';
         </div>
         <div class="top1">
             <ul>
-                <li><a href="#"><i class="fa fa-book"></i>All Books</a></li>
+                <li><a href="all_member.php"><i class="fa fa-book"></i>All Books</a></li>
                 <li><a href="#"><i class="fa fa-users"></i>All Members</a></li>
                 <!-- <li><a href="#"><i class="fas fa-shopping-cart"></i>Issue Books</a></li> -->
                 <li><a href="#"><i class="fa fa-hourglass-half"></i>Pending Books</a></li>
@@ -45,9 +45,9 @@ require 'check_admin.php';
         <ul>
             <a style="text-decoration: none;" href="book_page.php"> <button> Add Books</button></a>
             <a style="text-decoration: none;" href="Issue.php"><button> Issue Books</button></a>
-            <a style="text-decoration: none;" href="return.php"> <button> Return Books</button></a>
+            <!-- <a style="text-decoration: none;" href="return.php"> <button> Return Books</button></a> -->
             <a style="text-decoration: none;" href="add.php"> <button> Add Users</button></a>
-            <a style="text-decoration: none;" href="manage.php"> <button> Manage Users</button></a>
+            <!-- <a style="text-decoration: none;" href="manage.php"> <button> Manage Users</button></a> -->
         </ul>
     </div>
     <!-- </div> -->
@@ -90,7 +90,7 @@ require 'check_admin.php';
             </form>
         </div>
 
-        <table border="2" style="width: 57.5%; border-collapse: collapse; margin-left: 500px;margin-top: -450px;">
+        <table border="2" style="width: 57.5%; border-collapse: collapse; margin-left: 500px;margin-top: -520px;">
             <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
                 <th style='width:70px' ;>Book Id</th>
                 <th>Book Name</th>
