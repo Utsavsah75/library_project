@@ -4,12 +4,12 @@ session_start();
 $conn = new mysqli("localhost", "root", "", "library");
 
 if (isset($_POST['register'])) {
-    $Name       = $_POST['name'];
-    $Email         = $_POST['email'];
+    $Name        = $_POST['name'];
+    $Email       = $_POST['email'];
     $Gender      = $_POST['gender'];
-    $Contact_no   = $_POST['phone'];
-    $Address        = $_POST['address'];
-    $Password          = $_POST['password']; 
+    $Contact_no  = $_POST['phone'];
+    $Address     = $_POST['address'];
+    $Password    = $_POST['password']; 
     
     $sql = "INSERT INTO admin_login (Name, Email, Gender, Contact_no, Address, Password) 
             VALUES ('$Name', '$Email', '$Gender', '$Contact_no', '$Address', '$Password')";

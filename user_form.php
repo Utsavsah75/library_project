@@ -35,7 +35,7 @@
                         <a href="gall.php">
                             <li class="fa fa-image">Gallery</li>
                         </a>
-                        <a href="admin.html">
+                        <a href="admin.php">
                             <li class="fa fa-user">Admin Login</li>
                         </a>
                         <a href="register.html">

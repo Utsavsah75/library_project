@@ -1,7 +1,6 @@
 <?php
-    require 'conn.php';
+require 'conn.php';
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -16,7 +15,7 @@
 </head>
 
 <body>
-   
+
     <div class="datetime">
         <p class="time"></p>
         <p class="date"></p>
@@ -28,7 +27,7 @@
         </div>
         <div class="top1">
             <ul>
-                <li><a href="all_member.php"><i class="fa fa-book"></i>All Books</a></li>
+                <li><a href="all_books.php"><i class="fa fa-book"></i>All Books</a></li>
                 <li><a href="#"><i class="fa fa-users"></i>All Members</a></li>
                 <!-- <li><a href="#"><i class="fas fa-shopping-cart"></i>Issue Books</a></li> -->
                 <li><a href="#"><i class="fa fa-hourglass-half"></i>Pending Books</a></li>
@@ -42,11 +41,11 @@
     <div class="container1">
         <!-- <div class="library-container2"> -->
         <ul>
-        <a style="text-decoration: none;" href="book_page.php"> <button> Add Books</button></a>
-        <a style="text-decoration: none;" href="Issue.php"><button> Issue Books</button></a>
-        <!-- <a style="text-decoration: none;" href="return.php">  <button> Return Books</button></a> -->
-        <a style="text-decoration: none;" href="add.php">  <button> Add Users</button></a>
-        <!-- <a style="text-decoration: none;" href="manage.php"> <button> Manage Users</button></a> -->
+            <a style="text-decoration: none;" href="book_page.php"> <button> Add Books</button></a>
+            <a style="text-decoration: none;" href="Issue.php"><button> Issue Books</button></a>
+            <!-- <a style="text-decoration: none;" href="return.php">  <button> Return Books</button></a> -->
+            <a style="text-decoration: none;" href="add.php"> <button> Add Users</button></a>
+            <!-- <a style="text-decoration: none;" href="manage.php"> <button> Manage Users</button></a> -->
         </ul>
     </div>
     <!-- </div> -->
@@ -54,85 +53,117 @@
     <input type="text" placeholder="Search" style=" float: left;margin-left: 975px;  border-radius: 8px;  border: 2px solid;   transform: translateY(-463px); width: 240px; height: 25px;">
     <!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i> -->
 
-  
+
 
     <!---*****************ADD USERS**********************-->
     <div id="Add_Users" class="tabcontent4">
-        
-    <p style="display:none; margin-left: 10px;">This Field is required:</p>
-            <form id="userForm" onsubmit="event.preventDefault(); onFormSubmit();" autocomplete="off">
+
+        <p style="display:none; margin-left: 10px;">This Field is required:</p>
+        <form id="userForm" onsubmit="event.preventDefault(); onFormSubmit();" autocomplete="off">
             <table>
-    <tr>
-        <th><label for="u_id" style="text-align: left;">User ID</label></th>
-        <td><input type="text" name="u_id" placeholder="Enter User ID" style="padding: 5px;"></td>
-    </tr>
-    <tr>
-        <th><label for="uname" style="text-align: left;">Name</label></th>
-        <td><input type="text" name="uname" placeholder="Enter User Name" style="padding: 5px;"></td>
-    </tr>
-    <tr>
-        <th><label for="Aname" style="text-align: left;">Email</label></th>
-        <td><input type="text" name="Aname" placeholder="Enter User Email" style="padding: 5px;"></td>
-    </tr>
-    <tr>
-        <th><label for="password" style="text-align: left;">Password</label></th>
-        <td><input type="text" name="password" placeholder="Enter User Password" style="padding: 5px;"></td>
-    </tr>
-    <tr>
-        <th>Gender</th>
-        <td>
-            <select id="gender" name="gender" style="margin-left: 55px; margin-bottom: 8px;">
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <th><label for="phone" style="text-align: left;">Contact_No</label></th>
-        <td><input type="text" name="phone" placeholder="Enter User Phone Number" style="padding: 5px;"></td>
-    </tr>
-    <tr>
-        <th><label for="faculty" style="text-align: left;">Faculty</label></th>
-        <td><input type="text" name="faculty" placeholder="Enter User Faculty/Class" style="padding: 5px;"></td>
-    </tr>
-    <tr>
-        <th><label for="address" style="text-align: left;">Address</label></th>
-        <td><textarea name="address" placeholder="Enter User Address" style="padding: 5px;"></textarea></td>
-    </tr>
-    <tr>
-        <td colspan="2" style="text-align: right;">
-            <input type="Button" name="submit" value="Save" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff; border-radius: 4px; cursor: pointer;">
-            <!-- <input type="Button" name="submit" value="Update" style="padding: 10px 20px; font-weight:bold; background-color: #ffa200; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-        </td>
-    </tr>
+                <tr>
+                    <th>User ID</th>
+                    <td><input type="number" name="u_id" placeholder="Enter User ID" style="padding: 5px;"></td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td><input type="text" name="uname" placeholder="Enter User Name" style="padding: 5px;"></td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td><input type="text" name="email" placeholder="Enter User Email" style="padding: 5px;"></td>
+                </tr>
+                <tr>
+                    <th>Password</th>
+                    <td><input type="text" name="password" placeholder="Enter User Password" style="padding: 5px;"></td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td>
+                        <select id="gender" name="gender" style="margin-left: 55px; margin-bottom: 8px;">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Contact_No</th>
+                    <td><input type="number" name="phone" placeholder="Enter User Phone Number" style="padding: 5px;"></td>
+                </tr>
+                <tr>
+                    <th>Faculty</th>
+                    <td><input type="text" name="faculty" placeholder="Enter User Faculty/Class" style="padding: 5px;"></td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td><textarea name="address" placeholder="Enter User Address" style="padding: 5px;"></textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: left;">
+                        <input type="submit" name="submit" value="Save" style="padding: 10px 25px; margin-left: 90px; font-weight:bold; background-color: #4CAF50; color: #fff; border-radius: 4px; cursor: pointer;">
+                    </td>
+                    <!-- </tr>
     <tr>
         <td colspan="2" style="text-align: right;">
             <input type="Button" name="submit" value="Delete" style="padding: 10px 22px; font-weight:bold; background-color: #d9534f; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
             <input type="Button" name="submit" value="Clear" style="padding: 10px 21px; font-weight:bold; background-color: #337ab7; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
         </td> -->
-    </tr>
-</table>
-
-            </form>
-            <table id="booklist3" style="border-collapse: collapse; width: 760px; height: 0px;margin-top: -315px; margin-left: 305px;">
-                <tr style="background-color: #f2f2f2;">
-                    <th style="padding: 5px; border: 2px solid black;">User ID</th>
-                    <th style="padding: 5px; border: 2px solid black;">Name</th>
-                    <th style="padding: 5px; border: 2px solid black;">Email</th>
-                    <th style="padding: 5px; border: 2px solid black;">Password</th>
-                    <th style="padding: 5px; border: 2px solid black;">Gender</th>
-                    <th style="padding: 5px; border: 2px solid black;">Contact_No</th>
-                    <th style="padding: 5px; border: 2px solid black;">Faculty</th>
-                    <th style="padding: 5px; border: 2px solid black;">Address</th>
                 </tr>
             </table>
-        <script src="connect.js"></script>
+
+
+        </form>
+
+        <table border="2px"style="border-collapse: collapse; width: 790px; height: 0px;margin-top: -450px; margin-left: 280px;">
+        <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Gender</th>
+                <th>Contact_No</th>
+                <th>Faculty</th>
+                <th>Address</th>
+                <th>Action</th>
+            </tr>
+
+            </tr>
+            <?php
+            include("addnewuser_server.php");
+            include('message.php');
+            error_reporting(0);
+            $query = "SELECT * FROM addnew_user";
+            $data = mysqli_query($conn, $query);
+            $total = mysqli_num_rows($data);
+
+            if ($total != 0) {
+                while ($result = mysqli_fetch_assoc($data)) {
+                    echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
+    <td style='border: 2px solid black; text-align: center;'>" . $result['User ID'] . "</td>
+    <td style='border: 2px solid black; text-align: center;'>" . $result['Name'] . "</td>
+    <td style='border: 2px solid black; text-align: center;'>" . $result['Email'] . "</td>
+    <td style='border: 2px solid black; text-align: center;'>" . $result['Password'] . "</td>
+    <td style='border: 2px solid black; text-align: center;'>" . $result['Gender'] . "</td>
+    <td style='border: 2px solid black; text-align: center;'>" . $result['Phone'] . "</td>
+    <td style='border: 2px solid black; text-align: center;'>" . $result['Faculty'] . "</td>
+    <td style='border: 2px solid black; text-align: center;'>" . $result['Address'] . "</td>
+    <td style='border: 2px solid black; text-align: center;'>
+        <a href='newuser_update.php?Id=" . $result['Id'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
+     
+        <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button></a>
+        
+    </td>
+</tr>";
+                }
+            } else {
+                echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
+            }
+            ?>
+        </table>
     </div>
 
-  
-    <script>
-   
 
+    <script>
         const timeElement = document.querySelector(".time");
         const dateElement = document.querySelector(".date");
 

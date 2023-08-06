@@ -87,7 +87,6 @@
 if(isset($_GET['Id'])) {
     $book_id = mysqli_real_escape_string($conn, $_GET['Id']);
     $query = "SELECT * FROM add_book WHERE Id='$book_id'";
-    
     $query_run = mysqli_query($conn, $query);
     
     if(mysqli_num_rows($query_run) > 0) {
@@ -123,7 +122,7 @@ if(isset($_GET['Id'])) {
                 <td><input type="text" id="quantity" placeholder="Enter Quantity" name="book_quantity" value="<?= $book['Quantity']; ?>" required></td>
             </tr>
             <tr>
-                <td>
+                <td colspan="2">
                     <input type="submit" name="submit" value="Update">
                 </td>
             </tr>
@@ -162,148 +161,6 @@ if(isset($_GET['Id'])) {
             }, 3000); // 3 seconds (adjust this as needed)
         });
     </script>
-</body>
-
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Display User_reg Data</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 20vh;
-            background: linear-gradient(to left, rgba(255, 255, 255, 0.885), rgba(96, 100, 96, 0.993));
-        }
-
-        table {
-            width: 100%;
-            margin-top: 0px;
-            margin-left: 10px;
-            display: none;
-            border: 2px solid black;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 3px;
-            border-bottom: 2px solid;
-            text-align: center;
-
-        }
-
-        th {
-            background: linear-gradient(180deg, rgba(255, 255, 255, .6), rgba(96, 100, 96, 0.6));
-
-        }
-
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-
-        .search {
-            float: left;
-            width: 50%;
-            height: 45px;
-            margin-top: -70px;
-            align-items: center;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            background-color: #ddd;
-            position: relative;
-        }
-
-        .search input[type="text"] {
-            width: 100%;
-            height: 100%;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 6px;
-            background-color: transparent;
-            color: black;
-            font-size: 16px;
-            outline: none;
-        }
-
-        .search input[type="text"]::placeholder {
-            color: red;
-            opacity: 0.5;
-        }
-    </style>
-</head>
-<!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i> -->
-
-<div class="search">
-<input type="text" placeholder="Search">
-
-<body>
-    <table border="2">
-        <tr>
-            <th>Book Id</th>
-            <th>Book Name</th>
-            <th>Book Author</th>
-            <th>Quantity</th>
-            <th style='width:108px' ;>Action</th>
-
-        </tr>
-        <?php
-    session_start();
-    require 'conn.php';
-
-    if (isset($_GET['m'])) {
-        // $m = mysqli_real_escape_string($conn, $_GET['m']);
-
-        $m = mysqli_real_escape_string($conn, $_GET['m']);
-
-            $query = "SELECT * FROM add_book WHERE `Book Id` LIKE '%$number%' OR `Book Name` LIKE '%$m%' OR `Author Name` LIKE '%$m%'";
-        // $query = "SELECT * FROM add_book WHERE `Book Id` LIKE `%number%' OR `Book Name` LIKE '%$c%' OR `Author Name` LIKE '%$s%'";
-        $result = mysqli_query($conn, $query);
-
-        if (mysqli_num_rows($result) > 0) {
-            echo '<table border="2">';
-            echo '<tr>
-                    <th>Book Id</th>
-                    <th>Book Name</th>
-                    <th>Author Name</th>
-                    <th>Quantity</th>
-                  </tr>';
-
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo '<tr>
-                        <td>' . $row['Id'] . '</td>
-                        <td>' . $row['Book Name'] . '</td>
-                        <td>' . $row['Author Name'] . '</td>
-                        <td>' . $row['Quantity'] . '</td>
-                      </tr>';
-            }
-
-            echo '</table>';
-        } else {
-            echo '<p>No records found</p>';
-        }
-    }
-    ?>
 </body>
 
 </html>

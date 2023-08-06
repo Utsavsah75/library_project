@@ -29,7 +29,7 @@ require 'check_admin.php';
         </div>
         <div class="top1">
             <ul>
-                <li><a href="all_member.php"><i class="fa fa-book"></i>All Books</a></li>
+                <li><a href="all_books.php"><i class="fa fa-book"></i>All Books</a></li>
                 <li><a href="#"><i class="fa fa-users"></i>All Members</a></li>
                 <!-- <li><a href="#"><i class="fas fa-shopping-cart"></i>Issue Books</a></li> -->
                 <li><a href="#"><i class="fa fa-hourglass-half"></i>Pending Books</a></li>
@@ -62,7 +62,7 @@ require 'check_admin.php';
 
             <p style="display:none; margin-left: 10px;">This Field is required:</p>
             <form id="bookForm" method="POST" action="add_book_data.php" autocomplete="off">
-                <table style="margin-top: 10px;";>
+                <table style="margin-top: 10px;" ;>
                     <tr>
                         <th><label for="book_id">Book ID*</label></th>
                         <td><input type="number" id="book_id" placeholder="Enter Book ID" style="padding: 5px;" name="book_id" required></td>
@@ -117,7 +117,7 @@ require 'check_admin.php';
     <td style='border: 2px solid black; text-align: center;'>
         <a href='update_book.php?Id=" . $result['Id'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
      
-        <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button>
+        <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button></a>
         
     </td>
 </tr>";
@@ -185,5 +185,6 @@ require 'check_admin.php';
         }, 1000);
     </script>
 </body>
+<!-- <a href='delete_book.php?Id=" . $result['Id'] . "'> <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button></a> -->
 
 </html>
