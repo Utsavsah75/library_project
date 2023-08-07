@@ -74,7 +74,9 @@
             cursor: pointer;
             display: flex;
             justify-content: center;
-            margin-left: 25px;
+            margin-left: 250px;
+            margin-top: 200px;
+            text-decoration: none;
         }
 
         input[type="button"] {
@@ -87,7 +89,7 @@
    <?php
 if(isset($_GET['Id'])) {
    echo $book_id = $_GET['Id'];
-    $query = "SELECT * FROM issue_book WHERE Book Id='$book_id'";
+    $query = "SELECT * FROM issue_book WHERE `Book_Id`='$book_id'";
     $query_run = mysqli_query($conn, $query);
 
     if(mysqli_num_rows($query_run) > 0) {
@@ -106,61 +108,58 @@ if(isset($_GET['Id'])) {
                 </td>
             <tr>
                     <th>Book Name</th>
-                    <td><input type="text" name="B_Name"  value="<?= $book['B_Name']; ?>" required></td>
+                    <td><input type="text" name="B_Name"  value="<?= $book['Book Name']; ?>" required></td>
                 </tr>
                 <tr>
+
                     <th>User Name</th>
-                    <td><input type="text" name="U_Name"  value="<?= $book['U_Name']; ?>" required></td>
+                    <td><input type="text" name="U_Name"  value="<?= $book['User Name']; ?>" required></td>
                 </tr>
                 <tr>
                     <th>Book ID</th>
-                    <td><input type="text" name="B_ID" value="<?= $book['B_ID']; ?>" required></td>
+                    <td><input type="text" name="B_ID" value="<?= $book['Book ID']; ?>" required></td>
                 </tr>
                 <tr>
                     <th>Issue Date</th>
-                    <td><input type="date" name="iss_D" value="<?= $book['Iss_D']; ?>" required></td>
+                    <td><input type="date" name="iss_D" value="<?= $book['Issue_Date']; ?>" required></td>
                 </tr>
                 <tr>
                     <th>Due Date</th>
-                    <td><input type="date" name="due_D" value="<?= $book['Due_D']; ?>" required></td>
+                    <td><input type="date" name="due_D" value="<?= $book['Due_Date']; ?>" required></td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="text-align: center;">
-                        <input type="Submit" name="submit" value="Update">
+                <td style="text-align: center;">
+                        <input type="Submit" name="submit" value="Update">                    
+                    </td>
+<td>
                         <a href="Issue.php">
                             <input type="button" name="Back" value="Back">
+                        </a></td>
                         </a>
-                    </td>
                 </tr>
             </table>
     <?php } else {
         echo '<h4 style="color:red;">No Such Id Found</h4>';
-    } ?>
-</form>
+    } 
+    if (isset($book)) {
+        echo '<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>';
+        echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.css">';
+        echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.all.min.js"></script>';
+        
+        echo '<script type="text/javascript">
+                $(function() {
+                    Swal.fire({
+                        title: "Register",
+                        text: "Successfully!",
+                        icon: "success"
+                    });
+                });
+            </script>';
+    } else {
+        echo "Failed";
+    }
 
-<!-- 
-<script>
-        // Get the form element
-        const bookForm = document.getElementById('bookForm');
-
-        // Add an event listener to the form submission
-        bookForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
-            // Your code to handle form submission to the server
-            // For this example, we'll just show the success message
-            // Show the success message
-            const message = document.getElementById('message');
-            message.style.display = 'block';
-
-            // Hide the message after a few seconds (optional)
-            setTimeout(function() {
-                message.style.display = 'none';
-            }, 3000); // 3 seconds (adjust this as needed)
-        });
-    </script>
- -->
-
-   
+   ?>
 </body>
 
 </html>

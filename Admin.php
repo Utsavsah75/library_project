@@ -15,10 +15,10 @@
     <div id="background">
         <div id="top">
             <a href="#" class="fa fa-envelope" style="text-decoration:none;  color: white;">
-                utsavsah75@gmail.com
+                history@gmail.com
             </a>
             <a href="#" class="fa fa-phone" style="text-decoration:none; color: white;">
-                +977-9801219843
+                +977-9812345678
             </a>
             <a href="#" class="fa fa-facebook" style="text-decoration:none; padding:7px; float:right; color: white;"></a>
             <a href="#" class="fa fa-instagram" style="text-decoration:none; padding:7px; float:right; color: white;"></a>
@@ -123,10 +123,10 @@
         <a href="#" class="fa fa-twitter" style="text-decoration: none; padding: 10px 12px;color: white;"></a>
         <h2>Contant Address</h2>
         <a href="#" class="fa fa-phone" style="text-decoration: none; padding: 10px 12px;color: white;">
-            +977-9801219843
+            +977-9812345678
         </a> <br>
         <a href="#" class="fa fa-envelope" style="text-decoration: none; padding: 10px 12px; color:white;">
-            utsavsah75@gmail.com
+            history@gmail.com
         </a>
     </div>
     <div class="footer">Developed By : utsav </div>

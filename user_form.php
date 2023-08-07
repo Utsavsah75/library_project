@@ -15,17 +15,17 @@
         <div id="background">
             <div id="top">
                 <a href="#" class="fa fa-envelope" style="text-decoration:none;  color: white;">
-                    utsavsah75@gmail.com
+                    history@gmail.com
                 </a>
                 <a href="#" class="fa fa-phone" style="text-decoration:none; color: white;">
-                    +977-9801219843
+                    +977-9812345678
                 </a>
                 <a href="#" class="fa fa-facebook" style="text-decoration:none; padding:7px; float:right; color: white;"></a>
                 <a href="#" class="fa fa-instagram" style="text-decoration:none; padding:7px; float:right; color: white;"></a>
                 <a href="#" class="fa fa-twitter" style="text-decoration:none;  padding: 7px ; float:right; color: white;"></a>
             </div>
             <div id="menu">
-                <div id="logo">LIBRARY<b style="color:#2c7ad6 ;">ZONE</b>
+            <div id="logo"><b style="color:#2c7ad6 ;">HISTORY</b>LIBRARY
                 </div>
                 <div id="menu1">
                     <ul>
@@ -38,10 +38,10 @@
                         <a href="admin.php">
                             <li class="fa fa-user">Admin Login</li>
                         </a>
-                        <a href="register.html">
+                        <!-- <a href="register.html">
                             <li class="fa fa-registered">Register</li>
-                        </a>
-                        <a href="index.html">
+                        </a> -->
+                        <a href="index.php">
                             <li class="fa fa-user">Login</li>
                         </a>
 
@@ -49,12 +49,12 @@
                 </div>
             </div>
             <div id="slider">
-                <div id="x">WELCOME TO LIBRARY<b style="color: blue;">ZONE</b>
-                    <p style="font-size: 15PX;">YOU CAN WRITE SOME TEXT</p>
+            <div id="x">WELCOME TO <b style="color: #2c7ad6;">HISTORY</b>LIBRARY
+                <p style="font-size: 15PX;">YOU CAN READ SOME TEXT</p>
                 </div>
                 <div id="y">
                     <div id="l">
-                        <h2 style=" text-align: center; color: #2c7ad6;">New Member Registration</h2>
+                        <h2 style=" text-align: center; color: #2c7ad6;">New Student Registration</h2>
 
                         <div class="msg_holder" colspan="2" align="center" height:="200px">
                             <?php
@@ -132,10 +132,10 @@
                 <h2>Contact Address</h2>
 
                 <a href="#" class="fa fa-phone" style="text-decoration: none; padding: 10px 12px;color: white;">
-                    +977-9801219843
+                    +977-9812345678
                 </a> <br>
                 <a href="#" class="fa fa-envelope" style="text-decoration: none; padding: 10px 12px; color:white;">
-                    utsavsah75@gmail.com
+                    history@gmail.com
                 </a>
             </div>
             <div class="footer">Developed By: Utsav</div>

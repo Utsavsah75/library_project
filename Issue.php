@@ -51,7 +51,7 @@ require 'conn.php';
     </div>
     <!-- </div> -->
 
-    <input type="text" placeholder="Search" style=" float: left;margin-left: 975px;  border-radius: 8px;  border: 2px solid;   transform: translateY(-463px); width: 240px; height: 25px;">
+    <input type="text" placeholder="Search" style=" float: left;margin-left: 975px;  border-radius: 8px;  border: 2px solid;   transform: translateY(-420px); width: 240px; height: 25px;">
     <!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i> -->
 
 
@@ -113,11 +113,11 @@ require 'conn.php';
             if ($total != 0) {
                 while ($result = mysqli_fetch_assoc($data)) {
                     echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
-                <td style='border: 2px solid black; text-align: center;'>" . $result['Book ID'] . "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . $result['Book Name'] . "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . $result['User Name'] . "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . $result['Issue Date'] . "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . $result['Due Date'] . "</td>
+                <td style='border: 2px solid black; text-align: center;'>" . $result['Book_ID'] . "</td>
+                <td style='border: 2px solid black; text-align: center;'>" . $result['Book_Name'] . "</td>
+                <td style='border: 2px solid black; text-align: center;'>" . $result['User_Name'] . "</td>
+                <td style='border: 2px solid black; text-align: center;'>" . $result['Issue_Date'] . "</td>
+                <td style='border: 2px solid black; text-align: center;'>" . $result['Due_Date'] . "</td>
                 <td style='border: 2px solid black; text-align: center;'>
                     <a href='issue_update.php?Id=" . $result['Book ID'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
                     <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Book ID'] . "'>Delete</button>

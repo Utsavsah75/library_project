@@ -39,13 +39,13 @@ include('./header.php');
             <button class="tablinks" onclick="openTab(event, 'Borrow_Books')">Borrow Books</button>
             <button class="tablinks" onclick="openTab(event, 'Return_Books')">Return Books</button>
             <button class="tablinks" onclick="openTab(event, 'overdue_return')">Overdue Return</button>
-            <button class="tablinks" onclick="openTab(event, 'Add_Users')">Add Users</button>
+            <!-- <button class="tablinks" onclick="openTab(event, 'Add_Users')">Add Users</button> -->
             <!-- <button class="tablinks" onclick="openTab(event, 'Manage_Users')">Manage Users</button> -->
         </ul>
     </div>
 
-    <input type="text" placeholder="Search" style="float: left; margin-left: 975px; border-radius: 8px; border: 2px solid; transform: translateY(-503px); width: 240px; height: 25px;">
-    <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-495px);"></i>
+    <input type="text" placeholder="Search" style="float: left; margin-left: 975px; border-radius: 8px; border: 2px solid; transform: translateY(-455px); width: 240px; height: 25px;">
+    <!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-495px);"></i> -->
 
     
   <!-- *****************BORROW BOOK********************** -->
@@ -132,7 +132,7 @@ include('./header.php');
     </tr>
     <tr>
         <th>Fine</th>
-        <td><input type="text" name="Fine" value="Rs:.5" style="padding: 5px; background :red;"></td>
+        <td><input type="text" name="Fine" value="Rs:.10" style="padding: 5px; background :red;"></td>
     </tr>
 </table>
 

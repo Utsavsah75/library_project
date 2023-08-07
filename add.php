@@ -50,7 +50,7 @@ require 'conn.php';
     </div>
     <!-- </div> -->
 
-    <input type="text" placeholder="Search" style=" float: left;margin-left: 975px;  border-radius: 8px;  border: 2px solid;   transform: translateY(-463px); width: 240px; height: 25px;">
+    <input type="text" placeholder="Search" style=" float: left;margin-left: 975px;  border-radius: 8px;  border: 2px solid;   transform: translateY(-420px); width: 240px; height: 25px;">
     <!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i> -->
 
 
@@ -114,12 +114,12 @@ require 'conn.php';
 
         </form>
 
-        <table border="2px"style="border-collapse: collapse; width: 790px; height: 0px;margin-top: -450px; margin-left: 280px;">
+        <table border="2px"style="border-collapse: collapse; width: 790px; height: 0px;margin-top: -445px; margin-left: 280px;">
         <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
                 <th>User ID</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Password</th>
+                <!-- <th>Password</th> -->
                 <th>Gender</th>
                 <th>Contact_No</th>
                 <th>Faculty</th>
@@ -142,7 +142,6 @@ require 'conn.php';
     <td style='border: 2px solid black; text-align: center;'>" . $result['User ID'] . "</td>
     <td style='border: 2px solid black; text-align: center;'>" . $result['Name'] . "</td>
     <td style='border: 2px solid black; text-align: center;'>" . $result['Email'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Password'] . "</td>
     <td style='border: 2px solid black; text-align: center;'>" . $result['Gender'] . "</td>
     <td style='border: 2px solid black; text-align: center;'>" . $result['Phone'] . "</td>
     <td style='border: 2px solid black; text-align: center;'>" . $result['Faculty'] . "</td>

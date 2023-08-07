@@ -25,7 +25,7 @@
                 <a href="#" class="fa fa-twitter" style="text-decoration:none;  padding: 7px ; float:right; color: white;"></a>
             </div>
             <div id="menu">
-                <div id="logo">LIBRARY<b style="color:#2c7ad6 ;">ZONE</b>
+            <div id="logo"><b style="color:#2c7ad6 ;">HISTORY</b>LIBRARY
                 </div>
                 <div id="menu1">
                     <ul>
@@ -35,13 +35,13 @@
                         <a href="gall.php">
                             <li class="fa fa-image">Gallery</li>
                         </a>
-                        <a href="admin.html">
+                        <!--<a href="admin.html">
                             <li class="fa fa-user">Admin Login</li>
                         </a>
-                        <a href="register.html">
+                         <a href="register.html">
                             <li class="fa fa-registered">Register</li>
-                        </a>
-                        <a href="index.html">
+                        </a> -->
+                        <a href="admin.php">
                             <li class="fa fa-user">Login</li>
                         </a>
 

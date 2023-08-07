@@ -1,0 +1,141 @@
+/* Global styles */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, rgba(116, 124, 129, 0.733), rgb(147, 151, 151));
+    font-family: Arial, sans-serif;
+    color: white;
+  }
+  
+  html, body {
+    height: 100%;
+  }
+  
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .p {
+    text-align: center;
+  }
+  
+  .p h4 {
+    margin-top: 20px;
+  }
+  
+  .ups {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url(utsav.jpg); /* Add the background image here */
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    border: 5px solid #fafafa;
+    width: 100px;
+    height: 100px;
+    margin-left: 75px;
+    margin-top: -195px;
+    border-radius: 100px;
+  }
+  .ups1{
+    margin-left: -10px;
+    color: rgb(255, 255, 255);
+    width: 300px;
+    height: 350px;
+    margin-top: -200px;
+    margin-left: -550px;
+    border-radius: 10px;
+    background-image: linear-gradient(180deg, rgb(12, 12, 22) 10%, rgb(10, 32, 226) 60.5%);
+  }
+  /********************2222222222222222222*******************/
+  .ups2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url(library1.jpg); 
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    border: 5px solid #fafafa;
+    width: 100px;
+    height: 400px;
+    margin-left: 160px;
+    margin-top: -195px;
+    border-radius: 100px;
+  }
+  .ups3{
+    color: rgb(255, 255, 255);
+    width: 338px;
+    height: 350px;
+    margin-top: -200px;
+    margin-left: 812px;
+    border-radius: 10px;
+    background-image: linear-gradient(180deg, rgb(12, 12, 22) 10%, rgb(10, 32, 226) 60.5%);background-image: linear-gradient(180deg, rgb(12, 12, 22) 10%, rgb(10, 32, 226) 60.5%);
+  }
+  
+
+  /********************33333333333333333333*******************/
+
+  
+  .ups65 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* background-image: url(utsav.jpg);  */
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    border: 5px solid #fafafa;
+    width: 100px;
+    height: 100px;
+    margin-left: 75px;
+    margin-top: -195px;
+    border-radius: 100px;
+  }
+  .ups35{
+    margin-left: -10px;
+    color: rgb(255, 255, 255);
+    width: 300px;
+    height: 350px;
+    margin-top: -200px;
+    margin-left: -800px;
+    border-radius: 10px;
+    background-image: linear-gradient(180deg, rgb(12, 12, 22) 10%, rgb(10, 32, 226) 60.5%);
+  }
+  
+
+
+  /********************44444444444444444444*******************/
+  .ups4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* background-image: url(utsav.jpg);  */
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    border: 5px solid #fafafa;
+    width: 100px;
+    height: 100px;
+    margin-left: 75px;
+    margin-top: -195px;
+    border-radius: 100px;
+  }
+  .ups4{
+    margin-left: -10px;
+    color: rgb(255, 255, 255);
+    width: 300px;
+    height: 350px;
+    margin-top: -200px;
+    margin-left: -800px;
+    border-radius: 10px;
+    background-image: linear-gradient(180deg, rgb(12, 12, 22) 10%, rgb(10, 32, 226) 60.5%);
+  }
+  
