@@ -2,7 +2,6 @@
 require 'conn.php';
 require 'check_admin.php';
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -24,13 +23,13 @@ require 'check_admin.php';
     </div>
     <!-- <div class="library-contain"> -->
     <div class="library-container">
-        <div class="top">
+        <!-- <div class="top">
             <marquee class="marquee" direction="alternate" scrollamount="12" onmouseover="this.stop()" onmouseout="this.start()"><b>Welcome To Library</b></marquee>
-        </div>
+        </div> -->
         <div class="top1">
             <ul>
                 <li><a href="all_books.php"><i class="fa fa-book"></i>All Books</a></li>
-                <li><a href="#"><i class="fa fa-users"></i>All Members</a></li>
+                <li><a href="all_member.php"><i class="fa fa-users"></i>All Members</a></li>
                 <!-- <li><a href="#"><i class="fas fa-shopping-cart"></i>Issue Books</a></li> -->
                 <li><a href="#"><i class="fa fa-hourglass-half"></i>Pending Books</a></li>
                 <!-- <li><a href="#"><i class="fa fa-sign-out-alt"></i>Manage Users</a></li> -->
@@ -45,8 +44,8 @@ require 'check_admin.php';
         <ul>
             <a style="text-decoration: none;" href="book_page.php"> <button> Add Books</button></a>
             <a style="text-decoration: none;" href="Issue.php"><button> Issue Books</button></a>
-            <!-- <a style="text-decoration: none;" href="return.php"> <button> Return Books</button></a> -->
             <a style="text-decoration: none;" href="add.php"> <button> Add Users</button></a>
+            <!-- <a style="text-decoration: none;" href="return.php"> <button> Return Books</button></a> -->
             <!-- <a style="text-decoration: none;" href="manage.php"> <button> Manage Users</button></a> -->
         </ul>
     </div>
@@ -58,7 +57,7 @@ require 'check_admin.php';
     <div class="container3">
 
         <!---*****************ADD BOOKS**********************-->
-        <div id="Add_Books" class="tabcontent1">
+        <div id="Add_Books" class="tabcontent1" style="opacity: 100%;background-color: rgba(255, 255, 255, 0.4);">
 
             <p style="display:none; margin-left: 10px;">This Field is required:</p>
             <form id="bookForm" method="POST" action="add_book_data.php" autocomplete="off">

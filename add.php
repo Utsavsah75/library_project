@@ -22,13 +22,13 @@ require 'conn.php';
     </div>
     <!-- <div class="library-contain"> -->
     <div class="library-container">
-        <div class="top">
+        <!-- <div class="top">
             <marquee class="marquee" direction="alternate" scrollamount="12" onmouseover="this.stop()" onmouseout="this.start()"><b>Welcome To Library</b></marquee>
-        </div>
+        </div> -->
         <div class="top1">
             <ul>
                 <li><a href="all_books.php"><i class="fa fa-book"></i>All Books</a></li>
-                <li><a href="#"><i class="fa fa-users"></i>All Members</a></li>
+                <li><a href="all_member.php"><i class="fa fa-users"></i>All Members</a></li>
                 <!-- <li><a href="#"><i class="fas fa-shopping-cart"></i>Issue Books</a></li> -->
                 <li><a href="#"><i class="fa fa-hourglass-half"></i>Pending Books</a></li>
                 <!-- <li><a href="#"><i class="fa fa-sign-out-alt"></i>Manage Users</a></li> -->
@@ -56,10 +56,11 @@ require 'conn.php';
 
 
     <!---*****************ADD USERS**********************-->
-    <div id="Add_Users" class="tabcontent4">
+    <div id="Add_Users" class="tabcontent4"  style="opacity: 100%;background-color: rgba(255, 255, 255, 0.4);">
+    <!-- <form id="bookForm" method="POST" action="add_book_data.php" autocomplete="off"> -->
 
         <p style="display:none; margin-left: 10px;">This Field is required:</p>
-        <form id="userForm" onsubmit="event.preventDefault(); onFormSubmit();" autocomplete="off">
+        <form id="userForm" method="POST" action="add_user_data.php" autocomplete="on">
             <table>
                 <tr>
                     <th>User ID</th>
@@ -111,7 +112,6 @@ require 'conn.php';
                 </tr>
             </table>
 
-
         </form>
 
         <table border="2px"style="border-collapse: collapse; width: 790px; height: 0px;margin-top: -445px; margin-left: 280px;">
@@ -147,7 +147,7 @@ require 'conn.php';
     <td style='border: 2px solid black; text-align: center;'>" . $result['Faculty'] . "</td>
     <td style='border: 2px solid black; text-align: center;'>" . $result['Address'] . "</td>
     <td style='border: 2px solid black; text-align: center;'>
-        <a href='newuser_update.php?Id=" . $result['Id'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
+        <a href='newuser_update.php?Id=" . $result['User_Id'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
      
         <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button></a>
         
