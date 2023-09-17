@@ -15,9 +15,11 @@ body {
     font-size: 1.75em;
 }
 
+
+
 .library-container {
     width: 82%;
-    height: 100%;
+    height: 125px;
     padding: 10px;
     margin: 0 auto;
     position: relative;
@@ -28,14 +30,27 @@ body {
     box-sizing: border-box;
 }
 
-.top {
+
+.top input[type="text"] {
+    float: left;
+    margin-left: 975px;
+    border-radius: 8px;
+    border: 2px solid;
+    margin-top: -20px;
+    transform: translateY(-420px);
+    width: 240px;
+    height: 25px;
+}
+
+
+/* .top {
     height: 35px;
     font-size: 40px;
     line-height: 35px;
     text-align: center;
     margin-bottom: 10px;
     background-color: transparent;
-}
+} */
 
 .top1 {
     height: 50px;
@@ -61,6 +76,7 @@ body {
     width: 120px;
     height: 35px;
     cursor: pointer;
+    margin-top: 40px;
     border: 2px solid;
     font-weight: bold;
     text-align: center;
@@ -91,7 +107,7 @@ body {
     width: 175px;
     height: 350px;
     padding: 10px;
-    margin-top: 20px;
+    margin-top: 50px;
     border: 2px solid;
     margin-left: 15px;
     border-radius: 10px;
@@ -143,65 +159,20 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
-.tabcontent1 {
-    width: 1072px;
-    height: 500px;
+.tabcontent1, .tabcontent2, .tabcontent3, .tabcontent4, .tabcontent5 {
+    width: 350px;
+    height: 350px;
     display: block;
     font-weight: bold;
-    border: 1px solid;
-    margin-left: 200px;
+    border: 1px solid white; /* Changed 'white' to 'solid' for a border style */
+    margin-left: 300px;
     margin-top: -350px;
     border-radius: 10px;
-    background-color: #ddcece;
-}
+    opacity: 100%;
+    background-color: rgba(255, 255, 255, 0.4);
 
-.tabcontent2 {
-    width: 1072px;
-    height: 420px;
-    display: block;
-    font-weight: bold;
-    border: 1px solid;
-    margin-left: 200px;
-    margin-top: -350px;
-    border-radius: 10px;
-    background-color: #ddcece;
-}
+    }
 
-.tabcontent3 {
-    width: 1072px;
-    height: 420px;
-    display: block;
-    font-weight: bold;
-    border: 1px solid;
-    margin-left: 200px;
-    margin-top: -350px;
-    border-radius: 10px;
-    background-color: #ddcece;
-}
-
-.tabcontent4 {
-    width: 1072px;
-    height: 420px;
-    display: block;
-    font-weight: bold;
-    border: 1px solid;
-    margin-left: 200px;
-    margin-top: -360px;
-    border-radius: 10px;
-    background-color: #ddcece;
-}
-
-.tabcontent5 {
-    width: 1072px;
-    height: 420px;
-    display: block;
-    font-weight: bold;
-    border: 1px solid;
-    margin-left: 200px;
-    margin-top: -350px;
-    border-radius: 10px;
-    background-color: #ddcece;
-}
 /*
 tbody .id {
 

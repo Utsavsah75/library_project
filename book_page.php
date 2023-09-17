@@ -51,17 +51,19 @@ require 'check_admin.php';
     </div>
     <!-- </div> -->
 
-    <input type="text" placeholder="Search" style=" float: left;margin-left: 975px;  border-radius: 8px;  border: 2px solid;   transform: translateY(-420px); width: 240px; height: 25px;">
+    <div class="top">
+        <input type="text" id="search" name="search" placeholder="Search">
+    </div>
     <!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i> -->
 
     <div class="container3">
 
         <!---*****************ADD BOOKS**********************-->
-        <div id="Add_Books" class="tabcontent1" style="opacity: 100%;background-color: rgba(255, 255, 255, 0.4);">
+        <div id="Add_Books" class="tabcontent1">
 
             <p style="display:none; margin-left: 10px;">This Field is required:</p>
             <form id="bookForm" method="POST" action="add_book_data.php" autocomplete="off">
-                <table style="margin-top: 10px;" ;>
+                <table id="table" style="margin-top: 10px;" ;>
                     <tr>
                         <th><label for="book_id">Book ID*</label></th>
                         <td><input type="number" id="book_id" placeholder="Enter Book ID" style="padding: 5px;" name="book_id" required></td>
@@ -85,104 +87,104 @@ require 'check_admin.php';
                         </td>
                     </tr>
                 </table>
-
+                <script src="search.js"></script>
             </form>
         </div>
-
-        <table border="2" style="width: 57.5%; border-collapse: collapse; margin-left: 500px;margin-top: -520px;">
+        <!-- <table border="2" style="width: 57.5%; border-collapse: collapse; margin-left: 500px;margin-top: -520px;">
             <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
                 <th style='width:70px' ;>Book Id</th>
                 <th>Book Name</th>
                 <th>Book Author</th>
                 <th style='width:70px' ;>Quantity</th>
-                <th style='width:108px' ;>Action</th>
+                <th style='width:108px' ;>Action</th> -->
 
-            </tr>
-            <?php
-            include("admin_bookserver.php");
-            include('message.php');
-            error_reporting(0);
-            $query = "SELECT * FROM add_book";
-            $data = mysqli_query($conn, $query);
-            $total = mysqli_num_rows($data);
+        <!-- </tr> -->
+        <?php
+        //             include("admin_bookserver.php");
+        //             include('message.php');
+        //             error_reporting(0);
+        //             $query = "SELECT * FROM add_book";
+        //             $data = mysqli_query($conn, $query);
+        //             $total = mysqli_num_rows($data);
 
-            if ($total != 0) {
-                while ($result = mysqli_fetch_assoc($data)) {
-                    echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Id'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Book Name'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Author Name'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Quantity'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>
-        <a href='update_book.php?Id=" . $result['Id'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
-     
-        <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button></a>
-        
-    </td>
-</tr>";
-                }
-            } else {
-                echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
-            }
-            ?>
-        </table>
-    </div>
-    <script>
-        const timeElement = document.querySelector(".time");
-        const dateElement = document.querySelector(".date");
+        //             if ($total != 0) {
+        //                 while ($result = mysqli_fetch_assoc($data)) {
+        //                     echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
+        //     <td style='border: 2px solid black; text-align: center;'>" . $result['Id'] . "</td>
+        //     <td style='border: 2px solid black; text-align: center;'>" . $result['Book Name'] . "</td>
+        //     <td style='border: 2px solid black; text-align: center;'>" . $result['Author Name'] . "</td>
+        //     <td style='border: 2px solid black; text-align: center;'>" . $result['Quantity'] . "</td>
+        //     <td style='border: 2px solid black; text-align: center;'>
+        //         <a href='update_book.php?Id=" . $result['Id'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
 
-        function formatTime(date) {
-            const hours12 = date.getHours() % 12 || 12;
-            const minutes = date.getMinutes();
-            const seconds = date.getSeconds();
-            const isAm = date.getHours() < 12;
+        // <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button></a>
 
-            return `${hours12.toString().padStart(2, "0")}:${minutes
+        //     </td>
+        // </tr>";
+        //                 }
+        //             } else {
+        //                 echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
+        //             }
+        //             
+        ?>
+        <!-- </table>
+    </div> -->
+        <script>
+            const timeElement = document.querySelector(".time");
+            const dateElement = document.querySelector(".date");
+
+            function formatTime(date) {
+                const hours12 = date.getHours() % 12 || 12;
+                const minutes = date.getMinutes();
+                const seconds = date.getSeconds();
+                const isAm = date.getHours() < 12;
+
+                return `${hours12.toString().padStart(2, "0")}:${minutes
                 .toString()
                 .padStart(2, "0")}:${seconds.toString().padStart(2, "0")} ${isAm ? "AM" : "PM"}`;
-        }
+            }
 
-        function formatDate(date) {
-            const DAYS = [
-                "Sunday",
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday"
-            ];
-            const MONTHS = [
-                "January",
-                "February",
-                "March",
-                "April",
-                "May",
-                "June",
-                "July",
-                "August",
-                "September",
-                "October",
-                "November",
-                "December"
-            ];
+            function formatDate(date) {
+                const DAYS = [
+                    "Sunday",
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday"
+                ];
+                const MONTHS = [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
+                ];
 
-            return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`;
-        }
+                return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`;
+            }
 
-        // Initial update
-        const now = new Date();
-        timeElement.textContent = formatTime(now);
-        dateElement.textContent = formatDate(now);
-
-        // Update every second
-        setInterval(() => {
+            // Initial update
             const now = new Date();
-
             timeElement.textContent = formatTime(now);
             dateElement.textContent = formatDate(now);
-        }, 1000);
-    </script>
+
+            // Update every second
+            setInterval(() => {
+                const now = new Date();
+
+                timeElement.textContent = formatTime(now);
+                dateElement.textContent = formatDate(now);
+            }, 1000);
+        </script>
 </body>
 <!-- <a href='delete_book.php?Id=" . $result['Id'] . "'> <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button></a> -->
 

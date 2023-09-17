@@ -19,15 +19,30 @@ if (isset($_POST['submit'])) {
 //    $sql = "DELETE FROM `add_book` WHERE `Book Id` = '$Id' AND `Book Name` = '$Name' AND `Author Name` = '$Author' AND `Quantity` = '$Quantity'";
 
 
-    $data = mysqli_query($conn, $sql);
-    if ($data) {
-        // Book added successfully, display alert message
-        $_SESSION['msg'];
-        header('location: book_page.php');
-    } else {
-        // Failed to add the book, display alert message
-        $_SESSION['msg'] = "Failed to add the book.";
-        header('location: book_page.php');
-    }
+
+ $data = mysqli_query($conn, $sql);
+
+if ($data) {
+    // User added successfully, display a success message with SweetAlert
+    echo '<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>';
+    echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.css">';
+    echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.all.min.js"></script>';
+    
+    echo '<script type="text/javascript">
+            $(function() {
+                Swal.fire({
+                    title: "Book Update",
+                    text: "Successfully!",
+                    icon: "success"
+                }).then(function() {
+                    //  Redirect to the book_page.php page after displaying the message
+                    window.location.href = "all_books.php";
+                });
+            });
+        </script>';
+} else {
+    // Failed to add the user
+    echo "Failed to add the New User.";
+}
 }
 ?>

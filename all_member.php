@@ -71,10 +71,10 @@
 <!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i> -->
 
 <div class="search">
-    <input type="text" placeholder="Search">
+    <input type="text" id="input" name="input" placeholder="Search" onkeyup="searchfun()">
 
     <body>
-        <table border="2">
+        <table id="table" border="2">
             <tr>
                 <th>User ID</th>
                 <th>Name</th>
@@ -84,6 +84,7 @@
                 <th>Faculty</th>
                 <th>Address</th>
                 <th>Action</th>
+                <script src="search.js"></script>
             </tr>
             <?php
             // session_start();
@@ -115,7 +116,7 @@
             } else {
                 echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
             }
-           
+
 
 
             ?>

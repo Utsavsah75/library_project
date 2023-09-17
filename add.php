@@ -50,14 +50,15 @@ require 'conn.php';
     </div>
     <!-- </div> -->
 
-    <input type="text" placeholder="Search" style=" float: left;margin-left: 975px;  border-radius: 8px;  border: 2px solid;   transform: translateY(-420px); width: 240px; height: 25px;">
-    <!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i> -->
+    <div class="top">
+        <input type="text" placeholder="Search">
+    </div> <!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i> -->
 
 
 
     <!---*****************ADD USERS**********************-->
-    <div id="Add_Users" class="tabcontent4"  style="opacity: 100%;background-color: rgba(255, 255, 255, 0.4);">
-    <!-- <form id="bookForm" method="POST" action="add_book_data.php" autocomplete="off"> -->
+    <div id="Add_Users" class="tabcontent4">
+        <!-- <form id="bookForm" method="POST" action="add_book_data.php" autocomplete="off"> -->
 
         <p style="display:none; margin-left: 10px;">This Field is required:</p>
         <form id="userForm" method="POST" action="add_user_data.php" autocomplete="on">
@@ -114,8 +115,8 @@ require 'conn.php';
 
         </form>
 
-        <table border="2px"style="border-collapse: collapse; width: 790px; height: 0px;margin-top: -445px; margin-left: 280px;">
-        <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
+        <table border="2px" style="border-collapse: collapse; width: 790px; height: 0px;margin-top: -445px; margin-left: 280px;">
+            <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
                 <th>User ID</th>
                 <th>Name</th>
                 <th>Email</th>
