@@ -42,7 +42,7 @@ require 'check_admin.php';
             <a style="text-decoration: none;" href="dashboard.php"> <button> DashBoard</button></a>
             <a style="text-decoration: none;" href="book_page.php"> <button> Add Books</button></a>
             <a style="text-decoration: none;" href="Issue.php"><button> Issue Books</button></a>
-            <a style="text-decoration: none;" href="return.php">  <button> Return Books</button></a>
+            <a style="text-decoration: none;" href="return.php"> <button> Return Books</button></a>
             <a style="text-decoration: none;" href="add.php"> <button> Add Users</button></a>
             <!-- <a style="text-decoration: none;" href="manage.php"> <button> Manage Users</button></a> -->
         </ul>
@@ -52,7 +52,7 @@ require 'check_admin.php';
         <div class="row">
             <div class="col-xl-3 col-md-6"> <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
                 <div class="card bg-book text-white mb-4">
-                    <div class="card-body">Total Books<br>
+                    <div class="card-body">Total Books<br><br>
                         <?php
                         $quentity = "SELECT * FROM add_book";
                         $quentity_book = mysqli_query($conn, $quentity);
@@ -65,22 +65,21 @@ require 'check_admin.php';
                         ?>
 
                     </div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="all_books.php">View Details</a>
-                        <div class="small text-white">
-                            <i class="fas fa-angle-right"></i>
-                        </div>
+                    <div class="footer1">
+                        <a href="all_books.php">View Details</a>
                     </div>
+
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!---*****************Total User**********************-->
     <div id="Add_User" class="totaluser">
         <div class="row">
             <div class="col-xl-3 col-md-6"> <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
                 <div class="card bg-user text-white mb-4">
-                    <div class="card-body">Total User<br>
+                    <div class="card-body">Total User<br><br>
                         <?php
                         $quentity = "SELECT * FROM addnew_user";
                         $user_quantity = mysqli_query($conn, $quentity);
@@ -92,22 +91,22 @@ require 'check_admin.php';
                         }
                         ?>
                     </div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="all_member.php">View Details</a>
-                        <div class="small text-white">
-                            <i class="fas fa-angle-right"></i>
-                        </div>
+
+                    <div class="footer2">
+                        <a href="all_member.php">View Details</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
     <!---*****************Total issue**********************-->
     <div id="Add_issue" class="totalissue">
         <div class="row">
             <div class="col-xl-3 col-md-6"> <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
                 <div class="card bg-issue text-white mb-4">
-                    <div class="card-body">issue Books<br>
+                    <div class="card-body">issue Books<br><br>
                         <?php
                         $quentity = "SELECT * FROM issue_book";
                         $issue_quantity = mysqli_query($conn, $quentity);
@@ -119,21 +118,19 @@ require 'check_admin.php';
                         }
                         ?>
                     </div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
-                        <div class="small text-white">
-                            <i class="fas fa-angle-right"></i>
-                        </div>
+                    <div class="footer3">
+                        <a href="#">View Details</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div> <!---*****************Total return**********************-->
     <div id="Add_return" class="totalreturn">
         <div class="row">
             <div class="col-xl-3 col-md-6"> <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
                 <div class="card bg-return text-white mb-4">
-                    <div class="card-body">Return Books<br>
+                    <div class="card-body">Return Books<br><br>
                         <?php
                         $quentity = "SELECT * FROM request_book";
                         $return_quentity = mysqli_query($conn, $quentity);
@@ -145,89 +142,83 @@ require 'check_admin.php';
                         }
                         ?>
                     </div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
-                        <div class="small text-white">
-                            <i class="fas fa-angle-right"></i>
-                        </div>
+                    <div class="footer4">
+                        <a href="#">View Details</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!---*****************Total Borrow Books**********************-->
     <div id="Add_borrow" class="borrowbook">
         <div class="row">
             <div class="col-xl-3 col-md-6"> <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
                 <div class="card bg-borrow text-white mb-4">
-                    <div class="card-body">Total Borrow Books</div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
-                        <div class="small text-white">
-                            <i class="fas fa-angle-right"></i>
-                        </div>
+                    <div class="card-body">Total Borrow Books<br><br></div>
+                    <div class="footer5">
+                        <a href="#">View Details</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script>
-        const timeElement = document.querySelector(".time");
-        const dateElement = document.querySelector(".date");
+        <script>
+            const timeElement = document.querySelector(".time");
+            const dateElement = document.querySelector(".date");
 
-        function formatTime(date) {
-            const hours12 = date.getHours() % 12 || 12;
-            const minutes = date.getMinutes();
-            const seconds = date.getSeconds();
-            const isAm = date.getHours() < 12;
+            function formatTime(date) {
+                const hours12 = date.getHours() % 12 || 12;
+                const minutes = date.getMinutes();
+                const seconds = date.getSeconds();
+                const isAm = date.getHours() < 12;
 
-            return `${hours12.toString().padStart(2, "0")}:${minutes
+                return `${hours12.toString().padStart(2, "0")}:${minutes
                 .toString()
                 .padStart(2, "0")}:${seconds.toString().padStart(2, "0")} ${isAm ? "AM" : "PM"}`;
-        }
+            }
 
-        function formatDate(date) {
-            const DAYS = [
-                "Sunday",
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday"
-            ];
-            const MONTHS = [
-                "January",
-                "February",
-                "March",
-                "April",
-                "May",
-                "June",
-                "July",
-                "August",
-                "September",
-                "October",
-                "November",
-                "December"
-            ];
+            function formatDate(date) {
+                const DAYS = [
+                    "Sunday",
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday"
+                ];
+                const MONTHS = [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
+                ];
 
-            return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`;
-        }
+                return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`;
+            }
 
-        // Initial update
-        const now = new Date();
-        timeElement.textContent = formatTime(now);
-        dateElement.textContent = formatDate(now);
-
-        // Update every second
-        setInterval(() => {
+            // Initial update
             const now = new Date();
-
             timeElement.textContent = formatTime(now);
             dateElement.textContent = formatDate(now);
-        }, 1000);
-    </script>
+
+            // Update every second
+            setInterval(() => {
+                const now = new Date();
+
+                timeElement.textContent = formatTime(now);
+                dateElement.textContent = formatDate(now);
+            }, 1000);
+        </script>
 </body>
 <!-- <a href='delete_book.php?Id=" . $result['Id'] . "'> <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button></a> -->
 

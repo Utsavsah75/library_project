@@ -13,6 +13,7 @@ body {
     opacity: 100%;
     display: block;
     font-size: 20px;
+    text-align: center;
     margin-left: 300px;
     margin-top: -362px;
     border-radius: 5px;
@@ -21,6 +22,9 @@ body {
     background-color: rgba(0, 195, 255, 0.486);
     border-image: linear-gradient(360deg, rgba(0, 255, 157, 0.885), rgba(0, 153, 241, 0.993)) 1;
 }
+a{
+    text-decoration: none;
+}
 
 .totaluser {
     width: 130px;
@@ -28,6 +32,7 @@ body {
     opacity: 100%;
     display: block;
     font-size: 20px;
+    text-align: center;
     margin-left: 445px;
     margin-top: -112px;
     border-radius: 5px;
@@ -44,6 +49,7 @@ body {
     opacity: 100%;
     display: block;
     font-size: 20px;
+    text-align: center;
     margin-left: 590px;
     border-radius: 5px;
     margin-top: -112px;
@@ -60,6 +66,7 @@ body {
     opacity: 100%;
     display: block;
     font-size: 20px;
+    text-align: center;
     margin-left: 735px;
     margin-top: -112px;
     border-radius: 5px;
@@ -76,6 +83,7 @@ body {
     opacity: 100%;
     display: block;
     font-size: 20px;
+    text-align: center;
     margin-left: 880px;
     margin-top: -112px;
     border-radius: 5px;
@@ -83,5 +91,72 @@ body {
     border: 2px solid transparent;
     background-color: rgba(0, 128, 0, 0.5);
     border-image: linear-gradient(360deg, rgba(1, 231, 1, 0.74), rgba(8, 241, 0, 0.473)) 1;
+
+}
+.footer1{
+    width: 130px;
+    height: 35px;
+    font-size: 20px;
+    margin-top: 29px;
+    border-radius: 2px;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgba(0, 195, 255, 0.699);
+    filter: drop-shadow(2px 2px 2px rgb(0, 0, 0));
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+
+
+}.footer2{
+    width: 130px;
+    height: 35px;
+    font-size: 20px;
+    margin-top: 29px;
+    border-radius: 2px;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.568);
+    filter: drop-shadow(2px 2px 2px rgb(0, 0, 0));
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+
+
+}.footer3{
+    width: 130px;
+    height: 35px;
+    font-size: 20px;
+    margin-top: 29px;
+    border-radius: 2px;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgba(255, 0, 0, 0.658);
+    filter: drop-shadow(2px 2px 2px rgb(0, 0, 0));
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+
+
+}.footer4{
+    width: 130px;
+    height: 35px;
+    font-size: 20px;
+    margin-top: 29px;
+    border-radius: 2px;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgba(255, 196, 0, 0.801);
+    filter: drop-shadow(2px 2px 2px rgb(0, 0, 0));
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+
+
+}
+.footer5{
+    width: 130px;
+    height: 35px;
+    font-size: 20px;
+    margin-top: 29px;
+    border-radius: 2px;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgba(44, 189, 51, 0.699);
+    filter: drop-shadow(2px 2px 2px rgb(0, 0, 0));
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+
 
 }
