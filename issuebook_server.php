@@ -5,12 +5,7 @@ require 'conn.php';
 $conn = new mysqli("localhost", "root", "", "library");
 // Check if the Book is Issue
 if (isset($_POST['Issue'])) {
-    // $ID       = $_POST['$ID'];
-    // $B_ID     = $_POST['B_ID'];
-    // $B_Name   = $_POST['$B_Name'];
-    // $U_Name   = $_POST['U_Name'];
-    // $Issue    = $_POST['iss_D'];
-    // $Due      = $_POST['due_D'];
+    // $ID = $_POST['$ID'];    $B_ID = $_POST['B_ID'];   $B_Name = $_POST['$B_Name'];  $U_Name = $_POST['U_Name'];   $Issue = $_POST['iss_D'];   $Due = $_POST['due_D']; 
     // Escape variables to prevent SQL injection
     $B_ID   = mysqli_real_escape_string($conn, $_POST['B_ID']);
     $B_Name = mysqli_real_escape_string($conn, $_POST['$B_Name']);

@@ -17,7 +17,7 @@ if (isset($_POST['login'])) {
     if (mysqli_num_rows($res) > 0) {
         $data = mysqli_fetch_assoc($res);
         $_SESSION['AdminLogin_successful'] = $data['Id'];        // session is set only if we found match
-        header("location: book_page.php");
+        header("location: dashboard.php");
     } else {
         $_SESSION['AdminLoginError'] = "Invalid Email / Password";
         header("location: Admin.php");

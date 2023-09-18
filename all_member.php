@@ -66,6 +66,17 @@
             color: red;
             opacity: 0.5;
         }
+        input[type="button"] {
+    width: 76px;
+    height: 34px;
+    margin-top: auto;
+    margin-left: 600px;
+    background-color: red;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
     </style>
 </head>
 <!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i> -->
@@ -116,12 +127,10 @@
             } else {
                 echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
             }
-
-
-
             ?>
         </table>
+        <p id="notFoundMessage" style="display: none;">Data not found</p> <!-- Ensure this element is present -->
+        <a style="text-decoration: none;" href="book_page.php"><input type="button" name="Back" value="Back"></a>
 </div>
 </body>
-
 </html>

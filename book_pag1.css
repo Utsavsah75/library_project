@@ -1,0 +1,87 @@
+body {
+    background-size: cover;
+    filter: brightness(80%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: url(LB.jpg);
+    background-position: center center;
+}
+
+.totalbook {
+    width: 130px;
+    height: 110px;
+    opacity: 100%;
+    display: block;
+    font-size: 20px;
+    margin-left: 300px;
+    margin-top: -362px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    border: 2px solid transparent;
+    background-color: rgba(0, 195, 255, 0.486);
+    border-image: linear-gradient(360deg, rgba(0, 255, 157, 0.885), rgba(0, 153, 241, 0.993)) 1;
+}
+
+.totaluser {
+    width: 130px;
+    height: 110px;
+    opacity: 100%;
+    display: block;
+    font-size: 20px;
+    margin-left: 445px;
+    margin-top: -112px;
+    border-radius: 5px;
+    color: rgb(0 ,0, 0);
+    border: 2px solid transparent;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-image: linear-gradient(360deg, rgba(0, 255, 157, 0.885), rgba(0, 153, 241, 0.993)) 1;
+
+}
+
+.totalissue {
+    width: 130px;
+    height: 110px;
+    opacity: 100%;
+    display: block;
+    font-size: 20px;
+    margin-left: 590px;
+    border-radius: 5px;
+    margin-top: -112px;
+    color: rgb(0 ,0, 0);
+    border: 2px solid transparent;
+    background-color: rgba(255, 0, 0, 0.527);
+    border-image: linear-gradient(360deg, rgba(255, 0, 191, 0.959), rgb(248, 0, 0)) 1;
+
+}
+
+.totalreturn {
+    width: 130px;
+    height: 110px;
+    opacity: 100%;
+    display: block;
+    font-size: 20px;
+    margin-left: 735px;
+    margin-top: -112px;
+    border-radius: 5px;
+    color: rgb(0 ,0, 0);
+    border: 2px solid transparent;
+    background-color: rgba(255, 165, 0, 0.75);
+    border-image: linear-gradient(360deg, rgba(0, 255, 157, 0.885), rgba(0, 153, 241, 0.993)) 1;
+
+}
+
+.borrowbook {
+    width: 130px;
+    height: 110px;
+    opacity: 100%;
+    display: block;
+    font-size: 20px;
+    margin-left: 880px;
+    margin-top: -112px;
+    border-radius: 5px;
+    color: rgb(0 ,0, 0);
+    border: 2px solid transparent;
+    background-color: rgba(0, 128, 0, 0.5);
+    border-image: linear-gradient(360deg, rgba(1, 231, 1, 0.74), rgba(8, 241, 0, 0.473)) 1;
+
+}

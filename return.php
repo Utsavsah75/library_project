@@ -23,9 +23,9 @@
     </div>
     <!-- <div class="library-contain"> -->
     <div class="library-container">
-        <div class="top">
+        <!-- <div class="top">
             <marquee class="marquee" direction="alternate" scrollamount="12" onmouseover="this.stop()" onmouseout="this.start()"><b>Welcome To Library</b></marquee>
-        </div>
+        </div> -->
         <div class="top1">
             <ul>
                 <li><a href="#"><i class="fa fa-book"></i>All Books</a></li>
@@ -42,11 +42,16 @@
     <div class="container1">
         <!-- <div class="library-container2"> -->
         <ul>
-        <a style="text-decoration: none;" href="book_page.php"> <button> Add Books</button></a>
+        <a style="text-decoration: none;" href="dashboard.php">  <button> DashBoard</button></a>
+            <a style="text-decoration: none;" href="book_page.php"> <button> Add Books</button></a>
+            <a style="text-decoration: none;" href="Issue.php"><button> Issue Books</button></a>
+            <a style="text-decoration: none;" href="return.php">  <button> Return Books</button></a>
+            <a style="text-decoration: none;" href="add.php"> <button> Add Users</button></a>
+        <!-- <a style="text-decoration: none;" href="book_page.php"> <button> Add Books</button></a>
         <a style="text-decoration: none;" href="Issue.php"><button> Issue Books</button></a>
         <a style="text-decoration: none;" href="return.php">  <button> Return Books</button></a>
         <a style="text-decoration: none;" href="add.php">  <button> Add Users</button></a>
-        <a style="text-decoration: none;" href="manage.php"> <button> Manage Users</button></a>
+        <a style="text-decoration: none;" href="manage.php"> <button> Manage Users</button></a> -->
         </ul>
     </div>
     <!-- </div> -->

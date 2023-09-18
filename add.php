@@ -41,11 +41,11 @@ require 'conn.php';
     <div class="container1">
         <!-- <div class="library-container2"> -->
         <ul>
+            <a style="text-decoration: none;" href="dashboard.php">  <button> DashBoard</button></a>
             <a style="text-decoration: none;" href="book_page.php"> <button> Add Books</button></a>
             <a style="text-decoration: none;" href="Issue.php"><button> Issue Books</button></a>
-            <!-- <a style="text-decoration: none;" href="return.php">  <button> Return Books</button></a> -->
+            <a style="text-decoration: none;" href="return.php">  <button> Return Books</button></a>
             <a style="text-decoration: none;" href="add.php"> <button> Add Users</button></a>
-            <!-- <a style="text-decoration: none;" href="manage.php"> <button> Manage Users</button></a> -->
         </ul>
     </div>
     <!-- </div> -->
@@ -149,7 +149,6 @@ require 'conn.php';
     <td style='border: 2px solid black; text-align: center;'>" . $result['Address'] . "</td>
     <td style='border: 2px solid black; text-align: center;'>
         <a href='newuser_update.php?Id=" . $result['User_Id'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
-     
         <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button></a>
         
     </td>
