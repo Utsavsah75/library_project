@@ -7,7 +7,7 @@ if (isset($_POST['login'])) {
     $Email = $_POST['email'];
     $password = $_POST['pwd'];
 
-    $sql = "SELECT * FROM students WHERE `email` = '{$Email}' AND `password` = '{$password}'";
+    $sql = "SELECT * FROM students WHERE `email` = '{$Email}' AND `password` = '{$password}' AND `verified` = '1'";
     $res = mysqli_query($conn, $sql);
 
     // if we found data with the given username and password in the database

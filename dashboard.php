@@ -31,7 +31,8 @@ require 'check_admin.php';
                 <li><a href="all_member.php"><i class="fa fa-users"></i>All Members</a></li>
                 <li><a href="#"><i class="fa fa-hourglass-half"></i>Pending Books</a></li>
                 <li><a href="index.php"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
-                <!-- <li><a href="#"><i class="fas fa-shopping-cart"></i>Issue Books</a></li> --> <!-- <li><a href="#"><i class="fa fa-sign-out-alt"></i>Manage Users</a></li> -->
+                <!-- <li><a href="#"><i class="fas fa-shopping-cart"></i>Issue Books</a></li> -->
+                <!-- <li><a href="#"><i class="fa fa-sign-out-alt"></i>Manage Users</a></li> -->
             </ul>
         </div>
     </div>
@@ -50,7 +51,8 @@ require 'check_admin.php';
     <!---*****************Total Book --1--**********************-->
     <div id="Add_book" class="totalbook">
         <div class="row">
-            <div class="col-xl-3 col-md-6"> <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
+            <div class="col-xl-3 col-md-6">
+                <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
                 <div class="card bg-book text-white mb-4">
                     <div class="card-body">Total Books<br><br>
                         <?php
@@ -77,7 +79,8 @@ require 'check_admin.php';
     <!---*****************Total User --2--**********************-->
     <div id="Add_User" class="totaluser">
         <div class="row">
-            <div class="col-xl-3 col-md-6"> <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
+            <div class="col-xl-3 col-md-6">
+                <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
                 <div class="card bg-user text-white mb-4">
                     <div class="card-body">Total User<br><br>
                         <?php
@@ -104,7 +107,8 @@ require 'check_admin.php';
     <!---*****************Total issue --3--**********************-->
     <div id="Add_issue" class="totalissue">
         <div class="row">
-            <div class="col-xl-3 col-md-6"> <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
+            <div class="col-xl-3 col-md-6">
+                <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
                 <div class="card bg-issue text-white mb-4">
                     <div class="card-body">issue Books<br><br>
                         <?php
@@ -125,10 +129,12 @@ require 'check_admin.php';
             </div>
         </div>
     </div>
-    </div> <!---*****************Total return --4--**********************-->
+    </div>
+    <!---*****************Total return --4--**********************-->
     <div id="Add_return" class="totalreturn">
         <div class="row">
-            <div class="col-xl-3 col-md-6"> <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
+            <div class="col-xl-3 col-md-6">
+                <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
                 <div class="card bg-return text-white mb-4">
                     <div class="card-body">Return Books<br><br>
                         <?php
@@ -153,7 +159,8 @@ require 'check_admin.php';
     <!---*****************Total Borrow Books --5--**********************-->
     <div id="Add_request" class="request">
         <div class="row">
-            <div class="col-xl-3 col-md-6"> <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
+            <div class="col-xl-3 col-md-6">
+                <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
                 <div class="card bg-requested text-white mb-4">
                     <div class="card-body">Total Requested Users<br>
                         <?php
@@ -178,52 +185,55 @@ require 'check_admin.php';
         <!-- Notice: session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\library_project\check_admin.php on line 2 -->
 
         <!--*******************************************************************************************-->
-        <table border="2px" style="border-collapse: collapse; width: 1000px; height: 0px;margin-top: -235px; margin-left: -600px;">
-            <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
-                <th>User ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Gender</th>
-                <th>Contact_No</th>
-                <th>Faculty</th>
-                <th>Address</th>
-                <th>Photo</th>
-                <th>Action</th>
-                <!-- <th>Password</th> -->
-            </tr>
+        <div class="confirm_user" style="margin-top: 20rem;">
 
-            </tr>
-            <?php
-            include("conformuser_server.php");
-            include('message.php');
-            error_reporting(0);
-            $query = "SELECT * FROM students";
-            $data = mysqli_query($conn, $query);
-            $total = mysqli_num_rows($data);
+            <table border="2px" style="border-collapse: collapse; width: 1000px; height: 0px;margin-top: -235px; margin-left: -600px;">
+                <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Contact_No</th>
+                    <th>Faculty</th>
+                    <th>Address</th>
+                    <th>Photo</th>
+                    <th>Action</th>
+                    <!-- <th>Password</th> -->
+                </tr>
 
-            if ($total != 0) {
-                while ($result = mysqli_fetch_assoc($data)) {
-                    echo "<tr style='    background-color: rgba(255, 255, 255, 0.5);' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='rgba(255, 255, 255, 0.568)';\">
-    <td style='border: 2px solid black; text-align: center;'>" . $result['User ID'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Name'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Email'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Gender'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Phone'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Faculty'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Address'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Photo'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>
-        <a href='newuser_update.php?Id=" . $result['User_Id'] . "'><button style='height: 25px; width: 60px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Conform</button></a>
-        <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button></a>
-        
-    </td>
-</tr>";
+                </tr>
+                <?php
+                // include("conformuser_server.php");
+                // include('message.php');
+                // error_reporting(0);
+                $query = "SELECT * FROM students";
+                $data = mysqli_query($conn, $query);
+                $total = mysqli_num_rows($data);
+
+                if ($total != 0) {
+                    while ($result = mysqli_fetch_assoc($data)) {
+                        echo "<tr style='    background-color: rgba(255, 255, 255, 0.5);' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='rgba(255, 255, 255, 0.568)';\">
+        <td style='border: 2px solid black; text-align: center;'>" . $result['id'] . "</td>
+        <td style='border: 2px solid black; text-align: center;'>" . $result['name'] . "</td>
+        <td style='border: 2px solid black; text-align: center;'>" . $result['email'] . "</td>
+        <td style='border: 2px solid black; text-align: center;'>" . $result['gender'] . "</td>
+        <td style='border: 2px solid black; text-align: center;'>" . $result['phone'] . "</td>
+        <td style='border: 2px solid black; text-align: center;'>" . $result['faculty'] . "</td>
+        <td style='border: 2px solid black; text-align: center;'>" . $result['address'] . "</td>
+        <td style='border: 2px solid black; text-align: center;'> <img src='" . $result['photo'] . "'>" . "</td>
+        <td style='border: 2px solid black; text-align: center;'>
+            <a href='newuser_update.php?Id=" . $result['id'] . "'><button style='height: 25px; width: 60px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Conform</button></a>
+            <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['id'] . "'>Delete</button></a>
+            
+        </td>
+    </tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='5' style='padding: 10px; color=red; border: 2px solid black;'>No Available Yet</td></tr>";
                 }
-            } else {
-                echo "<tr><td colspan='5' style='padding: 10px; color=red; border: 2px solid black;'>No Available Yet</td></tr>";
-            }
-            ?>
-        </table>
+                ?>
+            </table>
+        </div>
     </div>
 
     <script>
