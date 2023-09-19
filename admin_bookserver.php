@@ -11,16 +11,10 @@ if (isset($_POST['submit'])) {
 
     $sql = "INSERT INTO add_book (`Book Id`, `Book Name`, `Author Name`, `Quantity`) 
             VALUES ('$Id', '$Name', '$Author', '$Quantity')";
-
-
     $sql = "UPDATE `add_book` set `Book Name` = '{$Name}',`Author Name` = '{$Author}',`Quantity` = '{$Quantity}'Where `Id` = $Id";
 
-    mysqli_query($link, "update add_book set  Quantity=Quantity-1 where Book Name=$_POST[booksname]");
-
-
+    //mysqli_query($link, "update add_book set  Quantity=Quantity-1 where Book Name=$_POST[booksname]");
 //    $sql = "DELETE FROM `add_book` WHERE `Book Id` = '$Id' AND `Book Name` = '$Name' AND `Author Name` = '$Author' AND `Quantity` = '$Quantity'";
-
-
 
  $data = mysqli_query($conn, $sql);
 

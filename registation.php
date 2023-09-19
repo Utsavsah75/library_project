@@ -4,14 +4,13 @@ require 'conn.php';
 
 if (isset($_POST['register'])) {
 
-    
-    
     $name = $_POST['name'];
     $email = $_POST['email'];
     $gender = $_POST['gender'];
     $password = $_POST['password'];
-    $phone = $_POST['phone'];
+    $Address = $_POST['address'];
     $faculty = $_POST['faculty'];
+    $phone = $_POST['phone'];
     $photo = $_POST['photo'];
     
     $AlreadyExist = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM students WHERE email = '{$email}'"));
@@ -22,8 +21,8 @@ if (isset($_POST['register'])) {
     }
 
 
-    $sql = "INSERT INTO students (name, email, gender, password, phone, faculty, photo) 
-            VALUES ('$name', '$email', '$gender', '$password', '$phone', '$faculty', '$photo')";
+    $sql = "INSERT INTO students (name, email, gender, password,address, phone, faculty, photo) 
+            VALUES ('$name', '$email', '$gender', '$password', '$Address', '$phone', '$faculty', '$photo')";
 
     $data = mysqli_query($conn, $sql);
 
@@ -45,7 +44,3 @@ if (isset($_POST['register'])) {
         echo "Failed";
     }
 }
-?>
-
-
-

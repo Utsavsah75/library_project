@@ -4,7 +4,6 @@ require 'check_admin.php';
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book_Management</title>
@@ -116,9 +115,9 @@ require 'check_admin.php';
         //     <td style='border: 2px solid black; text-align: center;'>" . $result['Author Name'] . "</td>
         //     <td style='border: 2px solid black; text-align: center;'>" . $result['Quantity'] . "</td>
         //     <td style='border: 2px solid black; text-align: center;'>
-        //         <a href='update_book.php?Id=" . $result['Id'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
-
-        // <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button></a>
+        //         <a href='update_book.php?Id=" . $result['Id'] . "'>
+        //          <button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
+        //         <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button></a>
 
         //     </td>
         // </tr>";

@@ -132,7 +132,7 @@
             } else {
                 echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
             }
-            //----
+            //---- 
             if (isset($_GET['m'])) {
                 // $m = mysqli_real_escape_string($conn, $_GET['m']);
 

@@ -35,12 +35,7 @@
                         <a href="gall.php">
                             <li class="fa fa-image">Gallery</li>
                         </a>
-                        <!--<a href="admin.html">
-                            <li class="fa fa-user">Admin Login</li>
-                        </a>
-                         <a href="register.html">
-                            <li class="fa fa-registered">Register</li>
-                        </a> -->
+
                         <a href="admin.php">
                             <li class="fa fa-user">Login</li>
                         </a>

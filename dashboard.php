@@ -47,7 +47,7 @@ require 'check_admin.php';
             <!-- <a style="text-decoration: none;" href="manage.php"> <button> Manage Users</button></a> -->
         </ul>
     </div>
-    <!---*****************Total Book**********************-->
+    <!---*****************Total Book --1--**********************-->
     <div id="Add_book" class="totalbook">
         <div class="row">
             <div class="col-xl-3 col-md-6"> <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
@@ -74,7 +74,7 @@ require 'check_admin.php';
         </div>
     </div>
     </div>
-    <!---*****************Total User**********************-->
+    <!---*****************Total User --2--**********************-->
     <div id="Add_User" class="totaluser">
         <div class="row">
             <div class="col-xl-3 col-md-6"> <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
@@ -101,7 +101,7 @@ require 'check_admin.php';
     </div>
     </div>
     </div>
-    <!---*****************Total issue**********************-->
+    <!---*****************Total issue --3--**********************-->
     <div id="Add_issue" class="totalissue">
         <div class="row">
             <div class="col-xl-3 col-md-6"> <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
@@ -125,7 +125,7 @@ require 'check_admin.php';
             </div>
         </div>
     </div>
-    </div> <!---*****************Total return**********************-->
+    </div> <!---*****************Total return --4--**********************-->
     <div id="Add_return" class="totalreturn">
         <div class="row">
             <div class="col-xl-3 col-md-6"> <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
@@ -150,12 +150,24 @@ require 'check_admin.php';
         </div>
     </div>
     </div>
-    <!---*****************Total Borrow Books**********************-->
-    <div id="Add_borrow" class="borrowbook">
+    <!---*****************Total Borrow Books --5--**********************-->
+    <div id="Add_request" class="request">
         <div class="row">
             <div class="col-xl-3 col-md-6"> <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
-                <div class="card bg-borrow text-white mb-4">
-                    <div class="card-body">Total Borrow Books<br><br></div>
+                <div class="card bg-requested text-white mb-4">
+                    <div class="card-body">Total Requested Users<br>
+                        <?php
+                        $quentity = "SELECT * FROM students";
+                        $student_quentity = mysqli_query($conn, $quentity);
+
+                        if ($category_total = mysqli_num_rows($student_quentity)) {
+                            echo '<h4">' . $category_total . '</h4>';
+                        } else {
+                            echo '<h4>No Data</h4>';
+                        }
+                        ?>
+
+                    </div>
                     <div class="footer5">
                         <a href="#">View Details</a>
                     </div>
@@ -163,62 +175,113 @@ require 'check_admin.php';
             </div>
         </div>
 
-        <script>
-            const timeElement = document.querySelector(".time");
-            const dateElement = document.querySelector(".date");
+        <!-- Notice: session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\library_project\check_admin.php on line 2 -->
 
-            function formatTime(date) {
-                const hours12 = date.getHours() % 12 || 12;
-                const minutes = date.getMinutes();
-                const seconds = date.getSeconds();
-                const isAm = date.getHours() < 12;
+        <!--*******************************************************************************************-->
+        <table border="2px" style="border-collapse: collapse; width: 1000px; height: 0px;margin-top: -235px; margin-left: -600px;">
+            <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Contact_No</th>
+                <th>Faculty</th>
+                <th>Address</th>
+                <th>Photo</th>
+                <th>Action</th>
+                <!-- <th>Password</th> -->
+            </tr>
 
-                return `${hours12.toString().padStart(2, "0")}:${minutes
+            </tr>
+            <?php
+            include("conformuser_server.php");
+            include('message.php');
+            error_reporting(0);
+            $query = "SELECT * FROM students";
+            $data = mysqli_query($conn, $query);
+            $total = mysqli_num_rows($data);
+
+            if ($total != 0) {
+                while ($result = mysqli_fetch_assoc($data)) {
+                    echo "<tr style='    background-color: rgba(255, 255, 255, 0.5);' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='rgba(255, 255, 255, 0.568)';\">
+    <td style='border: 2px solid black; text-align: center;'>" . $result['User ID'] . "</td>
+    <td style='border: 2px solid black; text-align: center;'>" . $result['Name'] . "</td>
+    <td style='border: 2px solid black; text-align: center;'>" . $result['Email'] . "</td>
+    <td style='border: 2px solid black; text-align: center;'>" . $result['Gender'] . "</td>
+    <td style='border: 2px solid black; text-align: center;'>" . $result['Phone'] . "</td>
+    <td style='border: 2px solid black; text-align: center;'>" . $result['Faculty'] . "</td>
+    <td style='border: 2px solid black; text-align: center;'>" . $result['Address'] . "</td>
+    <td style='border: 2px solid black; text-align: center;'>" . $result['Photo'] . "</td>
+    <td style='border: 2px solid black; text-align: center;'>
+        <a href='newuser_update.php?Id=" . $result['User_Id'] . "'><button style='height: 25px; width: 60px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Conform</button></a>
+        <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button></a>
+        
+    </td>
+</tr>";
+                }
+            } else {
+                echo "<tr><td colspan='5' style='padding: 10px; color=red; border: 2px solid black;'>No Available Yet</td></tr>";
+            }
+            ?>
+        </table>
+    </div>
+
+    <script>
+        const timeElement = document.querySelector(".time");
+        const dateElement = document.querySelector(".date");
+
+        function formatTime(date) {
+            const hours12 = date.getHours() % 12 || 12;
+            const minutes = date.getMinutes();
+            const seconds = date.getSeconds();
+            const isAm = date.getHours() < 12;
+
+            return `${hours12.toString().padStart(2, "0")}:${minutes
                 .toString()
                 .padStart(2, "0")}:${seconds.toString().padStart(2, "0")} ${isAm ? "AM" : "PM"}`;
-            }
+        }
 
-            function formatDate(date) {
-                const DAYS = [
-                    "Sunday",
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday"
-                ];
-                const MONTHS = [
-                    "January",
-                    "February",
-                    "March",
-                    "April",
-                    "May",
-                    "June",
-                    "July",
-                    "August",
-                    "September",
-                    "October",
-                    "November",
-                    "December"
-                ];
+        function formatDate(date) {
+            const DAYS = [
+                "Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday"
+            ];
+            const MONTHS = [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"
+            ];
 
-                return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`;
-            }
+            return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`;
+        }
 
-            // Initial update
+        // Initial update
+        const now = new Date();
+        timeElement.textContent = formatTime(now);
+        dateElement.textContent = formatDate(now);
+
+        // Update every second
+        setInterval(() => {
             const now = new Date();
+
             timeElement.textContent = formatTime(now);
             dateElement.textContent = formatDate(now);
-
-            // Update every second
-            setInterval(() => {
-                const now = new Date();
-
-                timeElement.textContent = formatTime(now);
-                dateElement.textContent = formatDate(now);
-            }, 1000);
-        </script>
+        }, 1000);
+    </script>
 </body>
 <!-- <a href='delete_book.php?Id=" . $result['Id'] . "'> <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button></a> -->
 

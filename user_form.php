@@ -84,8 +84,8 @@
                                         <tr>
                                             <td>Gender</td>
                                             <td><select id="genter" name="gender">
-                                                    <option value="male">Male</option>
-                                                    <option value="female">Female</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -94,8 +94,12 @@
                                         <td><input type="password" name="password" required></td>
                                         </tr>
                                         <tr>
+                                            <td>Address:</td>
+                                            <td><input type="text" name="address" placeholder="Enter your Address" required></td>
+                                        </tr>  
+                                        <tr>
                                             <td>Contact:</td>
-                                            <td><input type="tel" name="phone" placeholder="Enter contact number" required></td>
+                                            <td><input type="number" name="phone" placeholder="Enter contact number" required></td>
                                         </tr>
                                         <tr>
                                             <td>Faculty:</td>
