@@ -60,9 +60,9 @@ require 'check_admin.php';
                         $quentity_book = mysqli_query($conn, $quentity);
 
                         if ($category_total = mysqli_num_rows($quentity_book)) {
-                            echo '<h4">' . $category_total . '</h4>';
+                            echo '<h4>' . $category_total . '</h4>';
                         } else {
-                            echo '<h4>No Data</h4>';
+                            echo '<h4>0</h4>';
                         }
                         ?>
 
@@ -88,9 +88,9 @@ require 'check_admin.php';
                         $user_quantity = mysqli_query($conn, $quentity);
 
                         if ($category_total = mysqli_num_rows($user_quantity)) {
-                            echo '<h4">' . $category_total . '</h4>';
+                            echo '<h4>' . $category_total . '</h4>';
                         } else {
-                            echo '<h4>No Data</h4>';
+                            echo '<h4>0</h4>';
                         }
                         ?>
                     </div>
@@ -116,9 +116,9 @@ require 'check_admin.php';
                         $issue_quantity = mysqli_query($conn, $quentity);
 
                         if ($category_total = mysqli_num_rows($issue_quantity)) {
-                            echo '<h4">' . $category_total . '</h4>';
+                            echo '<h4>' . $category_total . '</h4>';
                         } else {
-                            echo '<h4>No Data</h4>';
+                            echo '<h4>0</h4>';
                         }
                         ?>
                     </div>
@@ -142,9 +142,9 @@ require 'check_admin.php';
                         $return_quentity = mysqli_query($conn, $quentity);
 
                         if ($category_total = mysqli_num_rows($return_quentity)) {
-                            echo '<h4">' . $category_total . '</h4>';
+                            echo '<h4>' . $category_total . '</h4>';
                         } else {
-                            echo '<h4>No Data</h4>';
+                            echo '<h4>0</h4>';
                         }
                         ?>
                     </div>
@@ -162,15 +162,15 @@ require 'check_admin.php';
             <div class="col-xl-3 col-md-6">
                 <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
                 <div class="card bg-requested text-white mb-4">
-                    <div class="card-body">Total Requested Users<br>
+                    <div class="card-body">Total Requested Users
                         <?php
                         $quentity = "SELECT * FROM students WHERE verified = '0'";
                         $student_quentity = mysqli_query($conn, $quentity);
 
                         if (mysqli_num_rows($student_quentity)) {
-                            echo '<h4">' . $category_total . '</h4>';
+                            echo '<h4>' . mysqli_num_rows($student_quentity) . '</h4>';
                         } else {
-                            echo '<h4>0</h4>';
+                            echo "<h4>0</h4>";
                         }
                         ?>
 
@@ -222,17 +222,18 @@ require 'check_admin.php';
         <td style='border: 2px solid black; text-align: center;'>" . $result['address'] . "</td>
         <td style='border: 2px solid black; text-align: center;'> <img src='" . $result['photo'] . "'>" . "</td>
         <td style='border: 2px solid black; text-align: center;'>
-            <a href='confirm_student.php?id=" . base64_encode($result['id']) . "'>
+            <a href='confirm_student.php?id=" . base64_encode($result['id']) . "&&action=confirm'>
                 <button style='height: 25px; width: 60px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Confirm</button>
             </a>
-            <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['id'] . "'>Delete</button></a>
+            <a href='confirm_student.php?id=" . base64_encode($result['id']) . "&&action=delete'>
+                <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['id'] . "'>Delete</button></a>
             
         </td>
     </tr>";
                         $sn++;
                     }
                 } else {
-                    echo "<tr><td colspan='5' style='padding: 10px; color=red; border: 2px solid black;'>No Available Yet</td></tr>";
+                    echo "<tr><td colspan='10' style='padding: 10px; color=red; border: 2px solid black;'>No Available Yet</td></tr>";
                 }
                 ?>
             </table>
