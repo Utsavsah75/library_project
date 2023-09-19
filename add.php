@@ -1,5 +1,6 @@
 <?php
 require 'conn.php';
+require 'check_admin.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,10 +42,10 @@ require 'conn.php';
     <div class="container1">
         <!-- <div class="library-container2"> -->
         <ul>
-            <a style="text-decoration: none;" href="dashboard.php">  <button> DashBoard</button></a>
+            <a style="text-decoration: none;" href="dashboard.php"> <button> DashBoard</button></a>
             <a style="text-decoration: none;" href="book_page.php"> <button> Add Books</button></a>
             <a style="text-decoration: none;" href="Issue.php"><button> Issue Books</button></a>
-            <a style="text-decoration: none;" href="return.php">  <button> Return Books</button></a>
+            <a style="text-decoration: none;" href="return.php"> <button> Return Books</button></a>
             <a style="text-decoration: none;" href="add.php"> <button> Add Users</button></a>
         </ul>
     </div>
@@ -63,10 +64,6 @@ require 'conn.php';
         <p style="display:none; margin-left: 10px;">This Field is required:</p>
         <form id="userForm" method="POST" action="add_user_data.php" autocomplete="on">
             <table>
-                <tr>
-                    <th>User ID</th>
-                    <td><input type="number" name="u_id" placeholder="Enter User ID" style="padding: 5px;"></td>
-                </tr>
                 <tr>
                     <th>Name</th>
                     <td><input type="text" name="uname" placeholder="Enter User Name" style="padding: 5px;"></td>
@@ -101,6 +98,10 @@ require 'conn.php';
                     <td><textarea name="address" placeholder="Enter User Address" style="padding: 5px;"></textarea></td>
                 </tr>
                 <tr>
+                    <td>Photo:</td>
+                    <td><input type="file" name="photo" required></td>
+                </tr>
+                <tr>
                     <td colspan="2" style="text-align: left;">
                         <input type="submit" name="submit" value="Save" style="padding: 10px 25px; margin-left: 90px; font-weight:bold; background-color: #4CAF50; color: #fff; border-radius: 4px; cursor: pointer;">
                     </td>
@@ -130,7 +131,7 @@ require 'conn.php';
 
             </tr>
             <?php
-            include("addnewuser_server.php");
+            // include("addnewuser_server.php");
             include('message.php');
             error_reporting(0);
             $query = "SELECT * FROM addnew_user";

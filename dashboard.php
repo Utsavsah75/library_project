@@ -84,11 +84,11 @@ require 'check_admin.php';
                 <div class="card bg-user text-white mb-4">
                     <div class="card-body">Total User<br><br>
                         <?php
-                        $quentity = "SELECT * FROM addnew_user";
-                        $user_quantity = mysqli_query($conn, $quentity);
+                        $sql = "SELECT * FROM students where verified = '1'";
+                        $res = mysqli_query($conn, $sql);
 
-                        if ($category_total = mysqli_num_rows($user_quantity)) {
-                            echo '<h4>' . $category_total . '</h4>';
+                        if ($total_studetn = mysqli_num_rows($res)) {
+                            echo '<h4>' . $total_studetn . '</h4>';
                         } else {
                             echo '<h4>0</h4>';
                         }
