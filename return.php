@@ -47,11 +47,7 @@
             <a style="text-decoration: none;" href="Issue.php"><button> Issue Books</button></a>
             <a style="text-decoration: none;" href="return.php">  <button> Return Books</button></a>
             <a style="text-decoration: none;" href="add.php"> <button> Add Users</button></a>
-        <!-- <a style="text-decoration: none;" href="book_page.php"> <button> Add Books</button></a>
-        <a style="text-decoration: none;" href="Issue.php"><button> Issue Books</button></a>
-        <a style="text-decoration: none;" href="return.php">  <button> Return Books</button></a>
-        <a style="text-decoration: none;" href="add.php">  <button> Add Users</button></a>
-        <a style="text-decoration: none;" href="manage.php"> <button> Manage Users</button></a> -->
+
         </ul>
     </div>
     <!-- </div> -->
@@ -103,7 +99,7 @@
 </table>
 
             </form>
-            <table id="booklist3" style="border-collapse: collapse; width: 760px; height: 0px; margin-top: -265px; margin-left: 305px;">
+            <!-- <table id="booklist3" style="border-collapse: collapse; width: 760px; height: 0px; margin-top: -265px; margin-left: 305px;">
                 <tr style="background-color: #f2f2f2;">
                     <th style="padding: 5px; border: 2px solid black;">Return ID</th>
                     <th style="padding: 5px; border: 2px solid black;">Book ID</th>
@@ -114,7 +110,7 @@
                     <th style="padding: 5px; border: 2px solid black;">Return Date</th>
 
                 </tr>
-            </table>
+            </table> -->
         <script src="connect.js"></script>
     </div>
 

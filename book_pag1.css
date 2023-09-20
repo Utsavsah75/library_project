@@ -28,13 +28,13 @@ a{
 
 .totaluser {
     width: 130px;
-    height: 110px;
+    height: 105px;
     opacity: 100%;
     display: block;
     font-size: 20px;
     text-align: center;
-    margin-left: 445px;
-    margin-top: -112px;
+    margin-left: 735px;
+    margin-top: -113px;
     border-radius: 5px;
     color: rgb(0 ,0, 0);
     border: 2px solid transparent;
@@ -50,9 +50,9 @@ a{
     display: block;
     font-size: 20px;
     text-align: center;
-    margin-left: 590px;
-    border-radius: 5px;
+    margin-left: 445px;
     margin-top: -112px;
+    border-radius: 5px;
     color: rgb(0 ,0, 0);
     border: 2px solid transparent;
     background-color: rgba(255, 0, 0, 0.527);
@@ -67,9 +67,9 @@ a{
     display: block;
     font-size: 20px;
     text-align: center;
-    margin-left: 735px;
-    margin-top: -112px;
+    margin-left: 590px;
     border-radius: 5px;
+    margin-top: -112px;
     color: rgb(0 ,0, 0);
     border: 2px solid transparent;
     background-color: rgba(255, 165, 0, 0.75);

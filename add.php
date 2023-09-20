@@ -97,9 +97,10 @@ require 'check_admin.php';
                     <th>Address</th>
                     <td><textarea name="address" placeholder="Enter User Address" style="padding: 5px;"></textarea></td>
                 </tr>
+
                 <tr>
-                    <td>Photo:</td>
-                    <td><input type="file" name="photo" required></td>
+                    <th>Photo</th>
+                    <td><input type="file" name="photo" require></td>
                 </tr>
                 <tr>
                     <td colspan="2" style="text-align: left;">
@@ -110,7 +111,7 @@ require 'check_admin.php';
         <td colspan="2" style="text-align: right;">
             <input type="Button" name="submit" value="Delete" style="padding: 10px 22px; font-weight:bold; background-color: #d9534f; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
             <input type="Button" name="submit" value="Clear" style="padding: 10px 21px; font-weight:bold; background-color: #337ab7; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-        </td> -->
+        </td> 
                 </tr>
             </table>
 
@@ -121,104 +122,104 @@ require 'check_admin.php';
                 <th>User ID</th>
                 <th>Name</th>
                 <th>Email</th>
-                <!-- <th>Password</th> -->
                 <th>Gender</th>
                 <th>Contact_No</th>
                 <th>Faculty</th>
                 <th>Address</th>
-                <th>Action</th>
+                <th>Action</th> 
             </tr>
 
-            </tr>
-            <?php
-            // include("addnewuser_server.php");
-            include('message.php');
-            error_reporting(0);
-            $query = "SELECT * FROM addnew_user";
-            $data = mysqli_query($conn, $query);
-            $total = mysqli_num_rows($data);
+            </tr> -->
+                    <?php
+                    // include("addnewuser_server.php");
+                    //             include('message.php');
+                    //             error_reporting(0);
+                    //             $query = "SELECT * FROM addnew_user";
+                    //             $data = mysqli_query($conn, $query);
+                    //             $total = mysqli_num_rows($data);
+                    // $sn=1;
+                    //             if ($total != 0) {
+                    //                 while ($result = mysqli_fetch_assoc($data)) {
+                    //           echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
+                    //     <td style='border: 2px solid black; text-align: center;'>" . $sn. "</td>
+                    //     <td style='border: 2px solid black; text-align: center;'>" . $result['Name'] . "</td>
+                    //     <td style='border: 2px solid black; text-align: center;'>" . $result['Email'] . "</td>
+                    //     <td style='border: 2px solid black; text-align: center;'>" . $result['Gender'] . "</td>
+                    //     <td style='border: 2px solid black; text-align: center;'>" . $result['Phone'] . "</td>
+                    //     <td style='border: 2px solid black; text-align: center;'>" . $result['Faculty'] . "</td>
+                    //     <td style='border: 2px solid black; text-align: center;'>" . $result['Address'] . "</td>
+                    //     <td style='border: 2px solid black; text-align: center;'>
+                    //         <a href='newuser_update.php?Id=" . $result['User_Id'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
+                    //         <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button></a>
 
-            if ($total != 0) {
-                while ($result = mysqli_fetch_assoc($data)) {
-                    echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
-    <td style='border: 2px solid black; text-align: center;'>" . $result['User ID'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Name'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Email'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Gender'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Phone'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Faculty'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Address'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>
-        <a href='newuser_update.php?Id=" . $result['User_Id'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
-        <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button></a>
-        
-    </td>
-</tr>";
-                }
-            } else {
-                echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
-            }
-            ?>
-        </table>
-    </div>
+                    //     </td>
+                    // </tr>";
+                    // $sn++;
+                    //                 }
+                    //             } else {
+                    //                 echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
+                    //             }
+                    ?>
+                    <!--      </table>
+ </div> -->
 
 
-    <script>
-        const timeElement = document.querySelector(".time");
-        const dateElement = document.querySelector(".date");
+                    <script>
+                        const timeElement = document.querySelector(".time");
+                        const dateElement = document.querySelector(".date");
 
-        function formatTime(date) {
-            const hours12 = date.getHours() % 12 || 12;
-            const minutes = date.getMinutes();
-            const seconds = date.getSeconds();
-            const isAm = date.getHours() < 12;
+                        function formatTime(date) {
+                            const hours12 = date.getHours() % 12 || 12;
+                            const minutes = date.getMinutes();
+                            const seconds = date.getSeconds();
+                            const isAm = date.getHours() < 12;
 
-            return `${hours12.toString().padStart(2, "0")}:${minutes
+                            return `${hours12.toString().padStart(2, "0")}:${minutes
                 .toString()
                 .padStart(2, "0")}:${seconds.toString().padStart(2, "0")} ${isAm ? "AM" : "PM"}`;
-        }
+                        }
 
-        function formatDate(date) {
-            const DAYS = [
-                "Sunday",
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday"
-            ];
-            const MONTHS = [
-                "January",
-                "February",
-                "March",
-                "April",
-                "May",
-                "June",
-                "July",
-                "August",
-                "September",
-                "October",
-                "November",
-                "December"
-            ];
+                        function formatDate(date) {
+                            const DAYS = [
+                                "Sunday",
+                                "Monday",
+                                "Tuesday",
+                                "Wednesday",
+                                "Thursday",
+                                "Friday",
+                                "Saturday"
+                            ];
+                            const MONTHS = [
+                                "January",
+                                "February",
+                                "March",
+                                "April",
+                                "May",
+                                "June",
+                                "July",
+                                "August",
+                                "September",
+                                "October",
+                                "November",
+                                "December"
+                            ];
 
-            return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`;
-        }
+                            return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`;
+                        }
 
-        // Initial update
-        const now = new Date();
-        timeElement.textContent = formatTime(now);
-        dateElement.textContent = formatDate(now);
+                        // Initial update
+                        const now = new Date();
+                        timeElement.textContent = formatTime(now);
+                        dateElement.textContent = formatDate(now);
 
-        // Update every second
-        setInterval(() => {
-            const now = new Date();
+                        // Update every second
+                        setInterval(() => {
+                            const now = new Date();
 
-            timeElement.textContent = formatTime(now);
-            dateElement.textContent = formatDate(now);
-        }, 1000);
-    </script>
+                            timeElement.textContent = formatTime(now);
+                            dateElement.textContent = formatDate(now);
+                        }, 1000);
+                    </script>
 </body>
 
 </html>

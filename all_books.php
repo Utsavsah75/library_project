@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Display User_reg Data</title>
     <style>
@@ -114,11 +113,12 @@
             $query = "SELECT * FROM add_book";
             $data = mysqli_query($conn, $query);
             $total = mysqli_num_rows($data);
+            $sn=1;
 
             if ($total != 0) {
                 while ($result = mysqli_fetch_assoc($data)) {
                     echo "<tr>
-            <td>" . $result['Id'] . "</td>
+            <td>" . $sn . "</td>
             <td>" . $result['Book Name'] . "</td>
             <td>" . $result['Author Name'] . "</td>
             <td>" . $result['Quantity'] . "</td>
@@ -128,6 +128,7 @@
         
     </td>
 </tr>";
+$sn++;
                 }
             } else {
                 echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";

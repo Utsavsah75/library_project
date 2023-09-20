@@ -1,26 +1,42 @@
 <?php
 require 'conn.php';
 
-// Establish database connection
-$conn = new mysqli("localhost", "root", "", "library");
 // Check if the Book is Issue
 if (isset($_POST['Issue'])) {
-    // $ID = $_POST['$ID'];    $B_ID = $_POST['B_ID'];   $B_Name = $_POST['$B_Name'];  $U_Name = $_POST['U_Name'];   $Issue = $_POST['iss_D'];   $Due = $_POST['due_D']; 
+    
     // Escape variables to prevent SQL injection
-    $B_ID   = mysqli_real_escape_string($conn, $_POST['B_ID']);
-    $B_Name = mysqli_real_escape_string($conn, $_POST['$B_Name']);
-    $U_Name   = mysqli_real_escape_string($conn, $_POST['U_Name']);
-    $Issue  = mysqli_real_escape_string($conn, $_POST['iss_D']);
-    $Due = mysqli_real_escape_string($conn, $_POST['due_D']);
-
-    $sql = "INSERT INTO issue_book (`Book ID`,`Book Name`, `User Name`, `Issue Date`, `Due Date`) 
-            VALUES ('$B_ID','$B_Name', '$U_Name', '$Issue', '$Due')";
+    $B_Name  = mysqli_real_escape_string($conn, $_POST['$B_Name']);
+    $B_ID    = mysqli_real_escape_string($conn, $_POST['B_ID']);
+    $Issue   = mysqli_real_escape_string($conn, $_POST['iss_D']);
+    $U_Name  = mysqli_real_escape_string($conn, $_POST['U_Name']);
+    $Due     = mysqli_real_escape_string($conn, $_POST['due_D']);
+ 
+    $sql = "INSERT INTO `issue_book`(`Book_Name`, `Book_ID`, `Issue_Date`, `User_Name`, `Due_Date`)
+                             VALUES ('$B_Name','$B_ID', '$Issue', '$U_Name', '$Due')";
     $data = mysqli_query($conn, $sql);
+
     if ($data) {
-        // Book added successfully, display alert message
-        echo "Book added successfully!";
+        // User added successfully, display a success message with SweetAlert
+        echo '<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>';
+        echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.css">';
+        echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.all.min.js"></script>';
+        
+        echo '<script type="text/javascript">
+                $(function() {
+                    Swal.fire({
+                        title: "Issue Book",
+                        text: "Successfully!",
+                        icon: "success"
+                    }).then(function() {
+                        // Redirect to the add.php page after displaying the message
+                        window.location.href = "add.php";
+                    });
+                });
+            </script>';
     } else {
-        // Failed to add the book, display alert message
-        echo "Failed to add the book.";
+        // Failed to add the user
+        echo "Failed to Issue the New Book.";
     }
 }
+?>
+

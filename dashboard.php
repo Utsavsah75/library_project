@@ -103,14 +103,14 @@ require 'check_admin.php';
         </div>
     </div>
     </div>
-    </div>
+
     <!---*****************Total issue --3--**********************-->
     <div id="Add_issue" class="totalissue">
         <div class="row">
             <div class="col-xl-3 col-md-6">
                 <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
                 <div class="card bg-issue text-white mb-4">
-                    <div class="card-body">issue Books<br><br>
+                    <div class="card-body">Issue Books<br><br>
                         <?php
                         $quentity = "SELECT * FROM issue_book";
                         $issue_quantity = mysqli_query($conn, $quentity);
@@ -156,7 +156,7 @@ require 'check_admin.php';
         </div>
     </div>
     </div>
-    <!---*****************Total Borrow Books --5--**********************-->
+    <!---*****************Total Requested User --5--**********************-->
     <div id="Add_request" class="request">
         <div class="row">
             <div class="col-xl-3 col-md-6">
@@ -182,12 +182,14 @@ require 'check_admin.php';
             </div>
         </div>
 
-        <!-- Notice: session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\library_project\check_admin.php on line 2 -->
 
         <!--*******************************************************************************************-->
-        <div class="confirm_user" style="margin-top: 20rem;">
+        <input type="button" name="R.user" value="Requested User" style="margin-top: 7px; height: 35px; width: 120px; margin-left: -76rem; font-weight:bold;   background-color: rgba(255, 255, 255, 0.568); color: black; border-radius: 4px; cursor: pointer;">
 
-            <table border="2px" style="border-collapse: collapse; width: 1000px; height: 0px;margin-top: -235px; margin-left: -600px;">
+        <div class="confirm_user" style="margin-top: 16rem;">
+
+
+            <table border="2px" style="border-collapse: collapse; width: 1000px; height: 0px;margin-top: -257px; margin-left: -603px;">
                 <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
                     <th>User ID</th>
                     <th>Name</th>

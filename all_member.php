@@ -69,8 +69,8 @@
         input[type="button"] {
     width: 76px;
     height: 34px;
-    margin-top: auto;
-    margin-left: 600px;
+    margin-top: 2px;
+    margin-left: 720px;
     background-color: red;
     font-weight: bold;
     color: #fff;
@@ -85,7 +85,7 @@
     <input type="text" id="input" name="input" placeholder="Search" onkeyup="searchfun()">
 
     <body>
-        <table id="table" border="2">
+    <table id="table" border="2px" style="border-collapse: collapse; width: 1000px; height: 0px;margin-top: 0px; margin-left: -180px;">            <tr>
             <tr>
                 <th>User ID</th>
                 <th>Name</th>
@@ -94,6 +94,7 @@
                 <th>Contact_No</th>
                 <th>Faculty</th>
                 <th>Address</th>
+                <th>Photo</th>
                 <th>Action</th>
                 <script src="search.js"></script>
             </tr>
@@ -103,26 +104,30 @@
             include("addnewuser_server.php");
             include('message.php');
             error_reporting(0);
-            $query = "SELECT * FROM addnew_user";
+            $query = "SELECT * FROM students";
             $data = mysqli_query($conn, $query);
             $total = mysqli_num_rows($data);
+            $sn=1;
             if ($total != 0) {
                 while ($result = mysqli_fetch_assoc($data)) {
-                    echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
-    <td style='border: 2px solid black; text-align: center;'>" . $result['User ID'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Name'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Email'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Gender'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Phone'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Faculty'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>" . $result['Address'] . "</td>
-    <td style='border: 2px solid black; text-align: center;'>
+                    echo "<tr style='    background-color: rgba(255, 255, 255, 0.5);' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='rgba(255, 255, 255, 0.568)';\">
+                    <td style='border: 2px solid black; text-align: center;'>" . $sn . "</td>
+                    <td style='border: 2px solid black; text-align: center;'>" . $result['name'] . "</td>
+                    <td style='border: 2px solid black; text-align: center;'>" . $result['email'] . "</td>
+                    <td style='border: 2px solid black; text-align: center;'>" . $result['gender'] . "</td>
+                    <td style='border: 2px solid black; text-align: center;'>" . $result['phone'] . "</td>
+                    <td style='border: 2px solid black; text-align: center;'>" . $result['faculty'] . "</td>
+                    <td style='border: 2px solid black; text-align: center;'>" . $result['address'] . "</td>
+                    <td style='border: 2px solid black; text-align: center;'> <img src='" . $result['photo'] . "'>" . "</td>
+                    <td style='border: 2px solid black; text-align: center;'>
         <a href='newuser_update.php?Id=" . $result['Id'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
      
         <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button></a>
         
     </td>
 </tr>";
+$sn++;
+
                 }
             } else {
                 echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";

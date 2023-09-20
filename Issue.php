@@ -85,7 +85,7 @@ require 'conn.php';
                 </tr>
                 <tr>
                     <td colspan="2" style="text-align: center;">
-                        <input type="Submit" name="submit" value="Issue" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff;border-radius: 4px; cursor: pointer;">
+                        <input type="submit" name="Issue" value="Issue" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff;border-radius: 4px; cursor: pointer;">
                         <input type="Button" name="clear" value="Clear" style="padding: 10px 20px; font-weight:bold; background-color: #337ab7; color: #fff;border-radius: 4px; cursor: pointer;">
                     </td>
                 </tr>
@@ -111,11 +111,11 @@ require 'conn.php';
             $query = "SELECT * FROM issue_book";
             $data = mysqli_query($conn, $query);
             $total = mysqli_num_rows($data);
-
+            $sn=1;
             if ($total != 0) {
                 while ($result = mysqli_fetch_assoc($data)) {
                     echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
-                <td style='border: 2px solid black; text-align: center;'>" . $result['Book_ID'] . "</td>
+                <td style='border: 2px solid black; text-align: center;'>" . $sn. "</td>
                 <td style='border: 2px solid black; text-align: center;'>" . $result['Book_Name'] . "</td>
                 <td style='border: 2px solid black; text-align: center;'>" . $result['User_Name'] . "</td>
                 <td style='border: 2px solid black; text-align: center;'>" . $result['Issue_Date'] . "</td>
@@ -126,12 +126,13 @@ require 'conn.php';
         
     </td>
 </tr>";
+$sn++;
                 }
             } else {
                 echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
             }
             ?>
-        </table>
+         </table>
         <script>
             const timeElement = document.querySelector(".time");
             const dateElement = document.querySelector(".date");
