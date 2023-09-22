@@ -1,141 +1,163 @@
-/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  color: #54677c;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+
 body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(120deg, rgba(116, 124, 129, 0.733), rgb(147, 151, 151));
-    font-family: Arial, sans-serif;
-    color: white;
-  }
-  
-  html, body {
-    height: 100%;
-  }
-  
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .p {
-    text-align: center;
-  }
-  
-  .p h4 {
-    margin-top: 20px;
-  }
-  
-  .ups {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-image: url(utsav.jpg); /* Add the background image here */
-    background-size: cover;
-    background-position: center;
-    padding: 20px;
-    border: 5px solid #fafafa;
-    width: 100px;
-    height: 100px;
-    margin-left: 75px;
-    margin-top: -195px;
-    border-radius: 100px;
-  }
-  .ups1{
-    margin-left: -10px;
-    color: rgb(255, 255, 255);
-    width: 300px;
-    height: 350px;
-    margin-top: -200px;
-    margin-left: -550px;
-    border-radius: 10px;
-    background-image: linear-gradient(180deg, rgb(12, 12, 22) 10%, rgb(10, 32, 226) 60.5%);
-  }
-  /********************2222222222222222222*******************/
-  .ups2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-image: url(library1.jpg); 
-    background-size: cover;
-    background-position: center;
-    padding: 20px;
-    border: 5px solid #fafafa;
-    width: 100px;
-    height: 400px;
-    margin-left: 160px;
-    margin-top: -195px;
-    border-radius: 100px;
-  }
-  .ups3{
-    color: rgb(255, 255, 255);
-    width: 338px;
-    height: 350px;
-    margin-top: -200px;
-    margin-left: 812px;
-    border-radius: 10px;
-    background-image: linear-gradient(180deg, rgb(12, 12, 22) 10%, rgb(10, 32, 226) 60.5%);background-image: linear-gradient(180deg, rgb(12, 12, 22) 10%, rgb(10, 32, 226) 60.5%);
-  }
-  
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  padding: 40px 16px;
+  align-items: center;
+  background-size: cover;
+  justify-content: center;
+  filter: brightness(80%);
+  background-color: #e4e4e4;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: url(LB.jpg);
+  background-position: center center;
 
-  /********************33333333333333333333*******************/
+ 
 
-  
-  .ups65 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    /* background-image: url(utsav.jpg);  */
-    background-size: cover;
-    background-position: center;
-    padding: 20px;
-    border: 5px solid #fafafa;
-    width: 100px;
-    height: 100px;
-    margin-left: 75px;
-    margin-top: -195px;
-    border-radius: 100px;
-  }
-  .ups35{
-    margin-left: -10px;
-    color: rgb(255, 255, 255);
-    width: 300px;
-    height: 350px;
-    margin-top: -200px;
-    margin-left: -800px;
-    border-radius: 10px;
-    background-image: linear-gradient(180deg, rgb(12, 12, 22) 10%, rgb(10, 32, 226) 60.5%);
-  }
-  
+}
+
+.card {
+  width: 250px;
+  height: 220px;
+  padding: 16px;
+  display: flex;
+  margin: 56px 24px;
+  margin-left: 20px;
+  border-radius: 8px;
+  margin-top: 3rem;
+  position: relative;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.15);
+}
+.card1 {
+  width: 250px;
+  height: 220px;
+  padding: 16px;
+  display: flex;
+  margin-left: 20px;
+  margin: 56px 24px;
+  margin-top: 3rem;
+  border-radius: 8px;
+  position: relative;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.15);
+}
+
+.card-image {
+  top: 0px;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.5),0 5px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-image img {
+  width: 100%;
+  transform: scale(1.2);
+}
+
+p {
+  line-height: 20px;
+  text-align: center;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.name {
+  color: #333;
+  margin-top: 47px;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 12px;
+  justify-content: space-between;
+}
+
+.socials {
+  width: 250px;
+  height: 62px;
+  margin-top: 12px;
+  align-items: center;
+  background-color:#423b297d;
+  justify-content: space-between;
+
+}
+
+button.facebook {
+  padding: 5px 5px;
+  border-radius: 50px;
+}
+
+button {
+  width: 44px;
+  height: 44px;
+  border: none;
+  cursor: pointer;
+  margin: 12px 8px;
+  border-radius: 50%;
+  transition: opacity 0.9s;
+}
+
+button:hover {
+  opacity: 0px;
+}
+
+button i {
+  color: #fff;
+  font-size: 1.4em;
+}
+
+/* Social media colors*/
+button.github {
+  margin-left: 20px;
+  background-color: #103c68;
+}
+
+button.twitter {
+  margin-left: 25px;
+  background-color: #1184cc;
+}
+
+button.facebook {
+  margin-left: 30px;
+  /* margin-top: 100; */
+  background-color: #003bfc;
+}
 
 
-  /********************44444444444444444444*******************/
-  .ups4 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    /* background-image: url(utsav.jpg);  */
-    background-size: cover;
-    background-position: center;
-    padding: 20px;
-    border: 5px solid #fafafa;
-    width: 100px;
-    height: 100px;
-    margin-left: 75px;
-    margin-top: -195px;
-    border-radius: 100px;
-  }
-  .ups4{
-    margin-left: -10px;
-    color: rgb(255, 255, 255);
-    width: 300px;
-    height: 350px;
-    margin-top: -200px;
-    margin-left: -800px;
-    border-radius: 10px;
-    background-image: linear-gradient(180deg, rgb(12, 12, 22) 10%, rgb(10, 32, 226) 60.5%);
-  }
-  
+#down {
+  height: 220px;
+  width: 100rem;
+  margin-top: 280px;
+  background: #2c7ad6;
+  text-align: center;
+  padding-top: 10px;
+  color: rgb(255, 5, 5);
+}
+.footer {
+  height: 20px;
+  width: 100%;
+  background: black;
+  color: white;
+  text-align: center;
+}

@@ -211,7 +211,7 @@ require 'check_admin.php';
                         $sn++;
                     }
                 } else {
-                    echo "<tr><td colspan='10' style='padding: 10px; color=red; border: 2px solid black;'>No Available Yet</td></tr>";
+                    echo "<tr><td colspan='10' style='padding: 10px; border: 2px solid solid; color: red;'>No Available Yet</td></tr>";
                 }
                 ?>
             </table>

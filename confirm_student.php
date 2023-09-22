@@ -11,3 +11,4 @@ if ($_GET['id'] && $_GET['action'] == 'delete') {
     $res = mysqli_query($conn, $sql);
 }
 header('location: dashboard.php');
+?>

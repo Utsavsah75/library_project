@@ -41,7 +41,9 @@
                     <a href="admin_reg.php">
                         <li class="fa fa-registered">Register</li>
                     </a>
-
+                    <a href="About.html">
+                        <li class="">About Us</li>
+                    </a>
                     
                 </ul>
             </div>

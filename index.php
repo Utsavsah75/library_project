@@ -20,6 +20,7 @@
                 +977-98012345678
             </a>
             <a href="#" class="fa fa-facebook" style="text-decoration:none; padding:7px; float:right; color: white;"></a>
+            <a class="fa-brands fa-instagram"></a>
             <a href="#" class="fa fa-instagram" style="text-decoration:none; padding:7px; float:right; color: white;"></a>
             <a href="#" class="fa fa-twitter" style="text-decoration:none;  padding: 7px ; float:right; color: white;"></a>
         </div>
@@ -40,6 +41,10 @@
                     <a href="user_form.php">
                         <li class="fa fa-registered">Register</li>
                     </a>
+                    <a href="About.html">
+                        <li class="">About Us</li>
+                    </a>
+
 
                 </ul>
             </div>
