@@ -42,26 +42,11 @@ body {
     height: 25px;
 }
 
-
-/* .top {
-    height: 35px;
-    font-size: 40px;
-    line-height: 35px;
-    text-align: center;
-    margin-bottom: 10px;
-    background-color: transparent;
-} */
-
 .top1 {
     height: 50px;
     line-height: 33px;
     margin-right: 400px;
     background: transparent;
-}
-
-.marquee {
-    color: #030303;
-    filter: drop-shadow(0 0 2px red);
 }
 
 .top1 ul {
@@ -90,9 +75,10 @@ body {
     background: linear-gradient(180deg, rgb(255, 0, 0), rgb(229, 138, 138));
 }
 
-.top1 li a.active {
+.top1 ul li a i.active {
     background: linear-gradient(180deg, rgb(0, 255, 4), rgb(145, 235, 146));
 }
+
 
 .top1 li a {
     padding: 0px;
@@ -123,8 +109,8 @@ body {
     background: linear-gradient(180deg, rgb(255, 0, 0), rgb(229, 138, 138));
 }
 
-.container1 ul a  button:active {
-    background: linear-gradient(80deg, rgb(0, 255, 4), rgb(145, 235, 146));
+.ul a button.active{
+    background-color: #007bff; /* Change to your desired active background color */
 }
 .container1 button {
     margin: 15px;
@@ -173,7 +159,19 @@ body {
 
     }
 
-/*
+/* 
+.marquee {
+    color: #030303;
+    filter: drop-shadow(0 0 2px red);
+} 
+ .top {
+    height: 35px;
+    font-size: 40px;
+    line-height: 35px;
+    text-align: center;
+    margin-bottom: 10px;
+    background-color: transparent;
+} 
 tbody .id {
 
     border: 2px solid rgb(187, 24, 24);
@@ -208,7 +206,7 @@ tbody .id {
     display: inline-block;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.799), rgba(96, 100, 96, 0.6));
 }
-/* .library-container2 {
+.library-container2 {
     margin: 5px;
     width: 200px;
     height: 425px;

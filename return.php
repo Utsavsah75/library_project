@@ -99,18 +99,7 @@
 </table>
 
             </form>
-            <!-- <table id="booklist3" style="border-collapse: collapse; width: 760px; height: 0px; margin-top: -265px; margin-left: 305px;">
-                <tr style="background-color: #f2f2f2;">
-                    <th style="padding: 5px; border: 2px solid black;">Return ID</th>
-                    <th style="padding: 5px; border: 2px solid black;">Book ID</th>
-                    <th style="padding: 5px; border: 2px solid black;">book Name</th>
-                    <th style="padding: 5px; border: 2px solid black;">User ID</th>
-                    <th style="padding: 5px; border: 2px solid black;">Issue Date</th>
-                    <th style="padding: 5px; border: 2px solid black;">Due Date</th>
-                    <th style="padding: 5px; border: 2px solid black;">Return Date</th>
-
-                </tr>
-            </table> -->
+           
         <script src="connect.js"></script>
     </div>
 

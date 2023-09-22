@@ -42,7 +42,7 @@ include('./header.php');
             <!-- <button class="tablinks" onclick="openTab(event, 'Add_Users')">Add Users</button> -->
             <!-- <button class="tablinks" onclick="openTab(event, 'Manage_Users')">Manage Users</button> -->
         </ul>
-    </div>
+    </div> 
 
     <input type="text" placeholder="Search" style="float: left; margin-left: 975px; border-radius: 8px; border: 2px solid; transform: translateY(-455px); width: 240px; height: 25px;">
     <!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-495px);"></i> -->

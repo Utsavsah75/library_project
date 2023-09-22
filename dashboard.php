@@ -51,10 +51,7 @@ require 'check_admin.php';
     <!---*****************Total Book --1--**********************-->
     <div id="Add_book" class="totalbook">
         <div class="row">
-            <div class="col-xl-3 col-md-6">
-                <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
-                <div class="card bg-book text-white mb-4">
-                    <div class="card-body">Total Books<br><br>
+                    <div class="header">Total Books<br><br>
                         <?php
                         $quentity = "SELECT * FROM add_book";
                         $quentity_book = mysqli_query($conn, $quentity);
@@ -73,16 +70,11 @@ require 'check_admin.php';
 
                 </div>
             </div>
-        </div>
-    </div>
-    </div>
+     
     <!---*****************Total User --2--**********************-->
     <div id="Add_User" class="totaluser">
         <div class="row">
-            <div class="col-xl-3 col-md-6">
-                <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
-                <div class="card bg-user text-white mb-4">
-                    <div class="card-body">Total User<br><br>
+                    <div class="header">Total User<br><br>
                         <?php
                         $sql = "SELECT * FROM students where verified = '1'";
                         $res = mysqli_query($conn, $sql);
@@ -100,17 +92,12 @@ require 'check_admin.php';
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    </div>
 
     <!---*****************Total issue --3--**********************-->
     <div id="Add_issue" class="totalissue">
         <div class="row">
-            <div class="col-xl-3 col-md-6">
-                <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
-                <div class="card bg-issue text-white mb-4">
-                    <div class="card-body">Issue Books<br><br>
+          
+                    <div class="header">Issue Books<br><br>
                         <?php
                         $quentity = "SELECT * FROM issue_book";
                         $issue_quantity = mysqli_query($conn, $quentity);
@@ -123,20 +110,16 @@ require 'check_admin.php';
                         ?>
                     </div>
                     <div class="footer3">
-                        <a href="#">View Details</a>
+                        <a href="issuebook_list.php">View Details</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    </div>
+       
     <!---*****************Total return --4--**********************-->
     <div id="Add_return" class="totalreturn">
         <div class="row">
-            <div class="col-xl-3 col-md-6">
-                <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
-                <div class="card bg-return text-white mb-4">
-                    <div class="card-body">Return Books<br><br>
+           
+                    <div class="header">Return Books<br><br>
                         <?php
                         $quentity = "SELECT * FROM request_book";
                         $return_quentity = mysqli_query($conn, $quentity);
@@ -149,20 +132,16 @@ require 'check_admin.php';
                         ?>
                     </div>
                     <div class="footer4">
-                        <a href="#">View Details</a>
+                        <a href="return_list.php">View Details</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    </div>
+     
     <!---*****************Total Requested User --5--**********************-->
     <div id="Add_request" class="request">
         <div class="row">
-            <div class="col-xl-3 col-md-6">
-                <!-- Corrected "col-x1-3" to "col-xl-3" and removed extra square bracket "]" -->
-                <div class="card bg-requested text-white mb-4">
-                    <div class="card-body">Total Requested Users
+          
+                    <div class="header">Total Requested Users
                         <?php
                         $quentity = "SELECT * FROM students WHERE verified = '0'";
                         $student_quentity = mysqli_query($conn, $quentity);
@@ -178,10 +157,7 @@ require 'check_admin.php';
                     <div class="footer5">
                         <a href="#">View Details</a>
                     </div>
-                </div>
-            </div>
-        </div>
-
+              
 
         <!--*******************************************************************************************-->
         <input type="button" name="R.user" value="Requested User" style="margin-top: 7px; height: 35px; width: 120px; margin-left: -76rem; font-weight:bold;   background-color: rgba(255, 255, 255, 0.568); color: black; border-radius: 4px; cursor: pointer;">

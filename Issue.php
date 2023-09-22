@@ -92,47 +92,6 @@ require 'conn.php';
             </table>
         </form>
 
-
-        <table border="2" style="border-collapse: collapse; width: 760px; height: 0px; margin-top: -206px; margin-left: 305px;">
-            <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
-                <th>Book ID</th>
-                <th>Book Name</th>
-                <!-- <th>ID</th> -->
-                <th>User Name</th>
-                <th>Issue Date</th>
-                <th>Due Date</th>
-                <th style='width:108px' ;>Action</th>
-
-            </tr>
-            <?php
-            include("issuebook_server.php");
-            include('message.php');
-            error_reporting(0);
-            $query = "SELECT * FROM issue_book";
-            $data = mysqli_query($conn, $query);
-            $total = mysqli_num_rows($data);
-            $sn=1;
-            if ($total != 0) {
-                while ($result = mysqli_fetch_assoc($data)) {
-                    echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
-                <td style='border: 2px solid black; text-align: center;'>" . $sn. "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . $result['Book_Name'] . "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . $result['User_Name'] . "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . $result['Issue_Date'] . "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . $result['Due_Date'] . "</td>
-                <td style='border: 2px solid black; text-align: center;'>
-                    <a href='issue_update.php?Id=" . $result['Book ID'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
-                    <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Book ID'] . "'>Delete</button>
-        
-    </td>
-</tr>";
-$sn++;
-                }
-            } else {
-                echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
-            }
-            ?>
-         </table>
         <script>
             const timeElement = document.querySelector(".time");
             const dateElement = document.querySelector(".date");
