@@ -5,7 +5,7 @@ require 'check_admin.php';
 // Check if the form is saved
 if (isset($_POST['submit'])) {
     $Book_Name   = mysqli_real_escape_string($conn, $_POST['B_name']);
-    $User_Name    = mysqli_real_escape_string($conn, $_POST['Name']);
+    $User_Name    = mysqli_real_escape_string($conn, $_POST['U_Name']);
     $Faculty     = mysqli_real_escape_string($conn, $_POST['Faculty']);
     $Issue       = mysqli_real_escape_string($conn, $_POST['iss_D']);
     $Due         = mysqli_real_escape_string($conn, $_POST['due_D']);

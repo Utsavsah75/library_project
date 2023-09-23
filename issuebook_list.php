@@ -167,7 +167,7 @@
 
                     echo '</table>';
                 } else {
-                    echo '<p>No records found</p>';
+                    echo '<p >No records found</p>';
                 }
             }
 

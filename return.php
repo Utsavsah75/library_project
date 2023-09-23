@@ -128,7 +128,7 @@ require 'conn.php';
                         <?php
                                 }
                             } else {
-                                echo "No Record Found";
+                         echo "<p style='padding: 5px; margin-top: 310px; border: 2px solid Red;'>No records found</p>";
                             }
                         }
 

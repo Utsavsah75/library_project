@@ -92,6 +92,7 @@ require 'conn.php';
                                     <th>User Name</th>
                                     <td><input type="text" name="U_Name" value="<?= $row['User_Name']; ?>" placeholder="Enter User Name" style="padding: 5px;"></td>
                                     </tr>
+                                    <tr>
                                     <th>Book Name</th>
                                     <td><input type="text" name="B_Name" value="<?= $row['Book_Name']; ?>" placeholder="Enter Book Name" style="padding: 5px;"></td>
                                     </tr>
@@ -124,7 +125,7 @@ require 'conn.php';
                         <?php
                                 }
                             } else {
-                                echo "No Record Found";
+                                echo "<p style='padding: 5px; margin-top: 310px; border: 2px solid Red;'>No records found</p>";
                             }
                         }
 

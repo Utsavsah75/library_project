@@ -5,15 +5,16 @@ require 'conn.php';
 if (isset($_POST['Issue'])) {
     
     // Escape variables to prevent SQL injection
-    $B_Name  = mysqli_real_escape_string($conn, $_POST['$B_Name']);
-    $B_ID    = mysqli_real_escape_string($conn, $_POST['B_ID']);
-    $Issue   = mysqli_real_escape_string($conn, $_POST['iss_D']);
-    $faculty   = mysqli_real_escape_string($conn, $_POST['faculty']);
-    $U_Name  = mysqli_real_escape_string($conn, $_POST['U_Name']);
-    $Due     = mysqli_real_escape_string($conn, $_POST['due_D']);
+    // $U_Name  = mysqli_real_escape_string($conn, $_POST['$U_Name']);
+    // $B_ID          = mysqli_real_escape_string($conn, $_POST['Id']);
+    $B_Name        = mysqli_real_escape_string($conn, $_POST['B_Name']);
+    $U_Name        = mysqli_real_escape_string($conn, $_POST['U_Name']);
+    $Faculty        = mysqli_real_escape_string($conn, $_POST['faculty']);
+    $iss_D         = mysqli_real_escape_string($conn, $_POST['iss_D']);
+    $due_D         = mysqli_real_escape_string($conn, $_POST['due_D']);
  
-    $sql = "INSERT INTO `issue_book`(`Book_Name`, `Book_ID`, `Issue_Date`,`Faculty`, `User_Name`, `Due_Date`)
-                             VALUES ('$B_Name','$B_ID', '$Issue',`$faculty`, '$U_Name', '$Due')";
+    $sql = "INSERT INTO issue_book (`Book_Id`, `Book_Name`, `User_Name`, `Issue_Date`, `Due_Date`, `Faculty`) 
+    VALUES ('$B_Name', '$U_Name', '$Faculty', '$iss_D', '$due_D')";
                              
     $data = mysqli_query($conn, $sql);
 
@@ -37,7 +38,7 @@ if (isset($_POST['Issue'])) {
             </script>';
     } else {
         // Failed to add the user
-        echo "Failed to Issue the New Book.";
+        echo "Entire Book ID No Found !!!.";
     }
 }
 ?>
