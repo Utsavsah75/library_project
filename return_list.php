@@ -12,9 +12,9 @@
         }
 
         table {
-            width: 100%;
+            width: 55rem;
             margin-top: 0px;
-            margin-left: 10px;
+            margin-left: -100px;
             /* display: none; */
             border: 2px solid black;
             border-collapse: collapse;
@@ -69,8 +69,8 @@
         input[type="button"] {
     width: 76px;
     height: 34px;
-    margin-top: auto;
-    margin-left: 550px;
+    margin-top: 2px;
+    margin-left: 690px;
     background-color: red;
     font-weight: bold;
     color: #fff;
@@ -92,13 +92,17 @@
     <input type="text" id="input" name="input" placeholder="Search" onkeyup="searchfun()">
 
     <body>
-        <table id="table" border="2">
+        <table id="table" border="2" >
             <tr>
                 <th>Book Id</th>
                 <th>Book Name</th>
-                <th>Book Author</th>
+                <th>User Name</th>
                 <th>Faculty</th>
-                <th style='width:108px' ;>Action</th>
+                <th>Issue Date</th>
+                <th>Due Date</th>
+                <th>Return Date</th>
+                <th style='width:108px' ;>
+                Action</th>
                 <script src="search.js"></script>
 
             </tr>
@@ -117,11 +121,14 @@
 
             if ($total != 0) {
                 while ($result = mysqli_fetch_assoc($data)) {
-                    echo "<tr>
-            <td>" . $sn . "</td>
-            <td>" . $result['Name'] . "</td>
-            <td>" . $result['Author Name'] . "</td>
-            <td>" . $result['Faculty'] . "</td>
+                    echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
+            <td style='border: 2px solid black; text-align: center;'>" . $sn . "</td>
+            <td style='border: 2px solid black; text-align: center;'>" . $result['User Name'] . "</td>
+            <td style='border: 2px solid black; text-align: center;'>" . $result['Book Name'] . "</td>
+            <td style='border: 2px solid black; text-align: center;'>" . $result['Faculty'] . "</td>
+            <td style='border: 2px solid black; text-align: center;'>" . $result['Issue Date'] . "</td>
+            <td style='border: 2px solid black; text-align: center;'>" . $result['Due Date'] . "</td>
+            <td style='border: 2px solid black; text-align: center;'>" . $result['Return Date'] . "</td>
             <td>
         <a href='update_book.php?Id=" . $result['Id'] . "'><button style='height: 25px; align-items: center; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
             <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black;align-items: center;  border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button>
@@ -131,50 +138,17 @@
 $sn++;
                 }
             } else {
-                echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
+                echo "<tr><td colspan='8' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
             }
-            //---- 
-            if (isset($_GET['m'])) {
-                // $m = mysqli_real_escape_string($conn, $_GET['m']);
 
-                $m = mysqli_real_escape_string($conn, $_GET['m']);
-
-                // $query = "SELECT * FROM add_book WHERE `Book Id` LIKE '%$number%' OR `Book Name` LIKE '%$m%' OR `Author Name` LIKE '%$m%'";
-                // $query = "SELECT * FROM add_book WHERE `Book Id` LIKE `%number%' OR `Book Name` LIKE '%$c%' OR `Author Name` LIKE '%$s%'";
-                $result = mysqli_query($conn, $query);
-
-                if (mysqli_num_rows($result) > 0) {
-                    echo '<table  id="table" border="2">';
-                    echo '<tr>
-                <th>Book Id</th>
-                <th>Book Name</th>
-                <th>Author Name</th>
-                <th>Faculty</th>
-                <script src="search.js"></script>
-              </tr>';
-
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<tr>
-                    <th>' . $row['Id'] . '</th>
-                    <th>' . $row['Book Name'] . '</th>
-                    <th>' . $row['Author Name'] . '</th>
-                    <th>' . $row['Faculty'] . '</th>
-                  </tr>';
-                    }
-
-                    echo '</table>';
-                } else {
-                    echo '<p>No records found</p>';
-                }
-            }
 
             ?>
-        </table>
-        <p id="notFoundMessage" style="display: none;">Data not found</p> <!-- Ensure this element is present -->
-        <a style="text-decoration: none;" href="dashboard.php"><input type="button" name="Back" value="Back"></a>
-
-</div>
-<script src="search.js"></script>
-</body>
-
-</html>
+            </table>
+            <p id="notFoundMessage" style="display: none;">Data not found</p> <!-- Ensure this element is present -->
+            <a style="text-decoration: none;" href="dashboard.php"><input type="button" name="Back" value="Back"></a>
+    
+    </div>
+    <script src="search.js"></script>
+    </body>
+    
+    </html>

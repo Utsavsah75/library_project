@@ -99,6 +99,7 @@
                 <th>Book Name</th>
                 <!-- <th>ID</th> -->
                 <th>User Name</th>
+                <th>Faculty</th>
                 <th>Issue Date</th>
                 <th>Due Date</th>
                 <th>Action</th>
@@ -120,6 +121,7 @@
                 <td style='border: 2px solid black; text-align: center;'>" . $sn . "</td>
                 <td style='border: 2px solid black; text-align: center;'>" . $result['Book_Name'] . "</td>
                 <td style='border: 2px solid black; text-align: center;'>" . $result['User_Name'] . "</td>
+                <td style='border: 2px solid black; text-align: center;'>" . $result['Faculty'] . "</td>
                 <td style='border: 2px solid black; text-align: center;'>" . $result['Issue_Date'] . "</td>
                 <td style='border: 2px solid black; text-align: center;'>" . $result['Due_Date'] . "</td>
                 <td style='border: 2px solid black; text-align: center;'>

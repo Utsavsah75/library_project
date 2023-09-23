@@ -115,10 +115,12 @@ if(isset($_GET['Id'])) {
                     <th>User Name</th>
                     <td><input type="text" name="U_Name"  value="<?= $book['User Name']; ?>" required></td>
                 </tr>
-                <tr>
-                    <th>Book ID</th>
-                    <td><input type="text" name="B_ID" value="<?= $book['Book ID']; ?>" required></td>
                 </tr>
+                    <th for="class">Faculty</th>
+   <th><select  name="class" value="<?= $book['Faculty']; ?>" style="padding: 5px; width: 150px; margin-left: -30px;">
+        <option value="class1">DIT</option> <option value="class2">DCE</option> <option value="class3">DEE</option> <option value="class4">DGE</option>  <option value="class5">DHM</option>
+    </select>
+    </th> 
                 <tr>
                     <th>Issue Date</th>
                     <td><input type="date" name="iss_D" value="<?= $book['Issue_Date']; ?>" required></td>

@@ -4,22 +4,16 @@ require 'check_admin.php';
 
 // Check if the form is saved
 if (isset($_POST['submit'])) {
-    $Id         = mysqli_real_escape_string($conn, $_POST['u_id']);
-    $Name       = mysqli_real_escape_string($conn, $_POST['uname']);
-    $Email      = mysqli_real_escape_string($conn, $_POST['email']);
-    $Password   = mysqli_real_escape_string($conn, $_POST['password']);
-    $Address    = mysqli_real_escape_string($conn, $_POST['address']);
-    $Gender     = mysqli_real_escape_string($conn, $_POST['gender']);
-    $Phone      = mysqli_real_escape_string($conn, $_POST['phone']);
-    $Faculty    = mysqli_real_escape_string($conn, $_POST['faculty']);
+    $Book_Name   = mysqli_real_escape_string($conn, $_POST['B_name']);
+    $User_Name    = mysqli_real_escape_string($conn, $_POST['Name']);
+    $Faculty     = mysqli_real_escape_string($conn, $_POST['Faculty']);
+    $Issue       = mysqli_real_escape_string($conn, $_POST['iss_D']);
+    $Due         = mysqli_real_escape_string($conn, $_POST['due_D']);
+    $Return      = mysqli_real_escape_string($conn, $_POST['Returb_D']);
  
-    $sql = "INSERT INTO `addnew_user`(`User ID`, `Name`, `Email`, `Gender`, `Phone`, `Address`, `Faculty`, `Password`) 
-            VALUES ('$Id', '$Name', '$Email', '$Password','$Address', '$Gender', '$Phone', '$Faculty')";
-            
-    $sql= "UPDATE `students` SET `id`='{$Id}',`name`='{$Name}',`email`='{$Email}',`gender`='{$Gender}',`password`='{$password}',`address`='{$Address}',`phone`='{$Phone}',`faculty`='{$Faculty}',`photo`='{$Photo}' , WHERE `Id` = $Id";
-
-    // UPDATE `students` SET `id`='[value-1]',`name`='[value-2]',`email`='[value-3]',`gender`='[value-4]',`password`='[value-5]',`address`='[value-6]',`phone`='[value-7]',`faculty`='[value-8]',`photo`='[value-9]',`verified`='[value-10]' WHERE 1
-
+    $sql = "INSERT INTO `request_book`(`id`, `Book Name`, `User Name`, `Faculty`, `Issue Date`, `Due Date`, `Return Date`) 
+            VALUES ('$Book_Name','$User_Name', '$Faculty', '$Issue','$Due','$Return')";
+   
     $data = mysqli_query($conn, $sql);
 
     if ($data) {

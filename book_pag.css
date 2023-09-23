@@ -145,7 +145,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
-.tabcontent1, .tabcontent2, .tabcontent3, .tabcontent4, .tabcontent5 {
+.tabcontent1, .tabcontent4, .tabcontent5 {
     width: 350px;
     height: 350px;
     display: block;
@@ -158,6 +158,20 @@ body {
     background-color: rgba(255, 255, 255, 0.4);
 
     }
+
+    .tabcontent2, .tabcontent3{
+        width: 350px;
+        height: 350px;
+        display: block;
+        font-weight: bold;
+        border: 1px solid white; /* Changed 'white' to 'solid' for a border style */
+        margin-left: 300px;
+        margin-top: -75px;
+        border-radius: 10px;
+        opacity: 100%;
+        background-color: rgba(255, 255, 255, 0.521);
+    }
+
 
 /* 
 .marquee {

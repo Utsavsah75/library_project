@@ -8,11 +8,13 @@ if (isset($_POST['Issue'])) {
     $B_Name  = mysqli_real_escape_string($conn, $_POST['$B_Name']);
     $B_ID    = mysqli_real_escape_string($conn, $_POST['B_ID']);
     $Issue   = mysqli_real_escape_string($conn, $_POST['iss_D']);
+    $faculty   = mysqli_real_escape_string($conn, $_POST['faculty']);
     $U_Name  = mysqli_real_escape_string($conn, $_POST['U_Name']);
     $Due     = mysqli_real_escape_string($conn, $_POST['due_D']);
  
-    $sql = "INSERT INTO `issue_book`(`Book_Name`, `Book_ID`, `Issue_Date`, `User_Name`, `Due_Date`)
-                             VALUES ('$B_Name','$B_ID', '$Issue', '$U_Name', '$Due')";
+    $sql = "INSERT INTO `issue_book`(`Book_Name`, `Book_ID`, `Issue_Date`,`Faculty`, `User_Name`, `Due_Date`)
+                             VALUES ('$B_Name','$B_ID', '$Issue',`$faculty`, '$U_Name', '$Due')";
+                             
     $data = mysqli_query($conn, $sql);
 
     if ($data) {

@@ -1,8 +1,6 @@
 <?php
-    require 'conn.php';
+require 'conn.php';
 ?>
-
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -16,7 +14,7 @@
 </head>
 
 <body>
-   
+
     <div class="datetime">
         <p class="time"></p>
         <p class="date"></p>
@@ -28,12 +26,12 @@
         </div> -->
         <div class="top1">
             <ul>
-                <li><a href="#"><i class="fa fa-book"></i>All Books</a></li>
-                <li><a href="#"><i class="fa fa-users"></i>All Members</a></li>
-                <!-- <li><a href="#"><i class="fas fa-shopping-cart"></i>Issue Books</a></li> -->
+                <li><a href="all_books.php"><i class="fa fa-book"></i>All Books</a></li>
+                <li><a href="all_member.php"><i class="fa fa-users"></i>All Members</a></li>
                 <li><a href="#"><i class="fa fa-hourglass-half"></i>Pending Books</a></li>
-                <!-- <li><a href="#"><i class="fa fa-sign-out-alt"></i>Manage Users</a></li> -->
                 <li><a href="index.php"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
+                <!-- <li><a href="#"><i class="fa fa-sign-out-alt"></i>Manage Users</a></li> -->
+                <!-- <li><a href="#"><i class="fas fa-shopping-cart"></i>Borrow Books</a></li> -->
             </ul>
         </div>
     </div>
@@ -42,125 +40,159 @@
     <div class="container1">
         <!-- <div class="library-container2"> -->
         <ul>
-        <a style="text-decoration: none;" href="dashboard.php">  <button> DashBoard</button></a>
+            <a style="text-decoration: none;" href="dashboard.php"> <button> DashBoard</button></a>
             <a style="text-decoration: none;" href="book_page.php"> <button> Add Books</button></a>
             <a style="text-decoration: none;" href="Issue.php"><button> Issue Books</button></a>
-            <a style="text-decoration: none;" href="return.php">  <button> Return Books</button></a>
+            <a style="text-decoration: none;" href="return.php"> <button> Return Books</button></a>
             <a style="text-decoration: none;" href="add.php"> <button> Add Users</button></a>
-
+            <!-- <a style="text-decoration: none;" href="manage.php"> <button> Manage Users</button></a> -->
         </ul>
     </div>
-    <!-- </div> -->
+    <!-- </div> 
 
-    <input type="text" placeholder="Search" style=" float: left;margin-left: 975px;  border-radius: 8px;  border: 2px solid;   transform: translateY(-463px); width: 240px; height: 25px;">
-    <!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i> -->
-
-  
-    <!---*****************RETURN BOOKS**********************-->
-    <div id="Return_Books" class="tabcontent3">
-        
-    <p style="display:none; margin-left: 10px;">This Field is required:</p>
-            <form onsubmit="event.preventDefault();onReturnFormSubmit();" autocomplete="off">
-            <table>
-    <tr>
-        <th><label for="Return_id" style="text-align: left;">Return ID</label></th>
-        <td><input type="text" name="Return_id" placeholder="Enter Return ID" style="padding: 5px;"></td>
-    </tr>
-    <tr>
-        <th><label for="bID" style="text-align: left;">Book ID</label></th>
-        <td><input type="text" name="bID" placeholder="Enter Book ID" style="padding: 5px;"></td>
-    </tr>
-    <tr>
-        <th><label for="Bname" style="text-align: left;">Book Name</label></th>
-        <td><input type="text" name="Bname" placeholder="Enter Book Name" style="padding: 5px;"></td>
-    </tr>
-    <tr>
-        <th><label for="u_id" style="text-align: left;">User ID</label></th>
-        <td><input type="text" name="u_id" placeholder="Enter User Name" style="padding: 5px;"></td>
-    </tr>
-    <tr>
-        <th><label for="iss_D" style="text-align: left;">Issue Date</label></th>
-        <td><input type="text" name="iss_D" placeholder="Issue Date" style="padding: 5px;"></td>
-    </tr>
-    <tr>
-        <th><label for="due_D" style="text-align: left;">Due Date</label></th>
-        <td><input type="text" name="due_D" placeholder="Enter Due Date" style="padding: 5px;"></td>
-    </tr>
-    <tr>
-        <th><label for="Return_D" style="text-align: left;">Return Date</label></th>
-        <td><input type="text" name="Return_D" placeholder="Enter Return Date" style="padding: 5px;"></td>
-    </tr>
-    <tr>
-        <td colspan="2" style="text-align: right;">
-            <input type="Button" name="submit" value="Return" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff; border-radius: 4px; cursor: pointer;">
-            <input type="Button" name="submit" value="Clear" style="padding: 10px 20px; font-weight:bold; background-color: #337ab7; color: #fff; border-radius: 4px; cursor: pointer;">
-        </td>
-    </tr>
-</table>
-
-            </form>
-           
-        <script src="connect.js"></script>
-    </div>
+    <div class="top">
+        <input type="text" placeholder="Search">
+    </div> <!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i> -->
 
 
-    <script>
-   
-        const timeElement = document.querySelector(".time");
-        const dateElement = document.querySelector(".date");
+    <form action="" method="GET" style="padding: 5px;margin-top: -325px; margin-left: 375px;">
+        <tr>
+            <th>Book ID</th>
+            <input type="text" name="Id" placeholder="Enter Book ID" value="<?php if (isset($_GET['Id'])) {
+                                                                                echo $_GET['Id'];
+                                                                            } ?>" style="width: 120px; " required>
+        </tr>
 
-        function formatTime(date) {
-            const hours12 = date.getHours() % 12 || 12;
-            const minutes = date.getMinutes();
-            const seconds = date.getSeconds();
-            const isAm = date.getHours() < 12;
 
-            return `${hours12.toString().padStart(2, "0")}:${minutes
+    </form>
+
+
+    <!-- *****************return BOOK********************** -->
+    <div id="return_Books" class="tabcontent2"  style=" background-color: rgba(255, 258, 258, 0.57); border: 2px solid black " >
+        <p style="display:none; margin-left: 10px;">This Field is required:</p>
+
+        <form id="bookForm" method="POST" action="returnbook_server.php" autocomplete="off">
+
+            <div class="row">
+                <table style="padding: 20px;margin-top: 50px;">
+                    <div class="row">
+                        <?php
+                        $con = mysqli_connect("localhost", "root", "", "library");
+
+                        if (isset($_GET['Id'])) {
+                            $Id = $_GET['Id'];
+
+                            $query = "SELECT * FROM request_book WHERE id='$Id' ";
+                            $query_run = mysqli_query($con, $query);
+
+                            if (mysqli_num_rows($query_run) > 0) {
+                                foreach ($query_run as $row) {
+                        ?>
+                                    <tr>
+                                        <th>User Name</th>
+                                        <td><input type="text" name="U_Name" value="<?= $row['User Name']; ?>" placeholder="Enter User Name" style="padding: 5px;"></td>
+                                    </tr>
+                                    <th>Book Name</th>
+                                    <td><input type="text" name="B_Name" value="<?= $row['Book Name']; ?>" placeholder="Enter Book Name" style="padding: 5px;"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th for="class">Faculty</th>
+                                        <th><select name="faculty" value="<?= $row['Faculty']; ?>" style="padding: 5px; width: 150px; margin-left: -30px;">
+                                                <option value="class1">DIT</option>
+                                                <option value="class2">DCE</option>
+                                                <option value="class3">DEE</option>
+                                                <option value="class4">DGE</option>
+                                                <option value="class5">DHM</option>
+                                            </select>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>Issue Date</th>
+                                        <td><input type="date" name="iss_D" value="<?= $row['Issue Date']; ?>" placeholder="Enter Issue Date" style="padding: 5px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Due Date</th>
+                                        <td><input type="date" name="due_D" value="<?= $row['Due Date']; ?>" placeholder="Enter Due Date" style="padding: 5px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Return Date</th>
+                                        <td><input type="date" name="Return_D" value="<?= $row['Return Date']; ?>" placeholder="Enter Return Date" style="padding: 5px;" required></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="text-align: right;">
+                                            <input type="Button" name="submit" value="Return" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff; border-radius: 4px; cursor: pointer;">
+                                            <input type="Button" name="submit" value="Clear" style="padding: 10px 20px; font-weight:bold; background-color: #337ab7; color: #fff; border-radius: 4px; cursor: pointer;">
+                                        </td>
+                                    </tr>
+                        <?php
+                                }
+                            } else {
+                                echo "No Record Found";
+                            }
+                        }
+
+                        ?>
+                </table>
+        </form>
+
+
+        <script>
+            const timeElement = document.querySelector(".time");
+            const dateElement = document.querySelector(".date");
+
+            function formatTime(date) {
+                const hours12 = date.getHours() % 12 || 12;
+                const minutes = date.getMinutes();
+                const seconds = date.getSeconds();
+                const isAm = date.getHours() < 12;
+
+                return `${hours12.toString().padStart(2, "0")}:${minutes
                 .toString()
                 .padStart(2, "0")}:${seconds.toString().padStart(2, "0")} ${isAm ? "AM" : "PM"}`;
-        }
+            }
 
-        function formatDate(date) {
-            const DAYS = [
-                "Sunday",
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday"
-            ];
-            const MONTHS = [
-                "January",
-                "February",
-                "March",
-                "April",
-                "May",
-                "June",
-                "July",
-                "August",
-                "September",
-                "October",
-                "November",
-                "December"
-            ];
+            function formatDate(date) {
+                const DAYS = [
+                    "Sunday",
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday"
+                ];
+                const MONTHS = [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
+                ];
 
-            return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`;
-        }
+                return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`;
+            }
 
-        // Initial update
-        const now = new Date();
-        timeElement.textContent = formatTime(now);
-        dateElement.textContent = formatDate(now);
-
-        // Update every second
-        setInterval(() => {
+            // Initial update
             const now = new Date();
-
             timeElement.textContent = formatTime(now);
             dateElement.textContent = formatDate(now);
-        }, 1000);
-    </script>
+
+            // Update every second
+            setInterval(() => {
+                const now = new Date();
+
+                timeElement.textContent = formatTime(now);
+                dateElement.textContent = formatDate(now);
+            }, 1000);
+        </script>
 </body>
 
 </html>

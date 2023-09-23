@@ -1,8 +1,6 @@
 <?php
 require 'conn.php';
 ?>
-
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -45,52 +43,95 @@ require 'conn.php';
             <a style="text-decoration: none;" href="dashboard.php"> <button> DashBoard</button></a>
             <a style="text-decoration: none;" href="book_page.php"> <button> Add Books</button></a>
             <a style="text-decoration: none;" href="Issue.php"><button> Issue Books</button></a>
-        <a style="text-decoration: none;" href="return.php">  <button> Return Books</button></a>
+            <a style="text-decoration: none;" href="return.php"> <button> Return Books</button></a>
             <a style="text-decoration: none;" href="add.php"> <button> Add Users</button></a>
             <!-- <a style="text-decoration: none;" href="manage.php"> <button> Manage Users</button></a> -->
         </ul>
     </div>
-    <!-- </div> -->
+    <!-- </div> 
 
     <div class="top">
         <input type="text" placeholder="Search">
     </div> <!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i> -->
 
 
+    <form action="" method="GET" style="padding: 5px;margin-top: -325px; margin-left: 375px;">
+        <tr>
+            <th>Book ID</th>
+            <input type="text" name="Id" placeholder="Enter Book ID" value="<?php if (isset($_GET['Id'])) {
+                                                                                echo $_GET['Id'];
+                                                                            } ?>" style="width: 120px; " required>
+        </tr>
+
+
+    </form>
+
+
     <!-- *****************Issue BOOK********************** -->
     <div id="Issue_Books" class="tabcontent2">
         <p style="display:none; margin-left: 10px;">This Field is required:</p>
 
-        <form id="bookForm" method="POST" action="issue_book_data.php" autocomplete="off">
-            <table style="padding: 20px;">
-                <tr>
-                    <th>Book Name</th>
-                    <td><input type="text" name="B_Name" placeholder="Enter Book Name" style="padding: 5px;"></td>
-                </tr>
-                <tr>
-                    <th>User Name</th>
-                    <td><input type="text" name="U_Name" placeholder="Enter User Name" style="padding: 5px;"></td>
-                </tr>
-                <tr>
-                    <th>Book ID</th>
-                    <td><input type="text" name="B_ID" placeholder="Enter Book ID" style="padding: 5px;"></td>
-                </tr>
-                <tr>
-                    <th>Issue Date</th>
-                    <td><input type="date" name="iss_D" placeholder="Enter Issue Date" style="padding: 5px;"></td>
-                </tr>
-                <tr>
-                    <th>Due Date</th>
-                    <td><input type="date" name="due_D" placeholder="Enter Due Date" style="padding: 5px;"></td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="text-align: center;">
-                        <input type="submit" name="Issue" value="Issue" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff;border-radius: 4px; cursor: pointer;">
-                        <input type="Button" name="clear" value="Clear" style="padding: 10px 20px; font-weight:bold; background-color: #337ab7; color: #fff;border-radius: 4px; cursor: pointer;">
-                    </td>
-                </tr>
-            </table>
+        <form id="bookForm" method="POST" action="issuebook_server.php" autocomplete="off">
+
+            <div class="row">
+                <table style="padding: 20px;margin-top: 50px;">
+                    <div class="row">
+                        <?php
+                        $con = mysqli_connect("localhost", "root", "", "library");
+
+                        if (isset($_GET['Id'])) {
+                            $Id = $_GET['Id'];
+
+                            $query = "SELECT * FROM issue_book WHERE BooK_Id='$Id' ";
+                            $query_run = mysqli_query($con, $query);
+
+                            if (mysqli_num_rows($query_run) > 0) {
+                                foreach ($query_run as $row) {
+                         ?>
+                                    <tr>
+                                    <th>User Name</th>
+                                    <td><input type="text" name="U_Name" value="<?= $row['User_Name']; ?>" placeholder="Enter User Name" style="padding: 5px;"></td>
+                                    </tr>
+                                    <th>Book Name</th>
+                                    <td><input type="text" name="B_Name" value="<?= $row['Book_Name']; ?>" placeholder="Enter Book Name" style="padding: 5px;"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th for="class">Faculty</th>
+                                        <th><select name="faculty" value="<?= $row['Faculty']; ?>" style="padding: 5px; width: 150px; margin-left: -30px;">
+                                                <option value="class1">DIT</option>
+                                                <option value="class2">DCE</option>
+                                                <option value="class3">DEE</option>
+                                                <option value="class4">DGE</option>
+                                                <option value="class5">DHM</option>
+                                            </select>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>Issue Date</th>
+                                        <td><input type="date" name="iss_D" value="<?= $row['Issue_Date']; ?>" placeholder="Enter Issue Date" style="padding: 5px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Due Date</th>
+                                        <td><input type="date" name="due_D" value="<?= $row['Due_Date']; ?>" placeholder="Enter Due Date" style="padding: 5px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="text-align: center;">
+                                            <input type="submit" name="Issue" value="Issue" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff;border-radius: 4px; cursor: pointer;">
+                                            <input type="Button" name="clear" value="Clear" style="padding: 10px 20px; font-weight:bold; background-color: #337ab7; color: #fff;border-radius: 4px; cursor: pointer;">
+                                        </td>
+                                    </tr>
+                        <?php
+                                }
+                            } else {
+                                echo "No Record Found";
+                            }
+                        }
+
+                        ?>
+                </table>
         </form>
+
 
         <script>
             const timeElement = document.querySelector(".time");
