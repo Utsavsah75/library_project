@@ -82,46 +82,58 @@ require 'conn.php';
                         if (isset($_GET['Id'])) {
                             $Id = $_GET['Id'];
 
-                            $query = "SELECT * FROM issue_book WHERE BooK_Id='$Id' ";
+                            $query = "SELECT * FROM add_book WHERE Id='$Id' ";
                             $query_run = mysqli_query($con, $query);
 
                             if (mysqli_num_rows($query_run) > 0) {
                                 foreach ($query_run as $row) {
-                         ?>
-                                    <tr>
-                                    <th>User Name</th>
-                                    <td><input type="text" name="U_Name" value="<?= $row['User_Name']; ?>" placeholder="Enter User Name" style="padding: 5px;"></td>
+                        ?>
                                     </tr>
+                                    <th>User Name</th>
+                                    <td><input type="text" name="U_Name" placeholder="Enter User Name" style="padding: 5px;"></td>
+                                    </tr>
+
                                     <tr>
-                                    <th>Book Name</th>
-                                    <td><input type="text" name="B_Name" value="<?= $row['Book_Name']; ?>" placeholder="Enter Book Name" style="padding: 5px;"></td>
+                                        <th>Book Name</th>
+                                        <td><input type="text" name="B_Name" value="<?= $row['Book Name']; ?>" placeholder="Enter Book Name" style="padding: 5px;"></td>
+                                    </tr>
+
+                                    <tr>
+                                    <th>Quantity</th>
+                                    <td><input type="number" name="quantity" value="1" value="<?= $row['Quantity']; ?>" style="padding: 5px;" required></td>
                                     </tr>
 
                                     <tr>
                                         <th for="class">Faculty</th>
-                                        <th><select name="faculty" value="<?= $row['Faculty']; ?>" style="padding: 5px; width: 150px; margin-left: -30px;">
-                                                <option value="class1">DIT</option>
-                                                <option value="class2">DCE</option>
-                                                <option value="class3">DEE</option>
-                                                <option value="class4">DGE</option>
-                                                <option value="class5">DHM</option>
+                                        <th><select name="faculty" style="padding: 5px; width: 150px; margin-left: -30px;">
+                                                <option value="DIT">DIT</option>
+                                                <option value="DCE">DCE</option>
+                                                <option value="DEE">DEE</option>
+                                                <option value="DGE">DGE</option>
+                                                <option value="DHM">DHM</option>
                                             </select>
                                         </th>
                                     </tr>
+
                                     <tr>
                                         <th>Issue Date</th>
-                                        <td><input type="date" name="iss_D" value="<?= $row['Issue_Date']; ?>" placeholder="Enter Issue Date" style="padding: 5px;"></td>
+                                        <td><input type="date" name="iss_D" placeholder="Enter Issue Date" style="padding: 5px;"></td>
                                     </tr>
                                     <tr>
                                         <th>Due Date</th>
-                                        <td><input type="date" name="due_D" value="<?= $row['Due_Date']; ?>" placeholder="Enter Due Date" style="padding: 5px;"></td>
+                                        <td><input type="date" name="due_D" placeholder="Enter Due Date" style="padding: 5px;"></td>
                                     </tr>
-                                    <tr>
-                                        <td colspan="2" style="text-align: center;">
-                                            <input type="submit" name="Issue" value="Issue" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff;border-radius: 4px; cursor: pointer;">
-                                            <input type="Button" name="clear" value="Clear" style="padding: 10px 20px; font-weight:bold; background-color: #337ab7; color: #fff;border-radius: 4px; cursor: pointer;">
-                                        </td>
+
+
+                                    <td colspan="2" style="text-align: center;">
+                                        <input type="submit" name="Issue" value="Issue" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff;border-radius: 4px; cursor: pointer;">
+                                        <input type="Button" name="clear" value="Clear" style="padding: 10px 20px; font-weight:bold; background-color: #337ab7; color: #fff;border-radius: 4px; cursor: pointer;">
+                                    </td>
                                     </tr>
+
+
+
+
                         <?php
                                 }
                             } else {
@@ -130,6 +142,12 @@ require 'conn.php';
                         }
 
                         ?>
+                        <!-- ------------------------>
+                        <tr>
+
+                            <!-- ---------------------------------- -->
+
+
                 </table>
         </form>
 

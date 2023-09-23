@@ -13,9 +13,9 @@
         }
 
         table {
-            width: 100%;
+            width: 60rem;
             margin-top: 0px;
-            margin-left: 10px;
+            margin-left: -130px;
             /* display: none; */
             border: 2px solid black;
             border-collapse: collapse;
@@ -70,8 +70,8 @@
         input[type="button"] {
             width: 76px;
             height: 34px;
-            margin-top: auto;
-            margin-left: 550px;
+            margin-top: 2px;
+            margin-left: 720px;
             background-color: red;
             font-weight: bold;
             color: #fff;
@@ -99,6 +99,7 @@
                 <th>Book Name</th>
                 <!-- <th>ID</th> -->
                 <th>User Name</th>
+                <th>Quantity</th>
                 <th>Faculty</th>
                 <th>Issue Date</th>
                 <th>Due Date</th>
@@ -121,6 +122,7 @@
                 <td style='border: 2px solid black; text-align: center;'>" . $sn . "</td>
                 <td style='border: 2px solid black; text-align: center;'>" . $result['Book_Name'] . "</td>
                 <td style='border: 2px solid black; text-align: center;'>" . $result['User_Name'] . "</td>
+                <td style='border: 2px solid black; text-align: center;'>" . $result['quantity'] . "</td>
                 <td style='border: 2px solid black; text-align: center;'>" . $result['Faculty'] . "</td>
                 <td style='border: 2px solid black; text-align: center;'>" . $result['Issue_Date'] . "</td>
                 <td style='border: 2px solid black; text-align: center;'>" . $result['Due_Date'] . "</td>
@@ -133,7 +135,7 @@
                     $sn++;
                 }
             } else {
-                echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
+                echo "<tr><td colspan='8' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
             }
             //---- 
             if (isset($_GET['m'])) {
@@ -150,6 +152,9 @@
                     echo '<tr>
                 <th>Book Id</th>
                 <th>Book Name</th>
+                <th>User Name</th>
+                <th>Quantity</th>
+                <th>Faculty</th>
                 <th>Issue Date</th>
                 <th>Due Date</th>
                 <script src="search.js"></script>
@@ -160,6 +165,8 @@
                     <th>' . $row['Id'] . '</th>
                     <th>' . $row['Book Name'] . '</th>
                     <th>' . $row['User Name'] . '</th>
+                    <th>' . $row['Quantity'] . '</th>
+                    <th>' . $row['faculty'] . '</th>
                     <th>' . $row['Issue Date'] . '</th>
                     <th>' . $row['Due date'] . '</th>
                   </tr>';

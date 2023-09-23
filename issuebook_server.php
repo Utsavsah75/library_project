@@ -10,11 +10,12 @@ if (isset($_POST['Issue'])) {
     $B_Name        = mysqli_real_escape_string($conn, $_POST['B_Name']);
     $U_Name        = mysqli_real_escape_string($conn, $_POST['U_Name']);
     $Faculty        = mysqli_real_escape_string($conn, $_POST['faculty']);
+    $quantity        = mysqli_real_escape_string($conn, $_POST['quantity']);
     $iss_D         = mysqli_real_escape_string($conn, $_POST['iss_D']);
     $due_D         = mysqli_real_escape_string($conn, $_POST['due_D']);
  
     $sql = "INSERT INTO issue_book (`Book_Id`, `Book_Name`, `User_Name`, `Issue_Date`, `Due_Date`, `Faculty`) 
-    VALUES ('$B_Name', '$U_Name', '$Faculty', '$iss_D', '$due_D')";
+    VALUES ('$B_Name', '$U_Name', '$Faculty','$quantity', '$iss_D', '$due_D')";
                              
     $data = mysqli_query($conn, $sql);
 
@@ -32,7 +33,7 @@ if (isset($_POST['Issue'])) {
                         icon: "success"
                     }).then(function() {
                         // Redirect to the add.php page after displaying the message
-                        window.location.href = "add.php";
+                        window.location.href = "issue.php";
                     });
                 });
             </script>';
