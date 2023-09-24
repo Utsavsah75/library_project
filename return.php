@@ -82,7 +82,7 @@ require 'conn.php';
                         if (isset($_GET['Id'])) {
                             $Id = $_GET['Id'];
 
-                            $query = "SELECT * FROM request_book WHERE id='$Id' ";
+                            $query = "SELECT * FROM issue_book WHERE Book_Id='$Id' ";
                             $query_run = mysqli_query($con, $query);
 
                             if (mysqli_num_rows($query_run) > 0) {
@@ -90,10 +90,16 @@ require 'conn.php';
                         ?>
                                     <tr>
                                         <th>User Name</th>
-                                        <td><input type="text" name="U_Name" value="<?= $row['User Name']; ?>" placeholder="Enter User Name" style="padding: 5px;"></td>
+                                        <td><input type="text" name="U_Name" value="<?= $row['User_Name']; ?>" placeholder="Enter User Name" style="padding: 5px;"></td>
                                     </tr>
+                                    
                                     <th>Book Name</th>
-                                    <td><input type="text" name="B_Name" value="<?= $row['Book Name']; ?>" placeholder="Enter Book Name" style="padding: 5px;"></td>
+                                    <td><input type="text" name="B_Name" value="<?= $row['Book_Name']; ?>" placeholder="Enter Book Name" style="padding: 5px;"></td>
+                                    </tr>
+
+                                    <tr>
+                                    <th>Quantity</th>
+                                    <td><input type="number" name="quantity" value="1" value="<?= $row['Quantity']; ?>" style="padding: 5px;" required></td>
                                     </tr>
 
                                     <tr>
@@ -109,15 +115,15 @@ require 'conn.php';
                                     </tr>
                                     <tr>
                                         <th>Issue Date</th>
-                                        <td><input type="date" name="iss_D" value="<?= $row['Issue Date']; ?>" placeholder="Enter Issue Date" style="padding: 5px;"></td>
+                                        <td><input type="date" name="iss_D" value="<?= $row['Issue_Date']; ?>" placeholder="Enter Issue Date" style="padding: 5px;"></td>
                                     </tr>
                                     <tr>
                                         <th>Due Date</th>
-                                        <td><input type="date" name="due_D" value="<?= $row['Due Date']; ?>" placeholder="Enter Due Date" style="padding: 5px;"></td>
+                                        <td><input type="date" name="due_D" value="<?= $row['Due_Date']; ?>" placeholder="Enter Due Date" style="padding: 5px;"></td>
                                     </tr>
                                     <tr>
                                         <th>Return Date</th>
-                                        <td><input type="date" name="Return_D" value="<?= $row['Return Date']; ?>" placeholder="Enter Return Date" style="padding: 5px;" required></td>
+                                        <td><input type="date" name="Return_D" placeholder="Enter Return Date" style="padding: 5px;" required></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="text-align: right;">

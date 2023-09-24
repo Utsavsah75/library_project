@@ -32,7 +32,7 @@
                     <a href="index.php">
                         <li class="fa fa-home">Home</li>
                     </a>
-                    <a href="gall.php">
+                    <a href="About.php">
                         <li class="fa fa-image">Gallery</li>
                     </a>
                     <!-- <a href="admin.html">

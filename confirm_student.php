@@ -12,3 +12,23 @@ if ($_GET['id'] && $_GET['action'] == 'delete') {
 }
 header('location: dashboard.php');
 ?>
+
+
+<?php
+if ($_GET['id'] && $_GET['action'] == 'delete') {
+    $id = base64_decode($_GET['id']);
+    $sql = "DELETE FROM add_book WHERE Id = '{$id}'";
+    $res = mysqli_query($conn, $sql);
+}
+header('location: dashboard.php');
+?>
+
+
+<?php
+if ($_GET['id'] && $_GET['action'] == 'delete') {
+    $id = base64_decode($_GET['id']);
+    $sql = "DELETE FROM students WHERE id = '{$id}'";
+    $res = mysqli_query($conn, $sql);
+}
+header('location: dashboard.php');
+?>
