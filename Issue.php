@@ -76,11 +76,6 @@ require 'conn.php';
             <!-- <a style="text-decoration: none;" href="manage.php"> <button> Manage Users</button></a> -->
         </ul>
     </div>
-    <!-- </div> 
-
-    <div class="top">
-        <input type="text" placeholder="Search">
-    </div> <!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i> -->
 
     <form action="" method="GET" style="padding: 5px;margin-top: -325px; margin-left: 375px;">
         <tr>
@@ -105,22 +100,55 @@ require 'conn.php';
                         if (isset($_GET['Id'])) {
                             $Id = $_GET['Id'];
 
-                            $query = "SELECT * FROM add_book WHERE Id='$Id' ";
+                            $query = "SELECT * FROM Books_with_id INNER JOIN Books ON Books_with_id.book=Books.id WHERE book_id='$Id' AND is_issued=0 ";
                             $query_run = mysqli_query($conn, $query);
                             $data = mysqli_fetch_assoc($query_run);
                         }
                         ?>
-                        </tr>
-                        <th>User Name</th>
-                        <td><input type="text" name="U_Name" placeholder="Enter User Name" style="padding: 5px;"></td>
+                        <tr>
+                            <th>Book Name</th>
+                            <td>
+                                <input type="hidden" name="book_id" value="<?php if(isset($_GET['Id'])){echo $_GET['Id'];} ?>">
+                                <input type="hidden" name="b_id" value="<?php if(isset($data)){echo $data['id'];} ?>">
+                                <input type="text" name="B_Name" placeholder="Enter book name" value="<?php if(isset($data)){echo $data['name'];} ?>">
+                                <!-- <datalist id="books">
+                                    <?php
+                                    // $query = "SELECT * FROM Books ORDER BY name";
+                                    // $query_run = mysqli_query($conn, $query);
+
+                                    // while ($row = mysqli_fetch_assoc($query_run)) {
+                                    //     echo "<option value='" . $row['name'] . "'>";
+                                    // }
+                                    ?>
+                                </datalist>
+                                <input autoComplete="on" list="books" /> -->
+                            </td>
+                            <!-- <td>
+                                <select name="" id="">
+                                    <option value disabled>Select Book</option>
+                                </select>
+                                <input type="text" name="B_Name" placeholder="Enter Book Name" style="padding: 5px;" value="<?php if (isset($data)) {
+                                                                                                                                echo $data['Book Name'];
+                                                                                                                            } ?>">
+                            </td> -->
                         </tr>
 
                         <tr>
-                            <th>Book Name</th>
-                            <td><input type="text" name="B_Name" placeholder="Enter Book Name" style="padding: 5px;" value="<?php if (isset($data)) {
-                                                                                                                                echo $data['Book Name'];
-                                                                                                                            } ?>"></td>
+                            <th>User ID</th>
+                            <td>
+                                <input type="number" name="U_id" placeholder="Enter User ID" style="padding: 5px;" id="user_id" required>
+                            </td>
                         </tr>
+
+                        <tr>
+                            <th>User Name</th>
+                            <td>
+                                <input type="text" name="U_Name" placeholder="Enter User Name" style="padding: 5px;" required>
+                                <img style='width:40px;' id="user_photo" src="">
+
+                            </td>
+                        </tr>
+
 
                         <tr>
                             <th>Quantity</th>
@@ -129,7 +157,7 @@ require 'conn.php';
 
                         <tr>
                             <th for="class">Faculty</th>
-                            <th><select name="faculty" style="padding: 5px; width: 150px; margin-left: -30px;">
+                            <th><select name="faculty" style="padding: 5px; width: 150px; margin-left: -30px;" required>
                                     <option value="DIT">DIT</option>
                                     <option value="DCE">DCE</option>
                                     <option value="DEE">DEE</option>
@@ -141,11 +169,11 @@ require 'conn.php';
 
                         <tr>
                             <th>Issue Date</th>
-                            <td><input type="date" name="iss_D" placeholder="Enter Issue Date" style="padding: 5px;"></td>
+                            <td><input type="date" name="iss_D" placeholder="Enter Issue Date" style="padding: 5px;" required></td>
                         </tr>
                         <tr>
                             <th>Due Date</th>
-                            <td><input type="date" name="due_D" placeholder="Enter Due Date" style="padding: 5px;"></td>
+                            <td><input type="date" name="due_D" placeholder="Enter Due Date" style="padding: 5px;" required></td>
                         </tr>
 
 
@@ -221,6 +249,29 @@ require 'conn.php';
                 timeElement.textContent = formatTime(now);
                 dateElement.textContent = formatDate(now);
             }, 1000);
+
+
+            document.getElementById("user_id").addEventListener('input', function() {
+                var id = document.getElementById("user_id").value;
+                console.log(id);
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+
+                        var data = JSON.parse(this.responseText);
+                        console.log(data);
+                        document.getElementsByName("U_Name")[0].value = data.std_name;
+                        document.getElementsByName("faculty")[0].value = data.faculty;
+                        document.getElementById("user_photo").src = "uploads/" + data.photo;
+                    }else{
+                        document.getElementsByName("U_Name")[0].value = "";
+                        document.getElementsByName("faculty")[0].value = "";
+                        document.getElementById("user_photo").src = "";
+                    }
+                };
+                xhttp.open("GET", "getuser.php?id=" + id, true);
+                xhttp.send();
+            });
         </script>
 </body>
 

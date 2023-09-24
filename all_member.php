@@ -118,7 +118,7 @@
                     <td style='border: 2px solid black; text-align: center;'>" . $result['phone'] . "</td>
                     <td style='border: 2px solid black; text-align: center;'>" . $result['faculty'] . "</td>
                     <td style='border: 2px solid black; text-align: center;'>" . $result['address'] . "</td>
-                    <td style='border: 2px solid black; text-align: center;'> <img src='" . $result['photo'] . "'>" . "</td>
+                    <td style='border: 2px solid black; text-align: center;'> <img style='width:40px;' src='uploads/" . $result['photo'] . "'>" . "</td>
                     <td style='border: 2px solid black; text-align: center;'>
         <a href='newuser_update.php?Id=" . $result['Id'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
      

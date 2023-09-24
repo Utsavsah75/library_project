@@ -25,7 +25,7 @@
                 <a href="#" class="fa fa-twitter" style="text-decoration:none;  padding: 7px ; float:right; color: white;"></a>
             </div>
             <div id="menu">
-            <div id="logo"><b style="color:#2c7ad6 ;">HISTORY</b>LIBRARY
+                <div id="logo"><b style="color:#2c7ad6 ;">HISTORY</b>LIBRARY
                 </div>
                 <div id="menu1">
                     <ul>
@@ -36,7 +36,7 @@
                             <li class="fa fa-image">Gallery</li>
                         </a>
 
-                        <a href="admin.php">
+                        <a href="admin_login.php">
                             <li class="fa fa-user">Login</li>
                         </a>
 

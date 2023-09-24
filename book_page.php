@@ -64,10 +64,10 @@ require 'check_admin.php';
             <p style="display:none; margin-left: 10px;">This Field is required:</p>
             <form id="bookForm" method="POST" action="add_book_data.php" autocomplete="off">
                 <table id="table" style="margin-top: 10px;" ;>
-                    <tr>
+                    <!-- <tr>
                         <th><label for="book_id">Book ID*</label></th>
                         <td><input type="number" id="book_id" placeholder="Enter Book ID" style="padding: 5px;" name="book_id" required></td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th><label for="bname">Book Name</label></th>
                         <td><input type="text" id="bname" placeholder="Enter Book Name" style="padding: 5px;" name="book_name" required></td>

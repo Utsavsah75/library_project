@@ -97,7 +97,8 @@
                 <th>Book Id</th>
                 <th>Book Name</th>
                 <th>Book Author</th>
-                <th>Quantity</th>
+                <th>Availabe Quantity</th>
+                <th>Issued Quantity</th>
                 <th style='width:108px' ;>Action</th>
                 <script src="search.js"></script>
 
@@ -110,7 +111,7 @@
             include("admin_bookserver.php");
             include('message.php');
             error_reporting(0);
-            $query = "SELECT * FROM add_book";
+            $query = "SELECT * FROM Books";
             $data = mysqli_query($conn, $query);
             $total = mysqli_num_rows($data);
             $sn=1;
@@ -119,9 +120,10 @@
                 while ($result = mysqli_fetch_assoc($data)) {
                     echo "<tr>
             <td>" . $sn . "</td>
-            <td>" . $result['Book Name'] . "</td>
-            <td>" . $result['Author Name'] . "</td>
-            <td>" . $result['Quantity'] . "</td>
+            <td>" . $result['name'] . "</td>
+            <td>" . $result['author'] . "</td>
+            <td>" . $result['available'] . "</td>
+            <td>" . $result['issued'] . "</td>
             <td>
         <a href='update_book.php?Id=" . $result['Id'] . "'><button style='height: 25px; align-items: center; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
             <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black;align-items: center;  border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button>

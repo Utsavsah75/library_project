@@ -11,7 +11,6 @@
 </head>
 
 <body>
-    <!-- <form action="book_page.php" method="post"> -->
     <div id="background">
         <div id="top">
             <a href="#" class="fa fa-envelope" style="text-decoration:none;  color: white;">
@@ -25,7 +24,7 @@
             <a href="#" class="fa fa-twitter" style="text-decoration:none;  padding: 7px ; float:right; color: white;"></a>
         </div>
         <div id="menu">
-        <div id="logo"><b style="color:#2c7ad6 ;">HISTORY</b>LIBRARY
+            <div id="logo"><b style="color:#2c7ad6 ;">HISTORY</b>LIBRARY
             </div>
             <div id="menu1">
                 <ul>
@@ -35,16 +34,13 @@
                     <a href="About.php">
                         <li class="fa fa-image">Gallery</li>
                     </a>
-                    <!-- <a href="admin.html">
-                        <li class="fa fa-user">Admin Login</li>
-                    </a> -->
                     <a href="admin_reg.php">
                         <li class="fa fa-registered">Register</li>
                     </a>
                     <a href="About.html">
                         <li class="">About Us</li>
                     </a>
-                    
+
                 </ul>
             </div>
         </div>
@@ -83,14 +79,6 @@
                                                                                             echo $_COOKIE['rem_pass'];
                                                                                         } ?>" required autocomplete="off"></td>
                                     </tr>
-
-                                    <!-- <td>
-                                        <input type="radio" name="choose" value="Student" id="studentRadio">
-                                        <label for="stdRadio"><a href="index.php">Students</a></label>
-
-                                        <input type="radio" name="choose" value="Admin" id="adminRadio">
-                                        <label for="adminRadio">Admin</label>
-                                    </td> -->
 
                                     </tr>
 

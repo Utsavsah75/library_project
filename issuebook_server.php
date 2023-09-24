@@ -3,26 +3,30 @@ require 'conn.php';
 
 // Check if the Book is Issue
 if (isset($_POST['Issue'])) {
-    
-    // Escape variables to prevent SQL injection
-    $B_Name        = mysqli_real_escape_string($conn, $_POST['B_Name']);
-    $U_Name        = mysqli_real_escape_string($conn, $_POST['U_Name']);
-    $Faculty       = mysqli_real_escape_string($conn, $_POST['faculty']);
-    $quantity      = mysqli_real_escape_string($conn, $_POST['quantity']);
+    $B_id        = mysqli_real_escape_string($conn, $_POST['b_id']);
+    $Book_id        = mysqli_real_escape_string($conn, $_POST['book_id']);
+    $U_id        = mysqli_real_escape_string($conn, $_POST['U_id']);
     $iss_D         = mysqli_real_escape_string($conn, $_POST['iss_D']);
     $due_D         = mysqli_real_escape_string($conn, $_POST['due_D']);
- 
+
     // Insert the issue record
-    $insertSQL = "INSERT INTO issue_book (`Book_Id`, `Book_Name`, `User_Name`, `Issue_Date`, `Due_Date`, `Faculty`) 
-    VALUES ('$B_Name', '$U_Name', '$Faculty', '$quantity', '$iss_D', '$due_D')";
+    $insertSQL = "INSERT INTO issue_book (`std_id`, `book_id`, `issue_date`, `due_date`) 
+    VALUES ('$U_id', '$Book_id', '$iss_D', '$due_D')";
 
     // Update the book quantity
-    $updateSQL = "UPDATE add_book SET Quantity = Quantity - '$quantity' WHERE 'Book Name'='$B_Name'";
+    $available = mysqli_fetch_assoc(mysqli_query($conn, "select * from Books where id = $B_id"))['available'] - 1;
+    $updateSQL = "UPDATE `Books` SET `available` = '$available' WHERE `id`='$B_id'";
 
+    $issued = mysqli_fetch_assoc(mysqli_query($conn, "select * from Books where id = $B_id"))['quantity'] - $available;
+    $updateIssuedSQL = "UPDATE `Books` SET `issued` = '$issued' WHERE `id`='$B_id'";
 
     // Execute the queries
     $insert = mysqli_query($conn, $insertSQL);
     $update = mysqli_query($conn, $updateSQL);
+    $updateIssued = mysqli_query($conn, $updateIssuedSQL);
+
+    // update is issued book flag
+    $updateIsIssued = mysqli_query($conn, "UPDATE `Books_with_id` SET `is_issued` = '1' WHERE `book_id`='$Book_id'");
 
     if ($insert && $update) {
         // User added successfully, display a success message with SweetAlert
@@ -47,6 +51,3 @@ if (isset($_POST['Issue'])) {
         echo "Error: " . mysqli_error($conn);
     }
 }
-?>
-
-

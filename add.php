@@ -62,7 +62,7 @@ require 'check_admin.php';
         <!-- <form id="bookForm" method="POST" action="add_book_data.php" autocomplete="off"> -->
 
         <p style="display:none; margin-left: 10px;">This Field is required:</p>
-        <form id="userForm" method="POST" action="add_user_data.php" autocomplete="on">
+        <form id="userForm" method="POST" action="add_user_data.php" autocomplete="on" enctype="multipart/form-data">
             <table>
                 <tr>
                     <th>Name</th>
@@ -91,7 +91,16 @@ require 'check_admin.php';
                 </tr>
                 <tr>
                     <th>Faculty</th>
-                    <td><input type="text" name="faculty" placeholder="Enter User Faculty/Class" style="padding: 5px;"></td>
+                    <td>
+                        <select name="faculty" style="padding: 5px; width: 150px; margin-left: -30px;">
+                            <option value="DIT">DIT</option>
+                            <option value="DCE">DCE</option>
+                            <option value="DEE">DEE</option>
+                            <option value="DGE">DGE</option>
+                            <option value="DHM">DHM</option>
+                        </select>
+                        <!-- <input type="text" name="faculty" placeholder="Enter User Faculty/Class" style="padding: 5px;"> -->
+                    </td>
                 </tr>
                 <tr>
                     <th>Address</th>
@@ -100,70 +109,15 @@ require 'check_admin.php';
 
                 <tr>
                     <th>Photo</th>
-                    <td><input type="file" name="photo" require></td>
+                    <td><input type="file" name="photo" accept="image/png, image/jpeg, image/jpg" require></td>
                 </tr>
                 <tr>
                     <td colspan="2" style="text-align: left;">
                         <input type="submit" name="submit" value="Save" style="padding: 10px 25px; margin-left: 90px; font-weight:bold; background-color: #4CAF50; color: #fff; border-radius: 4px; cursor: pointer;">
                     </td>
-                    <!-- </tr>
-    <tr>
-        <td colspan="2" style="text-align: right;">
-            <input type="Button" name="submit" value="Delete" style="padding: 10px 22px; font-weight:bold; background-color: #d9534f; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-            <input type="Button" name="submit" value="Clear" style="padding: 10px 21px; font-weight:bold; background-color: #337ab7; color: #fff; border: none; border-radius: 4px; cursor: pointer;">
-        </td> 
                 </tr>
             </table>
-
         </form>
-
-        <table border="2px" style="border-collapse: collapse; width: 790px; height: 0px;margin-top: -445px; margin-left: 280px;">
-            <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
-                <th>User ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Gender</th>
-                <th>Contact_No</th>
-                <th>Faculty</th>
-                <th>Address</th>
-                <th>Action</th> 
-            </tr>
-
-            </tr> -->
-                    <?php
-                    // include("addnewuser_server.php");
-                    //             include('message.php');
-                    //             error_reporting(0);
-                    //             $query = "SELECT * FROM addnew_user";
-                    //             $data = mysqli_query($conn, $query);
-                    //             $total = mysqli_num_rows($data);
-                    // $sn=1;
-                    //             if ($total != 0) {
-                    //                 while ($result = mysqli_fetch_assoc($data)) {
-                    //           echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
-                    //     <td style='border: 2px solid black; text-align: center;'>" . $sn. "</td>
-                    //     <td style='border: 2px solid black; text-align: center;'>" . $result['Name'] . "</td>
-                    //     <td style='border: 2px solid black; text-align: center;'>" . $result['Email'] . "</td>
-                    //     <td style='border: 2px solid black; text-align: center;'>" . $result['Gender'] . "</td>
-                    //     <td style='border: 2px solid black; text-align: center;'>" . $result['Phone'] . "</td>
-                    //     <td style='border: 2px solid black; text-align: center;'>" . $result['Faculty'] . "</td>
-                    //     <td style='border: 2px solid black; text-align: center;'>" . $result['Address'] . "</td>
-                    //     <td style='border: 2px solid black; text-align: center;'>
-                    //         <a href='newuser_update.php?Id=" . $result['User_Id'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
-                    //         <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button></a>
-
-                    //     </td>
-                    // </tr>";
-                    // $sn++;
-                    //                 }
-                    //             } else {
-                    //                 echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
-                    //             }
-                    ?>
-                    <!--      </table>
- </div> -->
-
-
                     <script>
                         const timeElement = document.querySelector(".time");
                         const dateElement = document.querySelector(".date");

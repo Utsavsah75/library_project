@@ -25,7 +25,7 @@
                 <a href="#" class="fa fa-twitter" style="text-decoration:none;  padding: 7px ; float:right; color: white;"></a>
             </div>
             <div id="menu">
-            <div id="logo"><b style="color:#2c7ad6 ;">HISTORY</b>LIBRARY
+                <div id="logo"><b style="color:#2c7ad6 ;">HISTORY</b>LIBRARY
                 </div>
                 <div id="menu1">
                     <ul>
@@ -35,7 +35,7 @@
                         <a href="gall.php">
                             <li class="fa fa-image">Gallery</li>
                         </a>
-                        <a href="admin.php">
+                        <a href="admin_login.php">
                             <li class="fa fa-user">Admin Login</li>
                         </a>
                         <!-- <a href="register.html">
@@ -49,8 +49,8 @@
                 </div>
             </div>
             <div id="slider">
-            <div id="x">WELCOME TO <b style="color: #2c7ad6;">HISTORY</b>LIBRARY
-                <p style="font-size: 15PX;">YOU CAN READ SOME TEXT</p>
+                <div id="x">WELCOME TO <b style="color: #2c7ad6;">HISTORY</b>LIBRARY
+                    <p style="font-size: 15PX;">YOU CAN READ SOME TEXT</p>
                 </div>
                 <div id="y">
                     <div id="l">
@@ -96,7 +96,7 @@
                                         <tr>
                                             <td>Address:</td>
                                             <td><input type="text" name="address" placeholder="Enter your Address" required></td>
-                                        </tr>  
+                                        </tr>
                                         <tr>
                                             <td>Contact:</td>
                                             <td><input type="number" name="phone" placeholder="Enter contact number" required></td>

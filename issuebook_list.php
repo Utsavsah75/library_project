@@ -112,20 +112,21 @@
             include("issuebook_server.php");
             include('message.php');
             error_reporting(0);
-            $query = "SELECT * FROM issue_book";
+            $query = "SELECT * FROM issue_book INNER JOIN students ON issue_book.std_id = students.id INNER JOIN Books_with_id ON issue_book.book_id = Books_with_id.book_id INNER JOIN Books on Books_with_id.book = Books.id";
+
             $data = mysqli_query($conn, $query);
             $total = mysqli_num_rows($data);
             $sn = 1;
             if ($total != 0) {
                 while ($result = mysqli_fetch_assoc($data)) {
                     echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
-                <td style='border: 2px solid black; text-align: center;'>" . $sn . "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . $result['Book_Name'] . "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . $result['User_Name'] . "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . $result['quantity'] . "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . $result['Faculty'] . "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . $result['Issue_Date'] . "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . $result['Due_Date'] . "</td>
+                <td style='border: 2px solid black; text-align: center;'>" . $result['book_id'] . "</td>
+                <td style='border: 2px solid black; text-align: center;'>" . $result['name'] . "</td>
+                <td style='border: 2px solid black; text-align: center;'>" . $result['std_name'] . "</td>
+                <td style='border: 2px solid black; text-align: center;'>" . 1 . "</td>
+                <td style='border: 2px solid black; text-align: center;'>" . $result['faculty'] . "</td>
+                <td style='border: 2px solid black; text-align: center;'>" . $result['issue_date'] . "</td>
+                <td style='border: 2px solid black; text-align: center;'>" . $result['due_date'] . "</td>
                 <td style='border: 2px solid black; text-align: center;'>
                     <a href='issue_update.php?Id=" . $result['Book ID'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
                     <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Book ID'] . "'>Delete</button>

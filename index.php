@@ -35,7 +35,7 @@
                     <a href="gall.php">
                         <li class="fa fa-image">Gallery</li>
                     </a>
-                    <a href="admin.php">
+                    <a href="admin_login.php">
                         <li class="fa fa-user">Admin Login</li>
                     </a>
                     <a href="user_form.php">
@@ -50,7 +50,7 @@
             </div>
         </div>
         <div id="slider">
-        <div id="x">WELCOME TO <b style="color: #2c7ad6;">HISTORY</b>LIBRARY
+            <div id="x">WELCOME TO <b style="color: #2c7ad6;">HISTORY</b>LIBRARY
                 <p style="font-size: 15PX;">YOU CAN READ SOME TEXT</p>
             </div>
             <div id="y">
@@ -91,10 +91,10 @@
                                         <label for="studentRadio">Student</label>
 
                                         <input type="radio" name="choose" value="Admin" id="adminRadio">
-                                        <label for="adminRadio"><a href="Admin.php">Admin</a></label>
+                                        <label for="adminRadio"><a href="admin_login.php">Admin</a></label>
                                     </td> -->
                                     </tr>
-<!-- 
+                                    <!-- 
                                     <tr>
                                         <td align="right"><input type="checkbox" name="rem" <?php if (isset($_COOKIE['rem_user'])) {
                                                                                                 echo "checked";

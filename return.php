@@ -77,69 +77,77 @@ require 'conn.php';
                 <table style="padding: 20px;margin-top: 50px;">
                     <div class="row">
                         <?php
-                        $con = mysqli_connect("localhost", "root", "", "library");
-
                         if (isset($_GET['Id'])) {
                             $Id = $_GET['Id'];
 
-                            $query = "SELECT * FROM issue_book WHERE Book_Id='$Id' ";
-                            $query_run = mysqli_query($con, $query);
+                            // $query = "SELECT * FROM issue_book WHERE Book_Id='$Id' ";
+                            // $query_run = mysqli_query($conn, $query);
 
-                            if (mysqli_num_rows($query_run) > 0) {
-                                foreach ($query_run as $row) {
-                        ?>
-                                    <tr>
-                                        <th>User Name</th>
-                                        <td><input type="text" name="U_Name" value="<?= $row['User_Name']; ?>" placeholder="Enter User Name" style="padding: 5px;"></td>
-                                    </tr>
+                            // $data = mysqli_fetch_assoc($query_run);
 
-                                    <th>Book Name</th>
-                                    <td><input type="text" name="B_Name" value="<?= $row['Book_Name']; ?>" placeholder="Enter Book Name" style="padding: 5px;"></td>
-                                    </tr>
-
-                                    <tr>
-                                        <th>Quantity</th>
-                                        <td><input type="number" name="quantity" value="1" style="padding: 5px;" required></td>
-                                    </tr>
-
-                                    <tr>
-                                        <th for="class">Faculty</th>
-                                        <th><select name="faculty" value="<?= $row['Faculty']; ?>" style="padding: 5px; width: 150px; margin-left: -30px;">
-                                                <option value="class1">DIT</option>
-                                                <option value="class2">DCE</option>
-                                                <option value="class3">DEE</option>
-                                                <option value="class4">DGE</option>
-                                                <option value="class5">DHM</option>
-                                            </select>
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th>Issue Date</th>
-                                        <td><input type="date" name="iss_D" value="<?= $row['Issue_Date']; ?>" placeholder="Enter Issue Date" style="padding: 5px;"></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Due Date</th>
-                                        <td><input type="date" name="due_D" value="<?= $row['Due_Date']; ?>" placeholder="Enter Due Date" style="padding: 5px;"></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Return Date</th>
-                                        <td><input type="date" name="Return_D" placeholder="Enter Return Date" style="padding: 5px;" required></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" style="text-align: right;">
-                                            <input type="Button" name="submit" value="Return" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff; border-radius: 4px; cursor: pointer;">
-                                            <input type="Button" name="submit" value="Clear" style="padding: 10px 20px; font-weight:bold; background-color: #337ab7; color: #fff; border-radius: 4px; cursor: pointer;">
-                                        </td>
-                                    </tr>
-                        <?php
-                                }
-                            } else {
-                                echo "<p style='padding: 5px; margin-top: 310px; border: 2px solid Red;'>No records found</p>";
-                            }
+                            $query = "SELECT * FROM issue_book INNER JOIN Books_with_id ON issue_book.book_id=Books_with_id.book_id INNER JOIN Books ON Books_with_id.book = Books.id INNER JOIN students ON issue_book.std_id=students.id WHERE issue_book.book_id='$Id' AND is_issued=1 ";
+                            // $query = "SELECT * FROM Books_with_id INNER JOIN Books ON Books_with_id.book=Books.id WHERE book_id='$Id' AND is_issued=1 ";
+                            $query_run = mysqli_query($conn, $query);
+                            $data = mysqli_fetch_assoc($query_run);
+                            // var_dump($data);
                         }
-
                         ?>
+                        <tr>
+                            <input type="hidden" name="book_id" value="<?php if (isset($data)) echo $data['book_id'] ?>">
+                            <input type="hidden" name="std_id" value="<?php if (isset($data)) echo $data['std_id'] ?>">
+                            <th>User Name</th>
+                            <td><input type="text" name="U_Name" value="<?php if (isset($data)) {
+                                                                            echo $data['std_name'];
+                                                                        } ?>" placeholder="Enter User Name" style="padding: 5px;"></td>
+                        </tr>
+
+                        <th>Book Name</th>
+                        <td><input type="text" name="B_Name" value="<?php if (isset($data)) {
+                                                                        echo $data['name'];
+                                                                    } ?>" placeholder="Enter Book Name" style="padding: 5px;"></td>
+                        </tr>
+
+                        <tr>
+                            <th>Quantity</th>
+                            <td><input type="number" name="quantity" value="1" style="padding: 5px;" required></td>
+                        </tr>
+
+                        <tr>
+                            <th for="class">Faculty</th>
+                            <th><select name="faculty" style="padding: 5px; width: 150px; margin-left: -30px;">
+                                    <option value="DIT" <?php if (isset($data) && $data['faculty'] == 'DIT') echo "selected" ?>>DIT</option>
+                                    <option value="DCE" <?php if (isset($data) && $data['faculty'] == 'DCE') echo "selected" ?>>DCE</option>
+                                    <option value="DEE" <?php if (isset($data) && $data['faculty'] == 'DEE') echo "selected" ?>>DEE</option>
+                                    <option value="DGE" <?php if (isset($data) && $data['faculty'] == 'DGE') echo "selected" ?>>DGE</option>
+                                    <option value="DHM" <?php if (isset($data) && $data['faculty'] == 'DHM') echo "selected" ?>>DHM</option>
+                                </select>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Issue Date</th>
+                            <td><input type="date" name="iss_D" value="<?php if (isset($data)) {
+                                                                            echo $data['issue_date'];
+                                                                        } ?>" placeholder="Enter Issue Date" style="padding: 5px;"></td>
+                        </tr>
+                        <tr>
+                            <th>Due Date</th>
+                            <td><input type="date" name="due_D" value="<?php if (isset($data)) {
+                                                                            echo $data['due_date'];
+                                                                        } ?>" placeholder="Enter Due Date" style="padding: 5px;"></td>
+                        </tr>
+                        <tr>
+                            <th>Return Date</th>
+                            <td><input type="date" id="return_date" name="Return_D" placeholder="Enter Return Date" style="padding: 5px;" required></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: right;">
+                                <input type="Submit" name="submit" value="Return" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff; border-radius: 4px; cursor: pointer;">
+                                <input type="Reset" name="submit" value="Clear" style="padding: 10px 20px; font-weight:bold; background-color: #337ab7; color: #fff; border-radius: 4px; cursor: pointer;">
+                            </td>
+                        </tr>
+                    </div>
                 </table>
+            </div>
         </form>
 
 
@@ -198,6 +206,9 @@ require 'conn.php';
                 timeElement.textContent = formatTime(now);
                 dateElement.textContent = formatDate(now);
             }, 1000);
+
+            // setting the return date to today's date
+            document.getElementById('return_date').valueAsDate = new Date();
         </script>
 </body>
 

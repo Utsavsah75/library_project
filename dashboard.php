@@ -22,21 +22,16 @@ require 'check_admin.php';
         <p class="time"></p>
         <p class="date"></p>
     </div>
-    <!-- <div class="library-contain"> -->
     <div class="library-container">
-        <!-- <div class="top">  <marquee class="marquee" direction="alternate" scrollamount="12" onmouseover="this.stop()" onmouseout="this.start()"><b>Welcome To Library</b></marquee>  </div> -->
         <div class="top1">
             <ul>
                 <li><a href="all_books.php"><i class="fa fa-book"></i>All Books</a></li>
                 <li><a href="all_member.php"><i class="fa fa-users"></i>All Members</a></li>
                 <li><a href="#"><i class="fa fa-hourglass-half"></i>Pending Books</a></li>
                 <li><a href="index.php"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
-                <!-- <li><a href="#"><i class="fas fa-shopping-cart"></i>Issue Books</a></li> -->
-                <!-- <li><a href="#"><i class="fa fa-sign-out-alt"></i>Manage Users</a></li> -->
             </ul>
         </div>
     </div>
-    <!-- </div> -->
 
     <div class="container1">
         <ul>
@@ -45,152 +40,144 @@ require 'check_admin.php';
             <a style="text-decoration: none;" href="Issue.php"><button> Issue Books</button></a>
             <a style="text-decoration: none;" href="return.php"> <button> Return Books</button></a>
             <a style="text-decoration: none;" href="add.php"> <button> Add Users</button></a>
-            <!-- <a style="text-decoration: none;" href="manage.php"> <button> Manage Users</button></a> -->
         </ul>
     </div>
     <!---*****************Total Book --1--**********************-->
     <div id="Add_book" class="totalbook">
         <div class="row">
-                    <div class="header">Total Books<br><br>
-                        <?php
-                        $quentity = "SELECT * FROM add_book";
-                        $quentity_book = mysqli_query($conn, $quentity);
+            <div class="header">Total Books<br><br>
+                <?php
+                $total_books = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM Books"));
+                echo '<h4>' . $total_books . '</h4>';
+                ?>
 
-                        if ($category_total = mysqli_num_rows($quentity_book)) {
-                            echo '<h4>' . $category_total . '</h4>';
-                        } else {
-                            echo '<h4>0</h4>';
-                        }
-                        ?>
-
-                    </div>
-                    <div class="footer1">
-                        <a href="all_books.php">View Details</a>
-                    </div>
-
-                </div>
             </div>
-     
+            <div class="footer1">
+                <a href="all_books.php">View Details</a>
+            </div>
+
+        </div>
+    </div>
+
     <!---*****************Total User --2--**********************-->
     <div id="Add_User" class="totaluser">
         <div class="row">
-                    <div class="header">Total User<br><br>
-                        <?php
-                        $sql = "SELECT * FROM students where verified = '1'";
-                        $res = mysqli_query($conn, $sql);
+            <div class="header">Total User<br><br>
+                <?php
+                $sql = "SELECT * FROM students where verified = '1'";
+                $res = mysqli_query($conn, $sql);
 
-                        if ($total_studetn = mysqli_num_rows($res)) {
-                            echo '<h4>' . $total_studetn . '</h4>';
-                        } else {
-                            echo '<h4>0</h4>';
-                        }
-                        ?>
-                    </div>
-
-                    <div class="footer2">
-                        <a href="all_member.php">View Details</a>
-                    </div>
-                </div>
+                if ($total_studetn = mysqli_num_rows($res)) {
+                    echo '<h4>' . $total_studetn . '</h4>';
+                } else {
+                    echo '<h4>0</h4>';
+                }
+                ?>
             </div>
+
+            <div class="footer2">
+                <a href="all_member.php">View Details</a>
+            </div>
+        </div>
+    </div>
 
     <!---*****************Total issue --3--**********************-->
     <div id="Add_issue" class="totalissue">
         <div class="row">
-          
-                    <div class="header">Issue Books<br><br>
-                        <?php
-                        $quentity = "SELECT * FROM issue_book";
-                        $issue_quantity = mysqli_query($conn, $quentity);
 
-                        if ($category_total = mysqli_num_rows($issue_quantity)) {
-                            echo '<h4>' . $category_total . '</h4>';
-                        } else {
-                            echo '<h4>0</h4>';
-                        }
-                        ?>
-                    </div>
-                    <div class="footer3">
-                        <a href="issuebook_list.php">View Details</a>
-                    </div>
-                </div>
+            <div class="header">Issued Books<br><br>
+                <?php
+                $quentity = "SELECT * FROM issue_book";
+                $issue_quantity = mysqli_query($conn, $quentity);
+
+                if ($category_total = mysqli_num_rows($issue_quantity)) {
+                    echo '<h4>' . $category_total . '</h4>';
+                } else {
+                    echo '<h4>0</h4>';
+                }
+                ?>
             </div>
-       
+            <div class="footer3">
+                <a href="issuebook_list.php">View Details</a>
+            </div>
+        </div>
+    </div>
+
     <!---*****************Total return --4--**********************-->
-    <div id="Add_return" class="totalreturn">
+    <!-- <div id="Add_return" class="totalreturn">
         <div class="row">
-           
-                    <div class="header">Return Books<br><br>
-                        <?php
-                        $quentity = "SELECT * FROM request_book";
-                        $return_quentity = mysqli_query($conn, $quentity);
 
-                        if ($category_total = mysqli_num_rows($return_quentity)) {
-                            echo '<h4>' . $category_total . '</h4>';
-                        } else {
-                            echo '<h4>0</h4>';
-                        }
-                        ?>
-                    </div>
-                    <div class="footer4">
-                        <a href="return_list.php">View Details</a>
-                    </div>
-                </div>
+            <div class="header">Return Books<br><br>
+                <?php
+                // $quentity = "SELECT * FROM request_book";
+                // $return_quentity = mysqli_query($conn, $quentity);
+
+                // if ($category_total = mysqli_num_rows($return_quentity)) {
+                //     echo '<h4>' . $category_total . '</h4>';
+                // } else {
+                //     echo '<h4>0</h4>';
+                // }
+                ?>
             </div>
-     
+            <div class="footer4">
+                <a href="return_list.php">View Details</a>
+            </div>
+        </div>
+    </div> -->
+
     <!---*****************Total Requested User --5--**********************-->
     <div id="Add_request" class="request">
         <div class="row">
-          
-                    <div class="header">Total Requested Users
-                        <?php
-                        $quentity = "SELECT * FROM students WHERE verified = '0'";
-                        $student_quentity = mysqli_query($conn, $quentity);
 
-                        if (mysqli_num_rows($student_quentity)) {
-                            echo '<h4>' . mysqli_num_rows($student_quentity) . '</h4>';
-                        } else {
-                            echo "<h4>0</h4>";
-                        }
-                        ?>
-
-                    </div>
-                    <div class="footer5">
-                        <a href="#">View Details</a>
-                    </div>
-              
-
-        <!--*******************************************************************************************-->
-        <input type="button" name="R.user" value="Requested User" style="margin-top: 7px; height: 35px; width: 120px; margin-left: -76rem; font-weight:bold;   background-color: rgba(255, 255, 255, 0.568); color: black; border-radius: 4px; cursor: pointer;">
-
-        <div class="confirm_user" style="margin-top: 16rem;">
-
-
-            <table border="2px" style="border-collapse: collapse; width: 1000px; height: 0px;margin-top: -257px; margin-left: -603px;">
-                <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
-                    <th>User ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Gender</th>
-                    <th>Contact_No</th>
-                    <th>Faculty</th>
-                    <th>Address</th>
-                    <th>Photo</th>
-                    <th>Action</th>
-                    <!-- <th>Password</th> -->
-                </tr>
-
-                </tr>
+            <div class="header">Total Requested Users
                 <?php
-                // include("conformuser_server.php");
-                // include('message.php');
-                // error_reporting(0);
-                $query = "SELECT * FROM students WHERE verified = '0'";
-                $data = mysqli_query($conn, $query);
-                $total = mysqli_num_rows($data);
-                $sn = 1;
-                if ($total != 0) {
-                    while ($result = mysqli_fetch_assoc($data)) {
-                        echo "<tr style='    background-color: rgba(255, 255, 255, 0.5);' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='rgba(255, 255, 255, 0.568)';\">
+                $quentity = "SELECT * FROM students WHERE verified = '0'";
+                $student_quentity = mysqli_query($conn, $quentity);
+
+                if (mysqli_num_rows($student_quentity)) {
+                    echo '<h4>' . mysqli_num_rows($student_quentity) . '</h4>';
+                } else {
+                    echo "<h4>0</h4>";
+                }
+                ?>
+
+            </div>
+            <div class="footer5">
+                <a href="#">View Details</a>
+            </div>
+
+
+            <!--*******************************************************************************************-->
+            <input type="button" name="R.user" value="Requested User" style="margin-top: 7px; height: 35px; width: 120px; margin-left: -76rem; font-weight:bold;   background-color: rgba(255, 255, 255, 0.568); color: black; border-radius: 4px; cursor: pointer;">
+
+            <div class="confirm_user" style="margin-top: 16rem;">
+
+
+                <table border="2px" style="border-collapse: collapse; width: 1000px; height: 0px;margin-top: -257px; margin-left: -603px;">
+                    <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
+                        <th>User ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Gender</th>
+                        <th>Contact_No</th>
+                        <th>Faculty</th>
+                        <th>Address</th>
+                        <th>Photo</th>
+                        <th>Action</th>
+                    </tr>
+
+                    </tr>
+                    <?php
+                    // include("conformuser_server.php");
+                    // include('message.php');
+                    // error_reporting(0);
+                    $query = "SELECT * FROM students WHERE verified = '0'";
+                    $data = mysqli_query($conn, $query);
+                    $total = mysqli_num_rows($data);
+                    $sn = 1;
+                    if ($total != 0) {
+                        while ($result = mysqli_fetch_assoc($data)) {
+                            echo "<tr style='    background-color: rgba(255, 255, 255, 0.5);' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='rgba(255, 255, 255, 0.568)';\">
         <td style='border: 2px solid black; text-align: center;'>" . $sn . "</td>
         <td style='border: 2px solid black; text-align: center;'>" . $result['name'] . "</td>
         <td style='border: 2px solid black; text-align: center;'>" . $result['email'] . "</td>
@@ -208,72 +195,72 @@ require 'check_admin.php';
             
         </td>
     </tr>";
-                        $sn++;
+                            $sn++;
+                        }
+                    } else {
+                        echo "<tr><td colspan='10' style='padding: 10px; border: 2px solid solid; color: red;'>No Available Yet</td></tr>";
                     }
-                } else {
-                    echo "<tr><td colspan='10' style='padding: 10px; border: 2px solid solid; color: red;'>No Available Yet</td></tr>";
-                }
-                ?>
-            </table>
+                    ?>
+                </table>
+            </div>
         </div>
-    </div>
 
-    <script>
-        const timeElement = document.querySelector(".time");
-        const dateElement = document.querySelector(".date");
+        <script>
+            const timeElement = document.querySelector(".time");
+            const dateElement = document.querySelector(".date");
 
-        function formatTime(date) {
-            const hours12 = date.getHours() % 12 || 12;
-            const minutes = date.getMinutes();
-            const seconds = date.getSeconds();
-            const isAm = date.getHours() < 12;
+            function formatTime(date) {
+                const hours12 = date.getHours() % 12 || 12;
+                const minutes = date.getMinutes();
+                const seconds = date.getSeconds();
+                const isAm = date.getHours() < 12;
 
-            return `${hours12.toString().padStart(2, "0")}:${minutes
+                return `${hours12.toString().padStart(2, "0")}:${minutes
                 .toString()
                 .padStart(2, "0")}:${seconds.toString().padStart(2, "0")} ${isAm ? "AM" : "PM"}`;
-        }
+            }
 
-        function formatDate(date) {
-            const DAYS = [
-                "Sunday",
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday"
-            ];
-            const MONTHS = [
-                "January",
-                "February",
-                "March",
-                "April",
-                "May",
-                "June",
-                "July",
-                "August",
-                "September",
-                "October",
-                "November",
-                "December"
-            ];
+            function formatDate(date) {
+                const DAYS = [
+                    "Sunday",
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday"
+                ];
+                const MONTHS = [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
+                ];
 
-            return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`;
-        }
+                return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`;
+            }
 
-        // Initial update
-        const now = new Date();
-        timeElement.textContent = formatTime(now);
-        dateElement.textContent = formatDate(now);
-
-        // Update every second
-        setInterval(() => {
+            // Initial update
             const now = new Date();
-
             timeElement.textContent = formatTime(now);
             dateElement.textContent = formatDate(now);
-        }, 1000);
-    </script>
+
+            // Update every second
+            setInterval(() => {
+                const now = new Date();
+
+                timeElement.textContent = formatTime(now);
+                dateElement.textContent = formatDate(now);
+            }, 1000);
+        </script>
 </body>
 <!-- <a href='delete_book.php?Id=" . $result['Id'] . "'> <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button></a> -->
 
