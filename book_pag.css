@@ -161,7 +161,7 @@ body {
 
     .tabcontent2, .tabcontent3{
         width: 350px;
-        height: 350px;
+        height: 380px;
         display: block;
         font-weight: bold;
         border: 1px solid white; /* Changed 'white' to 'solid' for a border style */

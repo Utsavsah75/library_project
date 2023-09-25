@@ -21,31 +21,31 @@ include('./header.php');
         <p class="date"></p>
     </div>
     <div class="library-container">
-        <div class="top">
+        <!-- <div class="top">
             <marquee class="marquee" direction="alternate" scrollamount="12" onmouseover="this.stop()" onmouseout="this.start()"><b>Welcome To Library</b></marquee>
-        </div>
+        </div> -->
         <div class="top1">
             <ul>
-                <li><a href="#"><i class="fa fa-book"></i>All Books</a></li>
-                <!-- <li><a href="#"><i class="fa fa-users"></i>All Members</a></li> -->
+                <!-- <li><a href="#"><i class="fa fa-book"></i>All Books</a></li>
+                <li><a href="#"><i class="fa fa-users"></i>All Members</a></li> 
                 <li><a href="#"><i class="fa fa-hourglass-half"></i>Pending Books</a></li>
-                <li><a href="index.php"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
+                <li><a href="index.php"><i class="fa fa-sign-out-alt"></i>Logout</a></li>-->
             </ul>
         </div>
     </div>
 
     <div class="container1">
         <ul>
-            <button class="tablinks" onclick="openTab(event, 'Borrow_Books')">Borrow Books</button>
-            <button class="tablinks" onclick="openTab(event, 'Return_Books')">Return Books</button>
+          <!--  <button class="tablinks" onclick="openTab(event, 'Borrow_Books')">Borrow Books</button>
+             <button class="tablinks" onclick="openTab(event, 'Return_Books')">Return Books</button>
             <button class="tablinks" onclick="openTab(event, 'overdue_return')">Overdue Return</button>
-            <!-- <button class="tablinks" onclick="openTab(event, 'Add_Users')">Add Users</button> -->
-            <!-- <button class="tablinks" onclick="openTab(event, 'Manage_Users')">Manage Users</button> -->
+            <button class="tablinks" onclick="openTab(event, 'Add_Users')">Add Users</button>
+            <button class="tablinks" onclick="openTab(event, 'Manage_Users')">Manage Users</button> -->
         </ul>
     </div> 
 
-    <input type="text" placeholder="Search" style="float: left; margin-left: 975px; border-radius: 8px; border: 2px solid; transform: translateY(-455px); width: 240px; height: 25px;">
-    <!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-495px);"></i> -->
+  <!--   <input type="text" placeholder="Search" style="float: left; margin-left: 975px; border-radius: 8px; border: 2px solid; transform: translateY(-455px); width: 240px; height: 25px;">
+    <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-495px);"></i> -->
 
     
   <!-- *****************BORROW BOOK********************** -->
@@ -55,34 +55,33 @@ include('./header.php');
             <tr>
                     <th>Book ID</th>
                     <td><input type="text" name="bID" placeholder="Enter Book ID" style="padding: 5px;"></td>
-                </tr>
-                <tr>
-                    <th>Borrow ID</th>
-                    <td><input type="text" name="Borrow_id" placeholder="Enter Borrow ID" style="padding: 5px;"></td>
-                </tr>
-              
-                <tr>
+                <!-- </tr>
+                <tr> -->
+                    <th>User ID</th>
+                    <td><input type="text" name="user_id" placeholder="Enter User ID" style="padding: 5px;"></td>
+                <!-- </tr>
+                <tr> -->
                     <th>Book Name</th>
-                    <td><input type="text" name="Bname" placeholder="Enter Book Name" style="padding: 5px;"></td>
+                    <td><input type="text" name="B_name" placeholder="Enter Book Name" style="padding: 5px;"></td>
                 </tr>
               
                 <tr>
                     <th>Issue Date</th>
                     <td><input type="text" name="iss_D" placeholder="Enter Issue Date" style="padding: 5px;"></td>
-                </tr>
-                <tr>
+                <!-- </tr>
+                <tr> -->
                     <th>Due Date</th>
                     <td><input type="date" name="due_D" placeholder="Enter Due Date" style="padding: 5px;"></td>
                 </tr>
                 <tr>
                     <td colspan="2" style="text-align: center;">
                         <input type="button" name="submit" value="Borrow" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff;border-radius: 4px; cursor: pointer;">
-                        <input type="button" name="clear" value="Clear" style="padding: 10px 20px; font-weight:bold; background-color: #337ab7; color: #fff;border-radius: 4px; cursor: pointer;">
+                        <!-- <input type="button" name="clear" value="Clear" style="padding: 10px 20px; font-weight:bold; background-color: #337ab7; color: #fff;border-radius: 4px; cursor: pointer;"> -->
                     </td>
                 </tr>
             </table>
         </form>
-        <table id="booklist3" style="border-collapse: collapse; width: 760px; height: 0px; margin-top: -206px; margin-left: 305px;">
+        <table id="booklist3" style="border-collapse: collapse; width: 760px; height: 0px; margin-top: 15px; margin-left: 105px;">
             <thead>
                 <tr style="background-color: #f2f2f2;">
                     <th style="padding: 5px; border: 2px solid black;">Borrow ID</th>
@@ -99,7 +98,7 @@ include('./header.php');
     </div>
 
    <!-- *****************OVER DUE RETURN********************** -->
-   <div id="overdue_return" class="tabcontent">
+  <!-- <div id="overdue_return" class="tabcontent">
         <form onsubmit="event.preventDefault(); onReturnFormSubmit();" autocomplete="off">
         <table  style="margin-left: 20px; margin-top: 5px;">
     <tr>
@@ -159,7 +158,7 @@ include('./header.php');
     </div>
 
         <!---*****************RETURN BOOKS**********************-->
-        <div id="Return_Books" class="tabcontent">
+      <!--  <div id="Return_Books" class="tabcontent">
                 <form onsubmit="event.preventDefault();onReturnFormSubmit();" autocomplete="off">
                 <table  style="margin-left: 20px; margin-top: 5px;">
   <tr>
@@ -202,7 +201,7 @@ include('./header.php');
         </div>
 
         <!---*****************ADD USERS**********************-->
-        <div id="Add_Users" class="tabcontent">
+       <!-- <div id="Add_Users" class="tabcontent">
                 <form id="userForm" onsubmit="event.preventDefault(); onFormSubmit();" autocomplete="off">
                 <table style="margin-left: 20px; margin-top: 5px;">
     <tr>
@@ -257,29 +256,26 @@ include('./header.php');
                 <input type="button" name="clear" value="Clear" style="padding: 10px 20px; font-weight:bold; background-color: #337ab7; color: #fff;border-radius: 4px; cursor: pointer;">
             </div>
         </td>
-    </tr> -->
+    </tr> 
 </table>
-
                 </form>
                 <table id="addBookList" style="border-collapse: collapse;width: 71%; margin-top: -310px; margin-left: 300px;">
                     <tr style="background-color: #f2f2f2;">
                         <th style="padding: 5px; border: 2px solid black;">User ID</th>
                         <th style="padding: 5px; border: 2px solid black;">Name</th>
                         <th style="padding: 5px; border: 2px solid black;">Email</th>
-                        <!-- <th style="padding: 5px; border: 2px solid black;">Password</th> -->
                         <th style="padding: 5px; border: 2px solid black;">Gender</th>
                         <th style="padding: 5px; border: 2px solid black;">Contact_No</th>
                         <th style="padding: 5px; border: 2px solid black;">Address</th>
                         <th style="padding: 5px; border: 2px solid black;">Faculty</th>
                     </tr>
                 </table>
-            <!-- </fieldset> -->
             <script src="connect.js"></script>
         </div>
 
         <!---*****************MANAGE USERS**********************-->
 
-        <div id="Manage_Users" class="tabcontent">
+       <!-- <div id="Manage_Users" class="tabcontent">
 
         <table  style="margin-left: 20px; margin-top: 5px;">
   <tr>
@@ -329,8 +325,6 @@ include('./header.php');
         </td>                        </td>
                     </tr>
                 </table>
-                <!-- <fieldset style="width:695px; height: 388px;   margin-top:-349px;margin-left: 290px;"> -->
-                    <!-- <legend></legend> -->
                     <table style="border-collapse: collapse; width: 101%;">
                         <tr style="background-color: #f2f2f2;">
                             <th style="padding: 5px; border: 2px solid black;">Book ID</th>
@@ -339,10 +333,11 @@ include('./header.php');
                             <th style="padding: 5px; border: 2px solid black;">Quantity</th>
                         </tr>
                     </table>
-                <!-- </fieldset> -->
                 <script src="connect.js"></script>
         </div>
-    </div>
+    </div>-->
+
+
     <script>
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;

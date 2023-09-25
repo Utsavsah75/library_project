@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
                         icon: "success"
                     }).then(function() {
                         // Redirect to the add.php page after displaying the message
-                        window.location.href = "add.php";
+                        window.location.href = "return.php";
                     });
                 });
             </script>';

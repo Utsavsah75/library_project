@@ -122,7 +122,7 @@
                     echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
                 <td style='border: 2px solid black; text-align: center;'>" . $result['book_id'] . "</td>
                 <td style='border: 2px solid black; text-align: center;'>" . $result['name'] . "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . $result['std_name'] . "</td>
+                <td style='border: 2px solid black; text-align: center;'>" . $result['U_Name'] . "</td>
                 <td style='border: 2px solid black; text-align: center;'>" . 1 . "</td>
                 <td style='border: 2px solid black; text-align: center;'>" . $result['faculty'] . "</td>
                 <td style='border: 2px solid black; text-align: center;'>" . $result['issue_date'] . "</td>

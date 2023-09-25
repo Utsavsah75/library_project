@@ -112,7 +112,7 @@
                 while ($result = mysqli_fetch_assoc($data)) {
                     echo "<tr style='    background-color: rgba(255, 255, 255, 0.5);' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='rgba(255, 255, 255, 0.568)';\">
                     <td style='border: 2px solid black; text-align: center;'>" . $sn . "</td>
-                    <td style='border: 2px solid black; text-align: center;'>" . $result['name'] . "</td>
+                    <td style='border: 2px solid black; text-align: center;'>" . $result['std_name'] . "</td>
                     <td style='border: 2px solid black; text-align: center;'>" . $result['email'] . "</td>
                     <td style='border: 2px solid black; text-align: center;'>" . $result['gender'] . "</td>
                     <td style='border: 2px solid black; text-align: center;'>" . $result['phone'] . "</td>

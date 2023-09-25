@@ -109,7 +109,7 @@ require 'check_admin.php';
 
             <div class="header">Return Books<br><br>
                 <?php
-                // $quentity = "SELECT * FROM request_book";
+                // $quentity = "SELECT * FROM students";
                 // $return_quentity = mysqli_query($conn, $quentity);
 
                 // if ($category_total = mysqli_num_rows($return_quentity)) {
@@ -117,7 +117,7 @@ require 'check_admin.php';
                 // } else {
                 //     echo '<h4>0</h4>';
                 // }
-                ?>
+                // ?>
             </div>
             <div class="footer4">
                 <a href="return_list.php">View Details</a>

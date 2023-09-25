@@ -88,7 +88,7 @@ require 'conn.php';
 
 
     <!-- *****************Issue BOOK********************** -->
-    <div id="Issue_Books" class="tabcontent2">
+    <div id="Issue_Books" class="tabcontent2" style="width:360;">
         <p style="display:none; margin-left: 10px;">This Field is required:</p>
 
         <form id="bookForm" method="POST" action="issuebook_server.php" autocomplete="off">
@@ -144,7 +144,7 @@ require 'conn.php';
                             <th>User Name</th>
                             <td>
                                 <input type="text" name="U_Name" placeholder="Enter User Name" style="padding: 5px;" required>
-                                <img style='width:40px;' id="user_photo" src="">
+                                <img style='width:40px;margin-top: -21px;' id="user_photo" src="">
 
                             </td>
                         </tr>
@@ -187,7 +187,7 @@ require 'conn.php';
                     <?php
 
                     if (isset($query_run) && mysqli_num_rows($query_run) <= 0) {
-                        echo "<p style='padding: 5px; margin-top: 0px; border: 2px solid Red;'>No records found</p>";
+                        echo "<p style='padding: 5px; text-align:center; margin-top: 0px; color:Red;'>No records found</p>";
                     }
                     ?>
                 </table>
