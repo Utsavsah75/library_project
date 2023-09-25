@@ -82,7 +82,7 @@
 <!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i> -->
 
 <div class="search">
-    <input type="text" id="input" name="input" placeholder="Search" onkeyup="searchfun()">
+    <input type="text" id="input" name="input" placeholder="Search By User ID" onkeyup="searchfun()">
 
     <body>
     <table id="table" border="2px" style="border-collapse: collapse; width: 1000px; height: 0px;margin-top: 0px; margin-left: -180px;">            <tr>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Establish database connection
-$conn = new mysqli("localhost", "root", "", "library");
+$conn = new mysqli("localhost", "root", "", "library_project");
 
 if (isset($_POST['register'])) {
     $Name        = $_POST['name'];
@@ -11,8 +11,8 @@ if (isset($_POST['register'])) {
     $Address     = $_POST['address'];
     $Password    = $_POST['password']; 
     
-    $sql = "INSERT INTO admin_login (Name, Email, Gender, Contact_no, Address, Password) 
-            VALUES ('$Name', '$Email', '$Gender', '$Contact_no', '$Address', '$Password')";
+    $sql = "INSERT INTO `admin_login`(`name`, `address`, `contact`, `gender`, `email`, `password`) 
+            VALUES ('$Name', '$Address', '$Contact_no', '$Gender', '$Email', '$Password')";
 
   
 $data = mysqli_query($conn, $sql);

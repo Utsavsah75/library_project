@@ -40,7 +40,7 @@
                             <li class="fa fa-user">Login</li>
                         </a> 
                          <a href="About.html">
-                            <li class="fa fa-user">About US</li>
+                            <li class="fa fa-face">About US</li>
                         </a>
 
                     </ul>

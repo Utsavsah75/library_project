@@ -34,6 +34,9 @@ require 'conn.php';
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book_Management</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,7 +59,7 @@ require 'conn.php';
             <ul>
                 <li><a href="all_books.php"><i class="fa fa-book"></i>All Books</a></li>
                 <li><a href="all_member.php"><i class="fa fa-users"></i>All Members</a></li>
-                <li><a href="#"><i class="fa fa-hourglass-half"></i>Pending Books</a></li>
+                <!-- <li><a href="#"><i class="fa fa-hourglass-half"></i>Pending Books</a></li> -->
                 <li><a href="index.php"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
                 <!-- <li><a href="#"><i class="fa fa-sign-out-alt"></i>Manage Users</a></li> -->
                 <!-- <li><a href="#"><i class="fas fa-shopping-cart"></i>Borrow Books</a></li> -->
@@ -147,7 +150,7 @@ require 'conn.php';
                         <tr>
                             <th for="class">Faculty</th>
                             <th>
-                                <select name="faculty" style="padding: 5px; width: 150px; margin-left: -30px;" required>
+                                <select name="faculty" style="padding: 5px; width: 150px; margin-left: -73px;" required>
                                     <option value="DIT">DIT</option>
                                     <option value="DCE">DCE</option>
                                     <option value="DEE">DEE</option>
@@ -159,11 +162,11 @@ require 'conn.php';
 
                         <tr>
                             <th>Issue Date</th>
-                            <td><input type="date" name="iss_D" placeholder="Enter Issue Date" style="padding: 5px;" required></td>
+                            <td><input type="date" id="iss_D" name="iss_D" placeholder="Enter Issue Date" style="padding: 5px;" required></td>
                         </tr>
                         <tr>
                             <th>Due Date</th>
-                            <td><input type="date" name="due_D" placeholder="Enter Due Date" style="padding: 5px;" required></td>
+                            <td><input type="date" id="due_D" name="due_D" placeholder="Enter Due Date" style="padding: 5px;" required></td>
                         </tr>
 
 
@@ -263,6 +266,15 @@ require 'conn.php';
                 xhttp.open("GET", "getuser.php?id=" + id, true);
                 xhttp.send();
             });
+            // setting the return date to today's date
+            document.getElementById('iss_D').valueAsDate = new Date();
+            // setting the due date to 7 days from today's date
+            // var today = new Date();
+            // var nextWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7);
+            // document.getElementById('due_D').valueAsDate = nextWeek;
+
+
+
         </script>
 </body>
 

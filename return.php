@@ -28,7 +28,7 @@ require 'conn.php';
             <ul>
                 <li><a href="all_books.php"><i class="fa fa-book"></i>All Books</a></li>
                 <li><a href="all_member.php"><i class="fa fa-users"></i>All Members</a></li>
-                <li><a href="#"><i class="fa fa-hourglass-half"></i>Pending Books</a></li>
+                <!-- <li><a href="#"><i class="fa fa-hourglass-half"></i>Pending Books</a></li> -->
                 <li><a href="index.php"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
                 <!-- <li><a href="#"><i class="fa fa-sign-out-alt"></i>Manage Users</a></li> -->
                 <!-- <li><a href="#"><i class="fas fa-shopping-cart"></i>Borrow Books</a></li> -->

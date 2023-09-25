@@ -69,8 +69,8 @@
         input[type="button"] {
     width: 76px;
     height: 34px;
-    margin-top: auto;
-    margin-left: 550px;
+    margin-top: 2px;
+    margin-left: 730px;
     background-color: red;
     font-weight: bold;
     color: #fff;
@@ -89,7 +89,7 @@
 
 
 <div class="search">
-    <input type="text" id="input" name="input" placeholder="Search" onkeyup="searchfun()">
+    <input type="text" id="input" name="input" placeholder="Search By Books Name" onkeyup="searchfun()">
 
     <body>
         <table id="table" border="2">

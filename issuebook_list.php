@@ -90,7 +90,7 @@
 
 
 <div class="search">
-    <input type="text" id="input" name="input" placeholder="Search" onkeyup="searchfun()">
+    <input type="text" id="input" name="input" placeholder="Search By Book Name" onkeyup="searchfun()">
 
     <body>
         <table id="table" border="2">
