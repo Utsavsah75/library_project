@@ -5,7 +5,64 @@
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
+#background {
+  min-height: 750px;
+  width: 100%;
+}
+#top {
+  height: 35px;
+  width: 100%;
+  margin-top: -40px;
+  background: #2c7ad6;
+  line-height: 35px;
+  padding: 0px 20px 9px 100px;
+  box-sizing: border-box;
+  word-spacing: 10px;
+}
+#menu {
+  height: 65px;
+  width: 100%;
+  background: green;
+}
+#logo {
+  height: 65px;
+  width: 40%;
+  background: white;
+  text-align: center;
+  line-height: 65px;
+  font-size: 40px;
+  float: left;
+}
+#menu1 {
+  height: 65px;
+  width: 60%;
+  background: white;
+  float: left;
+}
+#menu1 UL {
+  list-style: none;
+  padding-left: 100px;
+  box-sizing: border-box;
+  margin-top:15px;
 
+}
+#menu1 LI {
+  height: 45px;
+  width: 130px;
+
+  text-align: center;
+  display: inline-block;
+  line-height: 45px;
+  transform: translateY(-5px);
+  color: black;
+  font-size: 20px;
+}
+#menu1 LI:hover {
+  background: #2c7ad6;
+  color: white;
+  transition: all ease 1s;
+  border-radius: 3px;
+}
 
 body {
   width: 100%;
