@@ -93,8 +93,8 @@ require 'conn.php';
                         }
                         ?>
                         <tr>
-                            <input type="hidden" name="book_id" value="<?php if (isset($data)) echo $data['book_id'] ?>" require>
-                            <input type="hidden" name="std_id" value="<?php if (isset($data)) echo $data['std_id'] ?>" require>
+                            <input type="hidden" name="book_id" value="<?php if (isset($data)) echo $data['book_id'] ?>" required>
+                            <input type="hidden" name="std_id" value="<?php if (isset($data)) echo $data['std_id'] ?>" required>
                             <th>User Name</th>
                             <td><input type="text" name="U_Name" value="<?php if (isset($data)) {
                                                                             echo $data['std_name'];
@@ -104,7 +104,7 @@ require 'conn.php';
                         <th>Book Name</th>
                         <td><input type="text" name="B_Name" value="<?php if (isset($data)) {
                                                                         echo $data['name'];
-                                                                    } ?>" placeholder="Enter Book Name" style="padding: 5px;" require></td>
+                                                                    } ?>" placeholder="Enter Book Name" style="padding: 5px;" required></td>
                         </tr>
 
                         <tr>
@@ -114,7 +114,7 @@ require 'conn.php';
 
                         <tr>
                             <th for="class">Faculty</th>
-                            <th><select name="faculty" style="padding: 5px; width: 150px; margin-left: -30px;" require>
+                            <th><select name="faculty" style="padding: 5px; width: 150px; margin-left: -30px;" required>
                                     <option value="DIT" <?php if (isset($data) && $data['faculty'] == 'DIT') echo "selected" ?>>DIT</option>
                                     <option value="DCE" <?php if (isset($data) && $data['faculty'] == 'DCE') echo "selected" ?>>DCE</option>
                                     <option value="DEE" <?php if (isset($data) && $data['faculty'] == 'DEE') echo "selected" ?>>DEE</option>
@@ -127,13 +127,13 @@ require 'conn.php';
                             <th>Issue Date</th>
                             <td><input type="date" name="iss_D" value="<?php if (isset($data)) {
                                                                             echo $data['issue_date'];
-                                                                        } ?>" placeholder="Enter Issue Date" style="padding: 5px;"require></td>
+                                                                        } ?>" placeholder="Enter Issue Date" style="padding: 5px;"required></td>
                         </tr>
                         <tr>
                             <th>Due Date</th>
                             <td><input type="date" name="due_D" value="<?php if (isset($data)) {
                                                                             echo $data['due_date'];
-                                                                        } ?>" placeholder="Enter Due Date" style="padding: 5px;"require></td>
+                                                                        } ?>" placeholder="Enter Due Date" style="padding: 5px;"required></td>
                         </tr>
                         <tr>
                             <th>Return Date</th>

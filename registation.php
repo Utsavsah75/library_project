@@ -1,4 +1,6 @@
 <?php
+
+
 session_start();
 require 'conn.php';
 
@@ -19,7 +21,6 @@ if (isset($_POST['register'])) {
         $_SESSION['msg'] = "Account is already exist for email: <b>$email</b>";
         header("location: user_form.php");
     }
-
 
     $sql = "INSERT INTO students (name, email, gender, password,address, phone, faculty, photo) 
             VALUES ('$name', '$email', '$gender', '$password', '$Address', '$phone', '$faculty', '$photo')";

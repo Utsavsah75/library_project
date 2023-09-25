@@ -179,13 +179,13 @@ require 'check_admin.php';
                         while ($result = mysqli_fetch_assoc($data)) {
                             echo "<tr style='    background-color: rgba(255, 255, 255, 0.5);' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='rgba(255, 255, 255, 0.568)';\">
         <td style='border: 2px solid black; text-align: center;'>" . $sn . "</td>
-        <td style='border: 2px solid black; text-align: center;'>" . $result['name'] . "</td>
+        <td style='border: 2px solid black; text-align: center;'>" . $result['std_name'] . "</td>
         <td style='border: 2px solid black; text-align: center;'>" . $result['email'] . "</td>
         <td style='border: 2px solid black; text-align: center;'>" . $result['gender'] . "</td>
         <td style='border: 2px solid black; text-align: center;'>" . $result['phone'] . "</td>
         <td style='border: 2px solid black; text-align: center;'>" . $result['faculty'] . "</td>
         <td style='border: 2px solid black; text-align: center;'>" . $result['address'] . "</td>
-        <td style='border: 2px solid black; text-align: center;'> <img src='" . $result['photo'] . "'>" . "</td>
+        <td style='border: 2px solid black; text-align: center;'><img style='width:40px;' src='uploads/" . $result['photo'] . "'>" . "</td>
         <td style='border: 2px solid black; text-align: center;'>
             <a href='confirm_student.php?id=" . base64_encode($result['id']) . "&&action=confirm'>
                 <button style='height: 25px; width: 60px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Confirm</button>
