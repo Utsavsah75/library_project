@@ -22,8 +22,8 @@ if (isset($_POST['register'])) {
         header("location: user_form.php");
     }
 
-    $sql = "INSERT INTO students (name, email, gender, password,address, phone, faculty, photo) 
-            VALUES ('$name', '$email', '$gender', '$password', '$Address', '$phone', '$faculty', '$photo')";
+    $sql = "INSERT INTO students (`std_name`, `email`, `gender`, `password`,`address`, `phone`, `faculty`, `photo`, `verified`) 
+            VALUES ('$name', '$email', '$gender', '$password', '$Address', '$phone', '$faculty', '$photo', 0)";
 
     $data = mysqli_query($conn, $sql);
 

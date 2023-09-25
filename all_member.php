@@ -104,7 +104,7 @@
             include("addnewuser_server.php");
             include('message.php');
             error_reporting(0);
-            $query = "SELECT * FROM students";
+            $query = "SELECT * FROM students WHERE verified = 1";
             $data = mysqli_query($conn, $query);
             $total = mysqli_num_rows($data);
             $sn=1;
