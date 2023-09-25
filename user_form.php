@@ -115,7 +115,8 @@
                                         </tr>
                                         <tr>
                                             <td>Photo:</td>
-                                            <td><input type="file" name="photo" required></td>
+                                            <td><input type="file" name="photo" required  <img style='width:180px;' src='uploads/" . $result['photo'] . "'></td>
+
                                         </tr>
                                         <tr>
                                             <td><input type="submit" value="register" name="register"></td>

@@ -123,13 +123,13 @@
                             <td style='border: 2px solid black; text-align: center;'>" . $result['book_id'] . "</td>
                             <td style='border: 2px solid black; text-align: center;'>" . $result['name'] . "</td>
                             <td style='border: 2px solid black; text-align: center;'>" . $result['std_name'] . "</td>
-                            <td style='border: 2px solid black; text-align: center;'>" . 1 . "</td>
+                                              <td style='border: 2px solid black; text-align: center;'>" . 1 . "</td>
                             <td style='border: 2px solid black; text-align: center;'>" . $result['faculty'] . "</td>
                             <td style='border: 2px solid black; text-align: center;'>" . $result['issue_date'] . "</td>
                             <td style='border: 2px solid black; text-align: center;'>" . $result['due_date'] . "</td>
                             <td style='border: 2px solid black; text-align: center;'>
                                 <a href='issue_update.php?Id=" . $result['book_id'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
-                                <a id='return_btn' href='returnbook_server.php?book_id=" . $result['book_id'] . "&std_id=" . $result['std_id'] . "&iss_D=" . $result['issue_date'] . "&due_D=" . $result['due_date'] . "'>
+                                <a style='padding: 1px; border: 2px solid black; border-radius: 4px; background-color: green;color:black;' ' id='return_btn' href='returnbook_server.php?book_id=" . $result['book_id'] . "&std_id=" . $result['std_id'] . "&iss_D=" . $result['issue_date'] . "&due_D=" . $result['due_date'] . "'>
                                 Return
                                 </a>
                             </td>

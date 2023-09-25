@@ -117,26 +117,9 @@ require 'conn.php';
                                 <input type="text" name="B_Name" placeholder="Enter book name" value="<?php if (isset($data)) {
                                                                                                             echo $data['name'];
                                                                                                         } ?>">
-                                <!-- <datalist id="books">
-                                    <?php
-                                    // $query = "SELECT * FROM Books ORDER BY name";
-                                    // $query_run = mysqli_query($conn, $query);
-
-                                    // while ($row = mysqli_fetch_assoc($query_run)) {
-                                    //     echo "<option value='" . $row['name'] . "'>";
-                                    // }
-                                    ?>
-                                </datalist>
-                                <input autoComplete="on" list="books" /> -->
+                               
                             </td>
-                            <!-- <td>
-                                <select name="" id="">
-                                    <option value disabled>Select Book</option>
-                                </select>
-                                <input type="text" name="B_Name" placeholder="Enter Book Name" style="padding: 5px;" value="<?php if (isset($data)) {
-                                                                                                                                echo $data['Book Name'];
-                                                                                                                            } ?>">
-                            </td> -->
+
                         </tr>
 
                         <tr>
@@ -197,6 +180,7 @@ require 'conn.php';
                         echo "<p style='padding: 5px; text-align:center; margin-top: 0px; color:Red;'>No records found</p>";
                     }
                     ?>
+
                 </table>
         </form>
 

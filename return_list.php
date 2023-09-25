@@ -86,8 +86,6 @@
     </style>
 </head>
 <!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i> paper size 13*10cm, divide3.5 cm-->
-
-
 <div class="search">
     <input type="text" id="input" name="input" placeholder="Search" onkeyup="searchfun()">
 
@@ -95,8 +93,9 @@
         <table id="table" border="2" >
             <tr>
                 <th>Book Id</th>
-                <th>Book Name</th>
                 <th>User Name</th>
+                <th>Book Name</th>
+                <th>Quantity</th>
                 <th>Faculty</th>
                 <th>Issue Date</th>
                 <th>Due Date</th>
@@ -114,7 +113,7 @@
             include("returnbooK_server.php");
             include('message.php');
             error_reporting(0);
-            $query = "SELECT * FROM request_book";
+            $query = "SELECT * FROM issue_book";
             $data = mysqli_query($conn, $query);
             $total = mysqli_num_rows($data);
             $sn=1;
@@ -123,12 +122,13 @@
                 while ($result = mysqli_fetch_assoc($data)) {
                     echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
             <td style='border: 2px solid black; text-align: center;'>" . $sn . "</td>
-            <td style='border: 2px solid black; text-align: center;'>" . $result['User Name'] . "</td>
-            <td style='border: 2px solid black; text-align: center;'>" . $result['Book Name'] . "</td>
-            <td style='border: 2px solid black; text-align: center;'>" . $result['Faculty'] . "</td>
-            <td style='border: 2px solid black; text-align: center;'>" . $result['Issue Date'] . "</td>
-            <td style='border: 2px solid black; text-align: center;'>" . $result['Due Date'] . "</td>
-            <td style='border: 2px solid black; text-align: center;'>" . $result['Return Date'] . "</td>
+            <td style='border: 2px solid black; text-align: center;'>" . $result['book_id'] . "</td>
+            <td style='border: 2px solid black; text-align: center;'>" . $result['name'] . "</td>
+            <td style='border: 2px solid black; text-align: center;'>" . $result['std_name'] . "</td>
+            <td style='border: 2px solid black; text-align: center;'>" . 1 . "</td>
+            <td style='border: 2px solid black; text-align: center;'>" . $result['faculty'] . "</td>
+            <td style='border: 2px solid black; text-align: center;'>" . $result['issue_date'] . "</td>
+            <td style='border: 2px solid black; text-align: center;'>" . $result['due_date'] . "</td>
             <td>
         <a href='update_book.php?Id=" . $result['Id'] . "'><button style='height: 25px; align-items: center; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
             <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black;align-items: center;  border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button>

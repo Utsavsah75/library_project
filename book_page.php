@@ -52,7 +52,7 @@ require 'check_admin.php';
     <!-- </div> -->
 
     <div class="top">
-        <input type="text" id="search" name="search" placeholder="Search">
+        <!-- <input type="text" id="search" name="search" placeholder="Search"> -->
     </div>
     <!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i> -->
 

@@ -1,3 +1,7 @@
+confirm std
+
+
+
 <?php
 require 'conn.php';
 if ($_GET['id'] && $_GET['action'] == 'confirm') {
@@ -13,22 +17,17 @@ if ($_GET['id'] && $_GET['action'] == 'delete') {
 header('location: dashboard.php');
 ?>
 
-
 <?php
-if ($_GET['id'] && $_GET['action'] == 'delete') {
+require 'conn.php';
+if ($_GET['id'] && $_GET['action'] == 'confirm') {
     $id = base64_decode($_GET['id']);
-    $sql = "DELETE FROM add_book WHERE Id = '{$id}'";
+    $sql = "UPDATE students SET `verified` = 1 WHERE id = '{$id}'";
     $res = mysqli_query($conn, $sql);
 }
-header('location: dashboard.php');
-?>
-
-
-<?php
 if ($_GET['id'] && $_GET['action'] == 'delete') {
     $id = base64_decode($_GET['id']);
-    $sql = "DELETE FROM students WHERE id = '{$id}'";
+    $sql = "DELETE FROM books WHERE id='{$id}'";
     $res = mysqli_query($conn, $sql);
 }
-header('location: dashboard.php');
+header('location: all_books.php');
 ?>

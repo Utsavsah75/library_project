@@ -52,7 +52,7 @@ require 'check_admin.php';
     <!-- </div> -->
 
     <div class="top">
-        <input type="text" placeholder="Search">
+        <!-- <input type="text" placeholder="Search"> -->
     </div> <!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i> -->
 
 
@@ -92,7 +92,7 @@ require 'check_admin.php';
                 <tr>
                     <th>Faculty</th>
                     <td>
-                        <select name="faculty" style="padding: 5px; width: 150px; margin-left: -30px;" required>
+                        <select name="faculty" style="padding: 5px; width: 150px;" required>
                             <option value="DIT">DIT</option>
                             <option value="DCE">DCE</option>
                             <option value="DEE">DEE</option>

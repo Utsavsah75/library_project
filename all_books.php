@@ -12,9 +12,9 @@
         }
 
         table {
-            width: 100%;
+            width: 60rem;
             margin-top: 0px;
-            margin-left: 10px;
+            margin-left: -130px;
             /* display: none; */
             border: 2px solid black;
             border-collapse: collapse;
@@ -125,7 +125,8 @@
             <td>" . $result['available'] . "</td>
             <td>" . $result['issued'] . "</td>
             <td>
-        <a href='update_book.php?Id=" . $result['id'] . "'><button style='height: 25px; align-items: center; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
+        <a href='update_book.php?Id=" . $result['Id'] . "'><button style='height: 25px; align-items: center; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
+            <a href='confirm_student.php?id=" . base64_encode($result['id']) . "&&action=delete'>
             <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black;align-items: center;  border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button>
         
     </td>
@@ -133,7 +134,7 @@
 $sn++;
                 }
             } else {
-                echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
+                echo "<tr><td colspan='10' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
             }
             //---- 
             if (isset($_GET['m'])) {

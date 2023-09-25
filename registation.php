@@ -1,6 +1,5 @@
 <?php
 
-
 session_start();
 require 'conn.php';
 
@@ -26,7 +25,6 @@ if (isset($_POST['register'])) {
             VALUES ('$name', '$email', '$gender', '$password', '$Address', '$phone', '$faculty', '$photo', 0)";
 
     $data = mysqli_query($conn, $sql);
-
     if ($data) {
         echo '<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>';
         echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.css">';
@@ -43,5 +41,7 @@ if (isset($_POST['register'])) {
             </script>';
     } else {
         echo "Failed";
+        header("location: user_form.php");
+
     }
 }

@@ -120,11 +120,12 @@
                     <td style='border: 2px solid black; text-align: center;'>" . $result['phone'] . "</td>
                     <td style='border: 2px solid black; text-align: center;'>" . $result['faculty'] . "</td>
                     <td style='border: 2px solid black; text-align: center;'>" . $result['address'] . "</td>
-                    <td style='border: 2px solid black; text-align: center;'> <img style='width:40px;' src='uploads/" . $result['photo'] . "'>" . "</td>
+                    <td style='border: 2px solid black; text-align: center;'>  <img style='width:40px;' src='uploads/" . $result['photo'] . "'>" . "</td>
                     <td style='border: 2px solid black; text-align: center;'>
         <a href='newuser_update.php?Id=" . $result['Id'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
-     
-        <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button></a>
+       
+        <a href='confirm_student.php?id=" . base64_encode($result['id']) . "&&action=delete'>
+        <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['id'] . "'>Delete</button></a>
         
     </td>
 </tr>";
@@ -132,7 +133,7 @@ $sn++;
 
                 }
             } else {
-                echo "<tr><td colspan='5' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
+                echo "<tr><td colspan='13' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
             }
             ?>
         </table>
