@@ -66,20 +66,20 @@ require 'check_admin.php';
             <table>
                 <tr>
                     <th>Name</th>
-                    <td><input type="text" name="uname" placeholder="Enter User Name" style="padding: 5px;"></td>
+                    <td><input type="text" name="uname" placeholder="Enter User Name" style="padding: 5px;" required></td>
                 </tr>
                 <tr>
                     <th>Email</th>
-                    <td><input type="text" name="email" placeholder="Enter User Email" style="padding: 5px;"></td>
+                    <td><input type="email" name="email" placeholder="Enter User Email" style="padding: 5px;" required></td>
                 </tr>
                 <tr>
                     <th>Password</th>
-                    <td><input type="text" name="password" placeholder="Enter User Password" style="padding: 5px;"></td>
+                    <td><input type="password" name="password" placeholder="Enter User Password" style="padding: 5px;" required></td>
                 </tr>
                 <tr>
                     <th>Gender</th>
                     <td>
-                        <select id="gender" name="gender" style="margin-left: 55px; margin-bottom: 8px;">
+                        <select id="gender" name="gender" style="margin-left: 55px; margin-bottom: 8px;" required>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
@@ -87,12 +87,12 @@ require 'check_admin.php';
                 </tr>
                 <tr>
                     <th>Contact_No</th>
-                    <td><input type="number" name="phone" placeholder="Enter User Phone Number" style="padding: 5px;"></td>
+                    <td><input type="number" name="phone" placeholder="Enter User Phone Number" style="padding: 5px;" required></td>
                 </tr>
                 <tr>
                     <th>Faculty</th>
                     <td>
-                        <select name="faculty" style="padding: 5px; width: 150px; margin-left: -30px;">
+                        <select name="faculty" style="padding: 5px; width: 150px; margin-left: -30px;" required>
                             <option value="DIT">DIT</option>
                             <option value="DCE">DCE</option>
                             <option value="DEE">DEE</option>
@@ -104,12 +104,12 @@ require 'check_admin.php';
                 </tr>
                 <tr>
                     <th>Address</th>
-                    <td><textarea name="address" placeholder="Enter User Address" style="padding: 5px;"></textarea></td>
+                    <td><textarea name="address" placeholder="Enter User Address" style="padding: 5px;" required></textarea></td>
                 </tr>
 
                 <tr>
                     <th>Photo</th>
-                    <td><input type="file" name="photo" accept="image/png, image/jpeg, image/jpg" require></td>
+                    <td><input type="file" name="photo" accept="image/png, image/jpeg, image/jpg" required></td>
                 </tr>
                 <tr>
                     <td colspan="2" style="text-align: left;">

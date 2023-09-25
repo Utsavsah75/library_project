@@ -7,11 +7,14 @@ if (isset($_POST['submit'])) {
     $Id       = mysqli_real_escape_string($conn, $_POST['book_id']);
     $Name     = mysqli_real_escape_string($conn, $_POST['book_name']);
     $Author   = mysqli_real_escape_string($conn, $_POST['book_author']);
-    $Quantity = mysqli_real_escape_string($conn, $_POST['book_quantity']);
+    // $Quantity = mysqli_real_escape_string($conn, $_POST['book_quantity']);
 
-    $sql = "INSERT INTO add_book (`Book Id`, `Book Name`, `Author Name`, `Quantity`)  VALUES ('$Id', '$Name', '$Author', '$Quantity')";
-    
-    $sql = "UPDATE `add_book` set `Book Name` = '{$Name}',`Author Name` = '{$Author}',`Quantity` = '{$Quantity}'Where `Id` = $Id";
+    // $sql = "INSERT INTO add_book (`Book Id`, `Book Name`, `Author Name`, `Quantity`)  VALUES ('$Id', '$Name', '$Author', '$Quantity')";
+    // $issued_quantity = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `issued` FROM `Books` WHERE `id` = $Id"))['issued'];
+    // $availabe = $Quantity - $issued_quantity;
+    $sql = "UPDATE `Books` set `name` = '{$Name}',`author` = '{$Author}' Where `id` = $Id";
+
+
 
     // $sql = "update add_book set  Quantity=Quantity-1 where Book Name=$_POST[booksname]";
 

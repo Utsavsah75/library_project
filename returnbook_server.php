@@ -3,12 +3,19 @@ require 'conn.php';
 require 'check_admin.php';
 
 // Check if the form is saved
-if (isset($_POST['submit'])) {
-    $book_id       = mysqli_real_escape_string($conn, $_POST['book_id']);
-    $std_id         = mysqli_real_escape_string($conn, $_POST['std_id']);
-    $Issue       = mysqli_real_escape_string($conn, $_POST['iss_D']);
-    $Due         = mysqli_real_escape_string($conn, $_POST['due_D']);
-    $Return      = mysqli_real_escape_string($conn, $_POST['Return_D']);
+if (isset($_POST['submit']) || isset($_GET['book_id'])) {
+    if (isset($_POST['submit'])) {
+        $book_id       = mysqli_real_escape_string($conn, $_POST['book_id']);
+        $std_id         = mysqli_real_escape_string($conn, $_POST['std_id']);
+        $Issue       = mysqli_real_escape_string($conn, $_POST['iss_D']);
+        $Due         = mysqli_real_escape_string($conn, $_POST['due_D']);
+    } else {
+        $book_id       = mysqli_real_escape_string($conn, $_GET['book_id']);
+        $std_id         = mysqli_real_escape_string($conn, $_GET['std_id']);
+        $Issue       = mysqli_real_escape_string($conn, $_GET['iss_D']);
+        $Due         = mysqli_real_escape_string($conn, $_GET['due_D']);
+    }
+    // $Return      = mysqli_real_escape_string($conn, $_POST['Return_D']);
 
     $data = mysqli_query($conn, "DELETE FROM `issue_book` WHERE `book_id`='$book_id' AND `std_id`='$std_id' AND `issue_date`='$Issue' AND `due_date`='$Due'");
     $books = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `Books_with_id` INNER JOIN Books ON Books_with_id.book = Books.id WHERE `book_id`='$book_id'"));

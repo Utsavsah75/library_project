@@ -108,9 +108,15 @@ require 'conn.php';
                         <tr>
                             <th>Book Name</th>
                             <td>
-                                <input type="hidden" name="book_id" value="<?php if(isset($_GET['Id'])){echo $_GET['Id'];} ?>">
-                                <input type="hidden" name="b_id" value="<?php if(isset($data)){echo $data['id'];} ?>">
-                                <input type="text" name="B_Name" placeholder="Enter book name" value="<?php if(isset($data)){echo $data['name'];} ?>">
+                                <input type="hidden" name="book_id" value="<?php if (isset($_GET['Id'])) {
+                                                                                echo $_GET['Id'];
+                                                                            } ?>">
+                                <input type="hidden" name="b_id" value="<?php if (isset($data)) {
+                                                                            echo $data['id'];
+                                                                        } ?>">
+                                <input type="text" name="B_Name" placeholder="Enter book name" value="<?php if (isset($data)) {
+                                                                                                            echo $data['name'];
+                                                                                                        } ?>">
                                 <!-- <datalist id="books">
                                     <?php
                                     // $query = "SELECT * FROM Books ORDER BY name";
@@ -157,7 +163,8 @@ require 'conn.php';
 
                         <tr>
                             <th for="class">Faculty</th>
-                            <th><select name="faculty" style="padding: 5px; width: 150px; margin-left: -30px;" required>
+                            <th>
+                                <select name="faculty" style="padding: 5px; width: 150px; margin-left: -30px;" required>
                                     <option value="DIT">DIT</option>
                                     <option value="DCE">DCE</option>
                                     <option value="DEE">DEE</option>
@@ -263,7 +270,7 @@ require 'conn.php';
                         document.getElementsByName("U_Name")[0].value = data.std_name;
                         document.getElementsByName("faculty")[0].value = data.faculty;
                         document.getElementById("user_photo").src = "uploads/" + data.photo;
-                    }else{
+                    } else {
                         document.getElementsByName("U_Name")[0].value = "";
                         document.getElementsByName("faculty")[0].value = "";
                         document.getElementById("user_photo").src = "";

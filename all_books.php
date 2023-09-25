@@ -94,7 +94,7 @@
     <body>
         <table id="table" border="2">
             <tr>
-                <th>Book Id</th>
+                <th>S.N</th>
                 <th>Book Name</th>
                 <th>Book Author</th>
                 <th>Availabe Quantity</th>
@@ -125,7 +125,7 @@
             <td>" . $result['available'] . "</td>
             <td>" . $result['issued'] . "</td>
             <td>
-        <a href='update_book.php?Id=" . $result['Id'] . "'><button style='height: 25px; align-items: center; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
+        <a href='update_book.php?Id=" . $result['id'] . "'><button style='height: 25px; align-items: center; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
             <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black;align-items: center;  border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button>
         
     </td>

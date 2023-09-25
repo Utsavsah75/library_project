@@ -1,7 +1,7 @@
 <?php
-    session_start();
-    require 'conn.php';
-    ?>
+session_start();
+require 'conn.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,85 +83,93 @@
             background-color: #337ab7;
         }
     </style>
-   
-   <form id="bookForm" method="POST" action="admin_bookserver.php" autocomplete="off">
- 
-   <?php
-if(isset($_GET['Id'])) {
-   echo $book_id = $_GET['Id'];
-    $query = "SELECT * FROM issue_book WHERE `Book_Id`='$book_id'";
-    $query_run = mysqli_query($conn, $query);
 
-    if(mysqli_num_rows($query_run) > 0) {
-        $book = mysqli_fetch_array($query_run);
-        // print_r($book);
-    } 
+    <form id="bookForm" method="POST" action="update_issue_book.php" autocomplete="off">
 
-?>
-  <input type="hidden" name="book_id" value="<?= $book['Book_ID']; ?>">
-        <table>
-            <tr>
-                <td colspan="2">
-                    <div id="message" style="display: none; color: green; font-weight: bold; text-align: center; margin-top: 50px;">
-                        Update Book Successfully!!..
-                    </div>
-                </td>
-            <tr>
+        <?php
+        if (isset($_GET['Id'])) {
+            $book_id = $_GET['Id'];
+            // $query = "SELECT * FROM issue_book WHERE `book_id`='$book_id'";
+            $query = "SELECT * FROM issue_book INNER JOIN students ON issue_book.std_id = students.id INNER JOIN Books_with_id ON issue_book.book_id = Books_with_id.book_id INNER JOIN Books on Books_with_id.book = Books.id WHERE issue_book.book_id='$book_id'";
+
+            $query_run = mysqli_query($conn, $query);
+
+            if (mysqli_num_rows($query_run) > 0) {
+                $book = mysqli_fetch_array($query_run);
+                // print_r($book);
+            }
+
+        ?>
+            <input type="hidden" name="book_id" value="<?= $book['book_id']; ?>">
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <div id="message" style="display: none; color: green; font-weight: bold; text-align: center; margin-top: 50px;">
+                            Update Book Successfully!!..
+                        </div>
+                    </td>
+                <tr>
                     <th>Book Name</th>
-                    <td><input type="text" name="B_Name"  value="<?= $book['Book Name']; ?>" required></td>
+                    <td><input type="text" name="B_Name" value="<?= $book['name']; ?>" required disabled></td>
                 </tr>
                 <tr>
 
                     <th>User Name</th>
-                    <td><input type="text" name="U_Name"  value="<?= $book['User Name']; ?>" required></td>
+                    <td><input type="text" name="U_Name" value="<?= $book['std_name']; ?>" required disabled></td>
                 </tr>
                 </tr>
-                    <th for="class">Faculty</th>
-   <th><select  name="class" value="<?= $book['Faculty']; ?>" style="padding: 5px; width: 150px; margin-left: -30px;">
-        <option value="class1">DIT</option> <option value="class2">DCE</option> <option value="class3">DEE</option> <option value="class4">DGE</option>  <option value="class5">DHM</option>
-    </select>
-    </th> 
+                <th for="class">Faculty</th>
+                <th>
+                    <select name="faculty" style="padding: 5px; width: 150px; margin-left: -30px;" required disabled>
+                        <option value="DIT" <?php if($book['faculty'] == "DIT") echo "selected" ?>>DIT</option>
+                        <option value="DCE" <?php if($book['faculty'] == "DCE") echo "selected" ?>>DCE</option>
+                        <option value="DEE" <?php if($book['faculty'] == "DEE") echo "selected" ?>>DEE</option>
+                        <option value="DGE" <?php if($book['faculty'] == "DGE") echo "selected" ?>>DGE</option>
+                        <option value="DHM" <?php if($book['faculty'] == "DHM") echo "selected" ?>>DHM</option>
+                    </select>
+                </th>
                 <tr>
                     <th>Issue Date</th>
-                    <td><input type="date" name="iss_D" value="<?= $book['Issue_Date']; ?>" required></td>
+                    <td><input type="date" name="iss_D" value="<?= $book['issue_date']; ?>" required></td>
                 </tr>
                 <tr>
                     <th>Due Date</th>
-                    <td><input type="date" name="due_D" value="<?= $book['Due_Date']; ?>" required></td>
+                    <td><input type="date" name="due_D" value="<?= $book['due_date']; ?>" required></td>
                 </tr>
                 <tr>
-                <td style="text-align: center;">
-                        <input type="Submit" name="submit" value="Update">                    
+                    <td style="text-align: center;">
+                        <input type="Submit" name="submit" value="Update">
                     </td>
-<td>
+                    <td>
                         <a href="Issue.php">
                             <input type="button" name="Back" value="Back">
-                        </a></td>
                         </a>
+                    </td>
+                    </a>
                 </tr>
             </table>
-    <?php } else {
-        echo '<h4 style="color:red;">No Such Id Found</h4>';
-    } 
-    if (isset($book)) {
-        echo '<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>';
-        echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.css">';
-        echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.all.min.js"></script>';
-        
-        echo '<script type="text/javascript">
-                $(function() {
-                    Swal.fire({
-                        title: "Register",
-                        text: "Successfully!",
-                        icon: "success"
-                    });
-                });
-            </script>';
-    } else {
-        echo "Failed";
-    }
+        <?php } else {
+            echo '<h4 style="color:red;">No Such Id Found</h4>';
+        }
+        if (isset($book)) {
+            // echo '<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>';
+            // echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.css">';
+            // echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.all.min.js"></script>';
 
-   ?>
-</body>
+            // echo '<script type="text/javascript">
+            //         $(function() {
+            //             Swal.fire({
+            //                 title: "Register",
+            //                 text: "Successfully!",
+            //                 icon: "success"
+            //             });
+            //         });
+            //     </script>';
+        } else {
+            echo "Failed";
+        }
+
+        ?>
+        </body>
 
 </html>

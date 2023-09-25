@@ -120,25 +120,27 @@
             if ($total != 0) {
                 while ($result = mysqli_fetch_assoc($data)) {
                     echo "<tr style='background-color: transparent;' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='transparent';\">
-                <td style='border: 2px solid black; text-align: center;'>" . $result['book_id'] . "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . $result['name'] . "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . $result['std_name'] . "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . 1 . "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . $result['faculty'] . "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . $result['issue_date'] . "</td>
-                <td style='border: 2px solid black; text-align: center;'>" . $result['due_date'] . "</td>
-                <td style='border: 2px solid black; text-align: center;'>
-                    <a href='issue_update.php?Id=" . $result['Book ID'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
-                    <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Book ID'] . "'>Delete</button>
-        
-    </td>
-</tr>";
+                            <td style='border: 2px solid black; text-align: center;'>" . $result['book_id'] . "</td>
+                            <td style='border: 2px solid black; text-align: center;'>" . $result['name'] . "</td>
+                            <td style='border: 2px solid black; text-align: center;'>" . $result['std_name'] . "</td>
+                            <td style='border: 2px solid black; text-align: center;'>" . 1 . "</td>
+                            <td style='border: 2px solid black; text-align: center;'>" . $result['faculty'] . "</td>
+                            <td style='border: 2px solid black; text-align: center;'>" . $result['issue_date'] . "</td>
+                            <td style='border: 2px solid black; text-align: center;'>" . $result['due_date'] . "</td>
+                            <td style='border: 2px solid black; text-align: center;'>
+                                <a href='issue_update.php?Id=" . $result['book_id'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
+                                <a id='return_btn' href='returnbook_server.php?book_id=" . $result['book_id'] . "&std_id=" . $result['std_id'] . "&iss_D=" . $result['issue_date'] . "&due_D=" . $result['due_date'] . "'>
+                                Return
+                                </a>
+                            </td>
+                            </tr>";
                     $sn++;
                 }
             } else {
                 echo "<tr><td colspan='8' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
             }
             //---- 
+
             if (isset($_GET['m'])) {
                 // $m = mysqli_real_escape_string($conn, $_GET['m']);
 
@@ -186,6 +188,24 @@
 
 </div>
 <script src="search.js"></script>
+<script>
+    document.querySelector("#return_btn").addEventListener('click', function(e) {
+        console.log("clicked");
+        let choice = confirm("Are you sure?");
+        if (!choice) {
+            e.preventDefault();
+        } 
+    });
+</script>
 </body>
 
 </html>
+
+
+<!-- <form action='returnbook_server.php' action='post'>
+    <input type='hidden' name='std_id' value='" . $result[' std_id'] . "'>
+                                    <input type='hidden' name='iss_D'  value='" . $result['issue_date'] . "'>
+                                    <input type='hidden' name='due_D'  value='" . $result['due_date'] . "'>
+                                    <input type='hidden' name='book_id'  value='" . $result['book_id'] . "'>
+                                    <input type='button' name='sumbit' value='Delete'>
+                                </form> -->

@@ -87,6 +87,7 @@
     <body>
     <table id="table" border="2px" style="border-collapse: collapse; width: 1000px; height: 0px;margin-top: 0px; margin-left: -180px;">            <tr>
             <tr>
+                <th>S.N</th>
                 <th>User ID</th>
                 <th>Name</th>
                 <th>Email</th>
@@ -112,6 +113,7 @@
                 while ($result = mysqli_fetch_assoc($data)) {
                     echo "<tr style='    background-color: rgba(255, 255, 255, 0.5);' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='rgba(255, 255, 255, 0.568)';\">
                     <td style='border: 2px solid black; text-align: center;'>" . $sn . "</td>
+                    <td style='border: 2px solid black; text-align: center;'>" . $result['id'] . "</td>
                     <td style='border: 2px solid black; text-align: center;'>" . $result['std_name'] . "</td>
                     <td style='border: 2px solid black; text-align: center;'>" . $result['email'] . "</td>
                     <td style='border: 2px solid black; text-align: center;'>" . $result['gender'] . "</td>
