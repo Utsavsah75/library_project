@@ -15,7 +15,7 @@
         <div id="background">
             <div id="top">
                 <a href="#" class="fa fa-envelope" style="text-decoration:none;  color: white;">
-                    history@gmail.com
+                    public@gmail.com
                 </a>
                 <a href="#" class="fa fa-phone" style="text-decoration:none; color: white;">
                     +977-9812345678
@@ -25,7 +25,7 @@
                 <a href="#" class="fa fa-twitter" style="text-decoration:none;  padding: 7px ; float:right; color: white;"></a>
             </div>
             <div id="menu">
-                <div id="logo"><b style="color:#2c7ad6 ;">HISTORY</b>LIBRARY
+                <div id="logo"><b style="color:#2c7ad6 ;">PUBLIC</b>LIBRARY
                 </div>
                 <div id="menu1">
                     <ul>
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div id="slider">
-                <div id="x">WELCOME TO <b style="color: #2c7ad6;">HISTORY</b>LIBRARY
+                <div id="x">WELCOME TO <b style="color: #2c7ad6;">PUBLIC</b>LIBRARY
                     <p style="font-size: 15PX;">YOU CAN READ SOME TEXT</p>
                 </div>
                 <div id="y">
@@ -140,7 +140,7 @@
                     +977-9812345678
                 </a> <br>
                 <a href="#" class="fa fa-envelope" style="text-decoration: none; padding: 10px 12px; color:white;">
-                    history@gmail.com
+                    public@gmail.com
                 </a>
             </div>
             <div class="footer">Developed By: Utsav</div>
