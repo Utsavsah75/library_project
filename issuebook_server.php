@@ -1,6 +1,5 @@
 <?php
 require 'conn.php';
-
 // Check if the Book is Issue
 if (isset($_POST['Issue'])) {
     $B_id        = mysqli_real_escape_string($conn, $_POST['b_id']);

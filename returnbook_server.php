@@ -19,6 +19,7 @@ if (isset($_POST['submit']) || isset($_GET['book_id'])) {
 
     $data = mysqli_query($conn, "DELETE FROM `issue_book` WHERE `book_id`='$book_id' AND `std_id`='$std_id' AND `issue_date`='$Issue' AND `due_date`='$Due'");
     $books = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `Books_with_id` INNER JOIN Books ON Books_with_id.book = Books.id WHERE `book_id`='$book_id'"));
+ 
     $books_id = $books['book'];
     $available = $books['available'] + 1;
     $issued = $books['issued'] - 1;

@@ -21,7 +21,7 @@ if ($res) {
 
 
         if ($res) {
-            echo "Success";
+            echo "";
         } else {
             echo "Error: " . mysqli_error($conn);
         }

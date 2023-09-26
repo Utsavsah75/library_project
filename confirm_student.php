@@ -29,5 +29,5 @@ if ($_GET['id'] && $_GET['action'] == 'delete') {
     $sql = "DELETE FROM books WHERE id='{$id}'";
     $res = mysqli_query($conn, $sql);
 }
-header('location: all_books.php');
+header('location: dashboard.php');
 ?>

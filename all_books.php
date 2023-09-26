@@ -174,7 +174,7 @@ $sn++;
             ?>
         </table>
         <p id="notFoundMessage" style="display: none;">Data not found</p> <!-- Ensure this element is present -->
-        <a style="text-decoration: none;" href="book_page.php"><input type="button" name="Back" value="Back"></a>
+        <a style="text-decoration: none;" href="dashboard.php"><input type="button" name="Back" value="Back"></a>
 
 </div>
 <script src="search.js"></script>

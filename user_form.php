@@ -38,9 +38,6 @@
                         <a href="admin_login.php">
                             <li class="fa fa-user">Admin Login</li>
                         </a>
-                        <!-- <a href="register.html">
-                            <li class="fa fa-registered">Register</li>
-                        </a> -->
                         <a href="index.php">
                             <li class="fa fa-user">Login</li>
                         </a>

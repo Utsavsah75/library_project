@@ -148,12 +148,12 @@ require 'check_admin.php';
 
 
             <!--*******************************************************************************************-->
-            <input type="button" name="R.user" value="Requested User" style="margin-top: 7px; height: 35px; width: 120px; margin-left: -55.5rem; font-weight:bold;   background-color: rgba(255, 255, 255, 0.568); color: black; border-radius: 4px; cursor: pointer;">
+            <input type="button" name="R.user" value="Requested User" style="margin-top: 7px; height: 35px; width: 120px; margin-left: -63.2rem; font-weight:bold;   background-color: rgba(255, 255, 255, 0.568); color: black; border-radius: 4px; cursor: pointer;">
 
             <div class="confirm_user" style="margin-top: 16rem;">
 
 
-                <table border="2px" style="border-collapse: collapse; width: 1000px; height: 0px;margin-top: -257px; margin-left: -440px;">
+                <table border="2px" style="border-collapse: collapse; width: 1000px; height: 0px;margin-top: -257px; margin-left: -500px;">
                     <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
                         <th>User ID</th>
                         <th>Name</th>

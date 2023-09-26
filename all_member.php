@@ -79,7 +79,6 @@
 }
     </style>
 </head>
-<!-- <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i> -->
 
 <div class="search">
     <input type="text" id="input" name="input" placeholder="Search By User ID" onkeyup="searchfun()">
@@ -124,7 +123,7 @@
                     <td style='border: 2px solid black; text-align: center;'>
         <a href='newuser_update.php?Id=" . $result['Id'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
        
-        <a href='confirm_student.php?id=" . base64_encode($result['id']) . "&&action=delete'>
+        <a href='confirm_member.php?id=" . base64_encode($result['id']) . "&&action=delete'>
         <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['id'] . "'>Delete</button></a>
         
     </td>
@@ -138,7 +137,7 @@ $sn++;
             ?>
         </table>
         <p id="notFoundMessage" style="display: none;">Data not found</p> <!-- Ensure this element is present -->
-        <a style="text-decoration: none;" href="book_page.php"><input type="button" name="Back" value="Back"></a>
+        <a style="text-decoration: none;" href="dashboard.php"><input type="button" name="Back" value="Back"></a>
 </div>
 </body>
 </html>
