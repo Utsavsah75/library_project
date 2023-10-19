@@ -2,7 +2,7 @@
 require 'conn.php';
 //if the user borrow one booke then it will be stored in the database and the book will be removed from the book table and display the alert message Book Already Exists.
 
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
     $B_id         = mysqli_real_escape_string($conn, $_POST['B_id']);
     $U_id     = mysqli_real_escape_string($conn, $_POST['U_id']);
     $name      = mysqli_real_escape_string($conn, $_POST['name']);
@@ -15,8 +15,8 @@ if(isset($_POST['submit'])){
 
     $result = mysqli_query($conn, $sql);
 
-    if($result){
-         echo '<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>';
+    if ($result) {
+        echo '<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>';
         echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.css">';
         echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.all.min.js"></script>';
 

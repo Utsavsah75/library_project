@@ -18,17 +18,17 @@ if (isset($_POST['submit'])) {
 
     // $sql = "update add_book set  Quantity=Quantity-1 where Book Name=$_POST[booksname]";
 
-//    $sql = "DELETE FROM `add_book` WHERE `Id` = '$Id' AND `Book Name` = '$Name' AND `Author Name` = '$Author' AND `Quantity` = '$Quantity'";
+    //    $sql = "DELETE FROM `add_book` WHERE `Id` = '$Id' AND `Book Name` = '$Name' AND `Author Name` = '$Author' AND `Quantity` = '$Quantity'";
 
- $data = mysqli_query($conn, $sql);
+    $data = mysqli_query($conn, $sql);
 
-if ($data) {
-    //Book update successfully, display a success message with SweetAlert
-    echo '<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>';
-    echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.css">';
-    echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.all.min.js"></script>';
-    
-    echo '<script type="text/javascript">
+    if ($data) {
+        //Book update successfully, display a success message with SweetAlert
+        echo '<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>';
+        echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.css">';
+        echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.all.min.js"></script>';
+
+        echo '<script type="text/javascript">
             $(function() {
                 Swal.fire({
                     title: "Book Update",
@@ -40,9 +40,8 @@ if ($data) {
                 });
             });
         </script>';
-} else {
-    // Failed to add the user
-    echo "Failed to Update the Book.";
+    } else {
+        // Failed to add the user
+        echo "Failed to Update the Book.";
+    }
 }
-}
-?>

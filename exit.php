@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Book Registration Form</title>
 </head>
+
 <body>
     <h1>Book Registration Form</h1>
     <form method="POST" action="">
@@ -53,4 +55,5 @@
     mysqli_close($conn);
     ?>
 </body>
+
 </html>

@@ -32,12 +32,12 @@ require 'conn.php';
 <html>
 
 <head>
-<link rel = "stylesheet" href = "bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book_Management</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -121,7 +121,7 @@ require 'conn.php';
                                 <input type="text" name="B_Name" placeholder="Enter book name" value="<?php if (isset($data)) {
                                                                                                             echo $data['name'];
                                                                                                         } ?>">
-                               
+
                             </td>
 
                         </tr>
@@ -273,9 +273,6 @@ require 'conn.php';
             // var today = new Date();
             // var nextWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7);
             // document.getElementById('due_D').valueAsDate = nextWeek;
-
-
-
         </script>
 </body>
 

@@ -6,11 +6,13 @@ body {
     background-image: url(LB.jpg);
     background-position: center center;
 }
+
 .time {
     font-size: 2em;
     color: #00ffcc;
     align-items: center;
 }
+
 .date {
     font-size: 1.75em;
 }
@@ -105,13 +107,16 @@ body {
 .container1 {
     overflow: hidden;
 }
+
 .container1 button:hover {
     background: linear-gradient(180deg, rgb(255, 0, 0), rgb(229, 138, 138));
 }
 
-.ul a button.active{
-    background-color: #007bff; /* Change to your desired active background color */
+.ul a button.active {
+    background-color: #007bff;
+    /* Change to your desired active background color */
 }
+
 .container1 button {
     margin: 15px;
     width: 135px;
@@ -150,27 +155,29 @@ body {
     height: 350px;
     display: block;
     font-weight: bold;
-    border: 1px solid white; /* Changed 'white' to 'solid' for a border style */
+    border: 1px solid white;
+    /* Changed 'white' to 'solid' for a border style */
     margin-left: 300px;
     margin-top: -350px;
     border-radius: 10px;
     opacity: 100%;
     background-color: rgba(255, 255, 255, 0.4);
 
-    }
+}
 
-    .tabcontent2, .tabcontent3{
-        width: 350px;
-        height: 380px;
-        display: block;
-        font-weight: bold;
-        border: 1px solid white; /* Changed 'white' to 'solid' for a border style */
-        margin-left: 300px;
-        margin-top: -75px;
-        border-radius: 10px;
-        opacity: 100%;
-        background-color: rgba(255, 255, 255, 0.521);
-    }
+.tabcontent2, .tabcontent3 {
+    width: 350px;
+    height: 380px;
+    display: block;
+    font-weight: bold;
+    border: 1px solid white;
+    /* Changed 'white' to 'solid' for a border style */
+    margin-left: 300px;
+    margin-top: -75px;
+    border-radius: 10px;
+    opacity: 100%;
+    background-color: rgba(255, 255, 255, 0.521);
+}
 
 
 /* 

@@ -42,7 +42,7 @@ if ($data) {
 ?>
 
 
-         <!--  <div id="down">
+<!--  <div id="down">
             <h3>Stay Connected</h3>
              <a href="#" class="fa fa-facebook" style="text-decoration: none; padding: 10px 12px;color: white; "></a>
              <a href="#" class="fa fa-twitter" style="text-decoration: none; padding: 10px 12px;color: white;"></a>
@@ -51,5 +51,3 @@ if ($data) {
              <a href="#" class="fa fa-youtube" style="text-decoration: none; padding: 10px 12px;color: white;"></a>
              <a href="#" class="fa fa-instagram" style="text-decoration: none; padding: 10px 12px;color: white;"></a>
          </div> -->
-
-    

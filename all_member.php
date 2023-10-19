@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<link rel = "stylesheet" href = "bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.css">
 
     <title>Display User_reg Data</title>
     <style>
@@ -68,17 +68,18 @@
             color: red;
             opacity: 0.5;
         }
+
         input[type="button"] {
-    width: 76px;
-    height: 34px;
-    margin-top: 2px;
-    margin-left: 720px;
-    background-color: red;
-    font-weight: bold;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-}
+            width: 76px;
+            height: 34px;
+            margin-top: 2px;
+            margin-left: 720px;
+            background-color: red;
+            font-weight: bold;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -86,7 +87,8 @@
     <input type="text" id="input" name="input" placeholder="Search By User ID" onkeyup="searchfun()">
 
     <body>
-    <table id="table" border="2px" style="border-collapse: collapse; width: 1000px; height: 0px;margin-top: 0px; margin-left: -180px;">            <tr>
+        <table id="table" border="2px" style="border-collapse: collapse; width: 1000px; height: 0px;margin-top: 0px; margin-left: -180px;">
+            <tr>
             <tr>
                 <th>S.N</th>
                 <th>User ID</th>
@@ -109,7 +111,7 @@
             $query = "SELECT * FROM students WHERE verified = 1";
             $data = mysqli_query($conn, $query);
             $total = mysqli_num_rows($data);
-            $sn=1;
+            $sn = 1;
             if ($total != 0) {
                 while ($result = mysqli_fetch_assoc($data)) {
                     echo "<tr style='    background-color: rgba(255, 255, 255, 0.5);' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='rgba(255, 255, 255, 0.568)';\">
@@ -130,8 +132,7 @@
         
     </td>
 </tr>";
-$sn++;
-
+                    $sn++;
                 }
             } else {
                 echo "<tr><td colspan='13' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
@@ -142,4 +143,5 @@ $sn++;
         <a style="text-decoration: none;" href="dashboard.php"><input type="button" name="Back" value="Back"></a>
 </div>
 </body>
+
 </html>

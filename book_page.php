@@ -4,6 +4,7 @@ require 'check_admin.php';
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book_Management</title>
@@ -21,13 +22,13 @@ require 'check_admin.php';
         <p class="date"></p>
     </div>
     <div class="library-container">
-       
+
         <div class="top1">
             <ul>
                 <li><a href="all_books.php"><i class="fa fa-book"></i>All Books</a></li>
                 <li><a href="all_member.php"><i class="fa fa-users"></i>All Members</a></li>
                 <li><a href="index.php"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
-             
+
             </ul>
         </div>
     </div>
@@ -38,7 +39,7 @@ require 'check_admin.php';
             <a style="text-decoration: none;" href="dashboard.php"> <button> DashBoard</button></a>
             <a style="text-decoration: none;" href="book_page.php"> <button> Add Books</button></a>
             <a style="text-decoration: none;" href="Issue.php"><button> Issue Books</button></a>
-            <a style="text-decoration: none;" href="return.php">  <button> Return Books</button></a>
+            <a style="text-decoration: none;" href="return.php"> <button> Return Books</button></a>
             <a style="text-decoration: none;" href="add.php"> <button> Add Users</button></a>
         </ul>
     </div>

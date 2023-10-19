@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<link rel = "stylesheet" href = "bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.css">
     <title>Display User_reg Data</title>
     <style>
         body {
@@ -36,12 +36,12 @@
 </head>
 
 <body>
-<input type="text" placeholder="Search" style=" float: left;margin-left: 975px;  border-radius: 8px;  border: 2px solid;   transform: translateY(-463px); width: 240px; height: 25px;">
+    <input type="text" placeholder="Search" style=" float: left;margin-left: 975px;  border-radius: 8px;  border: 2px solid;   transform: translateY(-463px); width: 240px; height: 25px;">
     <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i>
 
     <table border="2">
-    <input type="search" placeholder="Search" style=" float: left;margin-left: 975px;  border-radius: 8px;  border: 2px solid;   transform: translateY(-463px); width: 240px; height: 25px;">
-    <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i>
+        <input type="search" placeholder="Search" style=" float: left;margin-left: 975px;  border-radius: 8px;  border: 2px solid;   transform: translateY(-463px); width: 240px; height: 25px;">
+        <i class="fas fa-search" style="float: left; margin-left: 5px; transform: translateY(-454px);"></i>
 
         <tr>
             <th>Book Id</th>

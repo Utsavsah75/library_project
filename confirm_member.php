@@ -7,4 +7,3 @@ if ($_GET['id'] && $_GET['action'] == 'delete') {
 }
 // header('location: dashboard.php');
 header('location: all_member.php');
-?>

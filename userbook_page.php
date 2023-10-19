@@ -5,7 +5,7 @@ include('./header.php');
 <html>
 
 <head>
-<link rel = "stylesheet" href = "bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book_Management</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -68,7 +68,7 @@ include('./header.php');
                 </tr>
             </table>
         </form>
-         <table id="booklist3" style="border-collapse: collapse; width: 900px; height: 0px; margin-top: 25px; margin-left: -245px;">
+        <table id="booklist3" style="border-collapse: collapse; width: 900px; height: 0px; margin-top: 25px; margin-left: -245px;">
             <tr style="background-color: #f2f2f2;">
                 <th style="padding: 5px; border: 2px solid black;">Book Id</th>
                 <th style="padding: 5px; border: 2px solid black;">User Name</th>
@@ -77,7 +77,7 @@ include('./header.php');
                 <th style="padding: 5px; border: 2px solid black;">Quantity</th>
                 <th style="padding: 5px; border: 2px solid black;">Issue Date</th>
                 <th style="padding: 5px; border: 2px solid black;">Due Date</th>
-                 <!-- <th style="padding: 5px; border: 2px solid black;">Return Date</th>  -->
+                <!-- <th style="padding: 5px; border: 2px solid black;">Return Date</th>  -->
                 <th style="padding: 5px; border: 2px solid black;" style='width:108px' ;>
                     Action</th>
                 <script src="search.js"></script>
@@ -92,7 +92,7 @@ include('./header.php');
 
             $query = "SELECT * FROM issue_book INNER JOIN students ON issue_book.std_id = students.id INNER JOIN Books_with_id ON issue_book.book_id = Books_with_id.book_id INNER JOIN Books on Books_with_id.book = Books.id";
 
-            
+
             $data = mysqli_query($conn, $query);
             $total = mysqli_num_rows($data);
             $sn = 1;

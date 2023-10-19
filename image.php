@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
     die("The image size must be less than 5 MB");
   }
   // Check if the file already exists
-  if (file_exists("uploads/".$fname)) {
+  if (file_exists("uploads/" . $fname)) {
     die("This photo is already uploaded");
   }
   // Check if the file type is allowed
@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
     die("The image type is not allowed to upload");
   }
   // Move the uploaded file to the "uploads" directory
-  move_uploaded_file($tmpname, "uploads/".$fname);
+  move_uploaded_file($tmpname, "uploads/" . $fname);
   echo "<script>
           alert('Image uploaded successfully!');
         </script>";

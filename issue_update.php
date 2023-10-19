@@ -6,7 +6,7 @@ require 'conn.php';
 <html lang="en">
 
 <head>
-<link rel = "stylesheet" href = "bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Book</title>
@@ -122,11 +122,11 @@ require 'conn.php';
                 <th for="class">Faculty</th>
                 <th>
                     <select name="faculty" style="padding: 5px; width: 150px; margin-left: -30px;" required disabled>
-                        <option value="DIT" <?php if($book['faculty'] == "DIT") echo "selected" ?>>DIT</option>
-                        <option value="DCE" <?php if($book['faculty'] == "DCE") echo "selected" ?>>DCE</option>
-                        <option value="DEE" <?php if($book['faculty'] == "DEE") echo "selected" ?>>DEE</option>
-                        <option value="DGE" <?php if($book['faculty'] == "DGE") echo "selected" ?>>DGE</option>
-                        <option value="DHM" <?php if($book['faculty'] == "DHM") echo "selected" ?>>DHM</option>
+                        <option value="DIT" <?php if ($book['faculty'] == "DIT") echo "selected" ?>>DIT</option>
+                        <option value="DCE" <?php if ($book['faculty'] == "DCE") echo "selected" ?>>DCE</option>
+                        <option value="DEE" <?php if ($book['faculty'] == "DEE") echo "selected" ?>>DEE</option>
+                        <option value="DGE" <?php if ($book['faculty'] == "DGE") echo "selected" ?>>DGE</option>
+                        <option value="DHM" <?php if ($book['faculty'] == "DHM") echo "selected" ?>>DHM</option>
                     </select>
                 </th>
                 <tr>

@@ -53,8 +53,3 @@ if ($res) {
     }
     
     mysqli_close($conn);
-    
-
-    
-    ?>
-    

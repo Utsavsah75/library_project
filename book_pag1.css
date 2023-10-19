@@ -22,7 +22,8 @@ body {
     background-color: rgba(0, 195, 255, 0.486);
     border-image: linear-gradient(360deg, rgba(0, 255, 157, 0.885), rgba(0, 153, 241, 0.993)) 1;
 }
-a{
+
+a {
     text-decoration: none;
 }
 
@@ -36,7 +37,7 @@ a{
     margin-left: 590px;
     margin-top: -113px;
     border-radius: 5px;
-    color: rgb(0 ,0, 0);
+    color: rgb(0, 0, 0);
     border: 2px solid transparent;
     background-color: rgba(255, 255, 255, 0.4);
     border-image: linear-gradient(360deg, rgba(0, 255, 157, 0.885), rgba(0, 153, 241, 0.993)) 1;
@@ -53,7 +54,7 @@ a{
     margin-left: 445px;
     margin-top: -112px;
     border-radius: 5px;
-    color: rgb(0 ,0, 0);
+    color: rgb(0, 0, 0);
     border: 2px solid transparent;
     background-color: rgba(255, 0, 0, 0.527);
     border-image: linear-gradient(360deg, rgba(255, 0, 191, 0.959), rgb(248, 0, 0)) 1;
@@ -70,7 +71,7 @@ a{
     margin-left: 590px;
     border-radius: 5px;
     margin-top: -112px;
-    color: rgb(0 ,0, 0);
+    color: rgb(0, 0, 0);
     border: 2px solid transparent;
     background-color: rgba(255, 165, 0, 0.75);
     border-image: linear-gradient(360deg, rgba(0, 255, 157, 0.885), rgba(0, 153, 241, 0.993)) 1;
@@ -87,13 +88,14 @@ a{
     margin-left: 735px;
     margin-top: -112px;
     border-radius: 5px;
-    color: rgb(0 ,0, 0);
+    color: rgb(0, 0, 0);
     border: 2px solid transparent;
     background-color: rgba(0, 128, 0, 0.5);
     border-image: linear-gradient(360deg, rgba(1, 231, 1, 0.74), rgba(8, 241, 0, 0.473)) 1;
 
 }
-.footer1{
+
+.footer1 {
     width: 130px;
     height: 35px;
     font-size: 20px;
@@ -106,7 +108,9 @@ a{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 
 
-}.footer2{
+}
+
+.footer2 {
     width: 130px;
     height: 35px;
     font-size: 20px;
@@ -119,7 +123,9 @@ a{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 
 
-}.footer3{
+}
+
+.footer3 {
     width: 130px;
     height: 35px;
     font-size: 20px;
@@ -132,7 +138,9 @@ a{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 
 
-}.footer4{
+}
+
+.footer4 {
     width: 130px;
     height: 35px;
     font-size: 20px;
@@ -146,7 +154,8 @@ a{
 
 
 }
-.footer5{
+
+.footer5 {
     width: 130px;
     height: 35px;
     font-size: 20px;

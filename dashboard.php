@@ -12,7 +12,7 @@ require 'check_admin.php';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
-<link rel = "stylesheet" href = "bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" type="text/css" href="book_pag.css">
     <link rel="stylesheet" type="text/css" href="book_pag1.css">
 </head>
@@ -118,7 +118,8 @@ require 'check_admin.php';
                 // } else {
                 //     echo '<h4>0</h4>';
                 // }
-                // ?>
+                // 
+                ?>
             </div>
             <div class="footer4">
                 <a href="return_list.php">View Details</a>

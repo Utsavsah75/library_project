@@ -127,13 +127,13 @@ require 'conn.php';
                             <th>Issue Date</th>
                             <td><input type="date" name="iss_D" value="<?php if (isset($data)) {
                                                                             echo $data['issue_date'];
-                                                                        } ?>" placeholder="Enter Issue Date" style="padding: 5px;"required></td>
+                                                                        } ?>" placeholder="Enter Issue Date" style="padding: 5px;" required></td>
                         </tr>
                         <tr>
                             <th>Due Date</th>
                             <td><input type="date" name="due_D" value="<?php if (isset($data)) {
                                                                             echo $data['due_date'];
-                                                                        } ?>" placeholder="Enter Due Date" style="padding: 5px;"required></td>
+                                                                        } ?>" placeholder="Enter Due Date" style="padding: 5px;" required></td>
                         </tr>
                         <tr>
                             <th>Return Date</th>

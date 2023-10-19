@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<link rel = "stylesheet" href = "bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.css">
 
     <title>Display User_reg Data</title>
     <style>
@@ -69,16 +70,16 @@
         }
 
         input[type="button"] {
-    width: 76px;
-    height: 34px;
-    margin-top: 2px;
-    margin-left: 730px;
-    background-color: red;
-    font-weight: bold;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-}
+            width: 76px;
+            height: 34px;
+            margin-top: 2px;
+            margin-left: 730px;
+            background-color: red;
+            font-weight: bold;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 
         p {
             color: red;
@@ -116,7 +117,7 @@
             $query = "SELECT * FROM Books";
             $data = mysqli_query($conn, $query);
             $total = mysqli_num_rows($data);
-            $sn=1;
+            $sn = 1;
 
             if ($total != 0) {
                 while ($result = mysqli_fetch_assoc($data)) {
@@ -133,7 +134,7 @@
         
     </td>
 </tr>";
-$sn++;
+                    $sn++;
                 }
             } else {
                 echo "<tr><td colspan='10' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";

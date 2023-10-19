@@ -164,6 +164,7 @@
     padding-top: 10px;
 
 }
+
 p {
     font-size: 15px;
     color: rgb(255, 255, 255);
@@ -180,24 +181,36 @@ p::after {
 }
 
 @keyframes typing {
-    0% { width: 0; }
-    50% { width: 0; }
-    100% { width: 5ch; }
+    0% {
+        width: 0;
+    }
+
+    50% {
+        width: 0;
+    }
+
+    100% {
+        width: 5ch;
+    }
 }
 
 @keyframes typing {
     0% {
         content: "TEXT";
     }
+
     25% {
         content: "";
     }
+
     50% {
         content: "BOOKS";
     }
+
     75% {
         content: "";
     }
+
     100% {
         content: "NEWSPAPERS";
     }

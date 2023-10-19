@@ -16,7 +16,6 @@ if ($_GET['id'] && $_GET['action'] == 'delete') {
 }
 header('location: dashboard.php');
 ?>
-
 <?php
 require 'conn.php';
 if ($_GET['id'] && $_GET['action'] == 'confirm') {

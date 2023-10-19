@@ -35,5 +35,3 @@ if ($data) {
     echo "Failed";
 }
 }
-?>
-

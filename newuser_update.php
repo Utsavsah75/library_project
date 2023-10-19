@@ -1,7 +1,7 @@
 <?php
-    session_start();
-    require 'conn.php';
-    ?>
+session_start();
+require 'conn.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,85 +78,85 @@
         }
 
         input[type="button"] {
-            background-color: #337ab7; 
+            background-color: #337ab7;
         }
     </style>
 
-<form id="bookForm" method="POST" action="addnewuser_server.php" autocomplete="off">
-<?php
-if(isset($_GET['Id'])) {
-    $user_id = mysqli_real_escape_string($conn, $_GET['Id']);
-    $query = "SELECT * FROM students WHERE Id='$user_id'";
-    $query_run = mysqli_query($conn, $query);
-    
-    if(mysqli_num_rows($query_run) > 0) {
-        $user = mysqli_fetch_array($query_run);
-        print_r($user);
-    } 
-}
-?>
+    <form id="bookForm" method="POST" action="addnewuser_server.php" autocomplete="off">
+        <?php
+        if (isset($_GET['Id'])) {
+            $user_id = mysqli_real_escape_string($conn, $_GET['Id']);
+            $query = "SELECT * FROM students WHERE Id='$user_id'";
+            $query_run = mysqli_query($conn, $query);
 
-   <?php if (isset($user)) { ?>
-        <input type="hidden" name="user_id" value="<?= $user['id']; ?>">
-        <table>
-            <!-- <tr>
+            if (mysqli_num_rows($query_run) > 0) {
+                $user = mysqli_fetch_array($query_run);
+                print_r($user);
+            }
+        }
+        ?>
+
+        <?php if (isset($user)) { ?>
+            <input type="hidden" name="user_id" value="<?= $user['id']; ?>">
+            <table>
+                <!-- <tr>
                 <th>User ID</th>
                 <td><input type="number" name="u_id" value="<?= $user['id']; ?>" style="padding: 5px;"></td>
             </tr> -->
-            <tr>
-                <th>Name</th>
-                <td><input type="text" name="uname" value="<?= $user['name']; ?>" style="padding: 5px;"></td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td><input type="text" name="email" value="<?= $user['email']; ?>" style="padding: 5px;"></td>
-            </tr>
-            <!-- <tr>
+                <tr>
+                    <th>Name</th>
+                    <td><input type="text" name="uname" value="<?= $user['name']; ?>" style="padding: 5px;"></td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td><input type="text" name="email" value="<?= $user['email']; ?>" style="padding: 5px;"></td>
+                </tr>
+                <!-- <tr>
                 <th>Password</th>
                 <td><input type="text" name="password" value="<?= $user['password']; ?>" style="padding: 5px;"></td>
             </tr> -->
-            <tr>
-                <th>Gender</th>
-                <td>
-                    <select id="gender" name="gender" style="margin-left: 55px; margin-bottom: 8px;">
-                        <option value="Male" <?= ($user['gender'] == 'Male') ? 'selected' : ''; ?>>Male</option>
-                        <option value="Female" <?= ($user['gender'] == 'Female') ? 'selected' : ''; ?>>Female</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <th>Contact_No</th>
-                <td><input type="number" name="phone" value="<?= $user['phone']; ?>" style="padding: 5px;"></td>
-            </tr>
-            <tr>
-                <th>Faculty</th>
-                <td><input type="text" name="faculty" value="<?= $user['faculty']; ?>" style="padding: 5px;"></td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td><textarea name="address" style="padding: 5px;"><?= $user['address']; ?></textarea></td>
-            </tr>
-            <!-- <tr>
+                <tr>
+                    <th>Gender</th>
+                    <td>
+                        <select id="gender" name="gender" style="margin-left: 55px; margin-bottom: 8px;">
+                            <option value="Male" <?= ($user['gender'] == 'Male') ? 'selected' : ''; ?>>Male</option>
+                            <option value="Female" <?= ($user['gender'] == 'Female') ? 'selected' : ''; ?>>Female</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Contact_No</th>
+                    <td><input type="number" name="phone" value="<?= $user['phone']; ?>" style="padding: 5px;"></td>
+                </tr>
+                <tr>
+                    <th>Faculty</th>
+                    <td><input type="text" name="faculty" value="<?= $user['faculty']; ?>" style="padding: 5px;"></td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td><textarea name="address" style="padding: 5px;"><?= $user['address']; ?></textarea></td>
+                </tr>
+                <!-- <tr>
                 <th>Photo</th>
                 <td><input type="file" name="photo" style="padding: 5px;"></td>
             </tr> -->
+                <tr>
+                    <td colspan="2" style="text-align: right;">
+                        <input type="submit" name="submit" value="Update">
+                    </td>
+                </tr>
+            </table>
             <tr>
-                <td colspan="2" style="text-align: right;">
-                    <input type="submit" name="submit" value="Update">
+                <td>
+                    <a href="add.php" style="text-decoration: none;">
+                        <button type="button" style="color: white; font-weight: bold; margin-left: 120px; margin-top: -40px;">Back</button>
+                    </a>
                 </td>
             </tr>
-        </table>
-        <tr>
-            <td>
-                <a href="add.php" style="text-decoration: none;">
-                    <button type="button" style="color: white; font-weight: bold; margin-left: 120px; margin-top: -40px;">Back</button>
-                </a>
-            </td>
-        </tr>
-    <?php } else {
-        echo '<h4 style="color:red;">No Such Id Found</h4>';
-    } ?>
-</form>
+        <?php } else {
+            echo '<h4 style="color:red;">No Such Id Found</h4>';
+        } ?>
+    </form>
 
 
 
@@ -181,11 +181,6 @@ if(isset($_GET['Id'])) {
             }, 3000); // 3 seconds (adjust this as needed)
         });
     </script>
-</body>
+    </body>
 
 </html>
-
-
-
-
-

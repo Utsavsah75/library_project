@@ -6,7 +6,7 @@ require 'check_admin.php';
 <html>
 
 <head>
-<link rel = "stylesheet" href = "bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book_Management</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -23,12 +23,12 @@ require 'check_admin.php';
         <p class="date"></p>
     </div>
     <div class="library-container">
-       
+
         <div class="top1">
             <ul>
                 <li><a href="all_books.php"><i class="fa fa-book"></i>All Books</a></li>
                 <li><a href="all_member.php"><i class="fa fa-users"></i>All Members</a></li>
-              
+
                 <li><a href="index.php"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
             </ul>
         </div>
@@ -43,7 +43,7 @@ require 'check_admin.php';
             <a style="text-decoration: none;" href="add.php"> <button> Add Users</button></a>
         </ul>
     </div>
-   
+
 
     <!---*****************ADD USERS**********************-->
     <div id="Add_Users" class="tabcontent4">
@@ -104,62 +104,62 @@ require 'check_admin.php';
                 </tr>
             </table>
         </form>
-                    <script>
-                        const timeElement = document.querySelector(".time");
-                        const dateElement = document.querySelector(".date");
+        <script>
+            const timeElement = document.querySelector(".time");
+            const dateElement = document.querySelector(".date");
 
-                        function formatTime(date) {
-                            const hours12 = date.getHours() % 12 || 12;
-                            const minutes = date.getMinutes();
-                            const seconds = date.getSeconds();
-                            const isAm = date.getHours() < 12;
+            function formatTime(date) {
+                const hours12 = date.getHours() % 12 || 12;
+                const minutes = date.getMinutes();
+                const seconds = date.getSeconds();
+                const isAm = date.getHours() < 12;
 
-                            return `${hours12.toString().padStart(2, "0")}:${minutes
+                return `${hours12.toString().padStart(2, "0")}:${minutes
                 .toString()
                 .padStart(2, "0")}:${seconds.toString().padStart(2, "0")} ${isAm ? "AM" : "PM"}`;
-                        }
+            }
 
-                        function formatDate(date) {
-                            const DAYS = [
-                                "Sunday",
-                                "Monday",
-                                "Tuesday",
-                                "Wednesday",
-                                "Thursday",
-                                "Friday",
-                                "Saturday"
-                            ];
-                            const MONTHS = [
-                                "January",
-                                "February",
-                                "March",
-                                "April",
-                                "May",
-                                "June",
-                                "July",
-                                "August",
-                                "September",
-                                "October",
-                                "November",
-                                "December"
-                            ];
+            function formatDate(date) {
+                const DAYS = [
+                    "Sunday",
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday"
+                ];
+                const MONTHS = [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
+                ];
 
-                            return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`;
-                        }
+                return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}`;
+            }
 
-                        // Initial update
-                        const now = new Date();
-                        timeElement.textContent = formatTime(now);
-                        dateElement.textContent = formatDate(now);
+            // Initial update
+            const now = new Date();
+            timeElement.textContent = formatTime(now);
+            dateElement.textContent = formatDate(now);
 
-                        // Update every second
-                        setInterval(() => {
-                            const now = new Date();
+            // Update every second
+            setInterval(() => {
+                const now = new Date();
 
-                            timeElement.textContent = formatTime(now);
-                            dateElement.textContent = formatDate(now);
-                        }, 1000);
-                    </script>
+                timeElement.textContent = formatTime(now);
+                dateElement.textContent = formatDate(now);
+            }, 1000);
+        </script>
 </body>
 
 </html>

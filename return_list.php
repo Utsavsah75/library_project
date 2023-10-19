@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<link rel = "stylesheet" href = "bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.css">
     <title>Display User_reg Data</title>
     <style>
         body {
@@ -68,16 +69,16 @@
         }
 
         input[type="button"] {
-    width: 76px;
-    height: 34px;
-    margin-top: 2px;
-    margin-left: 690px;
-    background-color: red;
-    font-weight: bold;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-}
+            width: 76px;
+            height: 34px;
+            margin-top: 2px;
+            margin-left: 690px;
+            background-color: red;
+            font-weight: bold;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 
         p {
             color: red;
@@ -91,7 +92,7 @@
     <input type="text" id="input" name="input" placeholder="Search" onkeyup="searchfun()">
 
     <body>
-        <table id="table" border="2" >
+        <table id="table" border="2">
             <tr>
                 <th>Book Id</th>
                 <th>User Name</th>
@@ -102,7 +103,7 @@
                 <th>Due Date</th>
                 <th>Return Date</th>
                 <th style='width:108px' ;>
-                Action</th>
+                    Action</th>
                 <script src="search.js"></script>
 
             </tr>
@@ -117,7 +118,7 @@
             $query = "SELECT * FROM issue_book";
             $data = mysqli_query($conn, $query);
             $total = mysqli_num_rows($data);
-            $sn=1;
+            $sn = 1;
 
             if ($total != 0) {
                 while ($result = mysqli_fetch_assoc($data)) {
@@ -136,7 +137,7 @@
         
     </td>
 </tr>";
-$sn++;
+                    $sn++;
                 }
             } else {
                 echo "<tr><td colspan='8' style='padding: 10px; border: 2px solid black;'>No records found</td></tr>";
@@ -144,12 +145,12 @@ $sn++;
 
 
             ?>
-            </table>
-            <p id="notFoundMessage" style="display: none;">Data not found</p> <!-- Ensure this element is present -->
-            <a style="text-decoration: none;" href="issuebook_list.php"><input type="button" name="Back" value="Back"></a>
-    
-    </div>
-    <script src="search.js"></script>
-    </body>
-    
-    </html>
+        </table>
+        <p id="notFoundMessage" style="display: none;">Data not found</p> <!-- Ensure this element is present -->
+        <a style="text-decoration: none;" href="issuebook_list.php"><input type="button" name="Back" value="Back"></a>
+
+</div>
+<script src="search.js"></script>
+</body>
+
+</html>

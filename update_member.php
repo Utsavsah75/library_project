@@ -1,14 +1,14 @@
 <?php
-    session_start();
-    require 'conn.php';
-    ?>
+session_start();
+require 'conn.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel = "stylesheet" href = "bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.css">
     <title>Update Book</title>
     <style>
         body {
@@ -79,70 +79,70 @@
         }
 
         input[type="button"] {
-            background-color: #337ab7; 
+            background-color: #337ab7;
         }
     </style>
-   
-   <form id="bookForm" method="POST" action="admin_bookserver.php" autocomplete="off">
-   <?php
-if(isset($_GET['Id'])) {
-    $book_id = mysqli_real_escape_string($conn, $_GET['Id']);
-    $query = "SELECT * FROM add_book WHERE Id='$book_id'";
-    $query_run = mysqli_query($conn, $query);
-    
-    if(mysqli_num_rows($query_run) > 0) {
-        $book = mysqli_fetch_array($query_run);
-        //print_r($book);
-    } 
-}
-?>
-    <?php if (isset($book)) { ?>
-        <input type="hidden" name="book_id" value="<?= $book['Id']; ?>">
-        <table>
-            <tr>
-                <td colspan="2">
-                    <div id="message" style="display: none; color: green; font-weight: bold; text-align: center; margin-top: 50px;">
-                        Update Book Successfully!!..
-                    </div>
-                </td>
-            </tr>
-            <!-- <tr>
+
+    <form id="bookForm" method="POST" action="admin_bookserver.php" autocomplete="off">
+        <?php
+        if (isset($_GET['Id'])) {
+            $book_id = mysqli_real_escape_string($conn, $_GET['Id']);
+            $query = "SELECT * FROM add_book WHERE Id='$book_id'";
+            $query_run = mysqli_query($conn, $query);
+
+            if (mysqli_num_rows($query_run) > 0) {
+                $book = mysqli_fetch_array($query_run);
+                //print_r($book);
+            }
+        }
+        ?>
+        <?php if (isset($book)) { ?>
+            <input type="hidden" name="book_id" value="<?= $book['Id']; ?>">
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <div id="message" style="display: none; color: green; font-weight: bold; text-align: center; margin-top: 50px;">
+                            Update Book Successfully!!..
+                        </div>
+                    </td>
+                </tr>
+                <!-- <tr>
                 <th>Book ID*</th>
                 <td><input type="text" id="book_id" placeholder="Enter Book ID" name="book_id" value="<?= $book['Id']; ?>" required></td>
             </tr> -->
+                <tr>
+                    <th>Book Name</th>
+                    <td><input type="text" id="bname" placeholder="Enter Book Name" name="book_name" value="<?= $book['Book Name']; ?>" required></td>
+                </tr>
+                <tr>
+                    <th>Author Name</th>
+                    <td><input type="text" id="Aname" placeholder="Enter Author Name" name="book_author" value="<?= $book['Author Name']; ?>" required></td>
+                </tr>
+                <tr>
+                    <th>Quantity</th>
+                    <td><input type="text" id="quantity" placeholder="Enter Quantity" name="book_quantity" value="<?= $book['Quantity']; ?>" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" name="submit" value="Update">
+                    </td>
+                </tr>
+
+            </table>
             <tr>
-                <th>Book Name</th>
-                <td><input type="text" id="bname" placeholder="Enter Book Name" name="book_name" value="<?= $book['Book Name']; ?>" required></td>
-            </tr>
-            <tr>
-                <th>Author Name</th>
-                <td><input type="text" id="Aname" placeholder="Enter Author Name" name="book_author" value="<?= $book['Author Name']; ?>" required></td>
-            </tr>
-            <tr>
-                <th>Quantity</th>
-                <td><input type="text" id="quantity" placeholder="Enter Quantity" name="book_quantity" value="<?= $book['Quantity']; ?>" required></td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <input type="submit" name="submit" value="Update">
-                </td>
-            </tr>
-           
-        </table>
-        <tr>
                 <td>
                     <a href="book_page.php" style="text-decoration: none;">
                         <input type="button" name="Back" value="Back" style="color: white; font-weight: bold; margin-left: 120px; margin-top: -40px;">
                     </a>
                 </td>
             </tr>
-    <?php } else {
-        echo '<h4 style="color:red;">No Such Id Found</h4>';
-    } ?>
-</form>
+        <?php } else {
+            echo '<h4 style="color:red;">No Such Id Found</h4>';
+        } ?>
+    </form>
 
 
-<!-- 
+    <!-- 
     <script>
         // Get the form element
         const bookForm = document.getElementById('bookForm');
@@ -162,9 +162,6 @@ if(isset($_GET['Id'])) {
             }, 3000); // 3 seconds (adjust this as needed)
         });
     </script> -->
-</body>
+    </body>
 
 </html>
-
-
-
