@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+<link rel = "stylesheet" href = "bootstrap.css">
     <title>Display User_reg Data</title>
     <style>
         body {

@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+<link rel = "stylesheet" href = "bootstrap.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library management system</title>
@@ -46,7 +47,7 @@
         </div>
         <div id="slider">
             <div id="x">WELCOME TO <b style="color: #2c7ad6;">PUBLIC</b>LIBRARY
-                <p style="font-size: 15PX;">YOU CAN READ SOME TEXT</p>
+                <p style="font-size: 15PX;">YOU CAN READ SOME&nbsp</p>
             </div>
             <div id="y">
                 <div id="l">
