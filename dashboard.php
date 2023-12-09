@@ -33,7 +33,6 @@ require 'check_admin.php';
             </ul>
         </div>
     </div>
-
     <div class="container1">
         <ul>
             <a style="text-decoration: none;" href="dashboard.php"> <button> DashBoard</button></a>
@@ -54,7 +53,8 @@ require 'check_admin.php';
 
             </div>
             <div class="footer1">
-                <a href="all_books.php">View Details</a>
+                <a href="all_books.php"><button type="button" class="btn btn-primary">View Details</button></a>
+
             </div>
 
         </div>
@@ -77,7 +77,9 @@ require 'check_admin.php';
             </div>
 
             <div class="footer2">
-                <a href="all_member.php">View Details</a>
+                <a href="all_member.php">
+                    <button type="button" class="btn btn-light">View Details</button>
+                </a>
             </div>
         </div>
     </div>
@@ -99,7 +101,9 @@ require 'check_admin.php';
                 ?>
             </div>
             <div class="footer3">
-                <a href="issuebook_list.php">View Details</a>
+                <a href="issuebook_list.php">
+                    <button type="button" class="btn btn-danger">View Details</button>
+                </a>
             </div>
         </div>
     </div>
@@ -131,7 +135,7 @@ require 'check_admin.php';
     <div id="Add_request" class="request">
         <div class="row">
 
-            <div class="header">Total Requested Users
+            <div class="header">Total Request User<br>
                 <?php
                 $quentity = "SELECT * FROM students WHERE verified = '0'";
                 $student_quentity = mysqli_query($conn, $quentity);
@@ -144,18 +148,15 @@ require 'check_admin.php';
                 ?>
 
             </div>
-            <div class="footer5">
-                <a href="#">View Details</a>
-            </div>
+            <div class="footer5"><a href="#"><button type="button" class="btn btn-success">View Details</button></a> </div>
 
 
             <!--*******************************************************************************************-->
-            <input type="button" name="R.user" value="Requested User" style="margin-top: 7px; height: 35px; width: 120px; margin-left: -63.2rem; font-weight:bold;   background-color: rgba(255, 255, 255, 0.568); color: black; border-radius: 4px; cursor: pointer;">
-
+            <button type="button" name="R.user" value="Requested User" class="btn btn-secondary" style="margin-top: 3.5rem; height: 35px; width: 120px; margin-left: -44rem; font-weight:bold;   background-color: rgba(255, 255, 255, 0.568); color: black; border-radius: 4px; cursor: pointer;">Requested</button>
             <div class="confirm_user" style="margin-top: 16rem;">
 
 
-                <table border="2px" style="border-collapse: collapse; width: 1000px; height: 0px;margin-top: -257px; margin-left: -500px;">
+                <table border="2px" style="border-collapse: collapse; width: 1000px; height: 0px;margin-top: -165px; margin-left:-8.2rem;">
                     <tr style="height:35px ; background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(96, 100, 96, 0.6));">
                         <th>User ID</th>
                         <th>Name</th>
@@ -187,13 +188,13 @@ require 'check_admin.php';
         <td style='border: 2px solid black; text-align: center;'>" . $result['phone'] . "</td>
         <td style='border: 2px solid black; text-align: center;'>" . $result['faculty'] . "</td>
         <td style='border: 2px solid black; text-align: center;'>" . $result['address'] . "</td>
-        <td style='border: 2px solid black; text-align: center;'> <img style='width:40px;' src='uploads/" . $result['photo'] . "'>" . "</td>
+        <td style='border: 2px solid black; text-align: center;'>  <img style='width:40px;' src='uploads/" . $result['photo'] . "'>" . "</td>
         <td style='border: 2px solid black; text-align: center;'>
             <a href='confirm_student.php?id=" . base64_encode($result['id']) . "&&action=confirm'>
-                <button style='height: 25px; width: 60px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Confirm</button>
+                <button style='height: 25px; width: 60px; padding: 0px; border: 2px solid black; border-radius: 4px; font-size: 14px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Confirm</button>
             </a>
             <a href='confirm_student.php?id=" . base64_encode($result['id']) . "&&action=delete'>
-                <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['id'] . "'>Delete</button></a>
+                <button style='height: 25px; width: 55px; padding: 0px; border: 2px solid black; border-radius: 4px; font-size: 15px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['id'] . "'>Delete</button></a>
             
         </td>
     </tr>";

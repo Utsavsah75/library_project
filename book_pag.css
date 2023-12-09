@@ -151,13 +151,13 @@ body {
 }
 
 .tabcontent1, .tabcontent4, .tabcontent5 {
-    width: 350px;
-    height: 350px;
+    width: 400px;
+    height: 400px;
     display: block;
     font-weight: bold;
     border: 1px solid white;
     /* Changed 'white' to 'solid' for a border style */
-    margin-left: 300px;
+    margin-left: 250px;
     margin-top: -350px;
     border-radius: 10px;
     opacity: 100%;

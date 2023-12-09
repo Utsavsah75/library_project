@@ -155,12 +155,12 @@ body {
 
 .tabcontent {
     width: 20rem;
-    height: 15rem;
+    height: 17rem;
     display: block;
     font-weight: bold;
     border: 1px solid;
-    margin-left: 500px;
-    margin-top: 50px;
+    margin-left: 300px;
+    margin-top: 20px;
     border-radius: 10px;
     opacity: 100%;
     background-color: rgba(255, 255, 255, 0.4);

@@ -16,7 +16,7 @@ l<?php
             $_SESSION['login_successful'] = $data['id'];        // session is set only if we found match
             header("location: userbook_page.php");
         } else {
-            $_SESSION['msg'] = "Invalid Username / Password";
+            $_SESSION['msg'] = "Invalid E-mail / Password";
             header("location: index.php");
         }
     }

@@ -1,34 +1,7 @@
 <?php
 require 'conn.php';
-
-// session_start();
-// if (isset($_POST['submit'])) {
-// 	header("location:Issue.php");
-// }
-// $aid=$_SESSION['submit'];
-// $a=mysqli_query($set,"SELECT * FROM admin WHERE Book_Id='$aid'");
-// $b=mysqli_fetch_array($a);
-// $name=$b['name'];
-// $bn=$_POST['name'];
-// $au=$_POST['auth'];
-// if($bn!=NULL && $au!=NULL)
-// {
-// 	$sql=mysqli_query($set,"INSERT INTO books(name,author) VALUES('$bn','$au')");
-// 	if($sql)
-// 	{
-// 		$msg="Successfully Added";
-// 	}
-// 	else
-// 	{
-// 		$msg="Book Already Exists";
-// 	}
-// }
+// session_start(); if (isset($_POST['submit'])) { 	header("location:Issue.php"); } $aid=$_SESSION['submit']; $a=mysqli_query($set,"SELECT * FROM admin WHERE Book_Id='$aid'"); $b=mysqli_fetch_array($a); $name=$b['name']; $bn=$_POST['name']; $au=$_POST['auth']; if($bn!=NULL && $au!=NULL) { 	$sql=mysqli_query($set,"INSERT INTO books(name,author) VALUES('$bn','$au')"); 	if($sql) 	{ 		$msg="Successfully Added"; 	} 	else 	{ 		$msg="Book Already Exists"; 	} }
 ?>
-
-
-
-
-
 <html>
 
 <head>
@@ -81,34 +54,45 @@ require 'conn.php';
         </ul>
     </div>
 
-    <form action="" method="GET" style="padding: 5px;margin-top: -325px; margin-left: 375px;">
+    <form action="" method="GET" style="padding: 0px;margin-top: -360px; margin-left: 375px;">
         <tr>
             <th>Book ID</th>
             <input type="text" name="Id" placeholder="Enter Book ID" value="<?php if (isset($_GET['Id'])) {
                                                                                 echo $_GET['Id'];
                                                                             } ?>" style="width: 120px; " required>
         </tr>
-    </form>
+    </form><br>
+      <?php
+
+                    if (isset($query_run) && mysqli_num_rows($query_run) <= 0) {
+                        echo "<p style='padding: 0px; text-align:center; margin-top: -30px; color:Red;'>No records found</p>";
+                    }
+            ?>
 
 
     <!-- *****************Issue BOOK********************** -->
-    <div id="Issue_Books" class="tabcontent2" style="width:360;">
+    <!-- <div id="Issue_Books" class="tabcontent2" style="width:360;"> -->
+    <div id="Issue_Books" class="tabcontent2"  style="width: 370px;">
+
         <p style="display:none; margin-left: 10px;">This Field is required:</p>
 
         <form id="bookForm" method="POST" action="issuebook_server.php" autocomplete="off">
 
             <div class="row">
-                <table style="padding: 20px;margin-top: 50px;">
+                <table style="margin-top: 40px; margin-left: 20px;">
                     <div class="row">
                         <?php
                         if (isset($_GET['Id'])) {
                             $Id = $_GET['Id'];
 
                             $query = "SELECT * FROM Books_with_id INNER JOIN Books ON Books_with_id.book=Books.id WHERE book_id='$Id' AND is_issued=0 ";
+                            // $query = "SELECT * FROM students INNER JOIN Books ON students.book=id WHERE students='$Id' AND is_issued=0 ";
                             $query_run = mysqli_query($conn, $query);
                             $data = mysqli_fetch_assoc($query_run);
                         }
                         ?>
+
+
                         <tr>
                             <th>Book Name</th>
                             <td>
@@ -151,7 +135,7 @@ require 'conn.php';
                         <tr>
                             <th for="class">Faculty</th>
                             <th>
-                                <select name="faculty" style="padding: 5px; width: 150px; margin-left: -73px;" required>
+                                <select name="faculty" style="padding: 5px; width: 150px; margin-left: -3px;" required>
                                     <option value="DIT">DIT</option>
                                     <option value="DCE">DCE</option>
                                     <option value="DEE">DEE</option>
@@ -172,8 +156,10 @@ require 'conn.php';
 
 
                         <td colspan="2" style="text-align: center;">
-                            <input type="submit" name="Issue" value="Issue" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff;border-radius: 4px; cursor: pointer;">
-                            <input type="Button" name="clear" value="Clear" style="padding: 10px 20px; font-weight:bold; background-color: #337ab7; color: #fff;border-radius: 4px; cursor: pointer;">
+                        <button type="submit" name="Issue" value="Issue" class="btn btn-success">ISSUE</button>
+                        <button type="Button" name="clear" value="Clear" class="btn btn-danger">CLEAR</button>
+                            <!-- <input type="submit" name="Issue" value="Issue" style="padding: 10px 25px; font-weight:bold; background-color: #4CAF50; color: #fff;border-radius: 4px; cursor: pointer;"> -->
+                            <!-- <input type="Button" name="clear" value="Clear" style="padding: 10px 20px; font-weight:bold; background-color: #337ab7; color: #fff;border-radius: 4px; cursor: pointer;"> -->
                         </td>
                         </tr>
                     </div>
@@ -181,9 +167,10 @@ require 'conn.php';
                     <?php
 
                     if (isset($query_run) && mysqli_num_rows($query_run) <= 0) {
-                        echo "<p style='padding: 5px; text-align:center; margin-top: 0px; color:Red;'>No records found</p>";
+                        echo "<p style='padding: 0px; text-align:center; margin-top: -30px; color:Red;'>No records found</p>";
                     }
                     ?>
+                   
 
                 </table>
         </form>

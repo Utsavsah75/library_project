@@ -65,7 +65,6 @@
 
                         <div class="container1">
                             <div class="msg_holder1"></div>
-
                             <div class="form_holder1">
                                 <form action="registation.php" method="post" enctype="multipart/form-data">
                                     <table align="center">
@@ -117,8 +116,9 @@
 
                                         </tr>
                                         <tr>
-                                            <td><input type=" submit" value="register" name="register"></td>
+                                            <td><button type="submit" value="register" id="Register" name="register" style="width: 80px; height: 30px;"></td>R
                                             <td><input type="reset" value="Reset"></td>
+                                            
                                         </tr>
                                     </table>
                                 </form>

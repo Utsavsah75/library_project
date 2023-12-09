@@ -46,11 +46,11 @@ require 'check_admin.php';
 
 
     <!---*****************ADD USERS**********************-->
-    <div id="Add_Users" class="tabcontent4">
+    <div id="Add_Users" class="tabcontent4 d-inline-block w-auto h-auto">
+    
 
-        <p style="display:none; margin-left: 10px;">This Field is required:</p>
         <form id="userForm" method="POST" action="add_user_data.php" autocomplete="off" enctype="multipart/form-data">
-            <table>
+            <table  style="margin-left: 20px;"> 
                 <tr>
                     <th>Name</th>
                     <td><input type="text" name="uname" placeholder="Enter User Name" style="padding: 5px;" required></td>
@@ -99,7 +99,7 @@ require 'check_admin.php';
                 </tr>
                 <tr>
                     <td colspan="2" style="text-align: left;">
-                        <input type="submit" name="submit" value="Save" style="padding: 10px 25px; margin-left: 90px; font-weight:bold; background-color: #4CAF50; color: #fff; border-radius: 4px; cursor: pointer;">
+                    <button type="submit" name="submit" value="Save" class="btn btn-success" style="padding: 5px 25px; margin-left: 90px; font-weight:bold; background-color: #4CAF50; color: #fff; border-radius: 4px; cursor: pointer;">Save</button>
                     </td>
                 </tr>
             </table>

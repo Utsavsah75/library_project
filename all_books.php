@@ -128,9 +128,9 @@
             <td>" . $result['available'] . "</td>
             <td>" . $result['issued'] . "</td>
             <td>
-        <a href='update_book.php?Id=" . $result['Id'] . "'><button style='height: 25px; align-items: center; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
+        <a href='update_book.php?Id=" . $result['Id'] . "'><button style='height: 25px; align-items: center; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
             <a href='confirm_student.php?id=" . base64_encode($result['id']) . "&&action=delete'>
-            <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black;align-items: center;  border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button>
+            <button style='height: 25px; width: 50px; padding: 0px; border: 2px solid black;align-items: center;  border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['Id'] . "'>Delete</button>
         
     </td>
 </tr>";
