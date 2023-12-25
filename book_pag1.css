@@ -1,10 +1,11 @@
 body {
-    background-size: cover;
-    filter: brightness(80%);
+   
+    /* background-size: cover;
+    filter: brightness(100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-image: url(LB.jpg);
-    background-position: center center;
+    background-position: center center; */
 }
     .container{ 
         border: 2px solid #000;
@@ -52,7 +53,7 @@ a {
     color: rgb(0, 0, 0);
     border: 2px solid transparent;
     background-color: rgba(255, 0, 0, 0.527);
-    border-image: linear-gradient(360deg, rgba(255, 0, 191, 0.959), rgb(248, 0, 0)) 1;
+    border-image: linear-gradient(360deg, rgba(255, 0, 191, 0.959), rgb(248, 0, 0)) 5;
 
 }
 
@@ -68,8 +69,8 @@ a {
 .request {
     margin-top: -115px;
     margin-left: 860px;
-   
     border-radius: 5px;
+    /* filter: drop-shadow(2px 2px 2px rgb(0, 0, 0)); */
     color: rgb(0, 0, 0);
     border: 2px solid transparent;
     background-color: rgba(0, 128, 0, 0.5);
@@ -78,11 +79,9 @@ a {
 }
 
 .footer1, .footer2, .footer3, .footer4, .footer5 {
-    
-    font-size: 20px;
-  
+    /* font-size: 20px; */
     text-align: center;
     text-decoration: none;
     filter: drop-shadow(2px 2px 2px rgb(0, 0, 0));
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.25); */
 }

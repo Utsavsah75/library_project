@@ -20,6 +20,14 @@ require 'conn.php';
 
 <body>
 
+<div id="video-background">
+    <video autoplay muted loop id="video-background">
+        <source src="LB.mp4" type="video/mp4">
+      </video>
+</div>
+
+
+
     <div class="datetime">
         <p class="time"></p>
         <p class="date"></p>
@@ -48,7 +56,7 @@ require 'conn.php';
             <a style="text-decoration: none;" href="dashboard.php"> <button> DashBoard</button></a>
             <a style="text-decoration: none;" href="book_page.php"> <button> Add Books</button></a>
             <a style="text-decoration: none;" href="Issue.php"><button> Issue Books</button></a>
-            <a style="text-decoration: none;" href="return.php"> <button> Return Books</button></a>
+            <!-- <a style="text-decoration: none;" href="return.php"> <button> Return Books</button></a> -->
             <a style="text-decoration: none;" href="add.php"> <button> Add Users</button></a>
             <!-- <a style="text-decoration: none;" href="manage.php"> <button> Manage Users</button></a> -->
         </ul>
@@ -110,12 +118,12 @@ require 'conn.php';
 
                         </tr>
 
-                        <tr>
+                        <!-- <tr>
                             <th>User ID</th>
                             <td>
                                 <input type="number" name="U_id" placeholder="Enter User ID" style="padding: 5px;" id="user_id" required>
                             </td>
-                        </tr>
+                        </tr> -->
 
                         <tr>
                             <th>User Name</th>
@@ -127,13 +135,13 @@ require 'conn.php';
                         </tr>
 
 
-                        <tr>
+                        <!-- <tr>
                             <th>Quantity</th>
                             <td><input type="number" name="quantity" value="1" style="padding: 5px;" required disabled></td>
-                        </tr>
+                        </tr> 
 
                         <tr>
-                            <th for="class">Faculty</th>
+                             <th for="class">Faculty</th>
                             <th>
                                 <select name="faculty" style="padding: 5px; width: 150px; margin-left: -3px;" required>
                                     <option value="DIT">DIT</option>
@@ -143,15 +151,15 @@ require 'conn.php';
                                     <option value="DHM">DHM</option>
                                 </select>
                             </th>
-                        </tr>
+                        </tr> -->
 
                         <tr>
                             <th>Issue Date</th>
-                            <td><input type="date" id="iss_D" name="iss_D" placeholder="Enter Issue Date" style="padding: 5px;" required></td>
+                            <td><input type="date" id="iss_D" name="iss_D" placeholder="Enter Issue Date" style="padding: 5px; width:190px;" required></td>
                         </tr>
                         <tr>
                             <th>Due Date</th>
-                            <td><input type="date" id="due_D" name="due_D" placeholder="Enter Due Date" style="padding: 5px;" required></td>
+                            <td><input type="date" id="due_D" name="due_D" placeholder="Enter Due Date" style="padding: 5px;  width:190px;" required></td>
                         </tr>
 
 
@@ -261,6 +269,7 @@ require 'conn.php';
             // var nextWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7);
             // document.getElementById('due_D').valueAsDate = nextWeek;
         </script>
+    </div>
 </body>
 
 </html>

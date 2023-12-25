@@ -116,7 +116,7 @@
 
                                         </tr>
                                         <tr>
-                                            <td><button type="submit" value="register" id="Register" name="register" style="width: 80px; height: 30px;"></td>R
+                                            <td><button type="submit" value="register" id="Register" name="register" style="width: 80px; height: 30px;">Register</td>
                                             <td><input type="reset" value="Reset"></td>
                                             
                                         </tr>

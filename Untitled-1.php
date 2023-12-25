@@ -88,7 +88,7 @@
     <ul>
         <button class="tablinks" onclick="openTab(event, 'Add_Books')"> Add Books</button>
         <button class="tablinks" onclick="openTab(event, 'Borrow_Books')"> Borrow Books</button>
-        <button class="tablinks" onclick="openTab(event, 'Return_Books')"> Return Books</button>
+        <!-- <button class="tablinks" onclick="openTab(event, 'Return_Books')"> Return Books</button> -->
         <button class="tablinks" onclick="openTab(event, 'Manage_Users')"> Manage Users</button>
         <button class="tablinks" onclick="openTab(event, 'Add_Users')"> Add Users</button>
         <button class="tablinks" onclick="openTab(event, 'Manage_Users')"> Manage Users</button>

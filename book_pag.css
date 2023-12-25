@@ -1,11 +1,20 @@
-body {
-    background-size: cover;
-    filter: brightness(80%);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-image: url(LB.jpg);
-    background-position: center center;
-}
+/* -------- */
+#video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: -1;
+    display: block;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+ 
+
+
+/* ------------- */
+
 
 .time {
     font-size: 2em;
@@ -16,8 +25,6 @@ body {
 .date {
     font-size: 1.75em;
 }
-
-
 
 .library-container {
     width: 82%;
@@ -31,7 +38,6 @@ body {
     border-radius: 15px;
     box-sizing: border-box;
 }
-
 
 .top input[type="text"] {
     float: left;
@@ -171,12 +177,12 @@ body {
     display: block;
     font-weight: bold;
     border: 1px solid white;
-    /* Changed 'white' to 'solid' for a border style */
     margin-left: 300px;
     margin-top: -75px;
     border-radius: 10px;
     opacity: 100%;
     background-color: rgba(255, 255, 255, 0.521);
+    /* Changed 'white' to 'solid' for a border style */
 }
 
 

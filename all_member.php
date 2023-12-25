@@ -125,10 +125,11 @@
                     <td style='border: 2px solid black; text-align: center;'>" . $result['address'] . "</td>
                     <td style='border: 2px solid black; text-align: center;'>  <img style='width:40px;' src='uploads/" . $result['photo'] . "'>" . "</td>
                     <td style='border: 2px solid black; text-align: center;'>
-        <a href='newuser_update.php?Id=" . $result['Id'] . "'><button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
+        <a href='newuser_update.php?Id=" . $result['Id'] . "'>
+        <button style='height: 25px; width: 40px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
        
         <a href='confirm_member.php?id=" . base64_encode($result['id']) . "&&action=delete'>
-        <button style='height: 25px; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['id'] . "'>Delete</button></a>
+        <button id='del_user' style='height: 25px; width: 55px; padding: 0px; border: 2px solid black; border-radius: 4px; font-size: 15px; background-color: red' type='submit' name='Delete' onClick='onDelete(this)' value='" . $result['id'] . "'>Delete</button></a>
         
     </td>
 </tr>";
@@ -142,6 +143,18 @@
         <p id="notFoundMessage" style="display: none;">Data not found</p> <!-- Ensure this element is present -->
         <a style="text-decoration: none;" href="dashboard.php"><input type="button" name="Back" value="Back"></a>
 </div>
+
+<script>
+    document.querySelector("#del_user").addEventListener('click', function(e) {
+        console.log("Delete clicked");
+        let choice = confirm("Are you sure you want to delete?");
+        if (!choice) {
+            e.preventDefault();
+        }
+    });
+
+    </script>
+
 </body>
 
 </html>
