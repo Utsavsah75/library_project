@@ -1,145 +1,213 @@
-<?php session_start(); ?>
+<?php
+session_start();
+include('conn.php');
+// error_reporting (0);
+
+// Increment student code
+$count_my_page = "studentcode.txt";
+$hits = (int)file_get_contents($count_my_page);
+$hits++;
+file_put_contents($count_my_page, $hits);
+
+// Generate the student code with 'SID' prefix
+$studentcode = "SID" . str_pad($hits, 3, '0', STR_PAD_LEFT);
+
+
+
+
+
+
+// Register the user to the database.
+if (isset($_POST['add'])) {
+    $fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
+    $address  = mysqli_real_escape_string($conn, $_POST['address']);
+    $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+    $gender = mysqli_real_escape_string($conn, $_POST['gender']);
+    $email  = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, password_hash($_POST['password'], PASSWORD_DEFAULT)); // Hash the password
+    $photo = mysqli_real_escape_string($conn, $_POST['photo']);
+
+    $alreadyExist = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM students WHERE email = '{$email}'"));
+
+    if ($alreadyExist) {
+        $_SESSION['msg'] = "Account is already exist for email: <b>$email</b>";
+        header("location: user_form.php");
+        exit(); // Stop further execution
+    }
+
+    $sql = "INSERT INTO `students`( `studentcode`,`std_name`, `address`, `phone`, `gender`, `photo`, `email`, `password`, `verified`) 
+    VALUES ('$studentcode','$fullname','$address','$phone','$gender','$photo','$email','$password', 1)";
+
+    $data = mysqli_query($conn, $sql);
+    if ($data) {
+        echo '<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>';
+        echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.css">';
+        echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.all.min.js"></script>';
+
+        echo '<script type="text/javascript">
+                $(function() {
+                    Swal.fire({
+                        title: "Register",
+                        text: "Successfully!",
+                        icon: "success"
+                    });
+                });
+            </script>';
+    } else {
+        echo "Failed";
+        // header("location: user_form.php");
+        exit(); // Stop further execution
+    }
+}
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library management system</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Book_Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="reg.css">
+    <link rel="stylesheet" type="text/css" href="header.css">
+    <link rel="stylesheet" type="text/css" href="book_pag.css">
+    <!-- <link rel="stylesheet" type="text/css" href="book_pag1.css"> -->
+    <script type="text/javascript">
+        function valid() {
+            if (document.signup.password.value != document.signup.confirmpassword.value) {
+                alert("Password and Confirm Password Field do not match  !!");
+                document.signup.confirmpassword.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <script>
+        function checkavability() {
+            $("#loaderIcon").show();
+            jQuery.ajax({
+                url: "check_avability.php",
+                data: 'emailid=' + $("#emailid").val(),
+                type: "POST",
+                success: function(data) {
+                    $("#user-avability-status").html(data);
+                    $("#loaderIcon").hide();
+                },
+                error: function() {}
+            });
+        }
+    </script>
 </head>
 
 <body>
-    <form action="registation.php" method="post">
-        <div id="background">
-            <div id="top">
-                <a href="#" class="fa fa-envelope" style="text-decoration:none;  color: white;">
-                    public@gmail.com
-                </a>
-                <a href="#" class="fa fa-phone" style="text-decoration:none; color: white;">
-                    +977-9812345678
-                </a>
-                <a href="#" class="fa fa-facebook" style="text-decoration:none; padding:7px; float:right; color: white;"></a>
-                <a href="#" class="fa fa-instagram" style="text-decoration:none; padding:7px; float:right; color: white;"></a>
-                <a href="#" class="fa fa-twitter" style="text-decoration:none;  padding: 7px ; float:right; color: white;"></a>
-            </div>
-            <div id="menu">
-                <div id="logo"><b style="color:#2c7ad6 ;">PUBLIC</b>LIBRARY
-                </div>
-                <div id="menu1">
-                    <ul>
-                        <a href="index.php">
-                            <li class="fa fa-home">Home</li>
-                        </a>
-                        <a href="gall.php">
-                            <li class="fa fa-image">Gallery</li>
-                        </a>
-                        <a href="admin_login.php">
-                            <li class="fa fa-user">Admin Login</li>
-                        </a>
-                        <a href="index.php">
-                            <li class="fa fa-user">Login</li>
-                        </a>
+    <div id="video-background">
+        <video autoplay muted loop id="video-background">
+            <source src="LB.mp4" type="video/mp4">
+        </video>
+    </div>
 
-                    </ul>
-                </div>
-            </div>
-            <div id="slider">
-                <div id="x">WELCOME TO <b style="color: #2c7ad6;">PUBLIC</b>LIBRARY
-                    <p style="font-size: 15PX;">YOU CAN READ SOME TEXT</p>
-                </div>
-                <div id="y">
-                    <div id="l">
-                        <h2 style=" text-align: center; color: #2c7ad6;">New Student Registration</h2>
+    <!------MENU SECTION START-->
+    <?php
+    include 'admin_header.php';
+    ?>
+    </div>
+    </div>
+    </section><!-- MENU SECTION END-->
+    <div class="content-wra
+    <div class=" content-wrapper">
+        <div class="container">
+            <div class="row pad-botm">
+                <div class="col-md-12">
 
-                        <div class="msg_holder" colspan="2" align="center" height:="200px">
-                            <?php
-                            if (isset($_SESSION['msg'])) {
-                                echo $_SESSION['msg'];
-                                session_unset();
-                            }
-                            ?>
-                        </div>
 
-                        <div class="container1">
-                            <div class="msg_holder1"></div>
-                            <div class="form_holder1">
-                                <form action="registation.php" method="post" enctype="multipart/form-data">
-                                    <table align="center">
-                                        <tr>
-                                            <td>Name:</td>
-                                            <td><input type="text" name="name" placeholder="Enter your full name" required></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Email:</td>
-                                            <td><input type="email" name="email" placeholder="Enter your email" required></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Gender</td>
-                                            <td><select id="genter" name="gender">
-                                                    <option value="Male">Male</option>
-                                                    <option value="Female">Female</option>
-                                                </select>
-                                            </td>
-                                        </tr>
-
-                                        <td>Password:</td>
-                                        <td><input type="password" name="password" required></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Address:</td>
-                                            <td><input type="text" name="address" placeholder="Enter your Address" required></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Contact:</td>
-                                            <td><input type="number" name="phone" placeholder="Enter contact number" required></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Faculty:</td>
-                                            <td>
-                                                <select name="faculty" required>
-                                                    <option value="DIT">DIT</option>
-                                                    <option value="DCE">DCE</option>
-                                                    <option value="DEE">DEE</option>
-                                                    <option value="DGE">DGE</option>
-                                                    <option value="DHM">DHM</option>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Photo:</td>
-                                            <td><input type="file" name="photo" required <img style='width:180px;' src='uploads/" . $result[' photo'] . "'></td>
-
-                                        </tr>
-                                        <tr>
-                                            <td><button type="submit" value="register" id="Register" name="register" style="width: 80px; height: 30px;">Register</td>
-                                            <td><input type="reset" value="Reset"></td>
-                                            
-                                        </tr>
-                                    </table>
-                                </form>
-                            </div>
-                        </div>
+                    <div class="header-line">
+                        <h4 style="   font-weight: bold;color: #000000; display: inline;">User</h4>
+                        <h4 style="   font-weight: bold;color: #2c7ad6; display: inline;">Form</h4>
                     </div>
                 </div>
             </div>
-            <div id="down">
-                <h3>Stay Connected</h3>
-                <a href="#" class="fa fa-facebook" style="text-decoration: none; padding: 10px 12px;color: white; "></a>
-                <a href="#" class="fa fa-instagram" style="text-decoration: none; padding: 10px 12px;color: white;"></a>
-                <a href="#" class="fa fa-twitter" style="text-decoration: none; padding: 10px 12px;color: white;"></a>
-                <h2>Contact Address</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-head">
+                            SINGUP FORM
+                        </div>
 
-                <a href="#" class="fa fa-phone" style="text-decoration: none; padding: 10px 12px;color: white;">
-                    +977-9812345678
-                </a> <br>
-                <a href="#" class="fa fa-envelope" style="text-decoration: none; padding: 10px 12px; color:white;">
-                    public@gmail.com
-                </a>
-            </div>
-            <div class="footer">Developed By: Utsav</div>
-        </div>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="panel-body">
+
+                                        <form name="signup" method="post" onSubmit="return valid();" style="border-color: aqua;">
+                                            <div class="form-group">
+                                                <label>Enter Full Name<span style="color:red;">*</span></label>
+                                                <input class="form-control" type="text" name="fullname" required="required" autocomplete="off" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Enter Address<span style="color:red;">*</span></label>
+                                                <input class="form-control" type="text" name="address" required="required" autocomplete="off" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Mobile Number<span style="color:red;">*</span></label>
+                                                <input class="form-control" type="text" name="phone" maxlength="10" autocomplete="off" required="required" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Gender <span style="color:red">*</span></label>
+                                                <div>
+                                                    <input type="radio" id="male" name="gender" value="male" required>
+                                                    <label for="male">Male</label>
+                                                    <input type="radio" id="female" name="gender" value="Female" required>
+                                                    <label for="female">Female</label>
+                                                </div>
+                                            </div>
+
+                                            <!-- </form> -->
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="panel-body">
+                                        <form name="signup" method="post" onSubmit="return valid();" style="border-color: aqua;">
+
+                                            <div class="form-group">
+                                                <label>Enter Email<span style="color:red;">*</span></label>
+                                                <input class="form-control" type="email" name="email" id="emailid" onBlur="checkavability()" autocomplete="off" required />
+                                                <span id="user-avability-status" style="font-size:12px;"></span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Enter Password<span style="color:red;">*</span></label>
+                                                <input class="form-control" type="password" name="password" autocomplete="off" required />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Confirm Password <span style="color:red;">*</span></label>
+                                                <input class="form-control" type="password" name="confirmpassword" autocomplete="off" required />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>User Picture<span style="color:red;">*</span></label>
+                                                <input class="form-control" type="file" name="photo" autocomplete="off" required="required" />
+                                            </div>
+                                            <button type="submit" name="add" id="add" class="btn btn-info" style="margin-left: -16rem; margin-top:-54px;">Submit </button>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script src="assets/js/jquery-1.10.2.js"></script>
+                        <!-- BOOTSTRAP SCRIPTS  -->
+                        <script src="assets/js/bootstrap.js"></script>
+                        <!-- CUSTOM SCRIPTS  -->
+                        <script src="assets/js/custom.js"></script>
+</body>
+
+</html>

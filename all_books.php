@@ -100,8 +100,10 @@
                 <th>S.N</th>
                 <th>Book Name</th>
                 <th>Book Author</th>
+                <th>ISBN</th>
                 <th>Availabe Quantity</th>
-                <th>Issued Quantity</th>
+                <th>Issued Date</th>
+                                            <th>Return Date</th>
                 <th style='width:108px' ;>Action</th>
                 <script src="search.js"></script>
 
@@ -111,7 +113,7 @@
             // session_start();
             require 'conn.php';
 
-            include("admin_bookserver.php");
+            // include("admin_bookserver.php");
             include('message.php');
             error_reporting(0);
             $query = "SELECT * FROM Books";
@@ -123,10 +125,12 @@
                 while ($result = mysqli_fetch_assoc($data)) {
                     echo "<tr>
             <td>" . $sn . "</td>
-            <td>" . $result['name'] . "</td>
+            <td>" . $result['BookName'] . "</td>
             <td>" . $result['author'] . "</td>
-            <td>" . $result['available'] . "</td>
-            <td>" . $result['issued'] . "</td>
+            <td>" . $result['isbnno'] . "</td>
+            <td>" . $result['quantity'] . "</td>
+            <td>" . $result['regdate'] . "</td>
+            <td>" . $result['updation'] . "</td>
             <td>
         <a href='update_book.php?Id=" . $result['Id'] . "'><button style='height: 25px; align-items: center; width: 45px; padding: 0px; border: 2px solid black; border-radius: 4px; background-color: #347ab7' type='button' onClick='onEdit(this)'>Edit</button></a>
             <a href='confirm_student.php?id=" . base64_encode($result['id']) . "&&action=delete'>

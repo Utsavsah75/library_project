@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Registration Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel-body">
+                <form name="signup" method="post" onSubmit="return valid();" style="border-color: aqua;">
+
+                    <div class="form-group">
+                        <label>Enter Full Name<span style="color:red;">*</span></label>
+                        <input class="form-control" type="text" name="fullname" required="required" autocomplete="off" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Enter Address<span style="color:red;">*</span></label>
+                        <input class="form-control" type="text" name="address" required="required" autocomplete="off" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mobile Number<span style="color:red;">*</span></label>
+                        <input class="form-control" type="text" name="mobileno" maxlength="10" autocomplete="off" required="required" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Gender <span style="color:red">*</span></label>
+                        <div>
+                            <input type="radio" id="male" name="gender" value="male" required>
+                            <label for="male">Male</label>
+                            <input type="radio" id="female" name="gender" value="Female" required>
+                            <label for="female">Female</label>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel-body">
+                <form name="signup" method="post" onSubmit="return valid();" style="border-color: aqua;">
+
+                    <div class="form-group">
+                        <label>Enter Email<span style="color:red;">*</span></label>
+                        <input class="form-control" type="email" name="email" id="emailid" onBlur="checkavability()" autocomplete="off" required />
+                        <span id="user-avability-status" style="font-size:12px;"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Enter Password<span style="color:red;">*</span></label>
+                        <input class="form-control" type="password" name="password" autocomplete="off" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Confirm Password <span style="color:red;">*</span></label>
+                        <input class="form-control" type="password" name="confirmpassword" autocomplete="off" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>User Picture<span style="color:red;">*</span></label>
+                        <input class="form-control" type="file" name="userpic" autocomplete="off" required="required" />
+                    </div>
+                    <button type="submit" name="add" id="add" class="btn btn-info">Submit </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and Popper.js (Optional) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

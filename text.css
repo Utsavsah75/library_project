@@ -1,0 +1,85 @@
+/* Custom CSS for the responsive dropdown menu */
+body {
+  padding-top: 70px; /* Add padding to body to avoid content overlapping with fixed navbar */
+}
+
+.navbar-brand {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar-toggler-icon {
+  background-color: #333; /* Customize the color of the toggle icon */
+}
+
+.navbar-toggler {
+  border: none; /* Remove border from the toggle button */
+}
+
+.navbar-nav {
+  text-align: center; /* Center-align the nav items */
+
+}
+
+.nav-item {
+  margin: 2px; /* Add margin between nav items */
+  float: right;
+}
+
+.dropdown-menu {
+  background-color: #f8f9fa; /* Customize the background color of the dropdown menu */
+  display: none;
+}
+
+.dropdown-item {
+  color: #007bff; /* Customize the text color of dropdown items */
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #007bff; /* Customize the background color on hover/focus */
+  color: #fff; /* Customize the text color on hover/focus */
+}
+
+
+/* Remove list-style decoration for the navigation menu */
+.navbar-nav li {
+  text-decoration: none; /* Remove underlines from links */ 
+  list-style: none;
+  list-style-type: none;
+  list-style: none;
+  text-align: right;
+}
+
+/* Optional: Add some styling to the navigation links */
+.navbar-nav li a {
+  color: #333; 
+  font-weight: bold;
+  padding: 10px; 
+  /* text-decoration: none;  */
+    /* list-style-type: none; */
+    /* display: inline-block; */
+}
+
+  /* Additional CSS for auto-dropdown on hover */
+  .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+.navbar-light .navbar-nav .active>.nav-link,
+/* .navbar-light .navbar-nav .nav-link.active,  */
+/* .navbar-light .navbar-nav .nav-link.show,  */
+.navbar-light .navbar-nav .show>.nav-link {
+  color: rgba(0,0,0,.9);
+  margin-left: 0rem;
+}
+
+/* Hide dropdown menu by default */
+.dropdown:hover {
+  background-color: rgb(238, 238, 238);
+}
+
+/* Show dropdown menu when the parent li is hovered */
+.navbar-nav li:hover .dropdown-menu {
+  display: block;
+}
+
