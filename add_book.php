@@ -171,7 +171,6 @@ if (isset($_POST['add'])) {
                                                 echo '<option value="">No categories found</option>';
                                             }
                                             ?>
-
                                             <option value=""></option>
 
                                         </select>

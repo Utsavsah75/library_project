@@ -1,14 +1,27 @@
 <?php
 session_start();
-error_reporting(0);
+// error_reporting(0);
 include('conn.php');
-?>
 
+// Delete the Author.
+if (isset($_GET['delaut'])) {
+    $delaut = $_GET['delaut'];
+    $delautsql = "DELETE FROM `bookauthor` WHERE id = $delaut";
+    $delautres = mysqli_query($conn, $delautsql);
+    if ($delautres) {
+        $_SESSION['delaut'] = "Author deleted successfully at Number $delaut";
+    } else {
+        $_SESSION['delaut'] = "Author not deleted";
+    }
+    header('location: manage_author.php');
+    exit(); // Add exit to prevent further execution
+}
+?>
+<!-- ---------------------------------------------------------------------------------------------------------- -->
 <!DOCTYPE html>
 <html>
 
 <head>
-
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book_Management</title>
@@ -19,7 +32,7 @@ include('conn.php');
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" type="text/css" href="header.css">
 
-<link rel="stylesheet" type="text/css" href="book_pag.css">
+    <link rel="stylesheet" type="text/css" href="book_pag.css">
 </head>
 
 <body>
@@ -35,107 +48,153 @@ include('conn.php');
     include 'admin_header.php';
     ?>
 
-    </div>
-    </div>
-    </section><!-- MENU SECTION END-->
+    <!-- MENU SECTION END-->
     <div class="content-wra
     <div class=" content-wrapper">
         <div class="container">
             <div class="row pad-botm">
                 <div class="col-md-12">
-
-
                     <div class="header-line">
-                        <h4 style="   font-weight: bold;color: #000000; display: inline;">Add</h4>
-                        <h4 style="   font-weight: bold;color: #2c7ad6; display: inline;">Category</h4>
+                        <h4 style="   font-weight: bold;color: #000000; display: inline;">Manage</h4>
+                        <h4 style="   font-weight: bold;color: #2c7ad6; display: inline;">author</h4>
                     </div>
 
 
                 </div>
-        </div>
+            </div>
             <div class="row">
-                <div class="col-md-12">
-                    <!-- Advanced Tables -->
-                    <div class="panel panel-default">
-                        <div class="panel-head">
-                           Authors Listing
+
+                <!-- --------------------------------------------------------------------------------------- -->
+                <?php
+                if (isset($_SESSION['error']) && $_SESSION['error'] !== "") {
+                ?> <div class="col-md-6">
+                        <div class="alert alert-danger">
+                            <strong>Error :</strong>
+                            <?php echo htmlentities($_SESSION['error']); ?>
+                            <?php echo htmlentities($_SESSION['error'] = ""); ?>
                         </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Author</th>
-                                         
-                                            <th>Creation Date</th>
-                                            <th>Updation Date</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php 
-                                        $sql = "SELECT * FROM bookauthor";
-                                        $result = mysqli_query($conn, $sql);
-                                        $total = mysqli_num_rows($result);
-                                        if($total>0){
-                                            $serial = 1;
-                                            while($row = mysqli_fetch_assoc($result)){
-                                                echo "<tr>";
-                                                echo "<td>".$serial."</td>";
-                                                echo "<td>".$row['AuthorName']."</td>";
-                                                echo "<td>".$row['creationDate']."</td>";
-                                                echo "<td>".$row['UpdationDate']."</td>";
-                                                echo "<td><a href='edit_author.php?id=".$row['author_id']."'><i class='fa fa-edit'></i></a> | <a href='delete_author.php?id=".$row['author_id']."'><i class='fa fa-trash'></i></a></td>";
-                                                echo "</tr>";
-                                                $serial++;
-                                            }
-                                        
+                    </div>
+                <?php } ?>
+
+
+                <?php
+                if (isset($_SESSION['msg']) && $_SESSION['msg'] != "") {
+                ?>
+
+
+
+                    <div class="col-md-6">
+                        <div class="alert alert-success">
+                            <strong>Success :</strong>
+                            <?php echo htmlentities($_SESSION['msg']); ?>
+                            <?php echo htmlentities($_SESSION['msg'] = ""); ?>
+                        </div>
+                    </div>
+                <?php } ?>
+                <?php
+                if (isset($_SESSION['updatemsg']) && $_SESSION['updatemsg'] != "") {
+                ?>
+                    <div class="col-md-6">
+                        <div class="alert alert-success">
+                            <strong>Success :</strong>
+                            <?php echo htmlentities($_SESSION['updatemsg']); ?>
+                            <?php echo htmlentities($_SESSION['updatemsg'] = ""); ?>
+                        </div>
+                    </div>
+                <?php } ?>
+
+                <?php
+                if (isset($_SESSION['unupdatemsg']) && $_SESSION['unupdatemsg'] != "") {
+                ?>
+                    <div class="col-md-6">
+                        <div class="alert alert-danger">
+                            <strong>Success :</strong>
+                            <?php echo htmlentities($_SESSION['unupdatemsg']); ?>
+                            <?php echo htmlentities($_SESSION['unupdatemsg'] = ""); ?>
+                        </div>
+                    </div>
+                <?php } ?>
+
+
+
+
+
+                <?php if (isset($_SESSION['delaut']) && $_SESSION['delaut'] != "") { ?>
+                    <div class="col-md-6">
+                        <div class="alert alert-success">
+                            <strong>Success :</strong>
+                            <?php echo htmlentities($_SESSION['delaut']); ?>
+                            <?php echo htmlentities($_SESSION['delaut'] = ""); ?>
+                        </div>
+                    </div>
+                <?php } ?>
+                <!-- ---------------------------------------------------------------------------------------------------------- -->
+            </div>
+
+            <div class="col-md-12">
+                <!-- Advanced Tables -->
+                <div class="panel panel-default">
+                    <div class="panel-head">
+                        Authors Listing
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Author</th>
+                                        <th>Creation Date</th>
+                                        <th>Updation Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $sql = "SELECT * FROM bookauthor";
+                                    $result = mysqli_query($conn, $sql);
+                                    $total = mysqli_num_rows($result);
+                                    $serial = 1;
+
+                                    if ($total > 0) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            echo "<tr>
+                                                <td>" . $serial . "</td>
+                                                <td>" . $row['AuthorName'] . "</td> 
+                                                <td>" . $row['creationDate'] . "</td>
+                                                <td>" . $row['UpdationDate'] . "</td>
+                                                <td>
+                                                
+                                                <a href = 'edit_author.php?autid=" . htmlentities($row['id']) . "'><button class='btn btn-primary'   style='height: 2.3rem; margin-top:0rem;' ><i class='fa fa-edit' ></i> Edit</button> </a>
+                                                <a href =' manage_author.php?delaut=" . htmlentities($row['id']) . "' onclick='return confirm(\"Are you sure you want to delete?\");' class='btn btn-danger' style='height: 2.3rem; margin-top:0rem;'><i class='fa fa-pencil'></i> Delete</a>
+
+                                                </td>
+                                                </tr>";
+                                            $serial++;
                                         }
-//edit category
-                                        if(isset($_GET['id'])){
-                                            $id = $_GET['id'];
-                                            $sql = "SELECT * FROM bookauthor WHERE author_id='$id'";
-                                            $result = mysqli_query($conn, $sql);
-                                            $row = mysqli_fetch_assoc($result);
-                                            $author = $row['AuthorName'];
-                                        }   
-                                        // delete category
-                                        if(isset($_GET['id'])){
-                                            $id = $_GET['id'];
-                                            $sql = "DELETE FROM bookauthor WHERE author_id='$id'";
-                                            $result = mysqli_query($conn, $sql);
-                                            if($result){
-                                                echo "<script>alert('Author deleted successfully');</script>";
-                                                echo "<script>window.location.href='manage_author.php';</script>";
-                                            }else{
-                                                echo "<script>alert('Author deletion failed');</script>";
-                                                echo "<script>window.location.href='manage_author.php';</script>";
-                                            }
-                                        }
-                                        ?>
-                                    </tbody>
-                                    </table>
-                            </div>
+                                    } else {
+                                        echo "<tr>
+                                            <td colspan='5'>No record found</td>
+                                            </tr>";
+                                    }
+                                    ?>
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
-     <script src="assets/js/jquery-1.10.2.js"></script>
-    <!-- BOOTSTRAP SCRIPTS  -->
-    <script src="assets/js/bootstrap.js"></script>
-    <!-- DATATABLE SCRIPTS  -->
-    <script src="assets/js/dataTables/jquery.dataTables.js"></script>
-    <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
-      <!-- CUSTOM SCRIPTS  -->
-    <script src="assets/js/custom.js"></script>
+        </div>
+        <script src="assets/js/jquery-1.10.2.js"></script>
+        <!-- BOOTSTRAP SCRIPTS  -->
+        <script src="assets/js/bootstrap.js"></script>
+        <!-- DATATABLE SCRIPTS  -->
+        <script src="assets/js/dataTables/jquery.dataTables.js"></script>
+        <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
+        <!-- CUSTOM SCRIPTS  -->
+        <script src="assets/js/custom.js"></script>
 
 </body>
+
 </html>
-
-
-
-
-
-
-

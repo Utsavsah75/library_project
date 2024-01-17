@@ -1,15 +1,7 @@
 <?php
 include 'conn.php';
 
-//code to check the email and isbn number.
-if (!empty($_POST["email"])) {
-    $email = $_POST["email"];
-    $result = mysqli_query($conn, "SELECT count(*) FROM users WHERE email='$email'");
-    $row = mysqli_fetch_row($result);
-    $user_count = $row[0];
-    if ($user_count > 0) echo "<span class='status-not-available'> Email Not Available.</span>";
-    else echo "<span class='status-available'> Email Available.</span>";
-}
+//code to check the isbn number.
 
 if (!empty($_POST["isbnno"])) {
     $isbnno = $_POST["isbnno"];
@@ -71,4 +63,42 @@ if (!empty($_POST["bookname"])) {
         }
     }
 }
-?>
+
+// Check for user email registration.
+if (!empty($_POST["email"])) {
+    $email = $_POST["email"];
+    $result = mysqli_query($conn, "SELECT count(*) FROM students WHERE email='$email'");
+    $row = mysqli_fetch_row($result);
+    $user_count = $row[0];
+    
+    if ($user_count > 0) {
+        echo "<span class='status-not-available' style='color:red'> * Email already exists. Please use another.</span>";
+        // Disable the add button if the email already exists.
+        echo "<script>document.getElementById('add').disabled = true;</script>";
+        echo "<script>document.getElementById('add').style.backgroundColor = 'grey';</script>";
+    } else {
+        // Enable the add button if the email is valid and does not exist.
+        echo "<script>document.getElementById('add').disabled = false;</script>";
+        echo "<script>document.getElementById('add').style.backgroundColor = ''; </script>";
+    }
+}
+
+// Check for user mobile registration.
+if (!empty($_POST["mobile"])) {
+    $mobile = $_POST["mobile"];
+    $result = mysqli_query($conn, "SELECT count(*) FROM students WHERE phone='$mobile'");
+    $row = mysqli_fetch_row($result);
+    $user_count = $row[0];
+    
+    if ($user_count > 0 || !preg_match('/^[0-9]*$/', $mobile)) {
+        // Email or mobile is already used or invalid.
+        echo "<span class='status-not-available' style='color:red'> * Mobile already used or invalid.</span>";
+        // Disable the add button.
+        echo "<script>document.getElementById('add').disabled = true;</script>";
+        echo "<script>document.getElementById('add').style.backgroundColor = 'grey';</script>";
+    } else {
+        // Enable the add button if the mobile is valid and does not exist.
+        echo "<script>document.getElementById('add').disabled = false;</script>";
+        echo "<script>document.getElementById('add').style.backgroundColor = ''; </script>";
+    }
+}

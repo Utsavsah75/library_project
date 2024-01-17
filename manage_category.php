@@ -23,7 +23,19 @@ if (isset($_GET['action']) && isset($_GET['catid'])) {
     header("Location: manage_category.php");
     exit;
 }
-
+// Delete the category
+if (isset($_GET['delid'])) {
+    $delid = $_GET['delid'];
+    $sql = "DELETE FROM bookcategory WHERE id = $delid";
+    $res = mysqli_query($conn, $sql);
+    if ($res) {
+        $_SESSION['delmsg'] = "Category deleted successfully at Number $delid";
+        header('location: manage_category.php');
+    } else {
+        $_SESSION['delmsg'] = "Something went wrong. Please try again";
+        header('location: manage_category.php');
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -182,7 +194,7 @@ if (isset($_GET['action']) && isset($_GET['catid'])) {
                                                          <td>" . $row['UpdationDate'] . "</td>
                                                          <td>
                                                          <a href='edit_category.php?catid=" . htmlentities($row['id']) . "' class='btn btn-primary' style='height: 2.3rem; margin-top:0rem;'><i class='fa fa-edit'></i> Edit</a>
-                                                         <a href='manage_category.php?del=" . htmlentities($row['id']) . "' onclick='return confirm(\"Are you sure you want to delete?\");' class='btn btn-danger' style='height: 2.3rem; margin-top:0rem;'><i class='fa fa-pencil'></i> Delete</a>
+                                                         <a href='manage_category.php?delid=" . htmlentities($row['id']) . "' onclick='return confirm(\"Are you sure you want to delete?\");' class='btn btn-danger' style='height: 2.3rem; margin-top:0rem;'><i class='fa fa-pencil'></i> Delete</a>
                                                                         </td>
                                        </tr>";
                                                 $sn++;

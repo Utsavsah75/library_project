@@ -12,11 +12,6 @@ file_put_contents($count_my_page, $hits);
 // Generate the student code with 'SID' prefix
 $studentcode = "SID" . str_pad($hits, 3, '0', STR_PAD_LEFT);
 
-
-
-
-
-
 // Register the user to the database.
 if (isset($_POST['add'])) {
     $fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
@@ -84,21 +79,37 @@ if (isset($_POST['add'])) {
             return true;
         }
     </script>
-    <script>
-        function checkavability() {
+  <script type="text/javascript">
+    function checkemail() {
+     $("#loaderIcon").show();
+        jQuery.ajax({
+        url: "check_avability.php", 
+        data:'email='+$("#email").val(),
+        type: "POST",
+        success:function(data){
+            $("#email-avability-status").html(data);
+            $("#loaderIcon").hide();
+        },
+        error:function (){}
+        });
+}
+  </script>
+   <script type="text/javascript">
+        function mobilenumber() {
             $("#loaderIcon").show();
             jQuery.ajax({
                 url: "check_avability.php",
-                data: 'emailid=' + $("#emailid").val(),
+                data: 'mobile=' + $("#mobile").val(),
                 type: "POST",
                 success: function(data) {
-                    $("#user-avability-status").html(data);
+                    $("#mobile-avability-status").html(data);
                     $("#loaderIcon").hide();
                 },
                 error: function() {}
             });
         }
     </script>
+
 </head>
 
 <body>
@@ -112,9 +123,8 @@ if (isset($_POST['add'])) {
     <?php
     include 'admin_header.php';
     ?>
-    </div>
-    </div>
-    </section><!-- MENU SECTION END-->
+   
+   <!-- MENU SECTION END-->
     <div class="content-wra
     <div class=" content-wrapper">
         <div class="container">
@@ -144,22 +154,23 @@ if (isset($_POST['add'])) {
 
                                         <form name="signup" method="post" onSubmit="return valid();" style="border-color: aqua;">
                                             <div class="form-group">
-                                                <label>Enter Full Name<span style="color:red;">*</span></label>
+                                                <label>Enter Full Name</label>
                                                 <input class="form-control" type="text" name="fullname" required="required" autocomplete="off" />
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Enter Address<span style="color:red;">*</span></label>
+                                                <label>Enter Address</label>
                                                 <input class="form-control" type="text" name="address" required="required" autocomplete="off" />
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Mobile Number<span style="color:red;">*</span></label>
-                                                <input class="form-control" type="text" name="phone" maxlength="10" autocomplete="off" required="required" />
+                                                <label>Mobile Number</label>
+                                                <span id="mobile-avability-status" style="font-size:12px;"></span>
+                                                <input class="form-control" type="text" name="phone"id="mobile"  maxlength="10" autocomplete="off" onblur="mobilenumber()" required="required" />
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Gender <span style="color:red">*</span></label>
+                                                <label>Gender </label>
                                                 <div>
                                                     <input type="radio" id="male" name="gender" value="male" required>
                                                     <label for="male">Male</label>
@@ -177,23 +188,23 @@ if (isset($_POST['add'])) {
                                         <form name="signup" method="post" onSubmit="return valid();" style="border-color: aqua;">
 
                                             <div class="form-group">
-                                                <label>Enter Email<span style="color:red;">*</span></label>
-                                                <input class="form-control" type="email" name="email" id="emailid" onBlur="checkavability()" autocomplete="off" required />
-                                                <span id="user-avability-status" style="font-size:12px;"></span>
+                                                <label>Enter Email</label>
+                                                <span id="email-avability-status" style="font-size:12px;"></span>
+                                                <input class="form-control" type="email" name="email" id="email" onBlur="checkemail()" autocomplete="off" required />
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Enter Password<span style="color:red;">*</span></label>
+                                                <label>Enter Password</label>
                                                 <input class="form-control" type="password" name="password" autocomplete="off" required />
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Confirm Password <span style="color:red;">*</span></label>
+                                                <label>Confirm Password </label>
                                                 <input class="form-control" type="password" name="confirmpassword" autocomplete="off" required />
                                             </div>
 
                                             <div class="form-group">
-                                                <label>User Picture<span style="color:red;">*</span></label>
+                                                <label>User Picture</label>
                                                 <input class="form-control" type="file" name="photo" autocomplete="off" required="required" />
                                             </div>
                                             <button type="submit" name="add" id="add" class="btn btn-info" style="margin-left: -16rem; margin-top:-54px;">Submit </button>

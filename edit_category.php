@@ -32,9 +32,6 @@ if (isset($_POST['update'])) {
 }
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html>
 

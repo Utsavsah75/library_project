@@ -35,9 +35,8 @@ include('conn.php');
     include 'admin_header.php';
     ?>
 
-    </div>
-    </div>
-    </section><!-- MENU SECTION END-->
+
+<!-- MENU SECTION END-->
     <div class=" content-wrapper">
         <div class="container">
             <div class="row pad-botm">
@@ -48,12 +47,8 @@ include('conn.php');
                         <h4 style="   font-weight: bold;color: #000000; display: inline;">Add</h4>
                         <h4 style="   font-weight: bold;color: #2c7ad6; display: inline;">Category</h4>
                     </div>
-
-
                 </div>
-
         </div>
-          
             <div class="row">
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
@@ -78,32 +73,30 @@ include('conn.php');
                                     <tbody>
 
                                         <?php
-                                        //<?php $sql = "SELECT tblbooks.BookName,tblcategory.CategoryName,tblauthors.AuthorName,tblbooks.ISBNNumber,tblbooks.BookPrice,tblbooks.id as bookid,tblbooks.bookImage from  tblbooks join tblcategory on tblcategory.id=tblbooks.CatId join tblauthors on tblauthors.id=tblbooks.AuthorId";
-//
-                                        $sql = "SELECT * from books.BookName,bookcategory.CategoryName,bookauthor.AuthorName,books.isbnno,books.BookPrice,books.bookid,books.bookimg from  books join bookcategory on bookcategory.id=books.catid join bookauthor on bookauthor.id=books.author ";
+                                       $sql = "SELECT * from books.BookName, bookcategory.CategoryName, books.AuthorName, books.isbnno, books.BookPrice, books.id, books.bookimg from books join bookcategory on bookcategory.id=books.catid, books join books on books.id=books.authorid";
                                         $result = mysqli_query($conn, $sql);
-                                        $total = mysqli_num_rows($result);
-                                        $sn = 1;
-                                        if ($total > 0) {
-                                            while ($row = mysqli_fetch_assoc($result)) {
-                                                echo "<tr>
-                                                <td>" . $sn . "</td>
-                                                <td>" . $row['BookName'] . "</td>
-                                                <td>" . $row['isbnno'] . "</td>
-                                                <td>" . $row['CategoryName'] . "</td>
-                                                <td>" . $row['AuthorName'] . "</td>
-                                                <td>" . $row['BookPrice'] . "</td>
-                                                <td>
-                                                <a href='edit_book.php?bookid=" . $row['bookid'] . "'><i class='fa fa-edit'></i></a>
-                                                <a href='delete_book.php?bookid=" . $row['bookid'] . "'><i class='fa fa-trash'></i></a>
-                                                </td>
-                                                </tr>";
-                                                $sn++;
-                                            }
-                                        } else {
-                                            echo "No Record Found";
-                                        }
+                                        $cnt = 1;
+                                        while ($row = mysqli_fetch_array($result)) {
                                         ?>
+                                            <tr>
+                                                <td><?php echo $cnt; ?></td>
+                                                <td><?php echo $row['BookName']; ?></td>
+                                                <td><?php echo $row['isbnno']; ?></td>
+                                                <td><?php echo $row['CategoryName']; ?></td>
+                                                <td><?php echo $row['AuthorName']; ?></td>
+                                                <td><?php echo $row['BookPrice']; ?></td>
+                                                <td>
+                                                    <a href="edit_book.php?id=<?php echo $row['id']; ?>"><i class="fa fa-edit"></i></a>
+                                                    <a href="manage_book.php?del=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure you want to delete?')"><i class="fa fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        <?php
+
+                                            $cnt++;
+                                        } ?>
+                                        <tr>
+                                            <td colspan="8">
+                                                <a href="add_book.php" class="btn btn-primary">Add New Book</a>
 
                                         </td>
                                         </tr>
