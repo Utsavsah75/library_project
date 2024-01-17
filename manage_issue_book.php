@@ -95,21 +95,16 @@ include('conn.php');
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $sql = mysqli_query($conn, "SELECT students.name, books.book_name, books.isbn, 
-                                                                    issue_book.issue_date, issue_book.due_date, issue_book.id as rid 
-                                                                    FROM issue_book 
-                                                                    JOIN students ON students.student_id = issue_book.student_id 
-                                                                    JOIN books ON books.id = issue_book.book_id 
-                                                                    WHERE issue_book.return_date = '' 
-                                                                    ORDER BY issue_book.id DESC");
+
+                                        $sql = mysqli_query($conn, "SELECT `std_name`,`BookName`, `isbnno`, `issue_date`,`returndate`from issue_book join students on students.id=issue_book.std_id inner join books on books.id=issue_book.book_id");
 
                                         if ($sql->num_rows > 0) {
                                             $sn = 1;
                                             while ($row = mysqli_fetch_assoc($sql)) {
                                                 $rid = $row['rid'];
-                                                $student_name = $row['StudentName'];
+                                                $student_name = $row['std_name'];
                                                 $book_name = $row['BookName'];
-                                                $isbn = $row['isbhno'];
+                                                $isbn = $row['isbnno'];
                                                 $issue_date = $row['issue_date'];
                                                 $due_date = $row['due_date'];
                                                 ?>

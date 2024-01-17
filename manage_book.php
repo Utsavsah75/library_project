@@ -73,7 +73,7 @@ include('conn.php');
                                     <tbody>
 
                                         <?php
-                                       $sql = "SELECT * from books.BookName, bookcategory.CategoryName, books.AuthorName, books.isbnno, books.BookPrice, books.id, books.bookimg from books join bookcategory on bookcategory.id=books.catid, books join books on books.id=books.authorid";
+                                       $sql = "SELECT `BookName`,`isbnno`, `CategoryName`, `AuthorName`,`bookprice`from books join bookcategory on bookcategory.id=books.catid inner join bookauthor on bookauthor.id=books.author";
                                         $result = mysqli_query($conn, $sql);
                                         $cnt = 1;
                                         while ($row = mysqli_fetch_array($result)) {
@@ -123,8 +123,8 @@ include('conn.php');
     <!-- BOOTSTRAP SCRIPTS  -->
     <script src="assets/js/bootstrap.js"></script>
     <!-- DATATABLE SCRIPTS  -->
-    <script src="assets/js/dataTables/jquery.dataTables.js"></script>
-    <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
+    <!-- <script src="assets/js/dataTables/jquery.dataTables.js"></script>
+    <script src="assets/js/dataTables/dataTables.bootstrap.js"></script> -->
       <!-- CUSTOM SCRIPTS  -->
     <script src="assets/js/custom.js"></script>
 </body>

@@ -9,17 +9,46 @@ require('check_admin.php');
 if (isset($_POST['issue'])) {
     $issued = 1;
     $studentcode = $_POST['studentid'];
-    $book_id = $_POST['bookid'];
-// insert the issued book to thedatabase table issue_book.
-    $sql = "INSERT INTO `issue_book`(`StudentCode`, `book_id`) VALUES ('$studentcode','$book_id')";
-    $result = mysqli_query($conn, $sql);
-    if ($result) {
-        echo "<script>alert('Book issued successfully');</script>";
+    $book_isbn_no = $_POST['bookid'];
+
+    // ...
+
+    // Fetch student information from the database
+    $studentId = $_POST['studentid'];
+    $studentQuery = "SELECT * FROM students WHERE id = '$studentId'";
+    $studentResult = mysqli_query($conn, $studentQuery);
+    $studentData = mysqli_fetch_assoc($studentResult);
+
+    // Fetch book information from the database
+    $bookId = $_POST['bookid'];
+    $bookQuery = "SELECT * FROM books WHERE isbnno = '$bookId'";
+    $bookResult = mysqli_query($conn, $bookQuery);
+    $bookData = mysqli_fetch_assoc($bookResult);
+
+    // Check if student and book exist in the database
+    if ($studentData && $bookData) {
+
+        $book_id = $bookData['id'];
+
+        // Insert the issued book into the issue_book table
+        $issueQuery = "INSERT INTO issue_book (std_id, book_id) VALUES ('$studentId', '$book_id')";
+        $issueResult = mysqli_query($conn, $issueQuery);
+
+        if ($issueResult) {
+            echo "<script>alert('Book issued successfully');</script>";
+        } else {
+            echo "<script>alert('Book not issued');</script>";
+        }
     } else {
-        echo "<script>alert('Book not issued');</script>";
+        if (!$studentData) {
+            echo "<script>alert('Student does not exist');</script>";
+        } else if(!$bookData) {
+            echo "<script>alert('Book does not exist');</script>";
+        }else{
+            echo "<script>alert('Student and book do not exist');</script>";
+        }
     }
 }
-
 // Redirect to the previous page or a specific page after processing
 ?>
 
