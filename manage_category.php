@@ -4,7 +4,6 @@ error_reporting(0);
 include('conn.php');
 require('check_admin.php');
 
-
 if (isset($_GET['action']) && isset($_GET['catid'])) {
     $action = $_GET['action'];
     $catid = $_GET['catid'];
@@ -98,7 +97,6 @@ if (isset($_GET['delid'])) {
                     </div>
                 <?php } ?>
 
-
                 <?php
                 if (isset($_SESSION['msg']) && $_SESSION['msg'] != "") {
                     ?>
@@ -112,25 +110,25 @@ if (isset($_GET['delid'])) {
                 <?php } ?>
                 <?php
                 //display the active msg sucessfully.
-                if (isset($_SESSION['activeemsg']) && $_SESSION['activeemsg'] != "") {
+                if (isset($_SESSION['activemsg']) && $_SESSION['activemsg'] != "") {
                     ?>
                     <div class="col-md-6">
                         <div class="alert alert-success">
                             <strong>Success :</strong>
-                            <?php echo htmlentities($_SESSION['activeemsg']); ?>
-                            <?php echo htmlentities($_SESSION['activeemsg'] = ""); ?>
+                            <?php echo htmlentities($_SESSION['activemsg']); ?>
+                            <?php echo htmlentities($_SESSION['activemsg'] = ""); ?>
                         </div>
                     </div>
                 <?php } ?>
                 <?php
                 //display inactive msg successfully.
-                if (isset($_SESSION['inactiveemsg']) && $_SESSION['inactiveemsg'] != "") {
+                if (isset($_SESSION['inactivemsg']) && $_SESSION['inactivemsg'] != "") {
                     ?>
                     <div class="col-md-6">
                         <div class="alert alert-success">
                             <strong>Success :</strong>
-                            <?php echo htmlentities($_SESSION['inactiveemsg']); ?>
-                            <?php echo htmlentities($_SESSION['inactiveemsg'] = ""); ?>
+                            <?php echo htmlentities($_SESSION['inactivemsg']); ?>
+                            <?php echo htmlentities($_SESSION['inactivemsg'] = ""); ?>
                         </div>
                     </div>
                 <?php } ?>

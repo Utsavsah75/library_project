@@ -91,7 +91,7 @@ require 'conn.php';
         if (isset($_GET['Id'])) {
             $book_id = $_GET['Id'];
             // $query = "SELECT * FROM issue_book WHERE `book_id`='$book_id'";
-            $query = "SELECT * FROM issue_book INNER JOIN students ON issue_book.std_id = students.id INNER JOIN Books_with_id ON issue_book.book_id = Books_with_id.book_id INNER JOIN Books on Books_with_id.book = Books.id WHERE issue_book.book_id='$book_id'";
+            $query = "SELECT * FROM issue_book INNER JOIN students ON issue_book.studentcode = students.id INNER JOIN Books_with_id ON issue_book.book_id = Books_with_id.book_id INNER JOIN Books on Books_with_id.book = Books.id WHERE issue_book.book_id='$book_id'";
 
             $query_run = mysqli_query($conn, $query);
 

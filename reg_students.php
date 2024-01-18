@@ -1,7 +1,38 @@
 <?php
 session_start();
-error_reporting(0);
+// error_reporting(0);
 include('conn.php');
+
+//code for block student using php and Mysqli
+if (isset($_GET['inactive'])) {
+    $id = $_GET['inactive'];
+    $status = 0;
+    $sql = "UPDATE students SET verified='$status' WHERE id='$id'";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        $_SESSION['msg'] = "Student blocked successfully !!";
+        header("Location: reg_students.php");
+    } else {
+        $_SESSION['error'] = "Something went wrong. Please try again.";
+        header("Location: reg_students.php");
+    }
+}
+// code for active students.
+if (isset($_GET['active'])) {
+    $id = $_GET['active'];
+    $status = 1;
+    $sql = "UPDATE students SET verified='$status' WHERE id='$id'";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        $_SESSION['msg'] = "Student activated successfully !!";
+        header("Location: reg_students.php");
+    } else {
+        $_SESSION['error'] = "Something went wrong. Please try again.";
+        header("Location: reg_students.php");
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -34,25 +65,29 @@ include('conn.php');
     <?php
     include 'admin_header.php';
     ?>
-     
-                    <!-- MENU SECTION END-->
+
+    <!-- MENU SECTION END-->
     <div class="content-wra
     <div class=" content-wrapper">
         <div class="container">
             <div class="row pad-botm">
                 <div class="col-md-12">
-                    
-                <div class="header-line">
+
+                    <div class="header-line">
                         <h4 style="   font-weight: bold;color: #000000; display: inline;">Manage</h4>
                         <h4 style="   font-weight: bold;color: #2c7ad6; display: inline;">REG Student</h4>
                     </div>
                     <h4><a href="user_form.php" class="btn btn-danger pull-center" style="margin-left: 61rem; margin-top: -8rem;"><i class="fa fa-plus"></i> Add User</a></h4>
-             
+
                 </div>
                 <div class="row">
+
+
+
+
                     <div class="col-md-12">
                         <!-- Advanced Tables -->
-                        <div class="panel panel-default" style="margin-top: -42px;">
+                        <div class="panel panel-default" style="margin-top: -42px; width: 85rem; margin-left: -7rem;">
                             <div class="panel-head">
                                 Registered Student
                             </div>
@@ -62,7 +97,7 @@ include('conn.php');
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Student ID</th>
+                                                <th>User CODE</th>
                                                 <th>Student Name</th>
                                                 <th>Email id </th>
                                                 <th>Mobile Number</th>
@@ -72,10 +107,49 @@ include('conn.php');
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php
+                                            $sql = "SELECT * FROM students";
+                                            $result = mysqli_query($conn, $sql);
+                                            $cnt = 1;
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $cnt; ?></td>
+                                                    <td><?php echo $row['studentcode']; ?></td>
+                                                    <td><?php echo $row['std_name']; ?></td>
+                                                    <td><?php echo $row['email']; ?></td>
+                                                    <td><?php echo $row['phone']; ?></td>
+                                                    <td><?php echo $row['regdate']; ?></td>
+                                                    <td>
+                                                        <?php
+                                                        if ($row['verified'] == 1) {
+                                                            echo "Active";
+                                                        } else {
+                                                            echo "Blocked";
+                                                        }
+                                                        ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php if ($row['verified'] == 1) { ?>
+                                                            <a href="reg_students.php?inactive=<?php echo htmlentities($row['id']); ?>" onclick="return confirm('Are you sure you want to block this student?');">
+                                                                <button class="btn btn-danger" style='height:34px; margin-top:-14px;'>Inactive</button>
+                                                            </a>
+                                                        <?php } else { ?>
+                                                            <a href="reg_students.php?active=<?php echo htmlentities($row['id']); ?>" onclick="return confirm('Are you sure you want to activate this student?');">
+                                                                <button class="btn btn-primary" style='height:34px; margin-top:-14px;'>Active</button>
+                                                            </a>
+                                                        <?php } ?>
+                                                        <a href="students_detail.php?stdid=<?php echo htmlentities($row['std_name']); ?>"><button class="btn btn-success" style='height:34px; margin-top:-14px;'>Details</button>
 
-                                            </td>
-                                            </tr>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                                $cnt++;
+                                            } ?>
                                         </tbody>
+
+
                                     </table>
                                 </div>
 

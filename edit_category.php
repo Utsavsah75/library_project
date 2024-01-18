@@ -18,13 +18,13 @@ if (isset($_POST['update'])) {
         if ($updatecategory) {
             //display the message active when click on active at header manage_category.php
             if ($status == 0) {
-                $_SESSION['inactiveemsg'] = "Category inactive successfully at Number $catid";
+                $_SESSION['inactivemsg'] = "Category inactive successfully at Number $catid";
                 header('location: manage_category.php');
             }
             //display the message inactive msg when click on inactive status at header manage_category.php
 
             else {
-                $_SESSION['activeemsg'] = "Category active successfully at Number $catid";
+                $_SESSION['activemsg'] = "Category active successfully at Number $catid";
                 header('location: manage_category.php');
             }
         }
