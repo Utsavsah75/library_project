@@ -15,6 +15,7 @@ if (isset($_POST['issue'])) {
 
     // Fetch student information from the database
     $studentId = $_POST['studentid'];
+    // $studentcode = $_POST['studentcode'];
     $studentQuery = "SELECT * FROM students WHERE studentcode = '$studentId'";
     $studentResult = mysqli_query($conn, $studentQuery);
     $studentData = mysqli_fetch_assoc($studentResult);
@@ -28,10 +29,21 @@ if (isset($_POST['issue'])) {
     // Check if student and book exist in the database
     if ($studentData && $bookData) {
 
-        $book_id = $bookData['id'];
+        // Check if the book is already issued by the same student dont allow to issue the book.
+        $checkQuery = "SELECT * FROM issue_book WHERE std_id = '$studentId' AND book_id = '$bookId'";
+        $checkResult = mysqli_query($conn, $checkQuery);
+        $checkData = mysqli_fetch_assoc($checkResult);
+
+        if ($checkData) {
+            echo "<script>alert('Book already issued by the same student');</script>";
+            exit();
+        }
+
+
+
 
         // Insert the issued book into the issue_book table
-        $issueQuery = "INSERT INTO issue_book (studentcode, book_id) VALUES ('$studentId', '$book_id')";
+        $issueQuery = "INSERT INTO issue_book (studentcode, book_id) VALUES ('$studentId', '$bookId')";
         $issueResult = mysqli_query($conn, $issueQuery);
 
         if ($issueResult) {
@@ -39,18 +51,7 @@ if (isset($_POST['issue'])) {
         } else {
             echo "<script>alert('Book not issued');</script>";
         }
-    } else {
-        if (!$studentData) {
-         $_SESSION['std_NotExit'] = "Student does not exist at id: $studentId";
-         header("Location: issue_book.php");
-    }else if (!$bookData) {
-        $_SESSION['book_NotExit'] = "Book does not exist at id: $bookId";
-        header("Location: issue_book.php");
-    } else {
-        $_SESSION['std_NotExit'] = "Student does not exist at id: $studentId";
-        $_SESSION['book_NotExit'] = "Book does not exist at id: $bookId";
-        header("Location: issue_book.php"); 
-    }
+
     }
 }
 // Redirect to the previous page or a specific page after processing
@@ -74,7 +75,7 @@ if (isset($_POST['issue'])) {
 function getstudent() {
     $("#loaderIcon").show();
     jQuery.ajax({
-        url: "check_avability.php",
+        url: "check_student.php",
         data: 'studentid=' + $("#studentid").val(),
         type: "POST",
         success: function(data) {
@@ -88,7 +89,7 @@ function getstudent() {
 function getbook() {
     $("#loaderIcon").show();
     jQuery.ajax({
-        url: "check_avability.php",
+        url: "check_book.php",
         data: 'bookid=' + $("#bookid").val(),
         type: "POST",
         success: function(data) {
@@ -123,17 +124,7 @@ function getbook() {
             </div>
 
             <div class="row">
-            <?php
-                                $sql = "SELECT * FROM books";
-                                $result = mysqli_query($conn, $sql);
-                                $row = mysqli_fetch_object($result);
-                                ?>
-                                
-                                <?php
-                                $sql = "SELECT * FROM students";
-                                $result = mysqli_query($conn, $sql);
-                                $total = mysqli_fetch_object($result);
-                                ?>
+
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
@@ -146,23 +137,16 @@ function getbook() {
 
                                 <div class="form-group">
                                     <label>Student id</label>
-                                    <span id="get_student_name" style="font-size:16px;"></span>
                                     <input class="form-control" type="text" name="studentid" id="studentid"  onBlur="getstudent()" autocomplete="off" required />
-                                        <img src="uploads/<?php echo htmlentities($total->photo); ?>" id="loaderIcon" style="width:8.5rem; display: none; height:9.5rem; margin-left:1rem; border-radius: 8px;box-shadow: 2px 2px 4px #000000; margin-top:0.5rem">
-
+                                    <span id="get_student_name" style="font-size:16px;"></span>
                                 </div>
-                                
-                                <div class="form-group">
-                                    </div>
                                     
                                     <div class="form-group">
                                         <label>ISBN Number or Book Title</label>
-                                        <span id="get_book_name" style="font-size:16px;"></span>
-                                        
                                         <input class="form-control" type="text" name="bookid" id="bookid" onBlur="getbook()" required="required" />
-                                        <img src="uploads/<?php echo htmlentities($row->bookimg); ?>" id="loaderIcon" style="width:8.5rem; display: none; height:9.5rem; margin-left:1rem; border-radius: 8px;box-shadow: 2px 2px 4px #000000; margin-top:0.5rem">
-                                      
+                                        <span id="get_book_name" style="font-size:16px;"></span>
                                 </div>
+
                                 <button type="submit" name="issue" id="submit" class="btn btn-info">Issue Book
                                 </button>
 
@@ -186,3 +170,4 @@ function getbook() {
 </body>
 
 </html>
+

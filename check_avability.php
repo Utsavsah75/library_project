@@ -103,27 +103,7 @@ if (!empty($_POST["mobile"])) {
     }
 }
 
-//get the book id.
-if (!empty($_POST["bookid"])) {
-    $bookid = $_POST["bookid"];
-    $result = mysqli_query($conn, "SELECT count(*) FROM books WHERE isbnno='$bookid'");
-    $row = mysqli_fetch_row($result);
-    $user_count = $row[0];
-    
-    if ($user_count > 0) {
-        // Book exists.
-        echo "<span class='status-available' style='color:green'> Book exists.</span>";
-        // Enable the add button.
-        echo "<script>document.getElementById('add').disabled = true;</script>";
-        echo "<script>document.getElementById('add').style.backgroundColor = ''; </script>";
-    } else {
-        // Book does not exist.
-        echo "<span class='status-not-available' style='color:red'> * Book does not exist.</span>";
-        // Disable the add button.
-        echo "<script>document.getElementById('add').disabled = false;</script>";
-        echo "<script>document.getElementById('add').style.backgroundColor = 'grey';</script>";
-    }
-}
+
 
 //get the studentcode.
 if (!empty($_POST["studentid"])) {

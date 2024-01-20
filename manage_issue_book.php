@@ -38,36 +38,51 @@ include('conn.php');
                         <h4 style="font-weight: bold; color: #000000; display: inline;">Manage Issued</h4>
                         <h4 style="font-weight: bold; color: #2c7ad6; display: inline;">Books</h4>
                     </div>
-                    <div class="row">
-                        <?php if ($_SESSION['error'] != "") { ?>
+                    <!-- <div class="row">
+                        <?php
+                        if ($_SESSION['error'] != "") { ?>
                             <div class="col-md-6">
                                 <div class="alert alert-danger">
                                     <strong>Error:</strong>
-                                    <?php echo htmlentities($_SESSION['error']); ?>
-                                    <?php echo htmlentities($_SESSION['error'] = ""); ?>
+                                    <?php
+                                    // echo htmlentities($_SESSION['error']); 
+                                    ?>
+                                    <?php
+                                    // echo htmlentities($_SESSION['error'] = ""); 
+                                    ?>
                                 </div>
                             </div>
                         <?php } ?>
-                        <?php if ($_SESSION['msg'] != "") { ?>
+                        <?php
+                        if ($_SESSION['msg'] != "") { ?>
                             <div class="col-md-6">
                                 <div class="alert alert-success">
                                     <strong>Success:</strong>
-                                    <?php echo htmlentities($_SESSION['msg']); ?>
-                                    <?php echo htmlentities($_SESSION['msg'] = ""); ?>
+                                    <?php
+                                    // echo htmlentities($_SESSION['msg']); 
+                                    ?>
+                                    <?php
+                                    // echo htmlentities($_SESSION['msg'] = ""); 
+                                    ?>
                                 </div>
                             </div>
                         <?php } ?>
 
-                        <?php if ($_SESSION['delmsg'] != "") { ?>
+                        <?php
+                        if ($_SESSION['delmsg'] != "") { ?>
                             <div class="col-md-6">
                                 <div class="alert alert-success">
                                     <strong>Success:</strong>
-                                    <?php echo htmlentities($_SESSION['delmsg']); ?>
-                                    <?php echo htmlentities($_SESSION['delmsg'] = ""); ?>
+                                    <?php
+                                    // echo htmlentities($_SESSION['delmsg']); 
+                                    ?>
+                                    <?php
+                                    // echo htmlentities($_SESSION['delmsg'] = ""); 
+                                    ?>
                                 </div>
                             </div>
                         <?php } ?>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -80,8 +95,7 @@ include('conn.php');
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover"
-                                    id="dataTables-example">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -95,36 +109,40 @@ include('conn.php');
                                     </thead>
                                     <tbody>
                                         <?php
+                                        // $sql = mysqli_query($conn, "SELECT `std_name`,`BookName`, `isbnno`, `issue_date`,`returndate`
+                                        //                                     from issue_book join students on students.id=issue_book.std_id inner join books on books.id=issue_book.book_id");
 
                                         $sql = mysqli_query($conn, "SELECT `std_name`,`BookName`, `isbnno`, `issue_date`,`returndate`
-                                                from issue_book join students on students.id=issue_book.studentcode inner join books on books.id=issue_book.book_id");
+                                                from issue_book join students on students.id=issue_book.std_id inner join books on books.id=issue_book.book_id");
 
                                         if ($sql->num_rows > 0) {
                                             $sn = 1;
                                             while ($row = mysqli_fetch_assoc($sql)) {
-                                                $rid = $row['rid'];
+                                                // $rid = $row['id'];
                                                 $student_name = $row['std_name'];
                                                 $book_name = $row['BookName'];
-                                                $isbn = $row['isbnno'];
+                                                $isbnno = $row['isbnno'];
                                                 $issue_date = $row['issue_date'];
-                                                $due_date = $row['due_date'];
-                                                ?>
+                                                $returndate = $row['returndate'];
+                                        ?>
                                                 <tr>
                                                     <td><?php echo $sn; ?></td>
                                                     <td><?php echo $student_name; ?></td>
                                                     <td><?php echo $book_name; ?></td>
-                                                    <td><?php echo $isbn; ?></td>
+                                                    <td><?php echo $isbnno; ?></td>
                                                     <td><?php echo $issue_date; ?></td>
-                                                    <td><?php echo $returndate=="" ? "Not Return Yet" : $returndate; ?></td>
+                                                    <td <?php echo $returndate == "" ? 'style="color:red;"' : ''; ?>>
+                                                        <?php echo $returndate == "" ? "Not Return Yet" : $returndate; ?>
+                                                    </td>
+
                                                     <td>
-                                                        <a href="return_book.php?rid=<?php echo $rid; ?>"onclick="return confirm('Are you sure you want to return this book?');">
-                                                            <button class="btn btn-primary"><i
-                                                                    class="fa fa-edit "></i>Return</button>
+                                                        <a href="return_book.php?rid=<?php echo $rid; ?>"
+                                                            <button class="btn btn-primary"><i class="fa fa-edit "></i>Edit</button>
                                                         </a>
                                                     </td>
                                                 </tr>
-                                            
-                                                <?php
+
+                                            <?php
                                                 $sn++;
                                             }
                                         } else {
@@ -132,8 +150,8 @@ include('conn.php');
                                             <tr>
                                                 <td colspan="7">No books issued yet</td>
                                             </tr>
-                                            <?php
-                                            
+                                        <?php
+
                                         }
                                         ?>
                                     </tbody>
@@ -147,8 +165,9 @@ include('conn.php');
             <!-- BOOTSTRAP SCRIPTS  -->
             <script src="assets/js/bootstrap.js"></script>
             <!-- DATATABLE SCRIPTS  -->
-            <!-- <script src="assets/js/dataTables/jquery.dataTables.js"></script>
-            <script src="assets/js/dataTables/dataTables.bootstrap.js"></script> -->
+
+            <script src="assets/js/dataTables/jquery.dataTables.js"></script>
+            <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
             <!-- CUSTOM SCRIPTS  -->
             <script src="assets/js/custom.js"></script>
         </div>

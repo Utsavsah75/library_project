@@ -1,29 +1,36 @@
 <?php
-session_start();
 include 'conn.php';
-// include 'admin_ckech.php';
 
-//admin password change code start.
-if (!isset($_SESSION["login_seccessful"])) {
-    // header("location:change_pwd.php"); 
-}
-
-//admin password change code start.
 if (isset($_POST['change'])) {
-    $password = ($_POST['password']);
-    $newpassword = ($_POST['newpassword']);
-    $_SESSION['login_seccessful'] = $email;
-    $sql = mysqli_query($conn, "SELECT password FROM admin_login where password='$password' && email='$email'");
-    $num = mysqli_fetch_array($sql);
-    if ($num > 0) {
-        $con = mysqli_query($conn, "update users set password='$newpassword' where email='$email'");
-        $_SESSION['msg1'] = "Password Changed Successfully !!";
-    } else {
-        $_SESSION['msg1'] = "Old Password not match !!";
-    }
-}
-?>
+    $password = $_POST['password'];
+    $newpassword = $_POST['newpassword'];
+    $confirmpassword = $_POST['confirmpassword'];
+    $id = 'id';
 
+    $password_query = "SELECT * FROM admin_login WHERE id = '$id'";
+    $result = mysqli_query($conn, $password_query) or die(mysqli_error($conn));
+    $password_row = mysqli_fetch_assoc($result);
+   
+    if ($_SESSION['password'] == $password_row['password']) {
+        // Check if the new password and confirm password fields match
+        if ($newpassword == $confirmpassword) {
+            $id = 'id';
+            $update_query = "UPDATE admin_login SET password = '$newpassword' WHERE id = '1'";
+            $update_result = mysqli_query($conn, $update_query) or die(mysqli_error($conn));
+
+            if($update_result){
+                echo "<script>alert('Password Updated Successfully')</script>";
+            } else if(!$update_result){
+                echo "<script>alert('Password Update Failed')</script>";
+            }else {
+                echo "<script>alert('old password don't match')</script>";
+            }
+        }
+        } 
+    }
+    ?>
+         
+        
 <!DOCTYPE html>
 <html>
 
@@ -109,7 +116,7 @@ if (isset($_POST['change'])) {
                     </div>
 
                         <div class="panel-body">
-                            <form role="form" method="post" onSubmit="return valid();" name="chngpwd">
+                            <form role="form" action="change_pwd.php" method="post" onSubmit="return valid();" name="chngpwd">
 
                                 <div class="form-group">
                                     <label>Current Password</label>

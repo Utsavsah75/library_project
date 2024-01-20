@@ -19,7 +19,7 @@ if (isset($_POST['add'])) {
     $phone = mysqli_real_escape_string($conn, $_POST['phone']);
     $gender = mysqli_real_escape_string($conn, $_POST['gender']);
     $email  = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = mysqli_real_escape_string($conn, password_hash($_POST['password'], PASSWORD_DEFAULT)); // Hash the password
+    $password = mysqli_real_escape_string($conn, $_POST['password']); // Hash the password
     $photo = mysqli_real_escape_string($conn, $_POST['photo']);
 
     $alreadyExist = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM students WHERE email = '{$email}'"));
