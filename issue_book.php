@@ -11,7 +11,6 @@ if (isset($_POST['issue'])) {
     $studentcode = $_POST['studentid'];
     $book_isbn_no = $_POST['bookid'];
 
-    // ...
 
     // Fetch student information from the database
     $studentId = $_POST['studentid'];
@@ -38,9 +37,6 @@ if (isset($_POST['issue'])) {
             echo "<script>alert('Book already issued by the same student');</script>";
             exit();
         }
-
-
-
 
         // Insert the issued book into the issue_book table
         $issueQuery = "INSERT INTO issue_book (studentcode, book_id) VALUES ('$studentId', '$bookId')";

@@ -50,28 +50,13 @@ include('conn.php');
                         </div>
                         <div class="panel-body">
                             <form role="form" method="post">
+                                <!-- ---------------------------------------------Student Details-------------------------------------- -->
                                 <?php
-                                // $rid = isset($_GET['rid']) ? intval($_GET['rid']) : 0;
-                                $editquery = mysqli_query($conn, "SELECT students.Studentcode ,students.std_name,students.email,students.phone,
-                                books.BookName,books.isbnno,issue_book.issue_date,issue_book.returndate,issue_book.id from issue_book join students on students.Studentcode=issue_book.Studentcode join books on books.id=issue_book.Book_id where issue_book.id='" . $_GET['issid'] . "'");
-                                
-                                
-                                
-// $sql = "SELECT students.Studentcode ,students.std_name,students.email,students.phone,books.BookName,books.isbnno,issue_book.issue_date,issue_book.returndate,issue_book.id as rid,issue_book.fine,issue_book.returnstatus,
-//         books.id as id,books.bookimg from  issue_book join students on students.Studentcode=issue_book.Studentcode join books on books.id=issue_book.Book_id where issue_book.id=:rid";
-                                
-                                
-                                $detailquery = mysqli_query($conn, $editquery);
-                                if ($detailquery) {
-                                    $result = mysqli_fetch_object($detailquery);
-                                } else {
-                                    // handle query error
-                                    die(mysqli_error($conn));
-                                }
-
+                                $studentcode = $_GET['issid'];
+                                $sql = "SELECT * FROM `students`";
+                                $result = mysqli_query($conn, $sql);
+                                $result = mysqli_fetch_object($result);
                                 ?>
-
-<!-- ---------------------------------------------Student Details-------------------------------------- -->
 
                                 <input type="hidden" name="book_id" value="<?php echo !empty($result) ? htmlentities($result->id) : ''; ?>">
                                 <h4>Student Details</h4>
@@ -104,9 +89,14 @@ include('conn.php');
                                     </div>
                                 </div>
 
-<!-- ---------------------------------------------Book Details-------------------------------------- -->
+                                <!-- ---------------------------------------------Book Details-------------------------------------- -->
 
-
+                                <?php
+                                $studentcode = $_GET['issid'];
+                                $sql = "SELECT * FROM `books`";
+                                $result = mysqli_query($conn, $sql);
+                                $result = mysqli_fetch_object($result);
+                                ?>
                                 <h4>Book Details</h4>
                                 <hr />
 
@@ -134,40 +124,41 @@ include('conn.php');
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Book Issued Date :</label>
-                                        <?php echo htmlentities($result->issue_date); ?>
+                                        <?php echo htmlentities($result->regdate); ?>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Book Returned Date :</label>
-                                        <?php if ($result->returndate == "") {
-                                            echo htmlentities("Not Return Yet");
-                                        } else {
-
-
+                                        <?php if (!empty($result->returndate)) {
                                             echo htmlentities($result->returndate);
-                                        }
-                                        ?>
+                                        } else {
+                                            echo "Not Return Yet";
+                                        } ?>
+
                                     </div>
                                 </div>
+
 
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Fine (in USD) :</label>
-                                        <?php
-                                        if ($result->fine == "") { ?>
+                                        <label>Fine :</label>
+                                        <?php 
+                                        $fine ="";
+                                        if ($fine == "") { ?>
                                             <input class="form-control" type="text" name="fine" id="fine" required />
-
                                         <?php } else {
-                                            echo htmlentities($result->fine);
-                                        }
-                                        ?>
+                                            // Remove the unnecessary code block
+                                            // echo $fine;
+                                        } ?>
                                     </div>
                                 </div>
-                                <?php if ($result->returnstatus == 0) { ?>
+
+                                <?php if (property_exists($result, 'returnstatus') && $result->returnstatus == null) { ?>
 
                                     <button type="submit" name="return" id="submit" class="btn btn-info">Return Book </button>
+                                <?php } ?>
 
                         </div>
 
@@ -180,11 +171,6 @@ include('conn.php');
 
     </div>
     </div>
-    <!-- CONTENT-WRAPPER SECTION END-->
-    <?php include('includes/footer.php'); ?>
-    <!-- FOOTER SECTION END-->
-    <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
-    <!-- CORE JQUERY  -->
     <script src="assets/js/jquery-1.10.2.js"></script>
     <!-- BOOTSTRAP SCRIPTS  -->
     <script src="assets/js/bootstrap.js"></script>
@@ -194,4 +180,3 @@ include('conn.php');
 </body>
 
 </html>
-<?php } ?>
