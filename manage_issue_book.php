@@ -133,13 +133,10 @@ include('conn.php');
                                                     <td><?php echo $issue_date; ?></td>
                                                     <td <?php echo $returndate == "" ? 'style="color:red;"' : ''; ?>>
                                                         <?php echo $returndate == "" ? "Not Return Yet" : $returndate; ?>
-                                                    </td>
-
-                                                    <td>
-                                                        <a href="return_book.php?rid=<?php echo $rid; ?>"
-                                                            <button class="btn btn-primary"><i class="fa fa-edit "></i>Edit</button>
+                                                     <td>
+                                                         <a href="edit_issue_book.php?issid" <button class="btn btn-primary" style='height:34px; margin-top:-14px;'><i class="fa fa-edit"></i>Edit</a>
                                                         </a>
-                                                    </td>
+                                                            </td>
                                                 </tr>
 
                                             <?php

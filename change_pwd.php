@@ -1,34 +1,42 @@
 <?php
+session_start(); // Start the session
 include 'conn.php';
 
 if (isset($_POST['change'])) {
-    $password = $_POST['password'];
-    $newpassword = $_POST['newpassword'];
-    $confirmpassword = $_POST['confirmpassword'];
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $newpassword = mysqli_real_escape_string($conn, $_POST['newpassword']);
+    $confirmpassword = mysqli_real_escape_string($conn, $_POST['confirmpassword']);
     $id = 'id';
 
-    $password_query = "SELECT * FROM admin_login WHERE id = '$id'";
-    $result = mysqli_query($conn, $password_query) or die(mysqli_error($conn));
-    $password_row = mysqli_fetch_assoc($result);
-   
-    if ($_SESSION['password'] == $password_row['password']) {
-        // Check if the new password and confirm password fields match
-        if ($newpassword == $confirmpassword) {
-            $id = 'id';
-            $update_query = "UPDATE admin_login SET password = '$newpassword' WHERE id = '1'";
-            $update_result = mysqli_query($conn, $update_query) or die(mysqli_error($conn));
+   // Check if the user's login password matches
+   $password_query = "SELECT * FROM admin_login Where id = $id and password='$password'";
+   $result = mysqli_query($conn, $password_query) or die(mysqli_error($conn));
+   $password_row = mysqli_fetch_assoc($result);
 
-            if($update_result){
-                echo "<script>alert('Password Updated Successfully')</script>";
-            } else if(!$update_result){
-                echo "<script>alert('Password Update Failed')</script>";
-            }else {
-                echo "<script>alert('old password don't match')</script>";
-            }
+   // Check if the session variable is set and matches the entered password
+   if ($password_row && $password_row['password'] == $password) {
+    // Check if the new password and confirm password fields match
+    if ($newpassword == $confirmpassword) {
+        $id = 'id';
+   
+        // Update the password
+    $update_query = "UPDATE admin_login SET password = '$newpassword' WHERE id = '1'";
+    $update_result = mysqli_query($conn, $update_query) or die(mysqli_error($conn));    
+    
+    if($update_result){
+        echo "<script>alert(\"Password Updated Successfully\");</script>";
+        } else {
+            echo "<script>alert (\"Password Update Failed. Error: \" . mysqli_error(\$conn));</script>";
         }
-        } 
-    }
-    ?>
+        } else {
+            echo "<script>alert(\"New password and confirm password do not match\");</script>";
+        }
+}
+} else {
+echo "Old password doesn't match";
+}
+
+?>
          
         
 <!DOCTYPE html>

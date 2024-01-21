@@ -18,6 +18,8 @@ if (!empty($_POST["isbnno"])) {
 
 
 
+
+
 if (!empty($_POST["price"])) {
     $price = $_POST["price"];
     // Check if the input is a valid number with at most one dot
@@ -43,24 +45,22 @@ if (!empty($_POST["bookname"])) {
     $user_count = $row[0];
     
     if ($user_count > 0) {
-        echo "<span class='status-not-available' style='color:red'>* The book title already exists.</span>";
-        // Disable the add button if the book title already exists.
-        echo "<script>document.getElementById('add').disabled = true;</script>";
-        echo "<script>document.getElementById('add').style.backgroundColor = 'grey';</script>";
-    } else {
-        // Check if the input follows the specified regular expression
-        if (preg_match('/^[a-zA-Z]?[&]{2}[.]?/', $bookname)) {
-            // Valid book name entered
-            echo "<span class='status-available' style='color:green'> Book Title is Available.</span>";
-            echo "<script>document.getElementById('add').disabled = false;</script>";
-            echo "<script>document.getElementById('add').style.backgroundColor = ''; </script>";
-        } else {
-            // Invalid book name entered
-            echo "<span class='status-not-available' style='color:red'> * Field should only contain alphabets, two '&' and one '.'</span>";
-            // Disable the add button if the condition is not met.
-            echo "<script>document.getElementById('add').disabled = true;</script>";
-            echo "<script>document.getElementById('add').style.backgroundColor = 'grey';</script>";
-        }
+        echo "<span style='color:red'>* The book title already exists.</span>";
+        echo "<script>$('#submit').prop('disabled',true);</script>"; 
+    // } else {
+    //     // Check if the input follows the specified regular expression
+    //     if (preg_match('/^[a-zA-Z]?[&]{2}[.]?/', $bookname)) {
+    //         // Valid book name entered
+    //         echo "<span class='status-available' style='color:green'> Book Title is Available.</span>";
+    //         echo "<script>document.getElementById('add').disabled = false;</script>";
+    //         echo "<script>document.getElementById('add').style.backgroundColor = ''; </script>";
+    //     } else {
+    //         // Invalid book name entered
+    //         echo "<span class='status-not-available' style='color:red'> * Field should only contain alphabets, two '&' and one '.'</span>";
+    //         // Disable the add button if the condition is not met.
+    //         echo "<script>document.getElementById('add').disabled = true;</script>";
+    //         echo "<script>document.getElementById('add').style.backgroundColor = 'grey';</script>";
+    //     }
     }
 }
 
