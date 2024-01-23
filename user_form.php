@@ -1,7 +1,53 @@
 <?php
+include 'conn.php';
 session_start();
-include('conn.php');
-// error_reporting (0);
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
+
+function sendemail_verify($std_name, $email, $verification_code)
+{
+
+if (isset($_POST["add"])) {
+    $mail = new PHPMailer(true);
+
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = "publiclibrary48@gmail.com";
+    $mail->Password = "gjkx qtup hmph fozg";
+    // $mail->Password = "enbirdmgshjmlkly";
+    $mail->SMTPSecure = 'tls'; // Updated to TLS
+    $mail->Port = 587; // Updated to TLS port
+
+    $mail->setFrom('publiclibrary48@gmail.com');
+    $mail->addAddress($_POST['email']);
+    $mail->isHTML(true);
+    $mail->Subject = "Email Verification from Public Library Management";
+
+    $email_template = " <h2>You have registered with Public library Management </h2>
+    <p>Dear $std_name,</p>
+    <p>Thanks for registration. Your verification code is <b>$verification_code</b>.</p>
+    <p>Regards,</p>
+    <p>Public Library Management</p>
+    <a href = 'http://localhost/library_project/verify_email.php?code=$verification_code'>Click here to verify your email</a>";
+
+
+    $mail->Body = $email_template;
+    $mail->send();
+    //msg check your login email and verify your account.
+    $_SESSION['msg'] = "<script>alert('Check your login email and verify your account.');</script>";
+    header("location: user_form.php");
+    exit();
+
+
+}
+
+}
 
 // Increment student code
 $count_my_page = "studentcode.txt";
@@ -12,7 +58,7 @@ file_put_contents($count_my_page, $hits);
 // Generate the student code with 'SID' prefix
 $studentcode = "SID" . str_pad($hits, 3, '0', STR_PAD_LEFT);
 
-// Register the user to the database.
+// Register the use to the database.
 if (isset($_POST['add'])) {
     $fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
     $address  = mysqli_real_escape_string($conn, $_POST['address']);
@@ -29,29 +75,14 @@ if (isset($_POST['add'])) {
         header("location: user_form.php");
         exit(); // Stop further execution
     }
-
-    $sql = "INSERT INTO `students`( `studentcode`,`std_name`, `address`, `phone`, `gender`, `photo`, `email`, `password`, `verified`) 
-    VALUES ('$studentcode','$fullname','$address','$phone','$gender','$photo','$email','$password', 1)";
-
+    $verification_code = bin2hex(random_bytes(4));
+    $sql = "INSERT INTO `students`( `studentcode`,`std_name`, `address`, `phone`, `gender`, `photo`, `email`, `password`,`verification_code`, `verified`) 
+    VALUES ('$studentcode','$fullname','$address','$phone','$gender','$photo','$email','$password','$verification_code', 0)";
     $data = mysqli_query($conn, $sql);
-    if ($data) {
-        echo '<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>';
-        echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.css">';
-        echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.all.min.js"></script>';
 
-        echo '<script type="text/javascript">
-                $(function() {
-                    Swal.fire({
-                        title: "Register",
-                        text: "Successfully!",
-                        icon: "success"
-                    });
-                });
-            </script>';
-    } else {
-        echo "Failed";
-        // header("location: user_form.php");
-        exit(); // Stop further execution
+    if ($data) {
+        sendemail_verify("$fullname","$email", "$verification_code");
+        $_SESSION['msg'] = "Account created successfully for email: <b>$email</b>";
     }
 }
 ?>

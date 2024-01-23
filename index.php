@@ -1,4 +1,7 @@
-<?php session_start() ?>
+<?php include 'conn.php';
+session_start()
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +13,6 @@
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="LMS1.css" type="text/css">
 </head>
-
 <body>
     <div id="background">
         <div id="top">
@@ -45,8 +47,6 @@
                     <a href="About.html">
                         <li class="">About Us</li>
                     </a>
-
-
                 </ul>
             </div>
         </div>
@@ -56,10 +56,16 @@
             </div>
             <div id="y">
                 <div id="l">
+                <?php if (isset($_SESSION['status']) && $_SESSION['status'] != '') { ?>
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>Hey!</strong> <?php echo $_SESSION['status']; ?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php unset($_SESSION['status']);
+                        } ?>
                     <h1 style=" text-align: center; color: #2c7ad6;"> LOGIN</h1>
                     <h3 style=" text-align: center; color: red;"> STUDENT</h3>
                     <div class="container">
-
                         <div class="msg_holder" colspan="2" align="center" height:="200px">
                             <?php
                             if (isset($_SESSION['msg'])) {
@@ -70,7 +76,6 @@
                         </div>
                         <div class="form_holder">
                             <form action="user_login.php" method="post">
-
                                 <table align="center">
                                     <tr>
                                         <td>Email</td>
@@ -87,19 +92,12 @@
                                     </tr>
 
                                     <td></td>
-                                    <!-- <td>
-                                        <input type="radio" name="choose" value="Student" id="studentRadio">
-                                        <label for="studentRadio">Student</label>
-
-                                        <input type="radio" name="choose" value="Admin" id="adminRadio">
-                                        <label for="adminRadio"><a href="admin_login.php">Admin</a></label>
+                                    <!-- <td>       <input type="radio" name="choose" value="Student" id="studentRadio">       <label for="studentRadio">Student</label>              <input type="radio" name="choose" value="Admin" id="adminRadio">       <label for="adminRadio"><a href="admin_login.php">Admin</a></label>
                                     </td> -->
                                     </tr>
                                     <!-- 
                                     <tr>
-                                        <td align="right"><input type="checkbox" name="rem" <?php if (isset($_COOKIE['rem_user'])) {
-                                                                                                echo "checked";
-                                                                                            } ?>></td>
+                                        <td align="right"><input type="checkbox" name="rem" <?php //if (isset($_COOKIE['rem_user'])) { echo "checked"; } ?>></td>
                                         <td>Remember Me</td>
                                     </tr> -->
                                     <tr>
