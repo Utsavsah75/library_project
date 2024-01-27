@@ -40,9 +40,9 @@ if (!empty($_POST["bookid"])) {
                 <tr>
                     <th style="padding-left:5%; width: 10%;">
                         <img src="uploads/<?php echo $row['bookimg']; ?>" height="150px" width="150px" alt="Book Image"><br>
-                        <?php echo $row['bookname']; ?>
-                        <?php echo $row['AuthorName']; ?>
-                        <?php if ($row['issued'] == 0) : ?>
+                        <?php echo isset($row['bookname']) ? $row['bookname'] : ''; ?><br>
+                        <?php echo isset($row['AuthorName']) ? $row['AuthorName'] : ''; ?>
+                        <?php if (isset($row['issued']) && $row['issued'] == 0) : ?>
                             <!-- <p style="color:red;">Book Already issued</p> -->
                             <!-- <input type="radio" name="selectedBookId" value="<?php //echo htmlentities($row['id']); ?>" required> -->
                         <?php endif; ?>

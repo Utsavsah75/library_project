@@ -1,7 +1,7 @@
 <?php
 require 'conn.php';
 // session_start();
-require 'check_admin.php';
+// require 'check_admin.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -73,7 +73,7 @@ require 'check_admin.php';
                             <?php
 
                             $sql = mysqli_query($conn, "SELECT `std_name`,`BookName`, `isbnno`, `issue_date`,`returndate`
-                          from issue_book join students on students.id=issue_book.std_id inner join books on books.id=issue_book.book_id");
+                          from issue_book join students on students.id=issue_book.studentcode inner join books on books.id=issue_book.book_id");
                             $returnedbooks = mysqli_num_rows($sql);
                             ?>
                             <h3><?php echo htmlentities($returnedbooks); ?></h3>

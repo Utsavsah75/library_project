@@ -31,13 +31,19 @@ include 'user_header.php';
                                             <th>Issued Date</th>
                                             <th>Return Date</th>
                                             <th>Fine</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                       <?php
-                                    $sql = mysqli_query($conn, "SELECT `std_name`,`BookName`, `isbnno`, `issue_date`,`returndate`
-                                                from issue_book join students on students.id=issue_book.std_id inner join books on books.id=issue_book.book_id");
-
+                                    // $sql = mysqli_query($conn, "SELECT `std_name`,`BookName`, `isbnno`, `issue_date`,`returndate`
+                                    //             from issue_book join students on students.id=issue_book.studentcode inner join books on books.id=issue_book.book_id");
+                                    
+                                    
+                                    
+                                    
+$sql = mysqli_query($conn, "SELECT `std_name`,`BookName`, `isbnno`, `issue_date`,`returndate`
+                                                from issue_book join students on students.studentcode=issue_book.studentcode inner join books on books.isbnno=issue_book.book_id");
                                         if ($sql->num_rows > 0) {
                                             $sn = 1;
                                             while ($row = mysqli_fetch_assoc($sql)) {
@@ -57,7 +63,7 @@ include 'user_header.php';
                                                     <td <?php echo $returndate == "" ? 'style="color:red;"' : ''; ?>>
                                                         <?php echo $returndate == "" ? "Not Return Yet" : $returndate; ?>
                                                     <td>
-                                                        <a href="edit_issue_book.php?issid" <button class="btn btn-primary" style='height:34px; margin-top:-14px;'><i class="fa fa-edit"></i>Edit</a>
+                                                        <a href="#.php?issid" <button class="btn btn-primary" style='height:34px; margin-top:-14px;'><i class="fa fa-edit"></i>Edit</a>
                                                         </a>
                                                     </td>
                                                 </tr>

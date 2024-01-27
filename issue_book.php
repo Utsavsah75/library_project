@@ -29,7 +29,7 @@ if (isset($_POST['issue'])) {
     if ($studentData && $bookData) {
 
         // Check if the book is already issued by the same student dont allow to issue the book.
-        $checkQuery = "SELECT * FROM issue_book WHERE std_id = '$studentId' AND book_id = '$bookId'";
+        $checkQuery = "SELECT * FROM issue_book WHERE studentcode = '$studentId' AND book_id = '$bookId'";
         $checkResult = mysqli_query($conn, $checkQuery);
         $checkData = mysqli_fetch_assoc($checkResult);
 

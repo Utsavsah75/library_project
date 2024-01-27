@@ -113,7 +113,7 @@ include('conn.php');
                                         //                                     from issue_book join students on students.id=issue_book.std_id inner join books on books.id=issue_book.book_id");
 
                                         $sql = mysqli_query($conn, "SELECT `std_name`,`BookName`, `isbnno`, `issue_date`,`returndate`
-                                                from issue_book join students on students.id=issue_book.std_id inner join books on books.id=issue_book.book_id");
+                                                from issue_book join students on students.studentcode=issue_book.studentcode inner join books on books.isbnno=issue_book.book_id");
 
                                         if ($sql->num_rows > 0) {
                                             $sn = 1;

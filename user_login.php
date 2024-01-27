@@ -14,7 +14,7 @@ l<?php
         if (mysqli_num_rows($res) > 0) {
             $data = mysqli_fetch_assoc($res);
             $_SESSION['login_successful'] = $data['id'];        // session is set only if we found match
-            header("location: userbook_page.php");
+            header("location: user_dashboard.php");
         } else {
             $_SESSION['msg'] = "Invalid E-mail / Password";
             header("location: index.php");
