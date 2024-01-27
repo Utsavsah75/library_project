@@ -77,7 +77,7 @@ if (isset($_GET['delid'])) {
                         <h4 style="   font-weight: bold;color: #000000; display: inline;">Manage</h4>
                         <h4 style="   font-weight: bold;color: #2c7ad6; display: inline;">Book</h4>
                     </div>
-                    <h4><a href="user_form.php" class="btn btn-danger pull-center" style="margin-left: 61rem; margin-top: -8rem;"><i class="fa fa-plus"></i> Add User</a></h4>
+                    <h4><a href="add_book.php" class="btn btn-danger pull-center" style="margin-left: 61rem; margin-top: -8rem;"><i class="fa fa-plus"></i> Add Book</a></h4>
 
                 </div>
             </div>

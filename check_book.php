@@ -43,8 +43,8 @@ if (!empty($_POST["bookid"])) {
                         <?php echo $row['bookname']; ?>
                         <?php echo $row['AuthorName']; ?>
                         <?php if ($row['issued'] == 0) : ?>
-                            <p style="color:red;">Book Already issued</p>
-                            <input type="radio" name="selectedBookId" value="<?php echo htmlentities($row['id']); ?>" required>
+                            <!-- <p style="color:red;">Book Already issued</p> -->
+                            <!-- <input type="radio" name="selectedBookId" value="<?php //echo htmlentities($row['id']); ?>" required> -->
                         <?php endif; ?>
                     </th>
                 </tr>

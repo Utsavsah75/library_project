@@ -12,13 +12,13 @@ if (isset($_POST['submit'])) {
     $Gender     = mysqli_real_escape_string($conn, $_POST['gender']);
     $Phone      = mysqli_real_escape_string($conn, $_POST['phone']);
     $Faculty    = mysqli_real_escape_string($conn, $_POST['faculty']);
- 
-    $sql = "INSERT INTO `addnew_user`(`User ID`, `Name`, `Email`, `Gender`, `Phone`, `Address`, `Faculty`, `Password`) 
-            VALUES ('$Id', '$Name', '$Email', '$Password','$Address', '$Gender', '$Phone', '$Faculty')";
+    
+    $std_code = bin2hex(random_bytes(4));
+    $sql = "INSERT INTO `addnew_user`(`User ID`, `Name`, `Email`, `Gender`, `Phone`, `Address`, `Faculty`, `Password`,`verification_code`,`verified`) 
+            VALUES ('$Id', '$Name', '$Email', '$Password','$Address', '$Gender', '$Phone', '$Faculty', '$std_code', 1)";
             
     $sql= "UPDATE `students` SET `id`='{$Id}',`name`='{$Name}',`email`='{$Email}',`gender`='{$Gender}',`password`='{$password}',`address`='{$Address}',`phone`='{$Phone}',`faculty`='{$Faculty}',`photo`='{$Photo}' , WHERE `Id` = $Id";
 
-    // UPDATE `students` SET `id`='[value-1]',`name`='[value-2]',`email`='[value-3]',`gender`='[value-4]',`password`='[value-5]',`address`='[value-6]',`phone`='[value-7]',`faculty`='[value-8]',`photo`='[value-9]',`verified`='[value-10]' WHERE 1
 
     $data = mysqli_query($conn, $sql);
 

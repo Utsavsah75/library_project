@@ -96,7 +96,6 @@
                 <th>Email</th>
                 <th>Gender</th>
                 <th>Contact_No</th>
-                <th>Faculty</th>
                 <th>Address</th>
                 <th>Photo</th>
                 <th>Action</th>
@@ -116,12 +115,11 @@
                 while ($result = mysqli_fetch_assoc($data)) {
                     echo "<tr style='    background-color: rgba(255, 255, 255, 0.5);' onmouseover=\"this.style.backgroundColor='#ffffcc';\" onmouseout=\"this.style.backgroundColor='rgba(255, 255, 255, 0.568)';\">
                     <td style='border: 2px solid black; text-align: center;'>" . $sn . "</td>
-                    <td style='border: 2px solid black; text-align: center;'>" . $result['id'] . "</td>
+                    <td style='border: 2px solid black; text-align: center;'>" . $result['studentcode'] . "</td>
                     <td style='border: 2px solid black; text-align: center;'>" . $result['std_name'] . "</td>
                     <td style='border: 2px solid black; text-align: center;'>" . $result['email'] . "</td>
                     <td style='border: 2px solid black; text-align: center;'>" . $result['gender'] . "</td>
                     <td style='border: 2px solid black; text-align: center;'>" . $result['phone'] . "</td>
-                    <td style='border: 2px solid black; text-align: center;'>" . $result['faculty'] . "</td>
                     <td style='border: 2px solid black; text-align: center;'>" . $result['address'] . "</td>
                     <td style='border: 2px solid black; text-align: center;'>  <img style='width:40px;' src='uploads/" . $result['photo'] . "'>" . "</td>
                     <td style='border: 2px solid black; text-align: center;'>

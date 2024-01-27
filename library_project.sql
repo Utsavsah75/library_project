@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2024 at 05:17 AM
+-- Generation Time: Jan 24, 2024 at 01:40 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -42,7 +42,9 @@ CREATE TABLE `admin_login` (
 --
 
 INSERT INTO `admin_login` (`id`, `name`, `address`, `contact`, `gender`, `email`, `password`) VALUES
-(1, 'Utsav Prasad Sah', 'Malangwa', 9801219695, 'male', 'utsavsah80@gmail.com', '1');
+(1, 'Utsav Prasad Sah', 'Malangwa', 9801219695, 'male', 'utsavsah80@gmail.com', '12345'),
+(2, 'ranjit', 'Malangwa', 98012345678, 'male', 'ranjit@gmail.com', '123'),
+(3, 'utsav', 'Malangwa', 9801219843, 'male', 'utsav@gmail.com', '123');
 
 -- --------------------------------------------------------
 
@@ -110,7 +112,9 @@ INSERT INTO `bookcategory` (`id`, `CategoryName`, `Status`, `CreationDate`, `Upd
 (16, 'Hinduism ', 1, '2024-01-13 04:13:21', '0000-00-00 00:00:00'),
 (17, 'Christian ', 0, '2024-01-13 04:14:05', '0000-00-00 00:00:00'),
 (19, 'Ramayan', 1, '2024-01-16 16:35:06', '0000-00-00 00:00:00'),
-(20, 'Mahabhara', 1, '2024-01-16 16:35:46', '0000-00-00 00:00:00');
+(20, 'Mahabhara', 1, '2024-01-16 16:35:46', '0000-00-00 00:00:00'),
+(21, 'Politics', 1, '2024-01-21 14:11:30', '0000-00-00 00:00:00'),
+(22, 'Electrical', 1, '2024-01-21 14:29:47', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -137,11 +141,29 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id`, `BookName`, `catid`, `author`, `isbnno`, `quantity`, `bookprice`, `issued`, `bookimg`, `regdate`, `updationdate`) VALUES
-(1, 'Chemistry Volume-II', 13, 10, 'CH002', 2, 230.00, NULL, 'Management1.jpg', '2024-01-18 10:06:37', NULL),
-(2, 'Physic part-3', 12, 9, 'PH003', 3, 123.00, NULL, 'pric of physice.jpg', '2024-01-18 10:07:29', NULL),
-(3, 'Mathematic', 1, 7, 'PH004', 3, 280.00, NULL, 'Management1.jpg', '2024-01-18 10:08:46', '2024-01-18 10:09:02'),
-(4, 'C++', 1, 1, 'C++0014', 2, 152.00, NULL, 'WhatsApp Image 2023-06-17 at 6.27.41 PM.jpeg', '2024-01-19 01:11:59', NULL),
-(5, 'Computer Architecture', 8, 2, 'COB003', 3, 125.00, NULL, 'utsav.jpg', '2024-01-20 00:55:39', NULL);
+(1, 'Chemistry Volume-II', 13, 10, 'CH002', 2, 230.00, NULL, 'Chemistry2.jpg', '2024-01-18 10:06:37', '2024-01-21 14:47:27'),
+(2, 'Physic part-3', 12, 9, 'PH003', 3, 123.00, NULL, 'physic3.jpg', '2024-01-18 10:07:29', '2024-01-21 04:03:10'),
+(3, 'Mathematic', 1, 7, 'MTH004', 3, 280.00, NULL, 'Math1.jpg', '2024-01-18 10:08:46', '2024-01-21 14:46:18'),
+(4, 'C++', 1, 1, 'C++0014', 2, 152.00, NULL, 'c++.jpg', '2024-01-19 01:11:59', '2024-01-21 04:02:34'),
+(5, 'Computer Architecture', 8, 2, 'COB003', 3, 125.00, NULL, 'architeck.jpg', '2024-01-20 00:55:39', '2024-01-21 04:06:22'),
+(6, 'Computer Fundamental', 8, 3, 'CFB210', 5, 260.00, NULL, 'computer_fun1.jpg', '2024-01-21 02:34:01', NULL),
+(7, 'Physic part-II', 12, 9, 'PH002', 5, 420.00, NULL, 'physic2.jpg', '2024-01-21 02:36:35', NULL),
+(8, 'Cloud storageComputing', 8, 7, 'CC002', 3, 450.00, NULL, 'clouds.jpg', '2024-01-21 04:33:05', '2024-01-21 14:44:27'),
+(9, 'cloud computing-II', 8, 7, 'CCB102', 5, 125.00, NULL, 'cloud.jpg', '2024-01-21 04:37:57', NULL),
+(10, 'Poor Dad And Rich Dad', 5, 10, 'RDPD789', 7, 230.00, NULL, 'RDPD.jpg', '2024-01-21 14:04:55', NULL),
+(11, 'Data Base Management System', 1, 9, 'DBMS456', 7, 365.00, NULL, 'dbms.jpg', '2024-01-21 14:07:47', NULL),
+(12, 'MultiMedia Book', 8, 10, 'MM123', 9, 265.00, NULL, 'MM.jpg', '2024-01-21 14:10:15', NULL),
+(13, 'The Price of politics ', 21, 14, 'POLI20', 8, 350.00, NULL, 'political.jpg', '2024-01-21 14:12:53', NULL),
+(14, 'Soli Ecology', 15, 4, 'SOIL', 10, 200.00, NULL, 'soileco.jpg', '2024-01-21 14:14:20', NULL),
+(15, 'The Life of Water ', 7, 3, 'Water', 8, 195.00, NULL, 'water.jpg', '2024-01-21 14:16:31', NULL),
+(16, 'PHP And MySqli', 1, 2, 'php0001', 12, 452.00, NULL, 'phpmysqli.jpg', '2024-01-21 14:23:15', NULL),
+(17, 'Core Java', 1, 7, 'java', 12, 300.00, NULL, 'java.jpg', '2024-01-21 14:24:08', NULL),
+(18, 'Muna Mada', 5, 5, 'Muna100', 8, 125.00, NULL, 'munamadan.jpg', '2024-01-21 14:26:58', NULL),
+(19, 'Basic Engineering Electrical Book', 22, 8, 'EEB3003', 9, 300.00, NULL, 'electric.jpg', '2024-01-21 14:33:54', NULL),
+(20, 'Business Management', 6, 8, 'BMB159', 18, 235.00, NULL, 'management.jpg', '2024-01-21 14:35:00', NULL),
+(21, 'Fundamental Of Computer', 8, 1, 'FOC236', 13, 560.00, NULL, 'computer1.jpg', '2024-01-21 14:52:38', NULL),
+(22, 'Human Resource Management', 6, 11, 'HRM789', 12, 285.00, NULL, 'manage.jpg', '2024-01-21 14:54:36', NULL),
+(23, 'Fundamental of Programing ', 1, 1, 'FOC159', 5, 456.00, NULL, 'c++.jpg', '2024-01-21 14:55:49', '2024-01-21 15:00:22');
 
 -- --------------------------------------------------------
 
@@ -172,13 +194,6 @@ CREATE TABLE `issue_book` (
   `fine` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
---
--- Dumping data for table `issue_book`
---
-
-INSERT INTO `issue_book` (`id`, `studentcode`, `std_id`, `book_id`, `issue_date`, `returndate`, `retrunstatus`, `fine`) VALUES
-(1, 'SID003', 1, 2, '2024-01-18 10:12:52', NULL, NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -195,6 +210,7 @@ CREATE TABLE `students` (
   `photo` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
+  `verification_code` varchar(200) NOT NULL,
   `verified` int(1) NOT NULL DEFAULT 0,
   `regdate` timestamp NULL DEFAULT current_timestamp(),
   `updationdate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
@@ -204,11 +220,10 @@ CREATE TABLE `students` (
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`id`, `studentcode`, `std_name`, `address`, `phone`, `gender`, `photo`, `email`, `password`, `verified`, `regdate`, `updationdate`) VALUES
-(1, 'SID003', 'utsav', 'Malangwa', '9801219843', 'male', 'IMG_20220216_150506_994.jpg', 'utsav@gmail.com', '123', 1, '2024-01-18 10:10:25', '2024-01-19 02:20:12'),
-(2, 'SID004', 'ranjit', 'banepa', '8012345678', 'male', 'ranjit.jpg', 'ranjit@gmail.com', '$2y$10$LWapzybiQVNMyRMaEq9Kx.NpafgAzbOZ3bAsTSm8DrejnsYfcNKbC', 1, '2024-01-18 10:10:48', NULL),
-(3, 'SID005', 'Kamal Kishor Thakur', 'Siraha', '9811773648', 'male', 'kamalll.jpg', 'kamal@gmail.com', '$2y$10$Wl72hXtshB8aUgohuCt3Luq/aQyaXZXoXqfllgds7khLu61mvCLTy', 0, '2024-01-18 10:11:11', '2024-01-19 15:39:04'),
-(4, 'SID007', 'bhawana', 'Dhulikhel', '8765234567', 'Female', 'bhawana.jpg', 'bhawana@gmail.com', '123', 1, '2024-01-19 02:17:38', NULL);
+INSERT INTO `students` (`id`, `studentcode`, `std_name`, `address`, `phone`, `gender`, `photo`, `email`, `password`, `verification_code`, `verified`, `regdate`, `updationdate`) VALUES
+(1, 'SID001', 'Raushan shah', 'Sisautiya Sarlahi', '97626980249', 'male', 'utsav.jpg', 'utsavsah75@outlook.com', '12345', '9d3109d5', 0, '2024-01-24 12:33:54', NULL),
+(2, 'SID002', 'Utsav Prasad shah', 'Malangwa', '9801219843', 'male', '_MG_3496.jpg', 'utsavsah75@gmail.com', '123', '927e67e0', 0, '2024-01-24 12:37:34', NULL),
+(3, 'SID003', 'ranjit sah', 'banepa', '8012345678', 'male', 'ranjit.jpg', 'ranjit@gmail.com', '123', '8629ef77', 0, '2024-01-24 12:39:08', NULL);
 
 --
 -- Indexes for dumped tables
@@ -266,7 +281,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `admin_login`
 --
 ALTER TABLE `admin_login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `bookauthor`
@@ -278,25 +293,25 @@ ALTER TABLE `bookauthor`
 -- AUTO_INCREMENT for table `bookcategory`
 --
 ALTER TABLE `bookcategory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `issue_book`
 --
 ALTER TABLE `issue_book`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

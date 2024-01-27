@@ -1,18 +1,93 @@
 <?php
+include 'conn.php';
 session_start();
-include('conn.php');
-// error_reporting (0);
 
-// Increment student code
-$count_my_page = "studentcode.txt";
-$hits = (int)file_get_contents($count_my_page);
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
+function sendemail_verify($std_name, $email, $verification_code) {
+
+    if (isset($_POST["add"])) {
+        $mail = new PHPMailer(true);
+
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = "publiclibrary48@gmail.com";
+        $mail->Password = "gjkx qtup hmph fozg";
+        // $mail->Password = "enbirdmgshjmlkly";
+        $mail->SMTPSecure = 'tls'; // Updated to TLS
+        $mail->Port = 587; // Updated to TLS port
+
+        // Sender and recipient settings
+        $mail->setFrom('publiclibrary48@gmail.com');
+        $mail->addAddress($_POST['email']);
+        $mail->isHTML(true);
+        $mail->Subject = "Email Verification from Public Library Management";
+
+        $email_template = " <h2>You have registered with Public library Management </h2>
+    <p>Dear $std_name,</p>
+    <p>Thanks for registration. Your verification code is <b>$verification_code</b>.</p>
+    <p>Regards,</p>
+    <p>Public Library Management</p>
+    <a href='http://localhost/library_project/verify_email.php?code=$verification_code' 
+    style='text-decoration: none; color: #007bff; font-weight: bold; background-color: #f8f9fa; padding: 8px 12px; 
+    border-radius: 4px; border: 1px solid #007bff; display: inline-block;'>Click here to verify your email</a>
+ 
+<style>
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 50;
+    }
+}
+.fade-in {
+    color: #00f1ff;  font-family:Algerian;  animation:fadeIn 4s ease-in-out infinite;
+    }
+    @keyframes fadeIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 50;
+        
+    }
+}
+</style>
+
+<table style='border: 1px solid black; position: relative;'>
+<tr>
+    <td style='width: 20rem; position: relative;'>
+        <img src='logo.png' style='width: 100%; height: auto; opacity: 20%;'>
+        <div style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-18deg);'>
+            <p class='fade-in'>Have A Good Day</p>
+            <p class='fade-in' style='  margin-top: -13px; text-align: center;'>$std_name</p>
+        </div>
+    </td>
+</tr>
+</table>";
+
+        $mail->Body = $email_template;
+        $mail->send();
+        //msg check your login email and verify your account.
+        $_SESSION['msg'] = "<script>alert('Check your login email and verify your account.');</script>";
+        header("location: user_form.php");
+        exit();
+    }
+}
+
+//incerement the student code by 1.
+$hits = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM students"));
 $hits++;
-file_put_contents($count_my_page, $hits);
 
 // Generate the student code with 'SID' prefix
 $studentcode = "SID" . str_pad($hits, 3, '0', STR_PAD_LEFT);
 
-// Register the user to the database.
+// Register the use to the database.
 if (isset($_POST['add'])) {
     $fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
     $address  = mysqli_real_escape_string($conn, $_POST['address']);
@@ -29,29 +104,14 @@ if (isset($_POST['add'])) {
         header("location: user_form.php");
         exit(); // Stop further execution
     }
-
-    $sql = "INSERT INTO `students`( `studentcode`,`std_name`, `address`, `phone`, `gender`, `photo`, `email`, `password`, `verified`) 
-    VALUES ('$studentcode','$fullname','$address','$phone','$gender','$photo','$email','$password', 1)";
-
+    $verification_code = bin2hex(random_bytes(4));
+    $sql = "INSERT INTO `students`( `studentcode`,`std_name`, `address`, `phone`, `gender`, `photo`, `email`, `password`,`verification_code`, `verified`) 
+    VALUES ('$studentcode','$fullname','$address','$phone','$gender','$photo','$email','$password','$verification_code', 0)";
     $data = mysqli_query($conn, $sql);
-    if ($data) {
-        echo '<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>';
-        echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.css">';
-        echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.all.min.js"></script>';
 
-        echo '<script type="text/javascript">
-                $(function() {
-                    Swal.fire({
-                        title: "Register",
-                        text: "Successfully!",
-                        icon: "success"
-                    });
-                });
-            </script>';
-    } else {
-        echo "Failed";
-        // header("location: user_form.php");
-        exit(); // Stop further execution
+    if ($data) {
+        sendemail_verify("$fullname", "$email", "$verification_code");
+        $_SESSION['msg'] = "Account created successfully for email: <b>$email</b>";
     }
 }
 ?>
@@ -79,22 +139,22 @@ if (isset($_POST['add'])) {
             return true;
         }
     </script>
-  <script type="text/javascript">
-    function checkemail() {
-     $("#loaderIcon").show();
-        jQuery.ajax({
-        url: "check_avability.php", 
-        data:'email='+$("#email").val(),
-        type: "POST",
-        success:function(data){
-            $("#email-avability-status").html(data);
-            $("#loaderIcon").hide();
-        },
-        error:function (){}
-        });
-}
-  </script>
-   <script type="text/javascript">
+    <script type="text/javascript">
+        function checkemail() {
+            $("#loaderIcon").show();
+            jQuery.ajax({
+                url: "check_avability.php",
+                data: 'email=' + $("#email").val(),
+                type: "POST",
+                success: function(data) {
+                    $("#email-avability-status").html(data);
+                    $("#loaderIcon").hide();
+                },
+                error: function() {}
+            });
+        }
+    </script>
+    <script type="text/javascript">
         function mobilenumber() {
             $("#loaderIcon").show();
             jQuery.ajax({
@@ -123,8 +183,8 @@ if (isset($_POST['add'])) {
     <?php
     include 'admin_header.php';
     ?>
-   
-   <!-- MENU SECTION END-->
+
+    <!-- MENU SECTION END-->
     <div class="content-wra
     <div class=" content-wrapper">
         <div class="container">
@@ -166,7 +226,7 @@ if (isset($_POST['add'])) {
                                             <div class="form-group">
                                                 <label>Mobile Number</label>
                                                 <span id="mobile-avability-status" style="font-size:12px;"></span>
-                                                <input class="form-control" type="text" name="phone"id="mobile"  maxlength="10" autocomplete="off" onblur="mobilenumber()" required="required" />
+                                                <input class="form-control" type="text" name="phone" id="mobile" maxlength="10" autocomplete="off" onblur="mobilenumber()" required="required" />
                                             </div>
 
                                             <div class="form-group">
@@ -219,7 +279,6 @@ if (isset($_POST['add'])) {
                         <script src="assets/js/bootstrap.js"></script>
                         <!-- CUSTOM SCRIPTS  -->
                         <script src="assets/js/custom.js"></script>
-</body>
+            </body>
 
 </html>
-

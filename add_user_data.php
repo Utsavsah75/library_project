@@ -12,8 +12,11 @@ $address      = mysqli_real_escape_string($conn, $_POST['address']);
 $photo      = $_FILES['photo']['name'];;
 $temp_name = $_FILES['photo']['tmp_name'];
 move_uploaded_file($temp_name, "uploads/$photo");
-$sql = "INSERT INTO `students` (`std_name`, `email`, `gender`, `password`, `address`, `phone`, `faculty`, `photo`, `verified`) 
-            VALUES ('$uname', '$email', '$gender', '$password', '$address', '$phone', '$faculty','$photo', 1)";
+
+$std_code = bin2hex(random_bytes(4));
+
+$sql = "INSERT INTO `students` (`std_name`, `email`, `gender`, `password`, `address`, `phone`, `faculty`, `photo`, `verification_code`,`verified`) 
+            VALUES ('$uname', '$email', '$gender', '$password', '$address', '$phone', '$faculty','$photo','$std_code', 1)";
 
 $data = mysqli_query($conn, $sql);
 
