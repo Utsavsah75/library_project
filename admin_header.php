@@ -10,8 +10,7 @@
     <title>Library management system</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="bootstrap.css">
-    <!-- <link href="assets/css/style.css" rel="stylesheet" /> -->
-    <!-- <link rel="stylesheet" href="LMS1.css" type="text/css"> -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link href="header.css" rel="stylesheet" type="text/css">
