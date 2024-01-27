@@ -6,39 +6,42 @@ if (isset($_POST['change'])) {
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $newpassword = mysqli_real_escape_string($conn, $_POST['newpassword']);
     $confirmpassword = mysqli_real_escape_string($conn, $_POST['confirmpassword']);
-    $id = 'id';
 
-   // Check if the user's login password matches
-   $password_query = "SELECT * FROM admin_login Where id = $id and password='$password'";
-   $result = mysqli_query($conn, $password_query) or die(mysqli_error($conn));
-   $password_row = mysqli_fetch_assoc($result);
-
-   // Check if the session variable is set and matches the entered password
-   if ($password_row && $password_row['password'] == $password) {
     // Check if the new password and confirm password fields match
     if ($newpassword == $confirmpassword) {
-        $id = 'id';
-   
-        // Update the password
-    $update_query = "UPDATE admin_login SET password = '$newpassword' WHERE id = '1'";
-    $update_result = mysqli_query($conn, $update_query) or die(mysqli_error($conn));    
-    
-    if($update_result){
-        echo "<script>alert(\"Password Updated Successfully\");</script>";
+        $logged_in_user_id = $_SESSION['AdminLogin_successful'];
+
+        // Check if the user's login password matches
+        $password_query = "SELECT * FROM admin_login WHERE id = $logged_in_user_id AND `password`='$password'";
+        $result = mysqli_query($conn, $password_query) or die(mysqli_error($conn));
+        $password_row = mysqli_fetch_assoc($result);
+
+        if ($password_row) {
+            // Update the password
+            $update_query = "UPDATE admin_login SET password = '$newpassword' WHERE id = $logged_in_user_id";
+            $update_result = mysqli_query($conn, $update_query) or die(mysqli_error($conn));
+
+            var_dump($update_result);
+
+            if ($update_result == true) {
+                session_destroy();
+                echo "<script>alert(\"Password Updated Successfully\");</script>";
+
+                echo "<script>window.location.href='admin_login.php';</script>";
+            } else {
+                echo "<script>alert (\"Password Update Failed. Error: \" . mysqli_error(\$conn));</script>";
+            }
         } else {
-            echo "<script>alert (\"Password Update Failed. Error: \" . mysqli_error(\$conn));</script>";
+            echo "<script>alert(\"Incorrect Password\");</script>";
         }
-        } else {
-            echo "<script>alert(\"New password and confirm password do not match\");</script>";
-        }
-}
-} else {
-echo "Old password doesn't match";
+    } else {
+        echo "<script>alert(\"New password and confirm password do not match\");</script>";
+    }
 }
 
 ?>
-         
-        
+
+
 <!DOCTYPE html>
 <html>
 
@@ -88,7 +91,7 @@ echo "Old password doesn't match";
 </script>
 
 <body>
-<div id="video-background">
+    <div id="video-background">
         <video autoplay muted loop id="video-background">
             <source src="LB.mp4" type="video/mp4">
         </video>
@@ -98,7 +101,7 @@ echo "Old password doesn't match";
     <?php
     include 'admin_header.php';
     ?>
-    
+
     <!-- MENU SECTION END-->
 
     <div class=" content-wrapper">
@@ -120,40 +123,41 @@ echo "Old password doesn't match";
                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3"">
                 <div class=" panel panel-info">
                     <div class="panel-heading">
-                    Change Password
+                        Change Password
                     </div>
 
-                        <div class="panel-body">
-                            <form role="form" action="change_pwd.php" method="post" onSubmit="return valid();" name="chngpwd">
+                    <div class="panel-body">
+                        <form role="form" action="change_pwd.php" method="post" onSubmit="return valid();" name="chngpwd">
 
-                                <div class="form-group">
-                                    <label>Current Password</label>
-                                    <input class="form-control" type="password" name="password" autocomplete="off" required />
-                                </div>
+                            <div class="form-group">
+                                <label>Current Password</label>
+                                <input class="form-control" type="password" name="password" autocomplete="off" required />
+                            </div>
 
-                                <div class="form-group">
-                                    <label>Enter Password</label>
-                                    <input class="form-control" type="password" name="newpassword" autocomplete="off" required />
-                                </div>
+                            <div class="form-group">
+                                <label>Enter Password</label>
+                                <input class="form-control" type="password" name="newpassword" autocomplete="off" required />
+                            </div>
 
-                                <div class="form-group">
-                                    <label>Confirm Password </label>
-                                    <input class="form-control" type="password" name="confirmpassword" autocomplete="off" required />
-                                </div>
+                            <div class="form-group">
+                                <label>Confirm Password </label>
+                                <input class="form-control" type="password" name="confirmpassword" autocomplete="off" required />
+                            </div>
 
-                                <button type="submit" name="change" class="btn btn-info">Chnage </button>
-                            </form>
-                        </div>
+                            <button type="submit" name="change" class="btn btn-info">Chnage </button>
+                        </form>
                     </div>
                 </div>
             </div>
-            <!---LOGIN PABNEL END-->
-
-
         </div>
+        <!---LOGIN PABNEL END-->
+
+
+    </div>
     </div>
     <!-- CONTENT-WRAPPER SECTION END-->
-    <?php //include('includes/footer.php'); ?>
+    <?php //include('includes/footer.php'); 
+    ?>
     <!-- FOOTER SECTION END-->
     <script src="assets/js/jquery-1.10.2.js"></script>
     <!-- BOOTSTRAP SCRIPTS  -->
