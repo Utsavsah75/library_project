@@ -74,7 +74,7 @@ function sendemail_verify($std_name, $email, $verification_code) {
         $mail->Body = $email_template;
         $mail->send();
         //msg check your login email and verify your account.
-        $_SESSION['msg'] = "<script>alert('Check your login email and verify your account.');</script>";
+        $_SESSION['msg'] = "Check your login email and verify your account.";
         header("location: user_form.php");
         exit();
     }
@@ -100,7 +100,7 @@ if (isset($_POST['add'])) {
     $alreadyExist = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM students WHERE email = '{$email}'"));
 
     if ($alreadyExist) {
-        $_SESSION['msg'] = "Account is already exist for email: <b>$email</b>";
+        $_SESSION['msg'] = "Account is already exist form this email: <b>$email</b>";
         header("location: user_form.php");
         exit(); // Stop further execution
     }
@@ -199,7 +199,31 @@ if (isset($_POST['add'])) {
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                    <?php 
+                    // Display success message for blocking or activating student
+                    if (isset($_SESSION['msg']) && $_SESSION['msg'] != "") {
+                    ?>
+                    <div class="col-md-6">
+                        <div class="alert alert-success">
+                            <strong>Success :</strong>
+                            <?php echo htmlentities($_SESSION['msg']); ?>
+                            <?php echo htmlentities($_SESSION['msg'] = ""); ?>
+                        </div>
+                    </div>
+                    <?php } ?>
+                    <?php
+                    // Display error message if any
+                    if (isset($_SESSION['error']) && $_SESSION['error'] != "") {
+                    ?>
+                    <div class="col-md-6">
+                        <div class="alert alert-danger">
+                            <strong>Error :</strong>
+                            <?php echo htmlentities($_SESSION['error']); ?>
+                            <?php echo htmlentities($_SESSION['error'] = ""); ?>
+                        </div>
+                    </div>
+                    <?php } ?>
+                    <div class="col-md-12">
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-head">

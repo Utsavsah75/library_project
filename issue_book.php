@@ -66,7 +66,7 @@ if (isset($_POST['issue'])) {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-    
+
 
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" type="text/css" href="header.css">
@@ -143,7 +143,7 @@ if (isset($_POST['issue'])) {
                                 </script>
                                 <div class="form-group">
                                     <label>Student id</label>
-                                    <select name="select_box" class="form-select js-example-basic-single" id="select_box" onBlur="getstudent()" autocomplete="off"  style='height:50px;' required>
+                                    <select name="select_box" class="form-select js-example-basic-single" id="select_box" onBlur="getstudent()" autocomplete="off" style='height:50px;' required>
                                         <!-- <select name="select_box" class="form-select js-example-basic-single" id="select_box"> -->
                                         <option value="" style='margin-top:20px;'>Select student code</option>
                                         <?php
@@ -157,15 +157,24 @@ if (isset($_POST['issue'])) {
                                     <span id="get_student_name" style="font-size:16px;"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label>ISBN Number or Book Title</label>
-                                    <input class="form-control" type="text" name="bookid" id="bookid" onBlur="getbook()" required="required" />
+                                    <label>ISBN Number</label>
+                                    <select name="bookid" class="form-select js-example-basic-single" id="bookid" onBlur="getbook()" autocomplete="off" style='height:50px;' required>
+                                        <!-- <input class="form-control" type="text" name="bookid" id="bookid" onBlur="getbook()" required="required" /> -->
+
+                                        <option value="">Select book ISBN Number</option>
+                                        <?php
+                                        $sql = "SELECT isbnno FROM books ORDER BY isbnno ASC";
+                                        $result = $conn->query($sql);
+                                        foreach ($result as $row) {
+                                            echo '<option value="' . $row["isbnno"] . '">' . $row["isbnno"] . '</option>';
+                                        }
+                                        ?>
+                                    </select>
                                     <span id="get_book_name" style="font-size:16px;"></span>
                                 </div>
-
-                                <button type="submit" name="issue" id="submit" class="btn btn-info">Issue Book
-                                </button>
-
+                                <button type="submit" name="issue" id="submit" class="btn btn-info">Issue Book</button>
                             </form>
+
                         </div>
                     </div>
                 </div>
