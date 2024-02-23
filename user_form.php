@@ -274,6 +274,17 @@ if (isset($_POST['add'])) {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENT-WRAPPER SECTION END-->
+    <?php 
+    include 'footer.html';?>
+                        
                         <script src="assets/js/jquery-1.10.2.js"></script>
                         <!-- BOOTSTRAP SCRIPTS  -->
                         <script src="assets/js/bootstrap.js"></script>

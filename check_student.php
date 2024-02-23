@@ -2,8 +2,8 @@
 include 'conn.php';
 
 // get the student code.
-if (!empty($_POST["studentid"])) {
-    $studentid = $_POST["studentid"];
+if (!empty($_POST["select_box"])) {
+    $studentid = $_POST["select_box"];
     $result = mysqli_query($conn, "SELECT count(*) FROM students WHERE studentcode='$studentid'");
     $row = mysqli_fetch_row($result);
 
@@ -14,6 +14,10 @@ if (!empty($_POST["studentid"])) {
 
         if ($studentResult) {
             $studentData = mysqli_fetch_assoc($studentResult);
+
+            echo "<table border='1'>";
+            echo "<tr>";
+            echo "<th style='padding-left:5%; width: 10%;'>";
 
             if ($studentData['verified'] == 0) {
                 echo "<span style='color:red'> Student ID Blocked </span>" . "<br />";
@@ -26,6 +30,10 @@ if (!empty($_POST["studentid"])) {
                 echo " Mobile number:-" . $studentData['phone'] . "<br />";
                 echo "<script>$('#submit').prop('disabled', false);</script>";
             }
+
+            echo "</th>";
+            echo "</tr>";
+            echo "</table>";
         } else {
             echo "Error executing student query: " . mysqli_error($conn);
         }
@@ -37,3 +45,4 @@ if (!empty($_POST["studentid"])) {
     echo "<span style='color:red'> Invalid Student ID. Please enter a valid Student ID.</span>";
     echo "<script>$('#submit').prop('disabled',true);</script>";
 }
+?>

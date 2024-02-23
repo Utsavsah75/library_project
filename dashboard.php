@@ -44,7 +44,7 @@ include 'admin_header.php';
                     <!-- <h3><?php echo htmlentities($listdbooks); ?></h3> -->
                     Books Listed
                 <div class="footer1">
-                    <a href="all_books.php"><button type="button" class="btn btn-primary">View Details</button></a>
+                    <a href="manage_book.php"><button type="button" class="btn btn-primary">View Details</button></a>
 
                 </div>
                 </div>
@@ -65,7 +65,7 @@ include 'admin_header.php';
             ?>
             Users Listed
             <div class="footer1">
-                <a href="all_member.php"><button type="button" class="btn btn-info">View Details</button></a>
+                <a href="reg_students.php"><button type="button" class="btn btn-info">View Details</button></a>
             </div>
         </div>
     </div>
@@ -93,7 +93,7 @@ include 'admin_header.php';
                             ?>
             Books Issued
         <div class="footer1">
-            <a href="issuebook_list.php"><button type="button" class="btn btn-success">View Details</button></a>
+            <a href="manage_issue_book.php"><button type="button" class="btn btn-success">View Details</button></a>
         </div>
     </div>
     </div>

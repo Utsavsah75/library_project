@@ -10,8 +10,8 @@ include 'user_header.php';
         <div class="row pad-botm">
             <div class="col-md-12">
                 <div class="header-line1">
-                    <h4 style="   font-weight: bold;color: #000000; display: inline;">Manage Issued</h4>
-                    <h4 style="   font-weight: bold;color: #2c7ad6; display: inline;">Books</h4>
+                    <h4 style="   font-weight: bold;color: #000000; display: inline;">Books</h4>
+                    <h4 style="   font-weight: bold;color: #2c7ad6; display: inline;">List</h4>
                 </div>
 
                 <div class="row">

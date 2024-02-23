@@ -3,151 +3,117 @@ session_start();
 // error_reporting(0);
 include('conn.php');
 
+
+
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
+
+
+    <link href="//cdn.datatables.net/2.0.0/css/dataTables.dataTables.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book_Management</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" type="text/css" href="header.css">
     <link rel="stylesheet" type="text/css" href="book_pag.css">
 </head>
 
 <body>
-    <div class="video-background">
+    <div id="video-background">
         <video autoplay muted loop id="video-background">
             <source src="LB.mp4" type="video/mp4">
         </video>
     </div>
+
     <!-- MENU SECTION START-->
-    <?php
-    include 'admin_header.php';
-    ?>
+    <?php include 'admin_header.php'; ?>
     <!-- MENU SECTION END-->
+
     <div class="content-wrapper">
         <div class="container">
             <div class="row pad-botm">
                 <div class="col-md-12">
+
                     <?php $studentcode = $_GET['stdid']; ?>
                     <div class="header-line">#<?php echo $studentcode; ?>
-                        <h4 style="font-weight: bold;color: #000000; display: inline;">Edit </h4>
-                        <h4 style="font-weight: bold;color: #2c7ad6; display: inline;">Category</h4>
+                        <h4 style="font-weight: bold;color: #2c7ad6; display: inline;">BOOK ISSUED HISTORY</h4>
                     </div>
+
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                    <div class="panel panel-info" style="margin-top: 12px; width: 50rem; margin-left: -8rem;">
-
-                        <div class="panel-heading">
-                            Student Info
+            <div class="row" style='margin-left:-6rem; margin-right:-7rem;'>
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-head">
+                            Book Issued History
                         </div>
 
-                        <div class="panel-body">
-                            <form role="form" method="post">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Student ID</th>
+                                    <th>Student Name</th>
+                                    <th>Issued Book Name </th>
+                                    <th>Issued Date</th>
+                                    <th>Returned Date</th>
+                                    <th>Fine (if any)</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
                                 <?php
-                                $sql = "SELECT * FROM students";
-                                $result = mysqli_query($conn, $sql);
-                                $row = mysqli_fetch_object($result);
-                                ?>
+                                $sql = "SELECT students.studentcode, students.std_name, books.bookname, books.id, issue_book.issue_date, issue_book.returndate, issue_book.fine FROM issue_book JOIN students ON students.studentcode=issue_book.studentcode JOIN books ON books.id=issue_book.book_id"; // Corrected the column name issue_book.id to issue_book.book_id
+                                $query = mysqli_query($conn, $sql);
+                                $count = 1;
 
-                                    
-<!--    //create a form to display the student information from the database.-->
-
-<form action="edit_student.php" method="post">
-    
-                                    <table>
-                                    </div>
-                                        <div class="col-md-6">
-                                            <div class="col-md-10">
-                                                <div class="form-group">
-                                                    <label>Student ID :</label>
-                                                    <?php echo htmlentities($row->studentcode); ?>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-10">
-                                                <div class="form-group">
-                                                    <label>Verified :</label>
-                                                    <?php echo htmlentities($row->verified); ?>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-10">
-                                                <div class="form-group">
-                                                    <label>Student Name :</label>
-                                                    <?php echo htmlentities($row->std_name); ?>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-10">
-                                                <div class="form-group">
-                                                    <label>Address :</label>
-                                                    <?php echo htmlentities($row->address); ?>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="col-md-10">
-                                                <div class="form-group">
-                                                    <label>Phone :</label>
-                                                    <?php echo htmlentities($row->phone); ?>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-10">
-                                                <div class="form-group">
-                                                    <label>Gender :</label>
-                                                    <?php echo htmlentities($row->gender); ?>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-10">
-                                                <div class="form-group">
-                                                    <label>Email :</label>
-                                                    <?php echo htmlentities($row->email); ?>
-                                                </div>
-                                            </div>
-
-                                            <tr>
-                                                <td></td>
-                                                <td><input type="submit" name="update" value="Update"></td>
-                                                
-                                    </table>
-                                </form>
-                                <?php
-                                if (isset($_POST['update'])) {
-                                    $studentcode = $_POST['studentcode'];
-                                    $verified = $_POST['verified'];
-                                    $std_name = $_POST['std_name'];
-                                    $address = $_POST['address'];
-                                    $phone = $_POST['phone'];
+                                if (mysqli_num_rows($query) > 0) { // Corrected the syntax of rowCount() to mysqli_num_rows()
+                                    while ($result = mysqli_fetch_assoc($query)) { // Changed the foreach loop to a while loop with mysqli_fetch_assoc()
+                                        echo "<tr>
+                <td>" . $count . "</td>
+                <td>" . $result['studentcode'] . "</td>
+                <td>" . $result['std_name'] . "</td>
+                <td>" . $result['bookname'] . "</td>
+                <td>" . $result['issue_date'] . "</td>
+                <td class='center'>" . ($result['returndate'] == '' ? 'Not returned yet' : htmlentities($result['returndate'])) . "</td>
+                <td class='center'>" . ($result['returndate'] == '' ? 'Not returned yet' : $result['fine']) . "</td>
+              </tr>";
+                                        $count++;
+                                    }
                                 }
-                                    ?>
-                                   
-                                   <div class="col-md-6">
-                                        <div class="form-group">
-                                            <img src="uploads/<?php echo htmlentities($row->photo); ?>" style="width:10rem; height:10rem; margin-left:35rem; border-radius: 8px;box-shadow: 2px 2px 4px #000000; margin-top:-35rem">
-                                        </div>
-                        </div>
+                                ?>
+                            </tbody>
+
+                        </table>
+                        </form>
+
+
                     </div>
                 </div>
             </div>
         </div>
-        <!-- CONTENT-WRAPPER SECTION END-->
-        <?php
-        //    include 'footer.php';
-        ?>
-        <!-- FOOTER SECTION END-->
-        <!-- CORE JQUERY SCRIPTS -->
-        <script src="assets/js/jquery-1.10.2.js"></script>
-        <!-- BOOTSTRAP SCRIPTS  -->
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('table').DataTable({
+                columnDefs: [{
+                    targets: [0, 0], // Column indexes of "Serial Number" and "Name"
+                    orderable: true // Enable ordering for these columns
+                }, {
+                    targets: '_all', // All other columns
+                    orderable: false // Disable ordering for other columns
+                }]
+            });
+        });
+    </script>
+
+
 </body>
 
 </html>

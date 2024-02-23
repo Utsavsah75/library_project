@@ -19,7 +19,6 @@ if (!empty($_POST["isbnno"])) {
 
 
 
-
 if (!empty($_POST["price"])) {
     $price = $_POST["price"];
     // Check if the input is a valid number with at most one dot

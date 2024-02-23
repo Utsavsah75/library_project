@@ -39,17 +39,11 @@ if (isset($_GET['delid'])) {
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book_Management</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="bootstrap.css">
+    <link href="//cdn.datatables.net/2.0.0/css/dataTables.dataTables.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="header.css">
-
     <link rel="stylesheet" type="text/css" href="book_pag.css">
 </head>
 
@@ -208,14 +202,29 @@ if (isset($_GET['delid'])) {
                     </div>
                 </div>
             </div>
-            <script src="assets/js/jquery-1.10.2.js"></script>
-            <!-- BOOTSTRAP SCRIPTS  -->
-            <script src="assets/js/bootstrap.js"></script>
-            <!-- DATATABLE SCRIPTS  -->
-            <script src="assets/js/dataTables/jquery.dataTables.js"></script>
-            <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
-            <!-- CUSTOM SCRIPTS  -->
-            <script src="assets/js/custom.js"></script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="//cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
+
+        <!-- Script for DataTables initialization and custom filtering -->
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('table').DataTable({
+                    columnDefs: [{
+                        targets: [0, 0], // Column indexes of "Serial Number" and "Name"
+                        orderable: true // Enable ordering for these columns
+                    }, {
+                        targets: '_all', // All other columns
+                        orderable: false // Disable ordering for other columns
+                    }]
+                });
+                // Add event listeners for date inputs
+                $('#fromDate, #toDate').change(function() {
+                    var fromDate = $('#fromDate').val();
+                    var toDate = $('#toDate').val();
+                    table.draw();
+                });
+            });
+</script>
 
 </body>
 

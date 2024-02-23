@@ -8,12 +8,12 @@ require('check_admin.php');
 // Issue a book to a student
 if (isset($_POST['issue'])) {
     $issued = 1;
-    $studentcode = $_POST['studentid'];
+    $studentcode = $_POST['select_box'];
     $book_isbn_no = $_POST['bookid'];
 
 
     // Fetch student information from the database
-    $studentId = $_POST['studentid'];
+    $studentId = $_POST['select_box'];
     // $studentcode = $_POST['studentcode'];
     $studentQuery = "SELECT * FROM students WHERE studentcode = '$studentId'";
     $studentResult = mysqli_query($conn, $studentQuery);
@@ -47,7 +47,6 @@ if (isset($_POST['issue'])) {
         } else {
             echo "<script>alert('Book not issued');</script>";
         }
-
     }
 }
 // Redirect to the previous page or a specific page after processing
@@ -63,38 +62,44 @@ if (isset($_POST['issue'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    
+
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" type="text/css" href="header.css">
     <link rel="stylesheet" type="text/css" href="book_pag.css">
 </head>
 <script type="text/javascript">
-function getstudent() {
-    $("#loaderIcon").show();
-    jQuery.ajax({
-        url: "check_student.php",
-        data: 'studentid=' + $("#studentid").val(),
-        type: "POST",
-        success: function(data) {
-            $("#get_student_name").html(data);
-            $("#loaderIcon").hide();
-        },
-        error: function() {}
-    });
-}
+    function getstudent() {
+        $("#loaderIcon").show();
+        jQuery.ajax({
+            url: "check_student.php",
+            data: 'select_box=' + $("#select_box").val(),
+            type: "POST",
+            success: function(data) {
+                $("#get_student_name").html(data);
+                $("#loaderIcon").hide();
+            },
+            error: function() {}
+        });
+    }
 
-function getbook() {
-    $("#loaderIcon").show();
-    jQuery.ajax({
-        url: "check_book.php",
-        data: 'bookid=' + $("#bookid").val(),
-        type: "POST",
-        success: function(data) {
-            $("#get_book_name").html(data);
-            $("#loaderIcon").hide();
-        },
-        error: function() {}
-    });
-}
+    function getbook() {
+        $("#loaderIcon").show();
+        jQuery.ajax({
+            url: "check_book.php",
+            data: 'bookid=' + $("#bookid").val(),
+            type: "POST",
+            success: function(data) {
+                $("#get_book_name").html(data);
+                $("#loaderIcon").hide();
+            },
+            error: function() {}
+        });
+    }
 </script>
 
 <body>
@@ -130,17 +135,31 @@ function getbook() {
 
                         <div class="panel-body">
                             <form role="form" method="post">
-
+                                <script>
+                                    // In your Javascript (external .js resource or <script> tag)
+                                    $(document).ready(function() {
+                                        $('.js-example-basic-single').select2();
+                                    });
+                                </script>
                                 <div class="form-group">
                                     <label>Student id</label>
-                                    <input class="form-control" type="text" name="studentid" id="studentid"  onBlur="getstudent()" autocomplete="off" required />
+                                    <select name="select_box" class="form-select js-example-basic-single" id="select_box" onBlur="getstudent()" autocomplete="off"  style='height:50px;' required>
+                                        <!-- <select name="select_box" class="form-select js-example-basic-single" id="select_box"> -->
+                                        <option value="" style='margin-top:20px;'>Select student code</option>
+                                        <?php
+                                        $sql = "SELECT studentcode FROM students ORDER BY studentcode ASC";
+                                        $result = $conn->query($sql);
+                                        foreach ($result as $row) {
+                                            echo '<option value="' . $row["studentcode"] . '">' . $row["studentcode"] . '</option>';
+                                        }
+                                        ?>
+                                    </select>
                                     <span id="get_student_name" style="font-size:16px;"></span>
                                 </div>
-                                    
-                                    <div class="form-group">
-                                        <label>ISBN Number or Book Title</label>
-                                        <input class="form-control" type="text" name="bookid" id="bookid" onBlur="getbook()" required="required" />
-                                        <span id="get_book_name" style="font-size:16px;"></span>
+                                <div class="form-group">
+                                    <label>ISBN Number or Book Title</label>
+                                    <input class="form-control" type="text" name="bookid" id="bookid" onBlur="getbook()" required="required" />
+                                    <span id="get_book_name" style="font-size:16px;"></span>
                                 </div>
 
                                 <button type="submit" name="issue" id="submit" class="btn btn-info">Issue Book
@@ -166,4 +185,3 @@ function getbook() {
 </body>
 
 </html>
-

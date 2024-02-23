@@ -141,20 +141,21 @@
 
 #down {
     height: 300px;
-    width: 100%;
-    margin-top: 10px;
-    background: #2c7ad6;
+    width: 98.1rem;
+    background: #2388ff;
     text-align: center;
-    padding-top: 10px;
     color: white;
 }
 
 .footer {
-    height: 20px;
-    width: 100%;
-    background: black;
+    height:2rem;
+    width:102rem;
     color: white;
     text-align: center;
+    margin-left: -4rem;
+    margin-top: -2rem;
+    background: black;
+
 }
 
 .text {
