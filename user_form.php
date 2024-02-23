@@ -283,7 +283,7 @@ if (isset($_POST['add'])) {
 
     <!-- CONTENT-WRAPPER SECTION END-->
     <?php 
-    include 'footer.html';?>
+    // include 'footer.html';?>
                         
                         <script src="assets/js/jquery-1.10.2.js"></script>
                         <!-- BOOTSTRAP SCRIPTS  -->

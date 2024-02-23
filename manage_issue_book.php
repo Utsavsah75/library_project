@@ -96,11 +96,9 @@ if (isset($_POST['return'])) {
                             <tbody>
                                 <?php
                                 $sql = mysqli_query($conn, "SELECT `std_name`,`BookName`, `isbnno`, `issue_date`,`returndate` from issue_book join students on students.studentcode=issue_book.studentcode inner join books on books.isbnno=issue_book.book_id");
-                                $result = mysqli_fetch_object($sql);
-                                if ($sql->num_rows > 0) {
+                                if (mysqli_num_rows($sql) > 0) {
                                     $sn = 1;
                                     while ($row = mysqli_fetch_assoc($sql)) {
-                                        // $sn = $row['sn'];
                                         $student_name = $row['std_name'];
                                         $book_name = $row['BookName'];
                                         $isbnno = $row['isbnno'];

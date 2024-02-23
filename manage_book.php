@@ -39,17 +39,11 @@ if (isset($_GET['delid'])) {
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book_Management</title>
     <link href="//cdn.datatables.net/2.0.0/css/dataTables.dataTables.min.css" rel="stylesheet">
-
-
-
-    <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" type="text/css" href="header.css">
-
     <link rel="stylesheet" type="text/css" href="book_pag.css">
 </head>
 
