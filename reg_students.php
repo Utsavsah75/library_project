@@ -82,7 +82,7 @@ if (isset($_GET['active'])) {
                     if (isset($_SESSION['error']) && $_SESSION['error'] != "") {
                     ?>
                     <div class="col-md-6">
-                        <div class="alert alert-danger" style="margin-top: -94px;">>
+                        <div class="alert alert-danger" style="margin-top: -94px;">
                             <strong>Error :</strong>
                             <?php echo htmlentities($_SESSION['error']); ?>
                             <?php echo htmlentities($_SESSION['error'] = ""); ?>

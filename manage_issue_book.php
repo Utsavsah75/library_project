@@ -2,29 +2,6 @@
 session_start();
 // error_reporting(0);
 include('conn.php');
-// Return book code.
-if (isset($_POST['return'])) {
-    $retid = intval($_GET['issid']);
-    $fine = $_POST['fine'];
-    $rstatus = 1; // Assuming 1 is the status for returned
-    $bookid = $_POST['book_id']; // Corrected: use 'book_id' instead of 'bookid'
-
-    // Update 'issue_book' table with return date and fine
-    $returnbook = mysqli_query($conn, "UPDATE `issue_book` SET `returndate`=NOW(), `fine`='$fine', `retrunstatus`='$rstatus' WHERE `id`='$retid'");
-
-    // Update 'books' table to set the book as available
-    $updatebook = mysqli_query($conn, "UPDATE `books` SET `issued`=0 WHERE `id`='$bookid'");
-
-    if ($returnbook && $updatebook) {
-        $_SESSION['msg'] = "Book returned successfully";
-        header('location: manage_issue_book.php');
-        exit();
-    } else {
-        $_SESSION['error'] = "Something went wrong. Please try again.";
-        header('location: manage_issue_book.php');
-        exit();
-    }
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,12 +31,38 @@ if (isset($_POST['return'])) {
     <div class="content-wrapper">
         <div class="container">
             <div class="row pad-botm">
-                <div class="col-md-12">
+               
+               
                     <div class="header-line">
                         <h4 style="font-weight: bold; color: #000000; display: inline;">Manage Issued</h4>
                         <h4 style="font-weight: bold; color: #2c7ad6; display: inline;">Books</h4>
                     </div>
                     <div class="row">
+                    <?php 
+                    // Display success message for returning book
+                    if (isset($_SESSION['msg']) && $_SESSION['msg'] != "") {
+                    ?>
+                    <div class="col-md-6">
+                        <div class="alert alert-success">
+                            <strong>Success :</strong>
+                            <?php echo htmlentities($_SESSION['msg']); ?>
+                            <?php echo htmlentities($_SESSION['msg'] = ""); ?>
+                        </div>
+                    </div>
+                    <?php } ?>
+                    <?php
+                    // Display error message if any
+                    if (isset($_SESSION['error']) && $_SESSION['error'] != "") {
+                    ?>
+                    <div class="col-md-6">
+                        <div class="alert alert-danger"> 
+                            <strong>Error :</strong>
+                            <?php echo htmlentities($_SESSION['error']); ?>
+                            <?php echo htmlentities($_SESSION['error'] = ""); ?>
+                        </div>
+                    </div>
+                    <?php } ?>
+                    <div class="col-md-12">
                     </div>
                 </div>
             </div>
