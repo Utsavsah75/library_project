@@ -39,7 +39,7 @@ if (!empty($_POST["bookid"])) {
             <table border="1">
                 <tr>
                     <th style="padding-left:5%; width: 10%;">
-                        <img src="uploads/<?php echo $row['bookimg']; ?>" height="150px" width="150px" alt="Book Image"><br>
+                       <br> <img src="uploads/<?php echo $row['bookimg']; ?>" height="150px" width="150px" alt="Book Image"><br>
                         <?php echo isset($row['bookname']) ? $row['bookname'] : ''; ?><br>
                         <?php echo isset($row['AuthorName']) ? $row['AuthorName'] : ''; ?>
                         <?php if (isset($row['issued']) && $row['issued'] == 0) : ?>
