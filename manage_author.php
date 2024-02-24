@@ -73,10 +73,7 @@ if (isset($_GET['delaut'])) {
                 <?php
                 if (isset($_SESSION['msg']) && $_SESSION['msg'] != "") {
                 ?>
-
-
-
-                    <div class="col-md-6">
+                <div class="col-md-6">
                         <div class="alert alert-success">
                             <strong>Success :</strong>
                             <?php echo htmlentities($_SESSION['msg']); ?>
