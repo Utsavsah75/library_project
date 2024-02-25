@@ -23,7 +23,7 @@ if(isset($_POST['update'])) {
 
                 if($query) {
                     echo "<script>alert('Book image has been updated successfully');</script>";
-                    echo "<script>window.location.href = 'edit_book.php';</script>";
+                    echo "<script>window.location.href = 'manage_book.php';</script>";
                     exit;
                 } else {
                     echo "Error executing query: " . mysqli_error($conn);

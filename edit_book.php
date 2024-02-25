@@ -5,22 +5,17 @@ include('conn.php');
 // Edit the Book.
 if (isset($_POST['submit'])) {
     $bookid = $_GET['bookid'];
-    $isbnno = $_POST['isbnno'];
+    $bookname = $_POST['bookname'];
     $catid = $_POST['catid'];
-    $author = $_POST['author'];
+    $authorid = $_POST['authorid'];
     $bookprice = $_POST['bookprice'];
-    $bookimg = $_FILES['bookimg']['name'];
-    $tmp_name = $_FILES['bookimg']['tmp_name'];
-    $path = "uploads/" . $bookimg;
-    move_uploaded_file($tmp_name, $path);
-
+    
     $sql = "UPDATE books 
             SET 
-                isbnno='$isbnno', 
+                BookName='$bookname', 
                 catid='$catid', 
-                author='$author', 
-                bookprice='$bookprice', 
-                bookimg='$bookimg' 
+                author='$authorid', 
+                bookprice='$bookprice' 
             WHERE 
                 id='$bookid'";
 
@@ -37,23 +32,21 @@ if (isset($_POST['submit'])) {
 }
 
 // Fetch book information for editing
-// $bookid = $_GET['bookid'];
-// $sql = "SELECT books.BookName, books.isbnno, bookcategory.CategoryName, bookauthor.AuthorName, books.bookprice, books.bookimg 
-//         FROM books 
-//         JOIN bookcategory ON bookcategory.id = books.catid 
-//         INNER JOIN bookauthor ON bookauthor.id = books.author 
-//         WHERE books.id='$bookid'";
-// $result = mysqli_query($conn, $sql);
-// if (!$result) {
-//     die("Error: " . mysqli_error($conn));
-// }
+$bookid = $_GET['bookid'];
+$sql = "SELECT books.BookName, books.isbnno, books.catid, books.author, books.bookprice, books.bookimg, 
+        bookcategory.CategoryName, bookauthor.AuthorName 
+        FROM books 
+        JOIN bookcategory ON bookcategory.id = books.catid 
+        JOIN bookauthor ON bookauthor.id = books.author 
+        WHERE books.id='$bookid'";
+$result = mysqli_query($conn, $sql);
+if (!$result || mysqli_num_rows($result) == 0) {
+    die("Error: No book found");
+}
 
-// $bookrow = mysqli_fetch_array($result);
-// if (!$bookrow) {
-//     die("Error: No book found");
-// }
-// 
+$bookrow = mysqli_fetch_assoc($result);
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,18 +84,6 @@ if (isset($_POST['submit'])) {
                         <div class="panel-heading">Book Info</div>
                         <div class="panel-body">
                             <form role="form" method="post" enctype="multipart/form-data">
-                                <?php
-                                $bookid = $_GET['bookid'];
-                                $sql = "SELECT books.BookName, books.isbnno, bookcategory.CategoryName, bookauthor.AuthorName, books.bookprice, books.bookimg 
-                                        FROM books 
-                                        JOIN bookcategory ON bookcategory.id = books.catid 
-                                        INNER JOIN bookauthor ON bookauthor.id = books.author 
-                                        WHERE books.id='$bookid'";
-                                $result = mysqli_query($conn, $sql);
-                                if ($result && mysqli_num_rows($result) > 0) {
-                                    $bookrow = mysqli_fetch_assoc($result);
-                                ?>
-
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -114,50 +95,47 @@ if (isset($_POST['submit'])) {
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label>Book Name:</label>
-                                            <input type="text" class="form-control" value="<?php echo htmlentities($bookrow['BookName']); ?>" required>
+                                            <input type="text" class="form-control" name="bookname" value="<?php echo htmlentities($bookrow['BookName']); ?>" required>
                                         </div>
-                                    <!-- </div> -->
-                                    <!-- <div class="col-md-8"> -->
-                                    <div class="form-group">
-                                        <label> Category<span style="color:red;">*</span></label>
-                                            <!-- <input type="text" class="form-control" value="<?php // echo htmlentities($bookrow['AuthorName']); ?>" required> -->
-                                            <select class="form-control" name="author" required>
-                                                <option value="<?php echo htmlentities($bookrow['CategoryName']); ?>"><?php echo htmlentities($bookrow['CategoryName']); ?></option>
-                                                <?php
-                                                $sql1 = "SELECT * FROM bookcategory";
-                                                $result1 = mysqli_query($conn, $sql1);
-                                                if ($result1) {
-                                                    while ($row = mysqli_fetch_assoc($result1)) {
-                                                        if ($row['CategoryName'] == $bookrow['CategoryName']) {
-                                                            continue;
-                                                        } else { ?>
-                                                            <option value="<?php echo htmlentities($row['id']); ?>"><?php echo htmlentities($row['CategoryName']); ?></option>
-                                                            <?php } }  }?>
-                                            </select>
-                                        </div>
-                                    <!-- </div> -->
-                                    <!-- <div class="col-md-8"> -->
-                                        <div class="form-group">
-                                        <label> Author<span style="color:red;">*</span></label>
-                                            <!-- <input type="text" class="form-control" value="<?php // echo htmlentities($bookrow['AuthorName']); ?>" required> -->
-                                            <select class="form-control" name="author" required>
-                                                <option value="<?php echo htmlentities($bookrow['AuthorName']); ?>"><?php echo htmlentities($bookrow['AuthorName']); ?></option>
-                                                <?php
-                                                $sql1 = "SELECT * FROM bookauthor";
-                                                $result1 = mysqli_query($conn, $sql1);
-                                                if ($result1) {
-                                                    while ($row = mysqli_fetch_assoc($result1)) {
-                                                        if ($row['AuthorName'] == $bookrow['AuthorName']) {
-                                                            continue;
-                                                        } else { ?>
-                                                            <option value="<?php echo htmlentities($row['id']); ?>"><?php echo htmlentities($row['AuthorName']); ?></option>
-                                                            <?php } } } }?>
-                                            </select>
-                                        </div>
-                                        </div>
-
-
-                                       
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label> Category<span style="color:red;">*</span></label>
+                                    <select class="form-control" name="catid" required>
+                                        <option value="<?php echo htmlentities($bookrow['catid']); ?>"><?php echo htmlentities($bookrow['CategoryName']); ?></option>
+                                        <?php
+                                        $sql1 = "SELECT * FROM bookcategory";
+                                        $result1 = mysqli_query($conn, $sql1);
+                                        if ($result1) {
+                                            while ($row = mysqli_fetch_assoc($result1)) {
+                                                if ($row['id'] == $bookrow['catid']) {
+                                                    continue;
+                                                } else { ?>
+                                                    <option value="<?php echo htmlentities($row['id']); ?>"><?php echo htmlentities($row['CategoryName']); ?></option>
+                                                <?php } 
+                                            } 
+                                        } 
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label> Author<span style="color:red;">*</span></label>
+                                    <select class="form-control" name="authorid" required>
+                                        <option value="<?php echo htmlentities($bookrow['author']); ?>"><?php echo htmlentities($bookrow['AuthorName']); ?></option>
+                                        <?php
+                                        $sql1 = "SELECT * FROM bookauthor";
+                                        $result1 = mysqli_query($conn, $sql1);
+                                        if ($result1) {
+                                            while ($row = mysqli_fetch_assoc($result1)) {
+                                                if ($row['id'] == $bookrow['author']) {
+                                                    continue;
+                                                } else { ?>
+                                                    <option value="<?php echo htmlentities($row['id']); ?>"><?php echo htmlentities($row['AuthorName']); ?></option>
+                                                <?php } 
+                                            } 
+                                        } 
+                                        ?>
+                                    </select>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
