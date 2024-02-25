@@ -1,7 +1,3 @@
-<?php include 'conn.php';
-session_start()
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,10 +9,11 @@ session_start()
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="LMS1.css" type="text/css">
 </head>
+
 <body>
     <div id="background">
         <div id="top">
-            <a href="#" class="fa fa-envelope" style="text-decoration:none;  color: white;">
+        <a href="#" class="fa fa-envelope" style="text-decoration:none;  color: white;">
                 public@gmail.com
             </a>
             <a href="#" class="fa fa-phone" style="text-decoration:none; color: white;">
@@ -56,7 +53,8 @@ session_start()
             </div>
             <div id="y">
                 <div id="l">
-                <?php if (isset($_SESSION['status']) && $_SESSION['status'] != '') { ?>
+                    <!-- Login form -->
+                    <?php if (isset($_SESSION['status']) && $_SESSION['status'] != '') { ?>
                             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <strong>Hey!</strong> <?php echo $_SESSION['status']; ?>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -74,51 +72,56 @@ session_start()
                             }
                             ?>
                         </div>
+                        <!-- Login form holder -->
+
+                        
                         <div class="form_holder">
                             <form action="user_login.php" method="post">
-                                <table align="center">
-                                    <tr>
-                                        <td>Email</td>
-                                        <td><input type="text" name="email" value="<?php if (isset($_COOKIE['rem_email'])) {
-                                                                                        echo $_COOKIE['rem_email'];
-                                                                                    } ?>" required autocomplete="off">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Password</td>
-                                        <td><input type="password" name="pwd" value="<?php if (isset($_COOKIE['rem_user'])) {
-                                                                                            echo $_COOKIE['rem_pass'];
-                                                                                        } ?>" required autocomplete="off"></td>
-                                    </tr>
-
-                                    <td></td>
-                                    <!-- <td>       <input type="radio" name="choose" value="Student" id="studentRadio">       <label for="studentRadio">Student</label>              <input type="radio" name="choose" value="Admin" id="adminRadio">       <label for="adminRadio"><a href="admin_login.php">Admin</a></label>
-                                    </td> -->
-                                    </tr>
-                                    <!-- 
-                                    <tr>
-                                        <td align="right"><input type="checkbox" name="rem" <?php //if (isset($_COOKIE['rem_user'])) { echo "checked"; } ?>></td>
-                                        <td>Remember Me</td>
-                                    </tr> -->
-                                    <tr>
-                                        <td colspan="2" align="center">
-                                            <input type="submit" value="Login" name="login">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" align="center">
-                                            New Member ? <a href="user_form.php">Register Here</a>
-                                        </td>
-                                    </tr>
-                                </table>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input type="text" class="form-control" name="email" value="<?php if (isset($_COOKIE['rem_email'])) { echo $_COOKIE['rem_email']; } ?>" required autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Password</label>
+                                            <input type="password" class="form-control" name="pwd" value="<?php if (isset($_COOKIE['rem_user'])) { echo $_COOKIE['rem_pass']; } ?>" required autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-primary" value="Login" name="login">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <p class="text-center">New Member? <a href="user_form.php">Register Here</a></p>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-   <?php 
-    include 'footer.html';?>
+    </div>
+
+
+
+
+
+
+
+
+        <?php include 'footer.html'; ?>
+    </div>
 </body>
 
 </html>

@@ -18,10 +18,10 @@ require 'check_admin.php';
 
 <body>
 
-<div id="video-background">
+<!-- <div id="video-background">
     <video autoplay muted loop id="video-background">
         <source src="LB.mp4" type="video/mp4">
-      </video>
+      </video> -->
 
     <div class="datetime">
         <p class="time"></p>

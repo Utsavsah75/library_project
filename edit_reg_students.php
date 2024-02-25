@@ -32,11 +32,11 @@ if (isset($_POST['update'])) {
             <link rel="stylesheet" type="text/css" href="book_pag.css">
     </head>
     <body>
-        <div class="video-background">
+        <!-- <div class="video-background">
             <video autoplay muted loop id="video-background">
                 <source src="LB.mp4" type="video/mp4">
             </video>
-        </div>
+        </div> -->
         <!-- MENU SECTION START-->
         <?php
         include 'admin_header.php';

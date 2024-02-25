@@ -44,11 +44,11 @@ if (isset($_GET['active'])) {
     <link rel="stylesheet" type="text/css" href="book_pag.css">
 </head>
 <body>
-    <div id="video-background">
+    <!-- <div id="video-background">
         <video autoplay muted loop id="video-background">
             <source src="LB.mp4" type="video/mp4">
         </video>
-    </div>
+    </div> -->
 
     <!-- MENU SECTION START-->
     <?php include 'admin_header.php'; ?>

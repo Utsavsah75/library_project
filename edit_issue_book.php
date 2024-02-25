@@ -38,11 +38,11 @@ if (isset($_POST['return'])) {
 </head>
 
 <body>
-    <div class="video-background">
+    <!-- <div class="video-background">
         <video autoplay muted loop id="video-background">
             <source src="LB.mp4" type="video/mp4">
         </video>
-    </div>
+    </div> -->
     <!-- MENU SECTION START-->
     <?php
     include 'admin_header.php';
