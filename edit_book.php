@@ -1,0 +1,193 @@
+<?php
+error_reporting(0);
+include('conn.php');
+
+// Edit the Book.
+if (isset($_POST['submit'])) {
+    $bookid = $_GET['bookid'];
+    $isbnno = $_POST['isbnno'];
+    $catid = $_POST['catid'];
+    $author = $_POST['author'];
+    $bookprice = $_POST['bookprice'];
+    $bookimg = $_FILES['bookimg']['name'];
+    $tmp_name = $_FILES['bookimg']['tmp_name'];
+    $path = "uploads/" . $bookimg;
+    move_uploaded_file($tmp_name, $path);
+
+    $sql = "UPDATE books 
+            SET 
+                isbnno='$isbnno', 
+                catid='$catid', 
+                author='$author', 
+                bookprice='$bookprice', 
+                bookimg='$bookimg' 
+            WHERE 
+                id='$bookid'";
+
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        $_SESSION['updatemsg'] = "Book Updated Successfully";
+        header('location: manage_book.php');
+        exit(); // Exit after redirect
+    } else {
+        $_SESSION['unupdatemsg'] = "Book Not Updated";
+        header('location: manage_book.php');
+        exit(); // Exit after redirect
+    }
+}
+
+// Fetch book information for editing
+// $bookid = $_GET['bookid'];
+// $sql = "SELECT books.BookName, books.isbnno, bookcategory.CategoryName, bookauthor.AuthorName, books.bookprice, books.bookimg 
+//         FROM books 
+//         JOIN bookcategory ON bookcategory.id = books.catid 
+//         INNER JOIN bookauthor ON bookauthor.id = books.author 
+//         WHERE books.id='$bookid'";
+// $result = mysqli_query($conn, $sql);
+// if (!$result) {
+//     die("Error: " . mysqli_error($conn));
+// }
+
+// $bookrow = mysqli_fetch_array($result);
+// if (!$bookrow) {
+//     die("Error: No book found");
+// }
+// 
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book</title>
+    <link href="//cdn.datatables.net/2.0.0/css/dataTables.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="header.css">
+    <link rel="stylesheet" type="text/css" href="book_pag.css">
+</head>
+<body>
+    <div id="video-background">
+        <video autoplay muted loop id="video-background">
+            <source src="LB.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <?php
+    include 'admin_header.php';
+    ?>
+
+    <div class=" content-wrapper">
+        <div class="container">
+            <div class="row pad-botm">
+                <div class="col-md-12">
+                    <div class="header-line">
+                        <h4 style="font-weight: bold;color: #000000; display: inline;">Edit</h4>
+                        <h4 style="font-weight: bold;color: #2c7ad6; display: inline;">Book</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 col-md-offset-1">
+                    <div class="panel panel-info"style=" width: 69rem;">
+                        <div class="panel-heading">Book Info</div>
+                        <div class="panel-body">
+                            <form role="form" method="post" enctype="multipart/form-data">
+                                <?php
+                                $bookid = $_GET['bookid'];
+                                $sql = "SELECT books.BookName, books.isbnno, bookcategory.CategoryName, bookauthor.AuthorName, books.bookprice, books.bookimg 
+                                        FROM books 
+                                        JOIN bookcategory ON bookcategory.id = books.catid 
+                                        INNER JOIN bookauthor ON bookauthor.id = books.author 
+                                        WHERE books.id='$bookid'";
+                                $result = mysqli_query($conn, $sql);
+                                if ($result && mysqli_num_rows($result) > 0) {
+                                    $bookrow = mysqli_fetch_assoc($result);
+                                ?>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Book Image</label>
+                                            <img src="uploads/<?php echo htmlentities($bookrow['bookimg']); ?>" width="120">
+                                            <a href="change_image.php?bookid=<?php echo htmlentities($bookid); ?>">Change Image</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label>Book Name:</label>
+                                            <input type="text" class="form-control" value="<?php echo htmlentities($bookrow['BookName']); ?>" required>
+                                        </div>
+                                    <!-- </div> -->
+                                    <!-- <div class="col-md-8"> -->
+                                    <div class="form-group">
+                                        <label> Category<span style="color:red;">*</span></label>
+                                            <!-- <input type="text" class="form-control" value="<?php // echo htmlentities($bookrow['AuthorName']); ?>" required> -->
+                                            <select class="form-control" name="author" required>
+                                                <option value="<?php echo htmlentities($bookrow['CategoryName']); ?>"><?php echo htmlentities($bookrow['CategoryName']); ?></option>
+                                                <?php
+                                                $sql1 = "SELECT * FROM bookcategory";
+                                                $result1 = mysqli_query($conn, $sql1);
+                                                if ($result1) {
+                                                    while ($row = mysqli_fetch_assoc($result1)) {
+                                                        if ($row['CategoryName'] == $bookrow['CategoryName']) {
+                                                            continue;
+                                                        } else { ?>
+                                                            <option value="<?php echo htmlentities($row['id']); ?>"><?php echo htmlentities($row['CategoryName']); ?></option>
+                                                            <?php } }  }?>
+                                            </select>
+                                        </div>
+                                    <!-- </div> -->
+                                    <!-- <div class="col-md-8"> -->
+                                        <div class="form-group">
+                                        <label> Author<span style="color:red;">*</span></label>
+                                            <!-- <input type="text" class="form-control" value="<?php // echo htmlentities($bookrow['AuthorName']); ?>" required> -->
+                                            <select class="form-control" name="author" required>
+                                                <option value="<?php echo htmlentities($bookrow['AuthorName']); ?>"><?php echo htmlentities($bookrow['AuthorName']); ?></option>
+                                                <?php
+                                                $sql1 = "SELECT * FROM bookauthor";
+                                                $result1 = mysqli_query($conn, $sql1);
+                                                if ($result1) {
+                                                    while ($row = mysqli_fetch_assoc($result1)) {
+                                                        if ($row['AuthorName'] == $bookrow['AuthorName']) {
+                                                            continue;
+                                                        } else { ?>
+                                                            <option value="<?php echo htmlentities($row['id']); ?>"><?php echo htmlentities($row['AuthorName']); ?></option>
+                                                            <?php } } } }?>
+                                            </select>
+                                        </div>
+                                        </div>
+
+
+                                       
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>ISBN Number</label>
+                                            <input type="text" class="form-control" name="isbnno" value="<?php echo htmlentities($bookrow['isbnno']); ?>" readonly>
+                                            <p class="help-block">An ISBN is an International Standard Book Number.ISBN Must be unique</p>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Price in USD</label>
+                                            <input type="text" class="form-control" name="bookprice" value="<?php echo htmlentities($bookrow['bookprice']); ?>" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="submit" name="submit" class="btn btn-info">Update</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
+</body>
+</html>
