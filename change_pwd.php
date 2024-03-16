@@ -32,7 +32,7 @@ if (isset($_POST['change'])) {
                 echo "<script>alert (\"Password Update Failed. Error: \" . mysqli_error(\$conn));</script>";
             }
         } else {
-            echo "<script>alert(\"Incorrect Password\");</script>";
+            echo "<script>alert(\"Old Password are incorrect\");</script>";
         }
     } else {
         echo "<script>alert(\"New password and confirm password do not match\");</script>";
@@ -79,7 +79,7 @@ if (isset($_POST['change'])) {
         }
     </style>
 </head>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     function valid() {
         if (document.chngpwd.newpassword.value != document.chngpwd.confirmpassword.value) {
             alert("New Password and Confirm Password Field do not match  !!");
@@ -87,6 +87,21 @@ if (isset($_POST['change'])) {
             return false;
         }
         return true;
+    }
+</script> -->
+<script type="text/javascript">
+    function checkpass() {
+        var password = $("#newpassword").val();
+        var confirmpassword = $("#confirmpassword").val();
+        if (password != confirmpassword) {
+            $("#password-avability-status").html("<span style='color: red;'>*Password and Confirm Password do not match.</span>");
+            $("#change").prop("disabled", true);
+        } else {
+            // Clear warning message
+            $("#password-avability-status").html("");
+            // Enable the button
+            $("#change").prop("disabled", false);
+        }
     }
 </script>
 
@@ -135,16 +150,17 @@ if (isset($_POST['change'])) {
                             </div>
 
                             <div class="form-group">
-                                <label>Enter Password</label>
-                                <input class="form-control" type="password" name="newpassword" autocomplete="off" required />
-                            </div>
+    <label>Enter Password</label>
+    <input class="form-control" type="password" id="newpassword" name="newpassword" autocomplete="off" required />
+</div>
 
-                            <div class="form-group">
-                                <label>Confirm Password </label>
-                                <input class="form-control" type="password" name="confirmpassword" autocomplete="off" required />
-                            </div>
+<div class="form-group">
+    <label>Confirm Password</label>
+    <span id="password-avability-status" style="font-size:12px;"></span>
+    <input class="form-control" type="password" id="confirmpassword" name="confirmpassword" onblur="checkpass()" autocomplete="off" required />
+</div>
 
-                            <button type="submit" name="change" class="btn btn-info">Chnage </button>
+                            <button type="submit" name="change" id="change" class="btn btn-info">Chnage </button>
                         </form>
                     </div>
                 </div>

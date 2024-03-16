@@ -9,7 +9,8 @@ require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 
-function sendemail_verify($std_name, $email, $verification_code) {
+function sendemail_verify($std_name, $email, $verification_code)
+{
 
     if (isset($_POST["add"])) {
         $mail = new PHPMailer(true);
@@ -94,19 +95,23 @@ if (isset($_POST['add'])) {
     $phone = mysqli_real_escape_string($conn, $_POST['phone']);
     $gender = mysqli_real_escape_string($conn, $_POST['gender']);
     $email  = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']); // Hash the password
+    $dob  = mysqli_real_escape_string($conn, date('y-m-d', strtotime($_POST['dob'])));
+    
+    $password = mysqli_real_escape_string($conn, $_POST['password']); // Get the password
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // Hash the password
+    $hashedPassword = substr($hashedPassword, 0, 7); // store first 7 characters only
+    
     $photo = mysqli_real_escape_string($conn, $_POST['photo']);
-
     $alreadyExist = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM students WHERE email = '{$email}'"));
 
     if ($alreadyExist) {
-        $_SESSION['msg'] = "Account is already exist form this email: <b>$email</b>";
+        $_SESSION['msg'] = "Account is already exist form this email:$email";
         header("location: user_form.php");
         exit(); // Stop further execution
     }
     $verification_code = bin2hex(random_bytes(4));
-    $sql = "INSERT INTO `students`( `studentcode`,`std_name`, `address`, `phone`, `gender`, `photo`, `email`, `password`,`verification_code`, `verified`) 
-    VALUES ('$studentcode','$fullname','$address','$phone','$gender','$photo','$email','$password','$verification_code', 0)";
+    $sql = "INSERT INTO `students`( `studentcode`,`std_name`, `address`, `phone`, `gender`, `photo`, `email`, `dob`, `password`,`verification_code`, `verified`) 
+    VALUES ('$studentcode','$fullname','$address','$phone','$gender','$photo','$email','$dob','$hashedPassword','$verification_code', 0)";
     $data = mysqli_query($conn, $sql);
 
     if ($data) {
@@ -129,7 +134,7 @@ if (isset($_POST['add'])) {
     <link rel="stylesheet" type="text/css" href="header.css">
     <link rel="stylesheet" type="text/css" href="book_pag.css">
     <!-- <link rel="stylesheet" type="text/css" href="book_pag1.css"> -->
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         function valid() {
             if (document.signup.password.value != document.signup.confirmpassword.value) {
                 alert("Password and Confirm Password Field do not match  !!");
@@ -138,7 +143,7 @@ if (isset($_POST['add'])) {
             }
             return true;
         }
-    </script>
+    </script> -->
     <script type="text/javascript">
         function checkemail() {
             $("#loaderIcon").show();
@@ -169,6 +174,67 @@ if (isset($_POST['add'])) {
             });
         }
     </script>
+<script type="text/javascript">
+    function checkFullName() {
+        var fullname = $("#fullname").val();
+        // Check if fullname contains any numbers or special characters
+        if (/[^A-Za-z\s]/.test(fullname)) {
+            // Display message if numbers or special characters are found
+            $("#name-availability-status").html("<span style='color: red;'>*Please enter a valid full name without numbers or special characters.</span>");
+            // Disable the submit button
+            $("#add").prop("disabled", true);
+        } else {
+            // Count the number of spaces
+            var spaceCount = (fullname.match(/ /g) || []).length;
+            if (spaceCount <= 5) { // Allow up to 5 spaces
+                // If the number of spaces is less than or equal to 5, proceed with AJAX request
+                $("#loaderIcon").show();
+                $.ajax({
+                    url: "check_availability.php",
+                    type: "POST",
+                    data: { fullname: fullname },
+                    success: function(data) {
+                        $("#name-availability-status").html(data);
+                        $("#loaderIcon").hide();
+                        // Enable the submit button
+                        $("#add").prop("disabled", false);
+                    },
+                    error: function() {
+                        // Handle error if needed
+                    }
+                });
+                // Clear warning message
+                $("#name-availability-status").html("");
+            } else {
+                // Display message if more than 5 spaces are found
+                $("#name-availability-status").html("<span style='color: red;'>*Please enter a valid full name with no more  spaces.</span>");
+                // Disable the submit button
+                $("#add").prop("disabled", true);
+            }
+        }
+    }
+</script>
+
+
+    <script type="text/javascript">
+        function checkpass() {
+            var password = $("#password").val();
+            var confirmpassword = $("#confirmpassword").val();
+            if (password != confirmpassword) {
+                $("#password-avability-status").html("<span style='color: red;'>*Password and Confirm Password do not match.</span>");
+                $("#add").prop("disabled", true);
+            } else {
+                // Clear warning message
+                $("#password-avability-status").html("");
+                // Enable the button
+                $("#add").prop("disabled", false);
+            }
+        }
+    </script>
+
+
+
+
 
 </head>
 
@@ -199,10 +265,10 @@ if (isset($_POST['add'])) {
                 </div>
             </div>
             <div class="row">
-                    <?php 
-                    // Display success message for blocking or activating student
-                    if (isset($_SESSION['msg']) && $_SESSION['msg'] != "") {
-                    ?>
+                <?php
+                // Display success message for blocking or activating student
+                if (isset($_SESSION['msg']) && $_SESSION['msg'] != "") {
+                ?>
                     <div class="col-md-6">
                         <div class="alert alert-success">
                             <strong>Success :</strong>
@@ -210,11 +276,11 @@ if (isset($_POST['add'])) {
                             <?php echo htmlentities($_SESSION['msg'] = ""); ?>
                         </div>
                     </div>
-                    <?php } ?>
-                    <?php
-                    // Display error message if any
-                    if (isset($_SESSION['error']) && $_SESSION['error'] != "") {
-                    ?>
+                <?php } ?>
+                <?php
+                // Display error message if any
+                if (isset($_SESSION['error']) && $_SESSION['error'] != "") {
+                ?>
                     <div class="col-md-6">
                         <div class="alert alert-danger">
                             <strong>Error :</strong>
@@ -222,8 +288,8 @@ if (isset($_POST['add'])) {
                             <?php echo htmlentities($_SESSION['error'] = ""); ?>
                         </div>
                     </div>
-                    <?php } ?>
-                    <div class="col-md-12">
+                <?php } ?>
+                <div class="col-md-12">
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-head">
@@ -238,10 +304,17 @@ if (isset($_POST['add'])) {
 
                                         <form name="signup" method="post" onSubmit="return valid();" style="border-color: aqua;">
                                             <div class="form-group">
+
                                                 <label>Enter Full Name</label>
-                                                <input class="form-control" type="text" name="fullname" required="required" autocomplete="off" />
+                                                <span id="name-availability-status" style="font-size: 12px;"></span>
+                                                <input class="form-control" type="text" id="fullname" name="fullname" autocomplete="off" onblur="checkFullName()" required />
                                             </div>
 
+                                            <div class="form-group" >
+                                                <label>Enter Date of Birth</label>
+                                                <input class="form-control" type="date" name="dob" required="required" autocomplete="off" />
+                                            </div>
+                                            
                                             <div class="form-group">
                                                 <label>Enter Address</label>
                                                 <input class="form-control" type="text" name="address" required="required" autocomplete="off" />
@@ -277,21 +350,25 @@ if (isset($_POST['add'])) {
                                                 <input class="form-control" type="email" name="email" id="email" onBlur="checkemail()" autocomplete="off" required />
                                             </div>
 
+                                            </div>
+
                                             <div class="form-group">
                                                 <label>Enter Password</label>
-                                                <input class="form-control" type="password" name="password" autocomplete="off" required />
+                                                <input class="form-control" type="password" id="password" name="password" onblur="checkpass()" autocomplete="off" required />
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Confirm Password </label>
-                                                <input class="form-control" type="password" name="confirmpassword" autocomplete="off" required />
+                                                <span id="password-avability-status" style="font-size:12px;"></span>
+                                                <input class="form-control" type="password" id="confirmpassword" name="confirmpassword" onBlur="checkpass()" autocomplete="off" required />
                                             </div>
+
 
                                             <div class="form-group">
                                                 <label>User Picture</label>
                                                 <input class="form-control" type="file" name="photo" autocomplete="off" required="required" />
                                             </div>
-                                            <button type="submit" name="add" id="add" class="btn btn-info" style="margin-left: -16rem; margin-top:-54px;">Submit </button>
+                                            <button type="submit" name="add" id="add" class="btn btn-info" style="margin-left: -3rem;">Submit </button>
 
                                         </form>
                                     </div>
@@ -306,14 +383,15 @@ if (isset($_POST['add'])) {
     </div>
 
     <!-- CONTENT-WRAPPER SECTION END-->
-    <?php 
-    // include 'footer.html';?>
-                        
-                        <script src="assets/js/jquery-1.10.2.js"></script>
-                        <!-- BOOTSTRAP SCRIPTS  -->
-                        <script src="assets/js/bootstrap.js"></script>
-                        <!-- CUSTOM SCRIPTS  -->
-                        <script src="assets/js/custom.js"></script>
-            </body>
+    <?php
+    // include 'footer.html';
+    ?>
+
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS  -->
+    <script src="assets/js/bootstrap.js"></script>
+    <!-- CUSTOM SCRIPTS  -->
+    <script src="assets/js/custom.js"></script>
+</body>
 
 </html>

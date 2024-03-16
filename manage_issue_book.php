@@ -118,7 +118,7 @@ include('conn.php');
                                                 <?php echo $returndate == "" ? "Not Return Yet" : $returndate; ?>
                                             <td>
                                                 <a href="edit_issue_book.php?issid=<?= $sn ?>" <button class="btn btn-primary" style='height:34px; margin-top:-1px;'><i class="fa fa-edit"></i>Edit</a>
-                                                <button type="submit" name="return" id="submit" class="btn btn-info" style='height:34px; margin-top:-1px;'>Return </button>
+                                                <!-- <button type="submit" name="return" id="submit" class="btn btn-info" style='height:34px; margin-top:-1px;'>Return </button> -->
                                                 </a>
                                             </td>
                                         </tr>

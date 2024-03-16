@@ -55,8 +55,8 @@ if (isset($_POST['create'])) {
             <div class="row pad-botm">
                 <div class="col-md-12">
                     <div class="header-line">
-                        <h4 style="   font-weight: bold;color: #000000; display: inline;">change</h4>
-                        <h4 style="   font-weight: bold;color: #2c7ad6; display: inline;">password</h4>
+                        <h4 style="   font-weight: bold;color: #000000; display: inline;">Add</h4>
+                        <h4 style="   font-weight: bold;color: #2c7ad6; display: inline;">Category</h4>
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@ if (isset($_POST['create'])) {
                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3"">
                 <div class=" panel panel-info">
                     <div class="panel-heading">
-                    Change Password
+                    Add Category info
                     </div>
                     <div class="panel-body">
                         <form role="form" method="post">

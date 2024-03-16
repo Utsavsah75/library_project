@@ -61,7 +61,7 @@
       </li>
       </ul>
 
-      <li class="nav-item dropdown"><a href="reg-students.php">Reg Students</a></li>
+      <li class="nav-item dropdown"><a href="reg-students.php">Add Students</a></li>
 
       <li class="nav-item dropdown"><a href="change-password.php">Change Password</a></li>
 

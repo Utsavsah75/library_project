@@ -19,21 +19,22 @@ if (!empty($_POST["isbnno"])) {
 
 
 
-if (!empty($_POST["price"])) {
-    $price = $_POST["price"];
-    // Check if the input is a valid number with at most one dot
-    if (preg_match('/^[0-9]+(\.[0-9]+)?$/', $price)) {
-        // Valid price entered
-        echo "<script>document.getElementById('add').disabled = false;</script>";
-        echo "<script>document.getElementById('add').style.backgroundColor = ''; </script>";
-    } else {
-        // Invalid price entered
-        echo "<span class='status-not-available' style='color:red'> * Price field should contain only numbers and at most one dot .</span>";
-        // Disable the add button if the condition is not met.
-        echo "<script>document.getElementById('add').disabled = true;</script>";
-        echo "<script>document.getElementById('add').style.backgroundColor = 'grey';</script>";
-    }
-}
+// Check if the price is not empty and contains only numbers and at most one dot
+// if (!empty($_POST["price"])) {
+//     $price = $_POST["price"];
+//     if (preg_match('/^[0-9]+(\.[0-9]+)?$/', $price)) {
+//         // Valid price entered
+//         echo "<script>document.getElementById('add').disabled = false;</script>";
+//         echo "<script>document.getElementById('add').style.backgroundColor = ''; </script>";
+//     } else {
+//         // Invalid price entered
+//         echo "<span class='status-not-available' style='color:red'> * Price field should contain only numbers and at most one dot .</span>";
+//         // Disable the add button if the condition is not met.
+//         echo "<script>document.getElementById('add').disabled = true;</script>";
+//         echo "<script>document.getElementById('add').style.backgroundColor = 'grey';</script>";
+//     }
+// }
+
 
 if (!empty($_POST["bookname"])) {
     $bookname = $_POST["bookname"];
@@ -89,9 +90,15 @@ if (!empty($_POST["mobile"])) {
     $row = mysqli_fetch_row($result);
     $user_count = $row[0];
     
-    if ($user_count > 0 || !preg_match('/^[0-9]*$/', $mobile)) {
-        // Email or mobile is already used or invalid.
-        echo "<span class='status-not-available' style='color:red'> * Mobile already used or invalid.</span>";
+    if ($user_count > 0) {
+        // Email or mobile is already used.
+        echo "<span class='status-not-available' style='color:red'> * Mobile already in use.</span>";
+        // Disable the add button.
+        echo "<script>document.getElementById('add').disabled = true;</script>";
+        echo "<script>document.getElementById('add').style.backgroundColor = 'grey';</script>";
+    } elseif (!preg_match('/^[0-9]*$/', $mobile)) {
+        // Mobile number contains letters.
+        echo "<span class='status-not-available' style='color:red'> * Mobile number should not contain letters.</span>";
         // Disable the add button.
         echo "<script>document.getElementById('add').disabled = true;</script>";
         echo "<script>document.getElementById('add').style.backgroundColor = 'grey';</script>";
@@ -100,6 +107,9 @@ if (!empty($_POST["mobile"])) {
         echo "<script>document.getElementById('add').disabled = false;</script>";
         echo "<script>document.getElementById('add').style.backgroundColor = ''; </script>";
     }
+    
+
+
 }
 
 
@@ -125,3 +135,21 @@ if (!empty($_POST["studentid"])) {
         echo "<script>document.getElementById('add').style.backgroundColor = 'grey';</script>";
     }
 }
+
+// check password and confirm password.
+if (isset($_POST['password']) && isset($_POST['cpassword'])) {
+    $password = $_POST['password'];
+    $cpassword = $_POST['cpassword'];
+    if ($password != $cpassword) {
+        echo "<span class='status-not-available' style='color:red'> * Passwords do not match.</span>";
+        // Disable the add button.
+        echo "<script>document.getElementById('add').disabled = true;</script>";
+        echo "<script>document.getElementById('add').style.backgroundColor = 'grey';</script>";
+    } else {
+        echo "<span class='status-available' style='color:green'> Passwords match.</span>";
+        // Enable the add button.
+        echo "<script>document.getElementById('add').disabled = false;</script>";
+        echo "<script>document.getElementById('add').style.backgroundColor = ''; </script>";
+    }
+}
+?>

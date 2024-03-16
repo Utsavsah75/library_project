@@ -97,20 +97,25 @@ if (isset($_POST['add'])) {
     </script>
 
     <script type="text/javascript">
-        function bookprice() {
-            $("#loaderIcon").show();
-            jQuery.ajax({
-                url: "check_avability.php",
-                data: 'price=' + $("#price").val(),
-                type: "POST",
-                success: function(data) {
-                    $("#price-avability-status").html(data);
-                    $("#loaderIcon").hide();
-                },
-                error: function() {}
-            });
+        function checkPrice() {
+            var price = $("#price").val();
+            // Check if the price contains only numbers and at most one dot
+            if (/^\d*\.?\d*$/.test(price)) {
+                // Valid price entered
+                $("#price-avability-status").html("");
+                $("#add").prop("disabled", false);
+                $("#add").css("background-color", "");
+            } else {
+                // Invalid price entered
+                $("#price-avability-status").html("<span style='color:red'>* Price field should contain only numbers and at most one dot.</span>");
+                // Disable the add button
+                $("#add").prop("disabled", true);
+                $("#add").css("background-color", "grey");
+            }
         }
     </script>
+
+
 
 </head>
 
@@ -214,9 +219,9 @@ if (isset($_POST['add'])) {
                                     <div class="form-group">
                                         <label>Price</label>
                                         <span id="price-avability-status" style="font-size:12px;"></span>
-                                        <input class="form-control" type="text" name="price" id="price" autocomplete="off" onblur="checkprice()" required="required" />
-
+                                        <input class="form-control" type="text" name="price" id="price" autocomplete="off" onblur="checkPrice()" required="required" />
                                     </div>
+
                                 </div>
 
                                 <div class="col-md-6">

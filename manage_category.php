@@ -22,6 +22,7 @@ if (isset($_GET['action']) && isset($_GET['catid'])) {
     header("Location: manage_category.php");
     exit;
 }
+
 // Delete the category
 if (isset($_GET['delid'])) {
     $delid = $_GET['delid'];
@@ -30,13 +31,15 @@ if (isset($_GET['delid'])) {
     if ($res) {
         $_SESSION['delmsg'] = "Category deleted successfully at Number $delid";
         header('location: manage_category.php');
+        exit;
     } else {
         $_SESSION['delmsg'] = "Something went wrong. Please try again";
         header('location: manage_category.php');
+        exit;
     }
 }
-
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -126,6 +129,18 @@ if (isset($_GET['delid'])) {
                         </div>
                     </div>
                 <?php } ?>
+                <!-- //update category successfully msg. -->
+                <?php //if (isset($_SESSION['updatcatemsg']) && $_SESSION['updatcatemsg'] != "") { ?>
+                    <!-- <div class="col-md-6">
+                        <div class="alert alert-success">
+                            <strong>Success :</strong>
+                            <?php echo htmlentities($_SESSION['updatcatemsg']); ?>
+                            <?php echo htmlentities($_SESSION['updatcatemsg'] = ""); ?>
+                        </div>
+                    </div> -->
+                <?php //} ?>
+
+
 
 
 

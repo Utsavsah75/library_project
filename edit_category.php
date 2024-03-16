@@ -1,5 +1,5 @@
 <?php
-// session_start(); // Add this line to start the session
+session_start(); // Add this line to start the session
 
 include('conn.php');
 require('check_admin.php');
@@ -8,29 +8,34 @@ require('check_admin.php');
 if (isset($_POST['update'])) {
     $category = $_POST['category'];
     $status = $_POST['status'];
+    $catid = $_POST['catid'];
 
-    if (isset($_POST['catid'])) {
-        $catid = $_POST['catid'];
+    $cateupdate = "UPDATE `bookcategory` SET `CategoryName`='$category', `Status`='$status' WHERE id = $catid";
+    $updatecategory = mysqli_query($conn, $cateupdate);
 
-        $cateupdate = "UPDATE `bookcategory` SET `CategoryName`='$category', `Status`='$status' WHERE id = $catid";
-        $updatecategory = mysqli_query($conn, $cateupdate);
-
-        if ($updatecategory) {
-            //display the message active when click on active at header manage_category.php
-            if ($status == 0) {
-                $_SESSION['inactivemsg'] = "Category inactive successfully at Number $catid";
-                header('location: manage_category.php');
-            }
-            //display the message inactive msg when click on inactive status at header manage_category.php
-
-            else {
-                $_SESSION['activemsg'] = "Category active successfully at Number $catid";
-                header('location: manage_category.php');
-            }
+    if ($updatecategory) {
+        if ($status == 0) {
+            // Display inactive message
+            $_SESSION['inactivemsg'] = "Category with ID $catid deactivated successfully.";
+        } else {
+            // Display active message
+            $_SESSION['activemsg'] = "Category with ID $catid activated successfully.";
         }
+
+        // Display update success message
+        $_SESSION['updatcatemsg'] = "Category with ID $catid updated successfully.";
+    } else {
+        // Display update failure message
+        $_SESSION['updatcatemsg'] = "Category update failed.";
     }
+
+    // Redirect to manage_category.php
+    header('location: manage_category.php');
+    exit(); // Exit after redirect
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html>

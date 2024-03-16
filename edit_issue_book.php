@@ -124,8 +124,8 @@ if (isset($_POST['return'])) {
                             <?php
                             if (isset($_GET['issid'])) {
                                 $studentcode = $_GET['issid'];
-                                // $sql = "SELECT * FROM `books` WHERE `id`='$studentcode'";
-                                $sql = "SELECT * FROM `issue_book` WHERE `id`='$studentcode'";
+                                $sql = "SELECT * FROM `books` WHERE `id`='$studentcode'";
+                                // $sql = "SELECT * FROM `issue_book` WHERE `id`='$studentcode'";
 
                                 $result = mysqli_query($conn, $sql);
 
@@ -147,22 +147,38 @@ if (isset($_POST['return'])) {
                                                 <label>Book Name :</label>
                                                 <?php echo htmlentities($books['BookName']); ?>
                                             </div>
+                                        <?php
+                                        }
+                                    }?>
+
+                                        <?php
+                            if (isset($_GET['issid'])) {
+                                $studentcode = $_GET['issid'];
+                                // $sql = "SELECT * FROM `books` WHERE `id`='$studentcode'";
+                                $sql = "SELECT * FROM `issue_book` WHERE `id`='$studentcode'";
+
+                                $result = mysqli_query($conn, $sql);
+
+                                if (mysqli_num_rows($result) > 0) {
+                                    $issbooks = mysqli_fetch_array($result);
+                            ?>
+
                                             <div class="form-group">
                                                 <label>Book Issued Date :</label>
                                                 <?php 
-                                                echo htmlentities($books['issue_date']);
-                                                //  echo htmlentities($books['regdate']); ?>
+                                                echo htmlentities($issbooks['issue_date']);
+                                                //  echo htmlentities($issbooks['regdate']); ?>
                                             </div>
                                             <div class="form-group">
                                                 <label>ISBN :</label>
                                                 <?php 
-                                                echo htmlentities($books['book_id']); 
-                                                //  echo htmlentities($books['isbnno']); ?>
+                                                echo htmlentities($issbooks['book_id']); 
+                                                //  echo htmlentities($issbooks['isbnno']); ?>
                                             </div>
                                             <div class="form-group">
                                                 <label>Book Returned Date :</label>
-                                            <?php if (isset($books['returndate']) && !empty($books['returndate'])) {
-                                                echo htmlentities($books['returndate']);
+                                            <?php if (isset($issbooks['returndate']) && !empty($issbooks['returndate'])) {
+                                                echo htmlentities($issbooks['returndate']);
                                             } else {
                                                 echo "Not Returned Yet";
                                             }
@@ -174,11 +190,11 @@ if (isset($_POST['return'])) {
                                         </div>
                                         <form class="form-group">
                                             <label>Fine :</label>
-                                            <input class="form-control" type="number" name="fine" id="fine" required <?php echo isset($books['fine']) && $books['fine'] !== "" ? 'disabled' : ''; ?> value="<?php echo isset($books['fine']) ? htmlentities($books['fine']) : ''; ?>">
+                                            <input class="form-control" type="number" name="fine" id="fine" required <?php echo isset($issbooks['fine']) && $issbooks['fine'] !== "" ? 'disabled' : ''; ?> value="<?php echo isset($issbooks['fine']) ? htmlentities($issbooks['fine']) : ''; ?>">
 
                                             <?php
                                             // Determine the disabled status of the return button
-                                            $buttonDisabled = isset($books['fine']) && $books['fine'] === "" ? 'disabled' : '';
+                                            $buttonDisabled = isset($issbooks['fine']) && $issbooks['fine'] === "" ? 'disabled' : '';
                                             ?>
 
                                             <button type="submit" name="return" id="submit" class="btn btn-info" <?php echo $buttonDisabled; ?>>Return Book</button>

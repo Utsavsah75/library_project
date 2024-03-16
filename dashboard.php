@@ -21,15 +21,21 @@ require 'check_admin.php';
 
 <body>
 
-    <div id="video-background">
+    <!-- <div id="video-background">
         <video autoplay muted loop id="video-background">
             <source src="LB.mp4" type="video/mp4">
         </video>
-    </div>
+    </div> -->
     <?php
     include 'admin_header.php';
     ?>
-
+     <div class="header-line"><div="logo" >
+        <img src="logo1.png" alt="logo" style="width: 60px; height: 40px; margin-left: 35px;">
+    
+                        <h4 style="font-weight: bold; color: #000000; display: inline; margin-left: -8px;">Admin</h4>
+                        <h4 style="font-weight: bold; color: #2c7ad6; display: inline;">Dashboard</h4>
+                    </div>
+ </div>
     <!---*****************Total Book --1--**********************-->
     <section class="booklist">
         <div class="row">
@@ -154,14 +160,5 @@ require 'check_admin.php';
 
                 </div>
             </div>
-
-            <!-- <script type="text/javascript">
-        $(document).ready(function() {
-            $('table').DataTable({
-                columnDefs: [{
-                    targets: [0, 1, 2],
-                    className: 'mdl-data-table__cell--non-numeric'
-                }]
-            });
-        });
-    </script> -->
+        </div>  
+     

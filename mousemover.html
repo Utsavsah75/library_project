@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            cursor: none;
+            overflow: hidden;
+        }
+        .fire-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 10%;
+            height: 10%;
+            pointer-events: none;
+        }
+        .fire {
+            position: absolute;
+            width: 20px;
+            height: 10px;
+            background-color: #f00;
+            border-radius: 500%;
+            pointer-events: none;
+            animation: fire 1s infinite;
+        }
+        @keyframes fire {
+            to {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener('mousemove', function(event) {
+            const x = event.clientX;
+            const y = event.clientY;
+
+            const fire = document.createElement('div');
+            fire.className = 'fire';
+            fire.style.left = x + 'px'; 
+            fire.style.top = y + 'px';
+            document.body.appendChild(fire);
+
+            setTimeout(function() {
+                fire.remove();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

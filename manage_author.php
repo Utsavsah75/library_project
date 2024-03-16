@@ -9,7 +9,7 @@ if (isset($_GET['delaut'])) {
     $delautsql = "DELETE FROM `bookauthor` WHERE id = $delaut";
     $delautres = mysqli_query($conn, $delautsql);
     if ($delautres) {
-        $_SESSION['delaut'] = "Author deleted successfully at Number $delaut";
+        $_SESSION['delaut'] = "Author deleted successfully at Number $delaut ";
     } else {
         $_SESSION['delaut'] = "Author not deleted";
     }

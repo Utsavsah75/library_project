@@ -110,7 +110,7 @@
           </div>
       </li> 
       <li class="nav-item">
-                <a class="nav-link" href="reg_students.php">Reg Students</a>
+                <a class="nav-link" href="reg_students.php">Add Students</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="change_pwd.php">Change Password</a>
