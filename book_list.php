@@ -17,48 +17,30 @@ include 'user_header.php';
                 <div class="row">
                     <div class="col-md-12">
                         <!-- Advanced Tables -->
-                            <div class="panel-head">
-                                Issued Books
-                            </div>
-                            <div class="panel-body">
+                        <div class="panel-head">
+                            Issued Books
+                        </div>
+                        <div class="panel-body">
 
                             <?php
-                                        $sql = "SELECT `BookName`,`isbnno`, `CategoryName`, `AuthorName`,`bookprice`,`bookimg`from books join bookcategory on bookcategory.id=books.catid inner join bookauthor on bookauthor.id=books.author";
-                                        $result = mysqli_query($conn, $sql);
-                                        $sn = 1;
-                                        while ($row = mysqli_fetch_array($result)) 
+                            $sql = "SELECT `BookName`,`isbnno`, `CategoryName`, `AuthorName`,`bookprice`,`bookimg`from books join bookcategory on bookcategory.id=books.catid inner join bookauthor on bookauthor.id=books.author";
+                            $result = mysqli_query($conn, $sql);
+                            $sn = 1;
+                            while ($row = mysqli_fetch_array($result)) { ?>
+                            <div class="col-md-3" style="float:left; height:300px;">
 
-                                                                    {?>
-                                                                <div class="col-md-3" style="float:left; height:300px;">   
-
-                                                                <img src="uploads/<?php echo isset($row['bookimg']) ? htmlentities($row['bookimg']) : ''; ?>" width="120"><br />
-                                                                    <b>Book Name. :</b><?php echo isset($row['BookName']) ? htmlentities($row['BookName']) : ''; ?></b><br />
-                                                                    <b>ISBN No. :</b> <?php echo isset($row['isbnno']) ? htmlentities($row['isbnno']) : ''; ?><br />
-                                                                    <b>Category :</b> <?php echo isset($row['CategoryName']) ? htmlentities($row['CategoryName']) : ''; ?><br />
-
-
-
-
-                                                                    <?php if(is_object($row) && $row->issued==1){?>
-                                                                        <p style="color:red;">Book Already issued</p>
-                                                                    <?php } ?>
-                                                            </div>
-                                                            <?php } ?>
+                                <img src="uploads/<?php echo isset($row['bookimg']) ? htmlentities($row['bookimg']) : ''; ?>"
+                                    width="120"><br />
+                                <b>Book Name.
+                                    :</b><?php echo isset($row['BookName']) ? htmlentities($row['BookName']) : ''; ?></b><br />
+                                <b>ISBN No. :</b>
+                                <?php echo isset($row['isbnno']) ? htmlentities($row['isbnno']) : ''; ?><br />
+                                <b>Category :</b>
+                                <?php echo isset($row['CategoryName']) ? htmlentities($row['CategoryName']) : ''; ?><br />
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                            
-
-
+                                <?php if (is_object($row) && $row->issued == 1) { ?>
+                                <p style="color:red;">Book Already issued</p>
+                                <?php } ?>
+                            </div>
+                            <?php } ?>

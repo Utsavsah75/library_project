@@ -9,42 +9,42 @@ require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 
-//send email birthday wish of each student.
 
-// date_default_timezone_set('Nepal/india');  //nepal time zone
-date_default_timezone_set('Asia/Kolkata');
-$today = date("Y-m-d");
-$sql = "SELECT * FROM students WHERE DATE_FORMAT(dob, '%m-%d') = DATE_FORMAT('$today' , '%m-%d')"; // get the students whose birthday is today.
-$sql1 = mysqli_query($conn, $sql);
-while ($row = mysqli_fetch_array($sql1)) {
-    $std_name = $row['std_name'];
-    $email = $row['email'];
+
+
+function sendemail_verify($std_name ,$email, $std_code)
+{
     $mail = new PHPMailer(true);
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = "publiclibrary48@gmail.com";
-    $mail->Password = "gjkx qtup hmph fozg";  // enter your own app password here
-    $mail->Port = 587;
-    $mail->setFrom("publiclibrary48@gmail.com", "Public Library System");
-    $mail->addAddress($email, $std_name);
-    $body = "Dear " . $std_name . ",<br>Wishing you a very Happy Birthday. May this year bring you joy, success and happiness.<br>Thank you.";
-    $mail->isHTML(true);
-    $subject = "Happy Birthday";
+    $mail->Username = "utsavsah75@gmail.com";
+    $mail->Password = "enbi rdmg shjm lkly";  // enter your own app password
+    $mail->SMTPSecure = 'ssl';
+    $mail->Port = 465;
 
-    $mail->Subject = $subject;
-    $mail->Body = $body;
+    
+    if (isset($_POST['submit'])) {
+        $mail->setFrom('utsavsah75@gmail.com');   // your own email, same as the username
+        $mail->addAddress($_POST['email']);
 
-    if (!$mail->send()) {
-        echo "Mailer Error: " . $mail->ErrorInfo;
+        $mail->isHTML(true);
+        $mail->Subject = "Email Verification Public Library System";
+
+        $mail->Body = "Dear $std_name, Your account has been successfully created. You can now login to your account. Thank you."; 
+        $mail->send();
+
+        $_SESSION['status'] = "email sent successfully";
+        $_SESSION['email'] = $_POST['email'];
     } else {
-        echo "Message has been sent";
+        $_SESSION['status'] = "Please try again";
     }
 }
 
+
 // Increment student code
 $count_my_page = "studentcode.txt";
-$hits = (int) file_get_contents($count_my_page);
+$hits = (int)file_get_contents($count_my_page);
 $hits++;
 file_put_contents($count_my_page, $hits);
 
@@ -54,24 +54,43 @@ $studentcode = "SID" . str_pad($hits, 3, '0', STR_PAD_LEFT);
 // Register the user to the database.
 if (isset($_POST['add'])) {
     $fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
+    $address  = mysqli_real_escape_string($conn, $_POST['address']);
+    $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+    $gender = mysqli_real_escape_string($conn, $_POST['gender']);
     $email  = mysqli_real_escape_string($conn, $_POST['email']);
-    $dob  = mysqli_real_escape_string($conn, date('y-m-d', strtotime($_POST['dob'])));
-    $std_code = bin2hex(random_bytes(4));
+    $password = mysqli_real_escape_string($conn, $_POST['password']); // Hash the password
+    $photo = mysqli_real_escape_string($conn, $_POST['photo']);
 
-    $sql = "INSERT INTO `students`( `studentcode`,`std_name`, `email`, `dob`) value ('$studentcode','$fullname','$email','$dob')";
+    $alreadyExist = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM students WHERE email = '{$email}'"));
+
+    if ($alreadyExist) {
+        $_SESSION['msg'] = "Account is already exist for email: <b>$email</b>";
+        header("location: user_form.php");
+        exit(); // Stop further execution
+    }
+    $std_code = bin2hex(random_bytes(4));
+    $sql = "INSERT INTO `students`( `studentcode`,`std_name`, `address`, `phone`, `gender`, `photo`, `email`, `password`,`verification_code`, `verified`) 
+    VALUES ('$studentcode','$fullname','$address','$phone','$gender','$photo','$email','$password','$std_code', 1)";
     $data = mysqli_query($conn, $sql);
 
     if ($data) {
-        // Send email
-        if ($fullname && $email) {
-            echo "<script>alert('Email of date of birth sent successfully.');</script>";
-        } else {
-            echo "<script>alert('Failed to send email. Please try again later.');</script>";
-        }
-        echo "<script>window.location.href = 'sendmail.php';</script>";
+        sendemail_verify("$std_name","$email", "$std_code");
+        echo '<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>';
+        echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.css">';
+        echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.all.min.js"></script>';
+        echo '<script type="text/javascript">
+                $(function() {
+                    Swal.fire({
+                        title: "Register",
+                        text: "Successfully!",
+                        icon: "success"
+                    });
+                });
+            </script>';
     } else {
-        echo "<script>alert('Something went wrong. Please try again.');</script>";
-        echo "<script>window.location.href = 'sendmail.php';</script>";
+        echo "Failed";
+        // header("location: user_form.php");
+        exit(); // Stop further execution
     }
 }
 ?>
@@ -81,9 +100,14 @@ if (isset($_POST['add'])) {
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book_Management</title>
-    <link href="//cdn.datatables.net/2.0.0/css/dataTables.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" type="text/css" href="header.css">
     <link rel="stylesheet" type="text/css" href="book_pag.css">
+    <!-- <link rel="stylesheet" type="text/css" href="book_pag1.css"> -->
     <script type="text/javascript">
         function valid() {
             if (document.signup.password.value != document.signup.confirmpassword.value) {
@@ -94,22 +118,22 @@ if (isset($_POST['add'])) {
             return true;
         }
     </script>
-    <script type="text/javascript">
-        function checkemail() {
-            $("#loaderIcon").show();
-            jQuery.ajax({
-                url: "check_avability.php",
-                data: 'email=' + $("#email").val(),
-                type: "POST",
-                success: function(data) {
-                    $("#email-avability-status").html(data);
-                    $("#loaderIcon").hide();
-                },
-                error: function() {}
-            });
-        }
-    </script>
-    <script type="text/javascript">
+  <script type="text/javascript">
+    function checkemail() {
+     $("#loaderIcon").show();
+        jQuery.ajax({
+        url: "check_avability.php", 
+        data:'email='+$("#email").val(),
+        type: "POST",
+        success:function(data){
+            $("#email-avability-status").html(data);
+            $("#loaderIcon").hide();
+        },
+        error:function (){}
+        });
+}
+  </script>
+   <script type="text/javascript">
         function mobilenumber() {
             $("#loaderIcon").show();
             jQuery.ajax({
@@ -124,20 +148,32 @@ if (isset($_POST['add'])) {
             });
         }
     </script>
+
 </head>
 
 <body>
+    <div id="video-background">
+        <video autoplay muted loop id="video-background">
+            <source src="LB.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!------MENU SECTION START-->
     <?php
     include 'admin_header.php';
     ?>
-    <!-- MENU SECTION END-->
-    <div class="content-wrapper">
+   
+   <!-- MENU SECTION END-->
+    <div class="content-wra
+    <div class=" content-wrapper">
         <div class="container">
             <div class="row pad-botm">
                 <div class="col-md-12">
+
+
                     <div class="header-line">
-                        <h4 style="font-weight: bold;color: #000000; display: inline;">User</h4>
-                        <h4 style="font-weight: bold;color: #2c7ad6; display: inline;">Form</h4>
+                        <h4 style="   font-weight: bold;color: #000000; display: inline;">User</h4>
+                        <h4 style="   font-weight: bold;color: #2c7ad6; display: inline;">Form</h4>
                     </div>
                 </div>
             </div>
@@ -148,6 +184,8 @@ if (isset($_POST['add'])) {
                         <div class="panel-head">
                             SINGUP FORM
                         </div>
+
+
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-6">
@@ -158,26 +196,69 @@ if (isset($_POST['add'])) {
                                                 <label>Enter Full Name</label>
                                                 <input class="form-control" type="text" name="fullname" required="required" autocomplete="off" />
                                             </div>
+
+                                            <div class="form-group">
+                                                <label>Enter Address</label>
+                                                <input class="form-control" type="text" name="address" required="required" autocomplete="off" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Mobile Number</label>
+                                                <span id="mobile-avability-status" style="font-size:12px;"></span>
+                                                <input class="form-control" type="text" name="phone"id="mobile"  maxlength="10" autocomplete="off" onblur="mobilenumber()" required="required" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Gender </label>
+                                                <div>
+                                                    <input type="radio" id="male" name="gender" value="male" required>
+                                                    <label for="male">Male</label>
+                                                    <input type="radio" id="female" name="gender" value="Female" required>
+                                                    <label for="female">Female</label>
+                                                </div>
+                                            </div>
+
+                                            <!-- </form> -->
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="panel-body">
-                                    <form name="signup" method="post" onSubmit="return valid();" style="border-color: aqua;">
-                                        <div class="form-group">
-                                            <label>Enter Date of Birth</label>
-                                            <input class="form-control" type="date" name="dob" required="required" autocomplete="off" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Enter Email</label>
-                                            <span id="email-avability-status" style="font-size:12px;"></span>
-                                            <input class="form-control" type="email" name="email" id="email" onBlur="checkemail()" autocomplete="off" required />
-                                        </div>
-                                        <button type="submit" name="add" id="add" class="btn btn-info" style="margin-left: -16rem; margin-top:-54px;">Submit </button>
-                                    </form>
+
+                                <div class="col-md-6">
+                                    <div class="panel-body">
+                                        <form name="signup" method="post" onSubmit="return valid();" style="border-color: aqua;">
+
+                                            <div class="form-group">
+                                                <label>Enter Email</label>
+                                                <span id="email-avability-status" style="font-size:12px;"></span>
+                                                <input class="form-control" type="email" name="email" id="email" onBlur="checkemail()" autocomplete="off" required />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Enter Password</label>
+                                                <input class="form-control" type="password" name="password" autocomplete="off" required />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Confirm Password </label>
+                                                <input class="form-control" type="password" name="confirmpassword" autocomplete="off" required />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>User Picture</label>
+                                                <input class="form-control" type="file" name="photo" autocomplete="off" required="required" />
+                                            </div>
+                                            <button type="submit" name="add" id="add" class="btn btn-info" style="margin-left: -16rem; margin-top:-54px;">Submit </button>
+
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
+                        <script src="assets/js/jquery-1.10.2.js"></script>
+                        <!-- BOOTSTRAP SCRIPTS  -->
+                        <script src="assets/js/bootstrap.js"></script>
+                        <!-- CUSTOM SCRIPTS  -->
+                        <script src="assets/js/custom.js"></script>
 </body>
 
 </html>
+

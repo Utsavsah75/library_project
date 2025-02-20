@@ -40,21 +40,21 @@ $studentcode = $_GET['stdid'];
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Student ID</th>
+                                    <th>Student Code</th>
                                     <th>Student Name</th>
                                     <th>Issued Book Name</th>
                                     <th>Issued Date</th>
                                     <th>Returned Date</th>
-                                    <th>Fine (if any)</th>
+                                    <th>Fine (if Any)</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 $studentcode = $_GET['stdid'];
-                                $sql = "SELECT students.studentcode, students.std_name, books.bookname, issue_book.issue_date, issue_book.returndate, issue_book.fine FROM issue_book JOIN students ON students.studentcode = issue_book.studentcode JOIN books ON books.id = issue_book.book_id WHERE students.studentcode = '$studentcode'";
-                                // $sql="SELECT tblbooks.BookName,tblbooks.ISBNNumber,tblissuedbookdetails.IssuesDate,tblissuedbookdetails.ReturnDate,tblissuedbookdetails.id as  rid,tblissuedbookdetails.fine from  tblissuedbookdetails join tblstudents on tblstudents.StudentId=tblissuedbookdetails.StudentId join tblbooks on tblbooks.id=tblissuedbookdetails.BookId where tblstudents.StudentId=:sid order by tblissuedbookdetails.id desc";
-                               
-                                // $sql = "SELECT students.studentcode, students.std_name, books.bookname, books.id, issue_book.issue_date, issue_book.returndate, issue_book.fine FROM issue_book JOIN students ON students.studentcode=issue_book.studentcode JOIN books ON books.id=issue_book.book_id"; // Corrected the column name issue_book.id to issue_book.book_id
+                                $sql = "SELECT students.studentcode, students.std_name, books.BookName, issue_book.issue_date, 
+                                issue_book.returndate,issue_book.fine FROM issue_book JOIN students ON 
+                                issue_book.studentcode = issue_book.studentcode JOIN books ON books.id =issue_book.book_id;";
+                                // $sql = "SELECT `id`, `studentcode`, `book_id`, `issue_date`, `returndate`, `retrunstatus`, `fine` FROM `issue_book` WHERE 1";
                                 $query = mysqli_query($conn, $sql);
                                 $count = 1;
                                 if ($query === false) {
@@ -66,8 +66,8 @@ $studentcode = $_GET['stdid'];
                                         echo "<tr>
                                                 <td>" . $count . "</td>
                                                 <td>" . $result['studentcode'] . "</td>
-                                                <td>" . $result['std_name'] . "</td>
-                                                <td>" . $result['bookname'] . "</td>
+                                                <td>" . $result['book_id'] . "</td>
+                                                <td>" . $result['id'] . "</td>
                                                 <td>" . $result['issue_date'] . "</td>
                                                 <td class='center'>" . ($result['returndate'] == '' ? 'Not returned yet' : htmlentities($result['returndate'])) . "</td>
                                                 <td class='center'>" . ($result['returndate'] == '' ? 'Not returned yet' : $result['fine']) . "</td>

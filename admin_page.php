@@ -25,4 +25,3 @@ if (isset($_POST['login'])) {
         header("location: admin_login.php");
     }
 }
-?>

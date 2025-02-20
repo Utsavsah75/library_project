@@ -95,23 +95,19 @@ if (isset($_POST['add'])) {
     $phone = mysqli_real_escape_string($conn, $_POST['phone']);
     $gender = mysqli_real_escape_string($conn, $_POST['gender']);
     $email  = mysqli_real_escape_string($conn, $_POST['email']);
-    $dob  = mysqli_real_escape_string($conn, date('y-m-d', strtotime($_POST['dob'])));
-    
-    $password = mysqli_real_escape_string($conn, $_POST['password']); // Get the password
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // Hash the password
-    $hashedPassword = substr($hashedPassword, 0, 7); // store first 7 characters only
-    
+    $password = mysqli_real_escape_string($conn, $_POST['password']); // Hash the password
     $photo = mysqli_real_escape_string($conn, $_POST['photo']);
+
     $alreadyExist = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM students WHERE email = '{$email}'"));
 
     if ($alreadyExist) {
-        $_SESSION['msg'] = "Account is already exist form this email:$email";
+        $_SESSION['msg'] = "Account is already exist form this email: <b>$email</b>";
         header("location: user_form.php");
         exit(); // Stop further execution
     }
     $verification_code = bin2hex(random_bytes(4));
-    $sql = "INSERT INTO `students`( `studentcode`,`std_name`, `address`, `phone`, `gender`, `photo`, `email`, `dob`, `password`,`verification_code`, `verified`) 
-    VALUES ('$studentcode','$fullname','$address','$phone','$gender','$photo','$email','$dob','$hashedPassword','$verification_code', 0)";
+    $sql = "INSERT INTO `students`( `studentcode`,`std_name`, `address`, `phone`, `gender`, `photo`, `email`, `password`,`verification_code`, `verified`) 
+    VALUES ('$studentcode','$fullname','$address','$phone','$gender','$photo','$email','$password','$verification_code', 0)";
     $data = mysqli_query($conn, $sql);
 
     if ($data) {
@@ -134,7 +130,7 @@ if (isset($_POST['add'])) {
     <link rel="stylesheet" type="text/css" href="header.css">
     <link rel="stylesheet" type="text/css" href="book_pag.css">
     <!-- <link rel="stylesheet" type="text/css" href="book_pag1.css"> -->
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
         function valid() {
             if (document.signup.password.value != document.signup.confirmpassword.value) {
                 alert("Password and Confirm Password Field do not match  !!");
@@ -143,7 +139,7 @@ if (isset($_POST['add'])) {
             }
             return true;
         }
-    </script> -->
+    </script>
     <script type="text/javascript">
         function checkemail() {
             $("#loaderIcon").show();
@@ -309,12 +305,6 @@ if (isset($_POST['add'])) {
                                                 <span id="name-availability-status" style="font-size: 12px;"></span>
                                                 <input class="form-control" type="text" id="fullname" name="fullname" autocomplete="off" onblur="checkFullName()" required />
                                             </div>
-
-                                            <div class="form-group" >
-                                                <label>Enter Date of Birth</label>
-                                                <input class="form-control" type="date" name="dob" required="required" autocomplete="off" />
-                                            </div>
-                                            
                                             <div class="form-group">
                                                 <label>Enter Address</label>
                                                 <input class="form-control" type="text" name="address" required="required" autocomplete="off" />
@@ -350,8 +340,6 @@ if (isset($_POST['add'])) {
                                                 <input class="form-control" type="email" name="email" id="email" onBlur="checkemail()" autocomplete="off" required />
                                             </div>
 
-                                            </div>
-
                                             <div class="form-group">
                                                 <label>Enter Password</label>
                                                 <input class="form-control" type="password" id="password" name="password" onblur="checkpass()" autocomplete="off" required />
@@ -368,7 +356,7 @@ if (isset($_POST['add'])) {
                                                 <label>User Picture</label>
                                                 <input class="form-control" type="file" name="photo" autocomplete="off" required="required" />
                                             </div>
-                                            <button type="submit" name="add" id="add" class="btn btn-info" style="margin-left: -3rem;">Submit </button>
+                                            <button type="submit" name="add" id="add" class="btn btn-info" style="margin-left: -16rem; margin-top:-54px;">Submit </button>
 
                                         </form>
                                     </div>

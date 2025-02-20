@@ -112,7 +112,6 @@ if (isset($_GET['active'])) {
                                                 <th>Std CODE</th>
                                                 <th>Student Name</th>
                                                 <th>Email id </th>
-                                                <th>Date of Birth</th>
                                                 <th>Mobile Number</th>
                                                 <th>Reg Date</th>
                                                 <th>Status</th>
@@ -131,7 +130,6 @@ if (isset($_GET['active'])) {
                                                 <td><?php echo $row['studentcode']; ?></td>
                                                 <td><?php echo $row['std_name']; ?></td>
                                                 <td><?php echo $row['email']; ?></td>
-                                                <td><?php echo $row['dob']; ?></td>
                                                 <td><?php echo $row['phone']; ?></td>
                                                 <td><?php echo $row['regdate']; ?></td>
                                                 <td>
